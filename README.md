@@ -223,4 +223,3 @@ Recommended options:
 - MIT License for code;
 - CC BY 4.0 for narrative content and graphics;
 - explicit attribution for official data sources.
-# ecuador-pove-rty-monitor
