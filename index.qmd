@@ -1,0 +1,133 @@
+---
+title: "Ecuador Poverty Monitor"
+subtitle: "Entender la pobreza más allá de una sola cifra"
+description: "Sitio narrativo en Quarto para comunicar pobreza, territorio, empleo y calidad estadística en Ecuador usando enemduR."
+format:
+  html:
+    page-layout: full
+---
+
+::: {.hero-monitor}
+# La pobreza no es una sola cifra.
+
+Cada vez que se publica una tasa de pobreza, parece que el país cabe en un porcentaje.  
+Pero Ecuador no cabe en un solo número.
+
+Para entender la pobreza necesitamos mirar ingresos, privaciones, territorio, empleo y calidad de la medición.
+
+::: {.hero-actions}
+[Empezar por el propósito](pages/01_why-monitor.qmd){.btn-monitor .btn-primary-monitor}
+[Ver metodología](methodology.qmd){.btn-monitor .btn-secondary-monitor}
+:::
+:::
+
+::: {.monitor-grid}
+
+::: {.monitor-card}
+## Pulso mensual
+
+**Último mes disponible**
+
+Seguimiento coyuntural para indicadores nacionales y urbano/rurales, especialmente del mercado laboral.
+
+Este bloque ayuda a leer el presente sin confundir coyuntura con estructura.
+:::
+
+::: {.monitor-card}
+## Lectura trimestral
+
+**Cinco ciudades principales**
+
+Seguimiento intermedio para Quito, Guayaquil, Cuenca, Machala y Ambato.
+
+Este bloque permite observar señales urbanas con mayor frecuencia que la lectura anual.
+:::
+
+::: {.monitor-card}
+## Base anual
+
+**Estructura completa**
+
+Pobreza monetaria, quintiles, NBI, TPM, provincias, ciudades y lectura territorial integral.
+
+Este es el corazón narrativo del monitor.
+:::
+
+:::
+
+## Por qué este monitor
+
+La información sobre pobreza en Ecuador existe, pero suele estar dispersa en boletines, bases de datos, presentaciones, cuadros técnicos y reportes metodológicos.
+
+El problema no es la falta de datos.  
+El problema es que muchas veces falta una historia clara que conecte los datos.
+
+Este monitor busca ordenar esa conversación.
+
+No reemplaza las cifras oficiales.  
+No pretende ser una autoridad estadística paralela.  
+Su propósito es construir un producto reproducible de comunicación analítica que ayude a entender qué se mide, cómo se mide, qué se puede comparar y qué límites tiene cada lectura.
+
+::: {.insight-box}
+## La idea central
+
+Una buena medición de pobreza no solo pregunta cuántas personas son pobres.
+
+También pregunta:
+
+- por qué son pobres;
+- dónde viven;
+- qué carencias enfrentan;
+- cómo se relaciona su situación con el empleo;
+- qué tan precisa es la estimación;
+- y si el instrumento de medición sigue representando bien al país actual.
+:::
+
+## Cómo leer este sitio
+
+::: {.story-steps}
+
+::: {.story-step}
+### 1. Ingresos
+
+La pobreza monetaria mira si el ingreso familiar per cápita alcanza o no una línea de pobreza.
+:::
+
+::: {.story-step}
+### 2. Privaciones
+
+NBI y TPM permiten mirar carencias estructurales y acumulación de privaciones.
+:::
+
+::: {.story-step}
+### 3. Territorio
+
+La pobreza no se distribuye de forma homogénea. El lugar importa.
+:::
+
+::: {.story-step}
+### 4. Trabajo
+
+El empleo conecta ingresos, vulnerabilidad y bienestar.
+:::
+
+::: {.story-step}
+### 5. Medición
+
+Ninguna cifra es mejor que el instrumento con el que se mide.
+:::
+
+:::
+
+## Estado del producto
+
+::: {.note-box}
+Este sitio está en construcción.
+
+La primera versión fija la arquitectura narrativa, visual y metodológica.  
+Las siguientes fases incorporarán los scripts de construcción de datos, las visualizaciones, las infografías y los análisis por página.
+:::
+
+::: {.page-nav}
+[Por qué lo hacemos →](pages/01_why-monitor.qmd)
+:::

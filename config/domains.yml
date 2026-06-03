@@ -1,0 +1,69 @@
+domains:
+  national:
+    label_es: "Nacional"
+    label_en: "National"
+    variable: null
+    valid_for:
+      - "mensual"
+      - "trimestral"
+      - "anual"
+    description: "National-level estimates."
+
+  area:
+    label_es: "Urbano/rural"
+    label_en: "Urban/rural"
+    variable: "area"
+    valid_for:
+      - "mensual"
+      - "trimestral"
+      - "anual"
+    description: "Area-level estimates for urban and rural domains."
+
+  five_cities:
+    label_es: "Cinco ciudades principales"
+    label_en: "Five main cities"
+    variable: "ciudad"
+    valid_for:
+      - "trimestral"
+      - "anual"
+    values:
+      - "Quito"
+      - "Guayaquil"
+      - "Cuenca"
+      - "Machala"
+      - "Ambato"
+    description: "Estimates for the five main cities supported by the ENEMDU representativity contract."
+
+  province:
+    label_es: "Provincia"
+    label_en: "Province"
+    variable: "provincia"
+    valid_for:
+      - "anual"
+    description: "Annual province-level estimates."
+
+  canton:
+    label_es: "Cantón"
+    label_en: "Canton"
+    variable: "canton"
+    valid_for: []
+    description: "Not used as an inferential domain in this product."
+
+  parish:
+    label_es: "Parroquia"
+    label_en: "Parish"
+    variable: "parroquia"
+    valid_for: []
+    description: "Not used as an inferential domain in this product."
+
+rules:
+  strict_domain_validation: true
+  fail_on_invalid_domain_period_combination: true
+  allow_exploratory_outputs: false
+  require_precision_flags: true
+  require_universe_labels: true
+  require_weight_labels: true
+
+messages:
+  invalid_domain_period_es: "Este nivel territorial no corresponde al dominio de representatividad del período seleccionado."
+  invalid_domain_period_en: "This territorial level is not supported by the representativity domain of the selected period."

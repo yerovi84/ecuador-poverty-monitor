@@ -1,0 +1,87 @@
+project:
+  name: "Ecuador Poverty Monitor"
+  analytical_engine: "enemduR"
+  analytical_engine_reference: "yerovi84/enemduR@v0.1.0"
+
+period_strategy:
+  description: "Three-speed analytical structure: monthly pulse, quarterly city view, annual structural core."
+  main_story_layer: "annual"
+  update_mode: "parametrized"
+
+layers:
+  monthly:
+    enabled: true
+    label: "Pulso mensual"
+    survey_type: "mensual"
+    period: "latest"
+    role: "Recent labor and headline context."
+    primary_use:
+      - "labor_market"
+      - "headline_context"
+      - "national_area_pulse"
+    allowed_domains:
+      - "national"
+      - "area"
+    avoid_for:
+      - "province"
+      - "five_cities"
+      - "structural_poverty_story"
+      - "nbi_structural_story"
+      - "tpm_structural_story"
+
+  quarterly:
+    enabled: true
+    label: "Lectura trimestral"
+    survey_type: "trimestral"
+    period: "latest"
+    role: "Intermediate monitoring for the five main cities."
+    primary_use:
+      - "five_cities"
+      - "labor_city_profile"
+      - "urban_comparison"
+    allowed_domains:
+      - "national"
+      - "area"
+      - "five_cities"
+    avoid_for:
+      - "province"
+      - "cantonal_analysis"
+      - "parish_analysis"
+
+  annual:
+    enabled: true
+    label: "Base estructural anual"
+    survey_type: "anual"
+    period: "latest"
+    role: "Main narrative foundation for full poverty and territorial analysis."
+    primary_use:
+      - "income_poverty"
+      - "extreme_income_poverty"
+      - "quintiles"
+      - "nbi"
+      - "tpm"
+      - "territory"
+      - "province"
+      - "five_cities"
+      - "sampling_frame_discussion"
+    allowed_domains:
+      - "national"
+      - "area"
+      - "five_cities"
+      - "province"
+    avoid_for:
+      - "cantonal_analysis"
+      - "parish_analysis"
+
+editorial_rules:
+  main_rule: "Do not force all indicators into all periodicities."
+  monthly_rule: "Monthly data are used for recent pulse and labor context."
+  quarterly_rule: "Quarterly data are used for city-level monitoring."
+  annual_rule: "Annual data are used for the structural poverty narrative."
+  disaggregation_rule: "Never show a territorial disaggregation that is not supported by the survey design domain."
+  narrative_rule: "The month explains pulse; the quarter explains cities; the year explains structure."
+
+data_policy:
+  store_raw_microdata_in_repo: false
+  store_derived_outputs_in_repo: true
+  require_manual_review_for_derived_outputs: true

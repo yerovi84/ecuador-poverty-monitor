@@ -1,0 +1,68 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Ecuador Poverty Monitor"
+  description: "A Quarto storytelling data product for understanding poverty in Ecuador beyond a single headline number."
+  site-url: "https://yerovi84.github.io/ecuador-poverty-monitor"
+  repo-url: "https://github.com/yerovi84/ecuador-poverty-monitor"
+  repo-actions:
+    - source
+    - issue
+
+  navbar:
+    title: "Ecuador Poverty Monitor"
+    left:
+      - text: "Inicio"
+        href: index.qmd
+      - text: "Por qué lo hacemos"
+        href: pages/01_why-monitor.qmd
+      - text: "Pobreza por ingresos"
+        href: pages/02_income-poverty.qmd
+      - text: "Quintiles"
+        href: pages/03_quintiles.qmd
+      - text: "NBI"
+        href: pages/04_nbi.qmd
+      - text: "TPM"
+        href: pages/05_tpm.qmd
+      - text: "Territorio"
+        href: pages/06_territory.qmd
+      - text: "Trabajo"
+        href: pages/07_labor.qmd
+      - text: "Representatividad"
+        href: pages/08_representativity.qmd
+      - text: "Marco muestral"
+        href: pages/09_sampling-frame.qmd
+      - text: "Metodología"
+        href: methodology.qmd
+
+  page-footer:
+    left: "Built by Alejandro Yerovi using enemduR."
+    right:
+      - text: "GitHub"
+        href: "https://github.com/yerovi84/ecuador-poverty-monitor"
+      - text: "enemduR"
+        href: "https://github.com/yerovi84/enemduR"
+
+format:
+  html:
+    theme:
+      - cosmo
+    css: assets/css/site.css
+    toc: true
+    toc-depth: 3
+    toc-location: right
+    number-sections: false
+    smooth-scroll: true
+    code-fold: true
+    code-tools: true
+    link-external-newwindow: true
+    page-layout: article
+
+execute:
+  freeze: auto
+  warning: false
+  message: false
+
+lang: es

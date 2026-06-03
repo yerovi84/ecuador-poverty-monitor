@@ -1,0 +1,179 @@
+---
+title: "Por qué un monitor de pobreza"
+subtitle: "La pobreza necesita datos, pero también necesita contexto"
+description: "Motivación del Ecuador Poverty Monitor y explicación inicial de ENEMDU, pobreza y lectura multidimensional."
+---
+
+::: {.lead-box}
+## La pregunta de partida
+
+Si Ecuador ya produce estadísticas oficiales de pobreza, ¿por qué construir otro monitor?
+
+Porque los datos existen, pero la lectura suele estar fragmentada.
+
+Hay boletines, microdatos, presentaciones, metodologías, tabulados, líneas de pobreza, reportes laborales, bases anuales, trimestrales y mensuales. Todo eso es valioso. Pero para tomar mejores decisiones también hace falta una narrativa que conecte las piezas.
+:::
+
+## La motivación
+
+Este proyecto nace de una necesidad concreta: juntar en un solo lugar una lectura clara, técnica y visual de la pobreza en Ecuador.
+
+No se trata solo de mostrar gráficos.  
+Se trata de explicar el fenómeno.
+
+La pobreza puede medirse desde el ingreso, desde las necesidades básicas, desde las privaciones simultáneas, desde el territorio y desde el empleo. Cada enfoque ilumina una parte distinta del problema.
+
+Cuando esas piezas se observan por separado, la lectura queda incompleta.  
+Cuando se conectan, aparece una imagen más útil para entender el país.
+
+::: {.quote-box}
+Una cifra puede informar.  
+Una historia bien construida puede ayudar a decidir.
+:::
+
+## Qué es ENEMDU
+
+ENEMDU es la Encuesta Nacional de Empleo, Desempleo y Subempleo.
+
+Es una de las operaciones estadísticas más importantes del país para analizar empleo, condiciones laborales, ingresos, pobreza y características de los hogares.
+
+Este monitor usa ENEMDU como fuente de análisis, pero la procesa mediante un flujo reproducible con `enemduR`.
+
+La idea es separar claramente tres capas:
+
+::: {.three-layer-grid}
+
+::: {.layer-card}
+### 1. Fuente oficial
+
+La información de base proviene de ENEMDU y sus documentos metodológicos.
+:::
+
+::: {.layer-card}
+### 2. Motor analítico
+
+`enemduR` organiza lectura, validación, estimación, indicadores y salidas analíticas.
+:::
+
+::: {.layer-card}
+### 3. Producto narrativo
+
+Este sitio convierte los resultados en una historia visual y explicativa.
+:::
+
+:::
+
+## Cómo se mide la pobreza
+
+La pobreza no tiene una única puerta de entrada.
+
+En este monitor trabajaremos con varias lecturas complementarias.
+
+::: {.method-grid}
+
+::: {.method-card}
+### Pobreza monetaria
+
+Pregunta si el ingreso familiar per cápita alcanza una línea mínima de pobreza.
+
+Es directa, potente y muy usada para seguimiento coyuntural.
+:::
+
+::: {.method-card}
+### Pobreza extrema monetaria
+
+Pregunta si el ingreso está por debajo de una línea más severa, asociada a necesidades básicas alimentarias.
+:::
+
+::: {.method-card}
+### Quintiles de ingreso
+
+Ordenan a la población de menor a mayor ingreso y permiten leer desigualdad, perfiles y concentración.
+:::
+
+::: {.method-card}
+### NBI
+
+Observa carencias estructurales como vivienda, hacinamiento, servicios, educación y capacidad económica.
+:::
+
+::: {.method-card}
+### TPM
+
+Mira la pobreza como acumulación simultánea de privaciones ponderadas.
+:::
+
+::: {.method-card}
+### Trabajo
+
+Conecta ingresos, estabilidad, desempleo, empleo adecuado e inserción laboral.
+:::
+
+:::
+
+## La decisión metodológica del sitio
+
+Este producto no tratará todos los períodos como si sirvieran para lo mismo.
+
+La lectura se organiza en tres velocidades:
+
+::: {.period-grid}
+
+::: {.period-card}
+### Mensual
+
+Pulso reciente.
+
+Se usa principalmente para lectura nacional, urbano/rural y mercado laboral.
+:::
+
+::: {.period-card}
+### Trimestral
+
+Lectura intermedia.
+
+Se usa para observar las cinco ciudades principales cuando corresponde.
+:::
+
+::: {.period-card}
+### Anual
+
+Base estructural.
+
+Se usa como núcleo del análisis completo de pobreza, NBI, TPM, quintiles y territorio provincial.
+:::
+
+:::
+
+::: {.alert-box}
+## Regla de oro
+
+Nunca se debe mostrar una desagregación territorial que no corresponda al dominio de representatividad del período usado.
+
+La claridad metodológica es parte del producto, no una nota secundaria.
+:::
+
+## Qué aporta este monitor
+
+Este monitor busca aportar cinco cosas:
+
+1. una lectura integrada de pobreza;
+2. una arquitectura reproducible basada en `enemduR`;
+3. una comunicación visual potente con infografías y gráficos;
+4. una separación clara entre coyuntura y estructura;
+5. una discusión técnica sobre representatividad y marco muestral.
+
+## Qué no pretende hacer
+
+Este monitor no pretende reemplazar al INEC ni producir estadísticas oficiales.
+
+Tampoco busca convertir cada tabla en un dashboard interactivo.
+
+Su objetivo es más específico:
+
+> transformar información pública compleja en una lectura ordenada, reproducible, visual y útil para entender mejor la pobreza en Ecuador.
+
+::: {.page-nav}
+[← Inicio](../index.qmd)
+[Continuar con pobreza por ingresos →](02_income-poverty.qmd)
+:::
