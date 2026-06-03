@@ -37,6 +37,30 @@ devtools::load_all("../enemduR", reset = TRUE)
 
 ---
 
+## Pipeline setup
+
+Raw ENEMDU microdata are not versioned in this repository. The current pipeline
+setup only validates configuration contracts and prepares derived-output folders;
+it does not read raw microdata or calculate indicators.
+
+The minimal R dependency for configuration is `yaml`. Install required pipeline
+packages explicitly with:
+
+```bash
+Rscript scripts/00_install_requirements.R
+```
+
+Then run the lightweight setup check:
+
+```bash
+Rscript scripts/00_setup.R
+```
+
+`EPM_RAW_DATA_ROOT` will be required later when scripts need to resolve private
+raw microdata paths. It is not required for the current configuration smoke test.
+
+---
+
 ## Product architecture
 
 The monitor follows a three-speed analytical structure:

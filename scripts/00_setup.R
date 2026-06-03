@@ -23,6 +23,14 @@ project_root <- {
 
 setwd(project_root)
 
+if (!requireNamespace("yaml", quietly = TRUE)) {
+  stop(
+    "Package `yaml` is required for EPM configuration. ",
+    "Run `Rscript scripts/00_install_requirements.R` before setup.",
+    call. = FALSE
+  )
+}
+
 utils <- list.files("R", pattern = "^utils-.*\\.R$", full.names = TRUE)
 
 if (length(utils) == 0L) {
