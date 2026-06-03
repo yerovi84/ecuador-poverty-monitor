@@ -19,8 +19,6 @@ website:
     logo-alt: "Ecuador Poverty Monitor"
     title: "Ecuador Poverty Monitor"
     left:
-      - text: "Home"
-        href: index.qmd
       - text: "Why it matters"
         href: pages/01_why-monitor.qmd
       - text: "Analytical roadmap"
