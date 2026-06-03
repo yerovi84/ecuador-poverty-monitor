@@ -1,0 +1,191 @@
+project:
+  name: "Ecuador Poverty Monitor"
+  repository: "ecuador-poverty-monitor"
+  analytical_engine: "enemduR"
+  analytical_engine_reference: "yerovi84/enemduR@v0.1.0"
+
+path_policy:
+  store_raw_microdata_in_repo: false
+  store_private_paths_in_repo: false
+  use_environment_variables_for_raw_data: true
+  fail_if_raw_data_root_is_missing: true
+  fail_if_private_paths_detected: true
+
+environment:
+  raw_data_root_env: "EPM_RAW_DATA_ROOT"
+  optional_enemduR_local_env: "ENEMDUR_LOCAL_PATH"
+
+roots:
+  raw_data_root:
+    source: "environment"
+    env: "EPM_RAW_DATA_ROOT"
+    description: "Local root folder where official ENEMDU microdata are stored. This path must not be committed."
+
+  derived_data_root:
+    path: "data/derived"
+    tracked_policy: "review_before_commit"
+    description: "Aggregated or summarized outputs produced by the pipeline and consumed by Quarto."
+
+  external_lookup_root:
+    path: "data/external/lookup"
+    tracked_policy: "allowed_if_small_and_public"
+    description: "Small public lookup tables, labels, mappings, and metadata required by the site."
+
+  config_root:
+    path: "config"
+    tracked_policy: "tracked"
+    description: "Configuration files controlling periods, paths, domains, indicators, and site behavior."
+
+  scripts_root:
+    path: "scripts"
+    tracked_policy: "tracked"
+    description: "Pipeline scripts."
+
+  r_helpers_root:
+    path: "R"
+    tracked_policy: "tracked"
+    description: "Project-specific helper functions. These must not duplicate core enemduR logic."
+
+  quarto_pages_root:
+    path: "pages"
+    tracked_policy: "tracked"
+    description: "Quarto pages for the narrative site."
+
+  assets_root:
+    path: "assets"
+    tracked_policy: "tracked"
+    description: "CSS, images, infographics, icons, and visual assets."
+
+  rendered_site_root:
+    path: "docs"
+    tracked_policy: "tracked_if_using_github_pages"
+    description: "Rendered Quarto site for GitHub Pages."
+
+raw_data_layout:
+  monthly:
+    folder: "mensual"
+    survey_type: "mensual"
+    expected_files:
+      persona:
+        required: true
+        pattern: "*.sav"
+        description: "Monthly ENEMDU person-level file."
+      vivienda:
+        required: false
+        pattern: "*.sav"
+        description: "Monthly household or dwelling-level file if available and required by indicators."
+      official_tables:
+        required: false
+        pattern: "*.{xlsx,csv,pdf}"
+        description: "Optional official reference tables for validation."
+
+  quarterly:
+    folder: "trimestral"
+    survey_type: "trimestral"
+    expected_files:
+      persona:
+        required: true
+        pattern: "*.sav"
+        description: "Quarterly ENEMDU person-level file."
+      vivienda:
+        required: false
+        pattern: "*.sav"
+        description: "Quarterly household or dwelling-level file if available and required by indicators."
+      official_tables:
+        required: false
+        pattern: "*.{xlsx,csv,pdf}"
+        description: "Optional official reference tables for validation."
+
+  annual:
+    folder: "anual"
+    survey_type: "anual"
+    expected_files:
+      persona:
+        required: true
+        pattern: "*.sav"
+        description: "Annual ENEMDU person-level file."
+      vivienda:
+        required: true
+        pattern: "*.sav"
+        description: "Annual household or dwelling-level file required for NBI and some structural indicators."
+      official_tables:
+        required: false
+        pattern: "*.{xlsx,csv,pdf}"
+        description: "Optional official reference tables for validation."
+
+derived_data_layout:
+  monthly:
+    folder: "data/derived/monthly"
+    outputs:
+      monthly_pulse: "monthly/monthly_pulse.rds"
+      monthly_labor: "monthly/monthly_labor.rds"
+      monthly_metadata: "monthly/monthly_metadata.rds"
+
+  quarterly:
+    folder: "data/derived/quarterly"
+    outputs:
+      quarterly_city_view: "quarterly/quarterly_city_view.rds"
+      quarterly_labor: "quarterly/quarterly_labor.rds"
+      quarterly_metadata: "quarterly/quarterly_metadata.rds"
+
+  annual:
+    folder: "data/derived/annual"
+    outputs:
+      annual_income_poverty: "annual/annual_income_poverty.rds"
+      annual_quintiles: "annual/annual_quintiles.rds"
+      annual_nbi: "annual/annual_nbi.rds"
+      annual_tpm: "annual/annual_tpm.rds"
+      annual_labor: "annual/annual_labor.rds"
+      annual_territory: "annual/annual_territory.rds"
+      annual_representativity: "annual/annual_representativity.rds"
+      annual_metadata: "annual/annual_metadata.rds"
+
+  site:
+    folder: "data/derived/site"
+    outputs:
+      site_kpis: "site/site_kpis.rds"
+      site_periods: "site/site_periods.rds"
+      site_sources: "site/site_sources.rds"
+      site_update_log: "site/site_update_log.rds"
+      site_quality_flags: "site/site_quality_flags.rds"
+
+validation:
+  required_directories:
+    - "config"
+    - "R"
+    - "scripts"
+    - "pages"
+    - "assets"
+    - "assets/css"
+    - "assets/infographics"
+    - "data/derived"
+    - "data/external/lookup"
+
+  forbidden_patterns:
+    - "C:/Users/"
+    - "C:\\Users\\"
+    - "/Users/"
+    - "/home/"
+    - "OneDrive"
+    - "Dropbox"
+    - "Google Drive"
+
+  forbidden_extensions_in_repo:
+    - ".sav"
+    - ".dta"
+    - ".por"
+    - ".sas7bdat"
+
+  derived_output_rules:
+    require_aggregated_data: true
+    require_metadata: true
+    require_period: true
+    require_survey_type: true
+    require_indicator_id: true
+    require_domain: true
+    require_no_person_identifiers: true
+
+rendering:
+  quarto_command: "quarto render"
+  build_all_command: "Rscript scripts/99_build_all.R"
+  render_after_build: true

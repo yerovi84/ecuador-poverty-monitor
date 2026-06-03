@@ -1,0 +1,582 @@
+indicator_contract:
+  description: "Indicator registry for Ecuador Poverty Monitor. This file controls which indicators are built, which periodicity they use, which domains are valid, and which page consumes them."
+  analytical_engine: "enemduR"
+  do_not_duplicate_enemduR_logic: true
+  require_explicit_domain_validation: true
+  require_precision_metadata: true
+  require_universe_metadata: true
+  require_weight_metadata: true
+
+families:
+  income_poverty:
+    label_es: "Pobreza monetaria"
+    label_en: "Income poverty"
+    description_es: "Indicadores basados en ingreso familiar per cápita y líneas de pobreza."
+    main_layer: "annual"
+    main_page: "pages/02_income-poverty.qmd"
+
+  quintiles:
+    label_es: "Quintiles de ingreso"
+    label_en: "Income quintiles"
+    description_es: "Ordenamiento de personas u hogares por ingreso per cápita para analizar distribución y perfiles."
+    main_layer: "annual"
+    main_page: "pages/03_quintiles.qmd"
+
+  nbi:
+    label_es: "Necesidades Básicas Insatisfechas"
+    label_en: "Unsatisfied Basic Needs"
+    description_es: "Pobreza estructural basada en carencias de vivienda, hacinamiento, servicios, educación y capacidad económica."
+    main_layer: "annual"
+    main_page: "pages/04_nbi.qmd"
+
+  tpm:
+    label_es: "Pobreza multidimensional"
+    label_en: "Multidimensional poverty"
+    description_es: "Pobreza entendida como acumulación simultánea de privaciones ponderadas."
+    main_layer: "annual"
+    main_page: "pages/05_tpm.qmd"
+
+  territory:
+    label_es: "Territorio"
+    label_en: "Territory"
+    description_es: "Lectura territorial según dominios permitidos por la periodicidad de ENEMDU."
+    main_layer: "annual"
+    main_page: "pages/06_territory.qmd"
+
+  labor:
+    label_es: "Trabajo y empleo"
+    label_en: "Labor market"
+    description_es: "Indicadores laborales usados para conectar pobreza, ingresos y condiciones de empleo."
+    main_layer: "monthly"
+    main_page: "pages/07_labor.qmd"
+
+  representativity:
+    label_es: "Representatividad y precisión"
+    label_en: "Representativity and precision"
+    description_es: "Indicadores y banderas de calidad inferencial."
+    main_layer: "all"
+    main_page: "pages/08_representativity.qmd"
+
+  sampling_frame:
+    label_es: "Marco muestral"
+    label_en: "Sampling frame"
+    description_es: "Discusión técnica sobre cobertura, actualización y límites del marco muestral."
+    main_layer: "annual"
+    main_page: "pages/09_sampling-frame.qmd"
+
+common_output_columns:
+  required:
+    - "indicator_id"
+    - "indicator_label"
+    - "indicator_family"
+    - "period"
+    - "survey_type"
+    - "domain"
+    - "domain_value"
+    - "estimate"
+    - "estimate_type"
+    - "unit"
+    - "source_layer"
+    - "build_timestamp"
+
+  recommended:
+    - "se"
+    - "cv"
+    - "n"
+    - "df"
+    - "weighted_n"
+    - "precision_flag"
+    - "universe"
+    - "weight"
+    - "method_note"
+    - "source_file"
+    - "source_reference"
+
+indicators:
+  poverty_rate:
+    enabled: true
+    label_es: "Pobreza por ingresos"
+    label_en: "Income poverty"
+    family: "income_poverty"
+    source_layer: "annual"
+    survey_type: "anual"
+    primary_page: "pages/02_income-poverty.qmd"
+    output_group: "annual_income_poverty"
+    output_name: "poverty_rate"
+    estimate_type: "proportion"
+    unit: "percent"
+    allowed_domains:
+      - "national"
+      - "area"
+      - "five_cities"
+      - "province"
+    requires:
+      income_variable: true
+      poverty_line: true
+      survey_design: true
+      precision: true
+      universe: true
+      weight: true
+    editorial_role: "Main annual poverty headline."
+
+  extreme_poverty_rate:
+    enabled: true
+    label_es: "Pobreza extrema por ingresos"
+    label_en: "Extreme income poverty"
+    family: "income_poverty"
+    source_layer: "annual"
+    survey_type: "anual"
+    primary_page: "pages/02_income-poverty.qmd"
+    output_group: "annual_income_poverty"
+    output_name: "extreme_poverty_rate"
+    estimate_type: "proportion"
+    unit: "percent"
+    allowed_domains:
+      - "national"
+      - "area"
+      - "five_cities"
+      - "province"
+    requires:
+      income_variable: true
+      extreme_poverty_line: true
+      survey_design: true
+      precision: true
+      universe: true
+      weight: true
+    editorial_role: "Main annual extreme poverty headline."
+
+  income_poverty_gap:
+    enabled: false
+    label_es: "Brecha de pobreza por ingresos"
+    label_en: "Income poverty gap"
+    family: "income_poverty"
+    source_layer: "annual"
+    survey_type: "anual"
+    primary_page: "pages/02_income-poverty.qmd"
+    output_group: "annual_income_poverty"
+    output_name: "income_poverty_gap"
+    estimate_type: "mean"
+    unit: "index"
+    allowed_domains:
+      - "national"
+      - "area"
+      - "province"
+    requires:
+      income_variable: true
+      poverty_line: true
+      survey_design: true
+      precision: true
+    editorial_role: "Optional deepening indicator for future phases."
+    status_note: "Backlog until the first version of the monitor is stable."
+
+  quintile_distribution:
+    enabled: true
+    label_es: "Distribución por quintiles de ingreso"
+    label_en: "Income quintile distribution"
+    family: "quintiles"
+    source_layer: "annual"
+    survey_type: "anual"
+    primary_page: "pages/03_quintiles.qmd"
+    output_group: "annual_quintiles"
+    output_name: "quintile_distribution"
+    estimate_type: "distribution"
+    unit: "percent"
+    allowed_domains:
+      - "national"
+      - "area"
+      - "five_cities"
+      - "province"
+    requires:
+      income_variable: true
+      quintile_variable: true
+      survey_design: true
+      precision: true
+      universe: true
+      weight: true
+    editorial_role: "Explain how income distribution is organized and how poverty concentrates across groups."
+
+  quintile_profile:
+    enabled: true
+    label_es: "Perfil de quintiles"
+    label_en: "Quintile profile"
+    family: "quintiles"
+    source_layer: "annual"
+    survey_type: "anual"
+    primary_page: "pages/03_quintiles.qmd"
+    output_group: "annual_quintiles"
+    output_name: "quintile_profile"
+    estimate_type: "profile"
+    unit: "mixed"
+    allowed_domains:
+      - "national"
+      - "area"
+    requires:
+      income_variable: true
+      quintile_variable: true
+      survey_design: true
+      precision: true
+    editorial_role: "Describe the social and economic profile of the income distribution."
+
+  nbi_rate:
+    enabled: true
+    label_es: "Pobreza por NBI"
+    label_en: "UBN poverty"
+    family: "nbi"
+    source_layer: "annual"
+    survey_type: "anual"
+    primary_page: "pages/04_nbi.qmd"
+    output_group: "annual_nbi"
+    output_name: "nbi_rate"
+    estimate_type: "proportion"
+    unit: "percent"
+    allowed_domains:
+      - "national"
+      - "area"
+      - "five_cities"
+      - "province"
+    requires:
+      household_data: true
+      nbi_components: true
+      survey_design: true
+      precision: true
+      universe: true
+      weight: true
+    editorial_role: "Show structural poverty beyond income."
+
+  nbi_component_rates:
+    enabled: true
+    label_es: "Componentes de NBI"
+    label_en: "UBN component rates"
+    family: "nbi"
+    source_layer: "annual"
+    survey_type: "anual"
+    primary_page: "pages/04_nbi.qmd"
+    output_group: "annual_nbi"
+    output_name: "nbi_component_rates"
+    estimate_type: "component_proportions"
+    unit: "percent"
+    allowed_domains:
+      - "national"
+      - "area"
+      - "province"
+    requires:
+      household_data: true
+      nbi_components: true
+      survey_design: true
+      precision: true
+    editorial_role: "Explain which structural deprivations drive NBI poverty."
+
+  nbi_severity:
+    enabled: true
+    label_es: "Acumulación de carencias NBI"
+    label_en: "UBN deprivation accumulation"
+    family: "nbi"
+    source_layer: "annual"
+    survey_type: "anual"
+    primary_page: "pages/04_nbi.qmd"
+    output_group: "annual_nbi"
+    output_name: "nbi_severity"
+    estimate_type: "distribution"
+    unit: "percent"
+    allowed_domains:
+      - "national"
+      - "area"
+      - "province"
+    requires:
+      household_data: true
+      nbi_components: true
+      survey_design: true
+      precision: true
+    editorial_role: "Analytical, non-official severity reading based on number of NBI deprivations."
+    status_note: "Do not present as an official extreme NBI indicator."
+
+  tpm_rate:
+    enabled: true
+    label_es: "Tasa de pobreza multidimensional"
+    label_en: "Multidimensional poverty rate"
+    family: "tpm"
+    source_layer: "annual"
+    survey_type: "anual"
+    primary_page: "pages/05_tpm.qmd"
+    output_group: "annual_tpm"
+    output_name: "tpm_rate"
+    estimate_type: "proportion"
+    unit: "percent"
+    allowed_domains:
+      - "national"
+      - "area"
+      - "five_cities"
+      - "province"
+    requires:
+      tpm_components: true
+      survey_design: true
+      precision: true
+      universe: true
+      weight: true
+    editorial_role: "Show poverty as simultaneous weighted deprivation."
+
+  tpem_rate:
+    enabled: true
+    label_es: "Tasa de pobreza extrema multidimensional"
+    label_en: "Extreme multidimensional poverty rate"
+    family: "tpm"
+    source_layer: "annual"
+    survey_type: "anual"
+    primary_page: "pages/05_tpm.qmd"
+    output_group: "annual_tpm"
+    output_name: "tpem_rate"
+    estimate_type: "proportion"
+    unit: "percent"
+    allowed_domains:
+      - "national"
+      - "area"
+      - "five_cities"
+      - "province"
+    requires:
+      tpm_components: true
+      survey_design: true
+      precision: true
+      universe: true
+      weight: true
+    editorial_role: "Show severe accumulation of multidimensional deprivation."
+
+  tpm_component_rates:
+    enabled: true
+    label_es: "Componentes de pobreza multidimensional"
+    label_en: "Multidimensional poverty component rates"
+    family: "tpm"
+    source_layer: "annual"
+    survey_type: "anual"
+    primary_page: "pages/05_tpm.qmd"
+    output_group: "annual_tpm"
+    output_name: "tpm_component_rates"
+    estimate_type: "component_proportions"
+    unit: "percent"
+    allowed_domains:
+      - "national"
+      - "area"
+      - "province"
+    requires:
+      tpm_components: true
+      survey_design: true
+      precision: true
+    editorial_role: "Explain the deprivation structure behind TPM."
+
+  province_poverty_map:
+    enabled: true
+    label_es: "Mapa provincial de pobreza"
+    label_en: "Provincial poverty map"
+    family: "territory"
+    source_layer: "annual"
+    survey_type: "anual"
+    primary_page: "pages/06_territory.qmd"
+    output_group: "annual_territory"
+    output_name: "province_poverty_map"
+    estimate_type: "territorial_profile"
+    unit: "percent"
+    allowed_domains:
+      - "province"
+    requires:
+      province_domain: true
+      survey_design: true
+      precision: true
+      geographic_lookup: true
+    editorial_role: "Show territorial concentration and heterogeneity of poverty."
+
+  five_cities_quarterly_labor:
+    enabled: true
+    label_es: "Pulso laboral trimestral de cinco ciudades"
+    label_en: "Quarterly labor pulse for five cities"
+    family: "labor"
+    source_layer: "quarterly"
+    survey_type: "trimestral"
+    primary_page: "pages/07_labor.qmd"
+    output_group: "quarterly_labor"
+    output_name: "five_cities_quarterly_labor"
+    estimate_type: "labor_profile"
+    unit: "percent"
+    allowed_domains:
+      - "five_cities"
+    requires:
+      labor_status: true
+      survey_design: true
+      precision: true
+      universe: true
+      weight: true
+    editorial_role: "Give recent city-level labor context."
+
+  unemployment_rate:
+    enabled: true
+    label_es: "Desempleo"
+    label_en: "Unemployment"
+    family: "labor"
+    source_layer: "monthly"
+    survey_type: "mensual"
+    primary_page: "pages/07_labor.qmd"
+    output_group: "monthly_labor"
+    output_name: "unemployment_rate"
+    estimate_type: "proportion"
+    unit: "percent"
+    allowed_domains:
+      - "national"
+      - "area"
+    requires:
+      labor_status: true
+      survey_design: true
+      precision: true
+      universe: true
+      weight: true
+    editorial_role: "Main monthly labor pulse indicator."
+
+  adequate_employment_rate:
+    enabled: true
+    label_es: "Empleo adecuado"
+    label_en: "Adequate employment"
+    family: "labor"
+    source_layer: "monthly"
+    survey_type: "mensual"
+    primary_page: "pages/07_labor.qmd"
+    output_group: "monthly_labor"
+    output_name: "adequate_employment_rate"
+    estimate_type: "proportion"
+    unit: "percent"
+    allowed_domains:
+      - "national"
+      - "area"
+    requires:
+      labor_status: true
+      survey_design: true
+      precision: true
+      universe: true
+      weight: true
+    editorial_role: "Connect labor quality with poverty vulnerability."
+
+  underemployment_rate:
+    enabled: true
+    label_es: "Subempleo"
+    label_en: "Underemployment"
+    family: "labor"
+    source_layer: "monthly"
+    survey_type: "mensual"
+    primary_page: "pages/07_labor.qmd"
+    output_group: "monthly_labor"
+    output_name: "underemployment_rate"
+    estimate_type: "proportion"
+    unit: "percent"
+    allowed_domains:
+      - "national"
+      - "area"
+    requires:
+      labor_status: true
+      survey_design: true
+      precision: true
+      universe: true
+      weight: true
+    editorial_role: "Explain labor fragility beyond unemployment."
+
+  representativity_table:
+    enabled: true
+    label_es: "Tabla de dominios válidos"
+    label_en: "Valid domain table"
+    family: "representativity"
+    source_layer: "all"
+    survey_type: "all"
+    primary_page: "pages/08_representativity.qmd"
+    output_group: "site_quality_flags"
+    output_name: "representativity_table"
+    estimate_type: "metadata"
+    unit: "not_applicable"
+    allowed_domains:
+      - "national"
+      - "area"
+      - "five_cities"
+      - "province"
+    requires:
+      domain_registry: true
+      period_registry: true
+    editorial_role: "Explain what can and cannot be shown by periodicity."
+
+  precision_flags:
+    enabled: true
+    label_es: "Banderas de precisión"
+    label_en: "Precision flags"
+    family: "representativity"
+    source_layer: "all"
+    survey_type: "all"
+    primary_page: "pages/08_representativity.qmd"
+    output_group: "site_quality_flags"
+    output_name: "precision_flags"
+    estimate_type: "metadata"
+    unit: "not_applicable"
+    allowed_domains:
+      - "national"
+      - "area"
+      - "five_cities"
+      - "province"
+    requires:
+      survey_design: true
+      precision: true
+      sample_size: true
+      degrees_of_freedom: true
+    editorial_role: "Prevent overinterpretation of weak estimates."
+
+  sampling_frame_timeline:
+    enabled: true
+    label_es: "Línea de tiempo del marco muestral"
+    label_en: "Sampling frame timeline"
+    family: "sampling_frame"
+    source_layer: "annual"
+    survey_type: "anual"
+    primary_page: "pages/09_sampling-frame.qmd"
+    output_group: "site_sources"
+    output_name: "sampling_frame_timeline"
+    estimate_type: "documentary_evidence"
+    unit: "not_applicable"
+    allowed_domains:
+      - "national"
+    requires:
+      official_documents: true
+      documented_sources: true
+    editorial_role: "Support the technical argument for sampling frame updating."
+
+site_headline_outputs:
+  home:
+    monthly:
+      - "unemployment_rate"
+      - "adequate_employment_rate"
+      - "underemployment_rate"
+    quarterly:
+      - "five_cities_quarterly_labor"
+    annual:
+      - "poverty_rate"
+      - "extreme_poverty_rate"
+      - "nbi_rate"
+      - "tpm_rate"
+
+  poverty_story:
+    annual:
+      - "poverty_rate"
+      - "extreme_poverty_rate"
+      - "quintile_distribution"
+      - "nbi_rate"
+      - "tpm_rate"
+
+  quality_story:
+    all:
+      - "representativity_table"
+      - "precision_flags"
+      - "sampling_frame_timeline"
+
+validation_rules:
+  fail_on_enabled_indicator_without_page: true
+  fail_on_enabled_indicator_without_output_group: true
+  fail_on_invalid_domain_for_survey_type: true
+  fail_on_missing_required_metadata: true
+  warn_on_enabled_optional_indicator: true
+  warn_on_indicator_without_editorial_role: true
+
+status:
+  phase: "4B"
+  status_label: "Pipeline configuration scaffold"
+  next_phase: "4C"
+  next_phase_label: "R helper functions for configuration, paths, periods, domains, and outputs"
