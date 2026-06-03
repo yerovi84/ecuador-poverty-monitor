@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">EPM favicon</title>
+  <desc id="desc">Compact Ecuador Poverty Monitor mark.</desc>
+  <rect width="64" height="64" rx="12" fill="#123047"/>
+  <path d="M15 42h34" stroke="#d9a928" stroke-width="5" stroke-linecap="round"/>
+  <path d="M15 32h24" stroke="#2f80a8" stroke-width="5" stroke-linecap="round"/>
+  <path d="M15 22h30" stroke="#b85c5c" stroke-width="5" stroke-linecap="round"/>
+  <path d="M17 48c7-12 14-17 21-15 6 1 8 8 14 8" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

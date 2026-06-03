@@ -2,120 +2,155 @@
   {
     "objectID": "pages/01_why-monitor.html",
     "href": "pages/01_why-monitor.html",
-    "title": "Por qué un monitor de pobreza",
+    "title": "Why build a poverty monitor?",
     "section": "",
-    "text": "Si Ecuador ya produce estadísticas oficiales de pobreza, ¿por qué construir otro monitor?\nPorque los datos existen, pero la lectura suele estar fragmentada.\nHay boletines, microdatos, presentaciones, metodologías, tabulados, líneas de pobreza, reportes laborales, bases anuales, trimestrales y mensuales. Todo eso es valioso. Pero para tomar mejores decisiones también hace falta una narrativa que conecte las piezas."
+    "text": "Why it matters\n\n\n\n\nThe problem is not the lack of data. The problem is the missing reading layer.\n\nPoverty data in Ecuador already exist across official bulletins, microdata, methodological notes, poverty lines, labor reports, monthly releases, quarterly files, and annual databases. This monitor turns that scattered public information into a coherent, reproducible, and decision-oriented reading.\n\n\n\n\nThe Ecuador Poverty Monitor connects income, deprivation, territory, labor conditions, and statistical quality into one static Quarto product.\nIt does not replace official statistics. It helps explain how to read them."
+  },
+  {
+    "objectID": "pages/01_why-monitor.html#a-reading-layer-for-public-data",
+    "href": "pages/01_why-monitor.html#a-reading-layer-for-public-data",
+    "title": "Why build a poverty monitor?",
+    "section": "",
+    "text": "The Ecuador Poverty Monitor connects income, deprivation, territory, labor conditions, and statistical quality into one static Quarto product.\nIt does not replace official statistics. It helps explain how to read them."
+  },
+  {
+    "objectID": "pages/01_why-monitor.html#what-is-fragmented",
+    "href": "pages/01_why-monitor.html#what-is-fragmented",
+    "title": "Why build a poverty monitor?",
+    "section": "What is fragmented?",
+    "text": "What is fragmented?\nThe issue is not a shortage of information. The issue is that each release answers only part of the question.\nTables can inform, but poverty analysis needs context: what was measured, what period supports the estimate, which territorial domains are valid, and how precise the result is."
+  },
+  {
+    "objectID": "pages/01_why-monitor.html#what-the-monitor-connects",
+    "href": "pages/01_why-monitor.html#what-the-monitor-connects",
+    "title": "Why build a poverty monitor?",
+    "section": "What the monitor connects",
+    "text": "What the monitor connects\nPoverty can be read through income, basic needs, simultaneous deprivation, territory, and work. Each lens illuminates a different part of the problem.\nWhen those pieces are read separately, the picture remains incomplete. When they are connected, the country becomes easier to understand."
+  },
+  {
+    "objectID": "pages/01_why-monitor.html#source-engine-product",
+    "href": "pages/01_why-monitor.html#source-engine-product",
+    "title": "Why build a poverty monitor?",
+    "section": "Source, engine, product",
+    "text": "Source, engine, product\nENEMDU is Ecuador’s National Survey of Employment, Unemployment, and Underemployment. It is one of the country’s key statistical operations for analyzing work, labor conditions, income, poverty, and household characteristics.\n\n\n1. Official source\nThe base information comes from ENEMDU and its methodological documentation.\n\n\n2. Analytical engine\nenemduR organizes reading, validation, estimation, indicators, and analytical outputs.\n\n\n3. Narrative product\nThis site turns results into a visual and explanatory story."
+  },
+  {
+    "objectID": "pages/01_why-monitor.html#three-speeds-different-questions",
+    "href": "pages/01_why-monitor.html#three-speeds-different-questions",
+    "title": "Why build a poverty monitor?",
+    "section": "Three speeds, different questions",
+    "text": "Three speeds, different questions\nThis product does not treat all periods as if they supported the same type of reading. The monitor is organized into monthly pulse, quarterly city view, and annual structural analysis."
+  },
+  {
+    "objectID": "pages/01_why-monitor.html#golden-rule",
+    "href": "pages/01_why-monitor.html#golden-rule",
+    "title": "Why build a poverty monitor?",
+    "section": "Golden rule",
+    "text": "Golden rule\nNever show a territorial disaggregation that does not match the representativity domain of the period being used. Methodological clarity is part of the product, not a secondary note."
+  },
+  {
+    "objectID": "pages/01_why-monitor.html#a-compact-product-contract",
+    "href": "pages/01_why-monitor.html#a-compact-product-contract",
+    "title": "Why build a poverty monitor?",
+    "section": "A compact product contract",
+    "text": "A compact product contract\nThis monitor adds an integrated reading of poverty, a reproducible architecture based on enemduR, a stronger visual communication layer, a clear distinction between pulse and structure, and a technical discussion of representativity."
+  },
+  {
+    "objectID": "pages/01_why-monitor.html#not-a-parallel-authority",
+    "href": "pages/01_why-monitor.html#not-a-parallel-authority",
+    "title": "Why build a poverty monitor?",
+    "section": "Not a parallel authority",
+    "text": "Not a parallel authority\nThe monitor does not replace INEC or produce official statistics. Its goal is to transform complex public information into an ordered, reproducible, visual, and useful reading of poverty in Ecuador."
+  },
+  {
+    "objectID": "es/index.html",
+    "href": "es/index.html",
+    "title": "Entender la pobreza más allá de una sola cifra.",
+    "section": "",
+    "text": "Capa ejecutiva en español\n\n\n\nEl sitio principal está escrito en inglés para funcionar como producto de portafolio internacional. Esta página resume la propuesta para lectores ecuatorianos y audiencias locales.\nEl objetivo es explicar pobreza, territorio, empleo y calidad estadística con una narrativa reproducible, sobria y útil.\n\nVer sitio principal en inglés Leer el propósito\n\n\n\n\n\nOrganiza datos públicos de ENEMDU en una lectura clara, separando coyuntura, estructura y límites de representatividad.\n\n\n\nMensual\n\nPulso\n\nContexto nacional, urbano/rural y laboral reciente.\n\n\n\n\nTrimestral\n\nCiudades\n\nSeñales urbanas cuando el dominio de estimación lo permite.\n\n\n\n\nAnual\n\nEstructura\n\nPobreza, privaciones, quintiles y territorio provincial."
+  },
+  {
+    "objectID": "es/index.html#qué-resuelve-el-monitor",
+    "href": "es/index.html#qué-resuelve-el-monitor",
+    "title": "Entender la pobreza más allá de una sola cifra.",
+    "section": "",
+    "text": "Organiza datos públicos de ENEMDU en una lectura clara, separando coyuntura, estructura y límites de representatividad.\n\n\n\nMensual\n\nPulso\n\nContexto nacional, urbano/rural y laboral reciente.\n\n\n\n\nTrimestral\n\nCiudades\n\nSeñales urbanas cuando el dominio de estimación lo permite.\n\n\n\n\nAnual\n\nEstructura\n\nPobreza, privaciones, quintiles y territorio provincial."
+  },
+  {
+    "objectID": "es/index.html#para-qué-sirve",
+    "href": "es/index.html#para-qué-sirve",
+    "title": "Entender la pobreza más allá de una sola cifra.",
+    "section": "Para qué sirve",
+    "text": "Para qué sirve\nEl Ecuador Poverty Monitor no reemplaza estadísticas oficiales ni crea una autoridad paralela. Su función es convertir información pública compleja en una lectura ordenada, visual y reproducible.\nAyuda a responder qué se está midiendo, qué comparaciones son válidas y qué límites tiene cada estimación."
+  },
+  {
+    "objectID": "es/index.html#tres-capas",
+    "href": "es/index.html#tres-capas",
+    "title": "Entender la pobreza más allá de una sola cifra.",
+    "section": "Tres capas",
+    "text": "Tres capas\n\n\nFuente\nENEMDU y documentación metodológica oficial.\n\n\nMotor\nProcesamiento reproducible mediante enemduR.\n\n\nProducto\nNarrativa editorial, gráficos e infografías futuras."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Ecuador Poverty Monitor",
+    "title": "Poverty is not a single number.",
     "section": "",
-    "text": "Cada vez que se publica una tasa de pobreza, parece que el país cabe en un porcentaje.\nPero Ecuador no cabe en un solo número.\nPara entender la pobreza necesitamos mirar ingresos, privaciones, territorio, empleo y calidad de la medición.\n\nEmpezar por el propósito Ver metodología"
+    "text": "Poverty intelligence for Ecuador\n\n\n\nEvery time a poverty rate is published, the country can appear to fit inside one percentage point. Ecuador does not fit inside one number.\nThis monitor organizes income poverty, deprivation, territory, labor conditions, and statistical quality into one reproducible editorial product.\n\nStart with the purpose Leer en español\n\n\n\n\n\nThe monitor separates short-term signals from structural poverty analysis, so comparisons stay meaningful.\n\n\n\nMonthly\n\nPulse\n\nNational, urban/rural, and labor-market context.\n\n\n\n\nQuarterly\n\nCities\n\nQuito, Guayaquil, Cuenca, Machala, and Ambato when the domain supports it.\n\n\n\n\nAnnual\n\nStructure\n\nPoverty, income distribution, NBI, multidimensional poverty, and provincial territory."
   },
   {
-    "objectID": "index.html#pulso-mensual",
-    "href": "index.html#pulso-mensual",
-    "title": "Ecuador Poverty Monitor",
-    "section": "Pulso mensual",
-    "text": "Pulso mensual\nÚltimo mes disponible\nSeguimiento coyuntural para indicadores nacionales y urbano/rurales, especialmente del mercado laboral.\nEste bloque ayuda a leer el presente sin confundir coyuntura con estructura."
-  },
-  {
-    "objectID": "index.html#lectura-trimestral",
-    "href": "index.html#lectura-trimestral",
-    "title": "Ecuador Poverty Monitor",
-    "section": "Lectura trimestral",
-    "text": "Lectura trimestral\nCinco ciudades principales\nSeguimiento intermedio para Quito, Guayaquil, Cuenca, Machala y Ambato.\nEste bloque permite observar señales urbanas con mayor frecuencia que la lectura anual."
-  },
-  {
-    "objectID": "index.html#base-anual",
-    "href": "index.html#base-anual",
-    "title": "Ecuador Poverty Monitor",
-    "section": "Base anual",
-    "text": "Base anual\nEstructura completa\nPobreza monetaria, quintiles, NBI, TPM, provincias, ciudades y lectura territorial integral.\nEste es el corazón narrativo del monitor."
-  },
-  {
-    "objectID": "index.html#por-qué-este-monitor",
-    "href": "index.html#por-qué-este-monitor",
-    "title": "Ecuador Poverty Monitor",
-    "section": "Por qué este monitor",
-    "text": "Por qué este monitor\nLa información sobre pobreza en Ecuador existe, pero suele estar dispersa en boletines, bases de datos, presentaciones, cuadros técnicos y reportes metodológicos.\nEl problema no es la falta de datos.\nEl problema es que muchas veces falta una historia clara que conecte los datos.\nEste monitor busca ordenar esa conversación.\nNo reemplaza las cifras oficiales.\nNo pretende ser una autoridad estadística paralela.\nSu propósito es construir un producto reproducible de comunicación analítica que ayude a entender qué se mide, cómo se mide, qué se puede comparar y qué límites tiene cada lectura."
-  },
-  {
-    "objectID": "index.html#la-idea-central",
-    "href": "index.html#la-idea-central",
-    "title": "Ecuador Poverty Monitor",
-    "section": "La idea central",
-    "text": "La idea central\nUna buena medición de pobreza no solo pregunta cuántas personas son pobres.\nTambién pregunta:\n\npor qué son pobres;\ndónde viven;\nqué carencias enfrentan;\ncómo se relaciona su situación con el empleo;\nqué tan precisa es la estimación;\ny si el instrumento de medición sigue representando bien al país actual."
-  },
-  {
-    "objectID": "index.html#cómo-leer-este-sitio",
-    "href": "index.html#cómo-leer-este-sitio",
-    "title": "Ecuador Poverty Monitor",
-    "section": "Cómo leer este sitio",
-    "text": "Cómo leer este sitio\n\n\n1. Ingresos\nLa pobreza monetaria mira si el ingreso familiar per cápita alcanza o no una línea de pobreza.\n\n\n2. Privaciones\nNBI y TPM permiten mirar carencias estructurales y acumulación de privaciones.\n\n\n3. Territorio\nLa pobreza no se distribuye de forma homogénea. El lugar importa.\n\n\n4. Trabajo\nEl empleo conecta ingresos, vulnerabilidad y bienestar.\n\n\n5. Medición\nNinguna cifra es mejor que el instrumento con el que se mide."
-  },
-  {
-    "objectID": "index.html#estado-del-producto",
-    "href": "index.html#estado-del-producto",
-    "title": "Ecuador Poverty Monitor",
-    "section": "Estado del producto",
-    "text": "Estado del producto\n\nEste sitio está en construcción.\nLa primera versión fija la arquitectura narrativa, visual y metodológica.\nLas siguientes fases incorporarán los scripts de construcción de datos, las visualizaciones, las infografías y los análisis por página.\n\n\nPor qué lo hacemos →"
-  },
-  {
-    "objectID": "pages/01_why-monitor.html#la-pregunta-de-partida",
-    "href": "pages/01_why-monitor.html#la-pregunta-de-partida",
-    "title": "Por qué un monitor de pobreza",
+    "objectID": "index.html#three-speeds-one-reading",
+    "href": "index.html#three-speeds-one-reading",
+    "title": "Poverty is not a single number.",
     "section": "",
-    "text": "Si Ecuador ya produce estadísticas oficiales de pobreza, ¿por qué construir otro monitor?\nPorque los datos existen, pero la lectura suele estar fragmentada.\nHay boletines, microdatos, presentaciones, metodologías, tabulados, líneas de pobreza, reportes laborales, bases anuales, trimestrales y mensuales. Todo eso es valioso. Pero para tomar mejores decisiones también hace falta una narrativa que conecte las piezas."
+    "text": "The monitor separates short-term signals from structural poverty analysis, so comparisons stay meaningful.\n\n\n\nMonthly\n\nPulse\n\nNational, urban/rural, and labor-market context.\n\n\n\n\nQuarterly\n\nCities\n\nQuito, Guayaquil, Cuenca, Machala, and Ambato when the domain supports it.\n\n\n\n\nAnnual\n\nStructure\n\nPoverty, income distribution, NBI, multidimensional poverty, and provincial territory."
   },
   {
-    "objectID": "pages/01_why-monitor.html#la-motivación",
-    "href": "pages/01_why-monitor.html#la-motivación",
-    "title": "Por qué un monitor de pobreza",
-    "section": "La motivación",
-    "text": "La motivación\nEste proyecto nace de una necesidad concreta: juntar en un solo lugar una lectura clara, técnica y visual de la pobreza en Ecuador.\nNo se trata solo de mostrar gráficos.\nSe trata de explicar el fenómeno.\nLa pobreza puede medirse desde el ingreso, desde las necesidades básicas, desde las privaciones simultáneas, desde el territorio y desde el empleo. Cada enfoque ilumina una parte distinta del problema.\nCuando esas piezas se observan por separado, la lectura queda incompleta.\nCuando se conectan, aparece una imagen más útil para entender el país.\n\nUna cifra puede informar.\nUna historia bien construida puede ayudar a decidir."
+    "objectID": "index.html#monthly-pulse",
+    "href": "index.html#monthly-pulse",
+    "title": "Poverty is not a single number.",
+    "section": "Monthly pulse",
+    "text": "Monthly pulse\nLatest available month\nShort-term context for national and urban/rural indicators, especially labor-market conditions.\nThis layer helps read the present without confusing volatility with structure."
   },
   {
-    "objectID": "pages/01_why-monitor.html#qué-es-enemdu",
-    "href": "pages/01_why-monitor.html#qué-es-enemdu",
-    "title": "Por qué un monitor de pobreza",
-    "section": "Qué es ENEMDU",
-    "text": "Qué es ENEMDU\nENEMDU es la Encuesta Nacional de Empleo, Desempleo y Subempleo.\nEs una de las operaciones estadísticas más importantes del país para analizar empleo, condiciones laborales, ingresos, pobreza y características de los hogares.\nEste monitor usa ENEMDU como fuente de análisis, pero la procesa mediante un flujo reproducible con enemduR.\nLa idea es separar claramente tres capas:\n\n\n1. Fuente oficial\nLa información de base proviene de ENEMDU y sus documentos metodológicos.\n\n\n2. Motor analítico\nenemduR organiza lectura, validación, estimación, indicadores y salidas analíticas.\n\n\n3. Producto narrativo\nEste sitio convierte los resultados en una historia visual y explicativa."
+    "objectID": "index.html#quarterly-view",
+    "href": "index.html#quarterly-view",
+    "title": "Poverty is not a single number.",
+    "section": "Quarterly view",
+    "text": "Quarterly view\nFive main cities\nIntermediate monitoring for Quito, Guayaquil, Cuenca, Machala, and Ambato when the sample design supports it.\nThis layer surfaces urban signals more frequently than the annual analysis."
   },
   {
-    "objectID": "pages/01_why-monitor.html#cómo-se-mide-la-pobreza",
-    "href": "pages/01_why-monitor.html#cómo-se-mide-la-pobreza",
-    "title": "Por qué un monitor de pobreza",
-    "section": "Cómo se mide la pobreza",
-    "text": "Cómo se mide la pobreza\nLa pobreza no tiene una única puerta de entrada.\nEn este monitor trabajaremos con varias lecturas complementarias.\n\n\nPobreza monetaria\nPregunta si el ingreso familiar per cápita alcanza una línea mínima de pobreza.\nEs directa, potente y muy usada para seguimiento coyuntural.\n\n\nPobreza extrema monetaria\nPregunta si el ingreso está por debajo de una línea más severa, asociada a necesidades básicas alimentarias.\n\n\nQuintiles de ingreso\nOrdenan a la población de menor a mayor ingreso y permiten leer desigualdad, perfiles y concentración.\n\n\nNBI\nObserva carencias estructurales como vivienda, hacinamiento, servicios, educación y capacidad económica.\n\n\nTPM\nMira la pobreza como acumulación simultánea de privaciones ponderadas.\n\n\nTrabajo\nConecta ingresos, estabilidad, desempleo, empleo adecuado e inserción laboral."
+    "objectID": "index.html#annual-core",
+    "href": "index.html#annual-core",
+    "title": "Poverty is not a single number.",
+    "section": "Annual core",
+    "text": "Annual core\nFull structure\nIncome poverty, quintiles, NBI, multidimensional poverty, provinces, cities, and territorial analysis.\nThis is the narrative foundation of the monitor."
   },
   {
-    "objectID": "pages/01_why-monitor.html#la-decisión-metodológica-del-sitio",
-    "href": "pages/01_why-monitor.html#la-decisión-metodológica-del-sitio",
-    "title": "Por qué un monitor de pobreza",
-    "section": "La decisión metodológica del sitio",
-    "text": "La decisión metodológica del sitio\nEste producto no tratará todos los períodos como si sirvieran para lo mismo.\nLa lectura se organiza en tres velocidades:\n\n\nMensual\nPulso reciente.\nSe usa principalmente para lectura nacional, urbano/rural y mercado laboral.\n\n\nTrimestral\nLectura intermedia.\nSe usa para observar las cinco ciudades principales cuando corresponde.\n\n\nAnual\nBase estructural.\nSe usa como núcleo del análisis completo de pobreza, NBI, TPM, quintiles y territorio provincial."
+    "objectID": "index.html#why-this-monitor-exists",
+    "href": "index.html#why-this-monitor-exists",
+    "title": "Poverty is not a single number.",
+    "section": "Why this monitor exists",
+    "text": "Why this monitor exists\nPublic poverty data in Ecuador are valuable, but the reading is often spread across bulletins, microdata, technical notes, methodological reports, and isolated tables.\nThe problem is not the absence of data. The problem is that the story connecting the data is often fragmented.\nThe Ecuador Poverty Monitor is designed as a reproducible communication layer. It does not replace official statistics or create a parallel statistical authority. It helps readers understand what is measured, how it is measured, what can be compared, and where each estimate has limits."
   },
   {
-    "objectID": "pages/01_why-monitor.html#regla-de-oro",
-    "href": "pages/01_why-monitor.html#regla-de-oro",
-    "title": "Por qué un monitor de pobreza",
-    "section": "Regla de oro",
-    "text": "Regla de oro\nNunca se debe mostrar una desagregación territorial que no corresponda al dominio de representatividad del período usado.\nLa claridad metodológica es parte del producto, no una nota secundaria."
+    "objectID": "index.html#the-core-idea",
+    "href": "index.html#the-core-idea",
+    "title": "Poverty is not a single number.",
+    "section": "The core idea",
+    "text": "The core idea\nA useful poverty monitor should not only ask how many people are poor.\n\n\nCondition\nIncome, deprivation, and the relative position of households.\n\n\nPlace\nTerritory, cities, rurality, and valid domains of estimation.\n\n\nMeasurement\nPrecision, representativity, and comparability across periods."
   },
   {
-    "objectID": "pages/01_why-monitor.html#qué-aporta-este-monitor",
-    "href": "pages/01_why-monitor.html#qué-aporta-este-monitor",
-    "title": "Por qué un monitor de pobreza",
-    "section": "Qué aporta este monitor",
-    "text": "Qué aporta este monitor\nEste monitor busca aportar cinco cosas:\n\nuna lectura integrada de pobreza;\nuna arquitectura reproducible basada en enemduR;\nuna comunicación visual potente con infografías y gráficos;\nuna separación clara entre coyuntura y estructura;\nuna discusión técnica sobre representatividad y marco muestral."
+    "objectID": "index.html#how-to-read-the-site",
+    "href": "index.html#how-to-read-the-site",
+    "title": "Poverty is not a single number.",
+    "section": "How to read the site",
+    "text": "How to read the site"
   },
   {
-    "objectID": "pages/01_why-monitor.html#qué-no-pretende-hacer",
-    "href": "pages/01_why-monitor.html#qué-no-pretende-hacer",
-    "title": "Por qué un monitor de pobreza",
-    "section": "Qué no pretende hacer",
-    "text": "Qué no pretende hacer\nEste monitor no pretende reemplazar al INEC ni producir estadísticas oficiales.\nTampoco busca convertir cada tabla en un dashboard interactivo.\nSu objetivo es más específico:\n\ntransformar información pública compleja en una lectura ordenada, reproducible, visual y útil para entender mejor la pobreza en Ecuador.\n\n\n← Inicio Continuar con pobreza por ingresos →"
+    "objectID": "index.html#product-status",
+    "href": "index.html#product-status",
+    "title": "Poverty is not a single number.",
+    "section": "Product status",
+    "text": "Product status\n\nThis site is under construction.\nThis version establishes the editorial, visual, and methodological foundation. Future phases will add data-building scripts, charts, final infographics, and page-specific analysis.\n\n\n\nOfficial microdata\nBuilt around public ENEMDU source files.\n\n\nMethodological contracts\nPeriods and domains are explicit before analysis.\n\n\nStatistical quality\nRepresentativity and precision guide what can be shown.\n\n\nReproducible output\nQuarto consumes derived products, not raw microdata.\n\n\n\nWhy it matters -&gt; Español -&gt;"
   }
 ]
