@@ -1,9 +1,12 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - assets/img/brand/*
 
 website:
   title: "Ecuador Poverty Monitor"
+  favicon: assets/img/brand/epm-favicon.png
   description: "A Quarto storytelling data product for understanding poverty in Ecuador beyond a single headline number."
   site-url: "https://yerovi84.github.io/ecuador-poverty-monitor"
   repo-url: "https://github.com/yerovi84/ecuador-poverty-monitor"
@@ -12,30 +15,29 @@ website:
     - issue
 
   navbar:
+    logo: assets/img/brand/epm-navbar-logo.svg
+    logo-alt: "Ecuador Poverty Monitor"
     title: "Ecuador Poverty Monitor"
     left:
-      - text: "Inicio"
+      - text: "Home"
         href: index.qmd
-      - text: "Por qué lo hacemos"
+      - text: "Why it matters"
         href: pages/01_why-monitor.qmd
-      - text: "Pobreza por ingresos"
-        href: pages/02_income-poverty.qmd
-      - text: "Quintiles"
-        href: pages/03_quintiles.qmd
-      - text: "NBI"
-        href: pages/04_nbi.qmd
-      - text: "TPM"
-        href: pages/05_tpm.qmd
-      - text: "Territorio"
-        href: pages/06_territory.qmd
-      - text: "Trabajo"
-        href: pages/07_labor.qmd
-      - text: "Representatividad"
-        href: pages/08_representativity.qmd
-      - text: "Marco muestral"
-        href: pages/09_sampling-frame.qmd
-      - text: "Metodología"
-        href: methodology.qmd
+      - text: "Analytical roadmap"
+        menu:
+          - text: "Income poverty"
+            href: index.qmd#analytical-roadmap
+          - text: "Deprivation and multidimensional poverty"
+            href: index.qmd#analytical-roadmap
+          - text: "Territory and labor"
+            href: index.qmd#analytical-roadmap
+          - text: "Statistical quality"
+            href: index.qmd#statistical-quality
+    right:
+      - text: "EN"
+        href: index.qmd
+      - text: "ES"
+        href: es/index.qmd
 
   page-footer:
     left: "Built by Alejandro Yerovi using enemduR."
@@ -56,7 +58,7 @@ format:
     number-sections: false
     smooth-scroll: true
     code-fold: true
-    code-tools: true
+    code-tools: false
     link-external-newwindow: true
     page-layout: article
 
@@ -65,4 +67,4 @@ execute:
   warning: false
   message: false
 
-lang: es
+lang: en

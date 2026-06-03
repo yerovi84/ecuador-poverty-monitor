@@ -1,179 +1,224 @@
 ---
-title: "Por qué un monitor de pobreza"
-subtitle: "La pobreza necesita datos, pero también necesita contexto"
-description: "Motivación del Ecuador Poverty Monitor y explicación inicial de ENEMDU, pobreza y lectura multidimensional."
+title: ""
+description: "Motivation for the Ecuador Poverty Monitor and an initial explanation of ENEMDU, poverty measurement, and multidimensional reading."
+format:
+  html:
+    page-layout: full
+    toc: false
+    code-tools: false
+    title-block-style: none
+    body-class: epm-internal
 ---
 
-::: {.lead-box}
-## La pregunta de partida
-
-Si Ecuador ya produce estadísticas oficiales de pobreza, ¿por qué construir otro monitor?
-
-Porque los datos existen, pero la lectura suele estar fragmentada.
-
-Hay boletines, microdatos, presentaciones, metodologías, tabulados, líneas de pobreza, reportes laborales, bases anuales, trimestrales y mensuales. Todo eso es valioso. Pero para tomar mejores decisiones también hace falta una narrativa que conecte las piezas.
+::: {.internal-hero .internal-hero-wide}
+::: {.internal-hero-copy}
+::: {.section-kicker}
+Why it matters
 :::
 
-## La motivación
+# Why build a poverty monitor?
 
-Este proyecto nace de una necesidad concreta: juntar en un solo lugar una lectura clara, técnica y visual de la pobreza en Ecuador.
-
-No se trata solo de mostrar gráficos.  
-Se trata de explicar el fenómeno.
-
-La pobreza puede medirse desde el ingreso, desde las necesidades básicas, desde las privaciones simultáneas, desde el territorio y desde el empleo. Cada enfoque ilumina una parte distinta del problema.
-
-Cuando esas piezas se observan por separado, la lectura queda incompleta.  
-Cuando se conectan, aparece una imagen más útil para entender el país.
-
-::: {.quote-box}
-Una cifra puede informar.  
-Una historia bien construida puede ayudar a decidir.
+::: {.story-lede}
+The problem is not the lack of data. The problem is the missing reading layer.
 :::
 
-## Qué es ENEMDU
+Poverty data in Ecuador already exist across official bulletins, microdata, methodological notes, poverty lines, labor reports, monthly releases, quarterly files, and annual databases. This monitor turns that scattered public information into a coherent, reproducible, and decision-oriented reading.
+:::
 
-ENEMDU es la Encuesta Nacional de Empleo, Desempleo y Subempleo.
+::: {.internal-hero-card}
+## A reading layer for public data
 
-Es una de las operaciones estadísticas más importantes del país para analizar empleo, condiciones laborales, ingresos, pobreza y características de los hogares.
+The Ecuador Poverty Monitor connects income, deprivation, territory, labor conditions, and statistical quality into one static Quarto product.
 
-Este monitor usa ENEMDU como fuente de análisis, pero la procesa mediante un flujo reproducible con `enemduR`.
+It does not replace official statistics. It helps explain how to read them.
+:::
+:::
 
-La idea es separar claramente tres capas:
+::: {.content-block .editorial-flow}
+::: {.story-grid}
+::: {.story-panel}
+::: {.section-kicker}
+Starting point
+:::
+
+## What is fragmented?
+
+The issue is not a shortage of information. The issue is that each release answers only part of the question.
+
+Tables can inform, but poverty analysis needs context: what was measured, what period supports the estimate, which territorial domains are valid, and how precise the result is.
+:::
+
+::: {.story-panel}
+::: {.section-kicker}
+Analytical purpose
+:::
+
+## What the monitor connects
+
+Poverty can be read through income, basic needs, simultaneous deprivation, territory, and work. Each lens illuminates a different part of the problem.
+
+When those pieces are read separately, the picture remains incomplete. When they are connected, the country becomes easier to understand.
+:::
+:::
+
+::: {.method-note}
+A single figure can inform. A well-built reading layer can support better decisions.
+:::
+
+::: {.infographic-frame}
+::: {.section-kicker}
+What ENEMDU contributes
+:::
+
+## Source, engine, product
+
+ENEMDU is Ecuador's National Survey of Employment, Unemployment, and Underemployment. It is one of the country's key statistical operations for analyzing work, labor conditions, income, poverty, and household characteristics.
 
 ::: {.three-layer-grid}
-
 ::: {.layer-card}
-### 1. Fuente oficial
+### 1. Official source
 
-La información de base proviene de ENEMDU y sus documentos metodológicos.
-:::
-
-::: {.layer-card}
-### 2. Motor analítico
-
-`enemduR` organiza lectura, validación, estimación, indicadores y salidas analíticas.
+The base information comes from ENEMDU and its methodological documentation.
 :::
 
 ::: {.layer-card}
-### 3. Producto narrativo
+### 2. Analytical engine
 
-Este sitio convierte los resultados en una historia visual y explicativa.
+`enemduR` organizes reading, validation, estimation, indicators, and analytical outputs.
 :::
 
+::: {.layer-card}
+### 3. Narrative product
+
+This site turns results into a visual and explanatory story.
+:::
+:::
 :::
 
-## Cómo se mide la pobreza
-
-La pobreza no tiene una única puerta de entrada.
-
-En este monitor trabajaremos con varias lecturas complementarias.
-
-::: {.method-grid}
-
-::: {.method-card}
-### Pobreza monetaria
-
-Pregunta si el ingreso familiar per cápita alcanza una línea mínima de pobreza.
-
-Es directa, potente y muy usada para seguimiento coyuntural.
+::: {.story-panel}
+::: {.section-kicker}
+How to read the site
 :::
 
-::: {.method-card}
-### Pobreza extrema monetaria
+## Three speeds, different questions
 
-Pregunta si el ingreso está por debajo de una línea más severa, asociada a necesidades básicas alimentarias.
+This product does not treat all periods as if they supported the same type of reading. The monitor is organized into monthly pulse, quarterly city view, and annual structural analysis.
 :::
-
-::: {.method-card}
-### Quintiles de ingreso
-
-Ordenan a la población de menor a mayor ingreso y permiten leer desigualdad, perfiles y concentración.
-:::
-
-::: {.method-card}
-### NBI
-
-Observa carencias estructurales como vivienda, hacinamiento, servicios, educación y capacidad económica.
-:::
-
-::: {.method-card}
-### TPM
-
-Mira la pobreza como acumulación simultánea de privaciones ponderadas.
-:::
-
-::: {.method-card}
-### Trabajo
-
-Conecta ingresos, estabilidad, desempleo, empleo adecuado e inserción laboral.
-:::
-
-:::
-
-## La decisión metodológica del sitio
-
-Este producto no tratará todos los períodos como si sirvieran para lo mismo.
-
-La lectura se organiza en tres velocidades:
 
 ::: {.period-grid}
-
 ::: {.period-card}
-### Mensual
-
-Pulso reciente.
-
-Se usa principalmente para lectura nacional, urbano/rural y mercado laboral.
+::: {.period-badge}
+Monthly
 :::
 
-::: {.period-card}
-### Trimestral
+### Recent pulse
 
-Lectura intermedia.
-
-Se usa para observar las cinco ciudades principales cuando corresponde.
+Used mainly for national, urban/rural, and labor-market readings.
 :::
 
 ::: {.period-card}
-### Anual
-
-Base estructural.
-
-Se usa como núcleo del análisis completo de pobreza, NBI, TPM, quintiles y territorio provincial.
+::: {.period-badge}
+Quarterly
 :::
 
+### City signals
+
+Used for observing the five main cities when the sample domain allows it.
 :::
 
-::: {.alert-box}
-## Regla de oro
-
-Nunca se debe mostrar una desagregación territorial que no corresponda al dominio de representatividad del período usado.
-
-La claridad metodológica es parte del producto, no una nota secundaria.
+::: {.period-card}
+::: {.period-badge}
+Annual
 :::
 
-## Qué aporta este monitor
+### Structural base
 
-Este monitor busca aportar cinco cosas:
+Used as the core of the full poverty, NBI, multidimensional, quintile, and provincial analysis.
+:::
+:::
 
-1. una lectura integrada de pobreza;
-2. una arquitectura reproducible basada en `enemduR`;
-3. una comunicación visual potente con infografías y gráficos;
-4. una separación clara entre coyuntura y estructura;
-5. una discusión técnica sobre representatividad y marco muestral.
+::: {.insight-strip}
+::: {.insight-card}
+**Income**
 
-## Qué no pretende hacer
+Whether household per-capita income reaches a poverty line.
+:::
 
-Este monitor no pretende reemplazar al INEC ni producir estadísticas oficiales.
+::: {.insight-card}
+**Deprivation**
 
-Tampoco busca convertir cada tabla en un dashboard interactivo.
+How basic needs and multidimensional disadvantages accumulate.
+:::
 
-Su objetivo es más específico:
+::: {.insight-card}
+**Territory**
 
-> transformar información pública compleja en una lectura ordenada, reproducible, visual y útil para entender mejor la pobreza en Ecuador.
+Where estimates are valid, precise, and analytically meaningful.
+:::
+
+::: {.insight-card}
+**Labor**
+
+How employment connects income, vulnerability, and wellbeing.
+:::
+:::
+
+::: {.data-warning}
+## Golden rule
+
+Never show a territorial disaggregation that does not match the representativity domain of the period being used. Methodological clarity is part of the product, not a secondary note.
+:::
+
+::: {.story-grid}
+::: {.story-panel}
+::: {.section-kicker}
+What this monitor adds
+:::
+
+## A compact product contract
+
+This monitor adds an integrated reading of poverty, a reproducible architecture based on `enemduR`, a stronger visual communication layer, a clear distinction between pulse and structure, and a technical discussion of representativity.
+:::
+
+::: {.story-panel}
+::: {.section-kicker}
+What it does not do
+:::
+
+## Not a parallel authority
+
+The monitor does not replace INEC or produce official statistics. Its goal is to transform complex public information into an ordered, reproducible, visual, and useful reading of poverty in Ecuador.
+:::
+:::
+
+::: {.proof-strip}
+::: {.proof-item}
+**Official microdata**
+
+The monitor starts from ENEMDU and its methodological documentation.
+:::
+
+::: {.proof-item}
+**Methodological contracts**
+
+Each layer has explicit limits for period, domain, and use.
+:::
+
+::: {.proof-item}
+**Statistical quality**
+
+Precision and representativity are part of the story, not footnotes.
+:::
+
+::: {.proof-item}
+**Reproducible output**
+
+Scripts prepare derived outputs for a static Quarto site.
+:::
+:::
 
 ::: {.page-nav}
-[← Inicio](../index.qmd)
-[Continuar con pobreza por ingresos →](02_income-poverty.qmd)
+[<- Home](../index.qmd)
+[Resumen ejecutivo en español ->](../es/index.qmd)
+:::
 :::
