@@ -50,15 +50,23 @@ epm_validate_output_schema <- function(data, indicators_config, strict = TRUE) {
   invisible(TRUE)
 }
 
-epm_add_build_metadata <- function(data, period, survey_type, source_layer) {
+epm_add_build_metadata <- function(data,
+                                   period,
+                                   survey_type,
+                                   source_layer,
+                                   build_timestamp = NA_character_) {
   if (!is.data.frame(data)) {
     .epm_abort("`data` must be a data frame.")
+  }
+
+  if (!.epm_is_scalar_character(build_timestamp) && !is.na(build_timestamp)) {
+    .epm_abort("`build_timestamp` must be a scalar character value or `NA_character_`.")
   }
 
   data$period <- period
   data$survey_type <- survey_type
   data$source_layer <- source_layer
-  data$build_timestamp <- as.character(Sys.time())
+  data$build_timestamp <- build_timestamp
   data
 }
 

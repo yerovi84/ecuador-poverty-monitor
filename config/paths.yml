@@ -102,16 +102,20 @@ raw_data_layout:
     expected_files:
       persona:
         required: true
-        pattern: "*.sav"
+        filename: "BDDenemdu_personas_2025_anual.sav"
+        pattern: "BDDenemdu_personas_2025_anual.sav"
         description: "Annual ENEMDU person-level file."
       vivienda:
         required: true
-        pattern: "*.sav"
+        filename: "BDDenemdu_vivienda_2025_anual.sav"
+        pattern: "BDDenemdu_vivienda_2025_anual.sav"
         description: "Annual household or dwelling-level file required for NBI and some structural indicators."
       official_tables:
         required: false
-        pattern: "*.{xlsx,csv,pdf}"
-        description: "Optional official reference tables for validation."
+        filename: "official_tables/ENEMDU_Tabulados_anual_2025-CSV (1).zip"
+        pattern: "official_tables/ENEMDU_Tabulados_anual_2025-CSV (1).zip"
+        member: "03 ENEMDU_Anual_2025_Tabulados_Pobreza_Desigualdad_CSV/1. Estimadores.csv"
+        description: "Optional annual 2025 poverty and inequality public tabulation reference for benchmark comparison."
 
 derived_data_layout:
   monthly:
