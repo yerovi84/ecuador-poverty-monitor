@@ -2,7 +2,7 @@ project:
   name: "Ecuador Poverty Monitor"
   repository: "ecuador-poverty-monitor"
   analytical_engine: "enemduR"
-  analytical_engine_reference: "yerovi84/enemduR@v0.1.0"
+  analytical_engine_reference: "yerovi84/enemduR@v0.1.1"
 
 path_policy:
   store_raw_microdata_in_repo: false

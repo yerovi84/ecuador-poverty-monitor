@@ -26,7 +26,7 @@ This site uses `enemduR` as its analytical infrastructure.
 Recommended stable portfolio release:
 
 ```r
-remotes::install_github("yerovi84/enemduR@v0.1.0")
+remotes::install_github("yerovi84/enemduR@v0.1.1")
 ```
 
 For active local development of `enemduR`, the package can also be loaded from a local clone:
