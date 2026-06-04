@@ -5,3 +5,20 @@
 
 /.quarto/
 **/*.quarto_ipynb
+
+# Private ENEMDU microdata and local raw-data staging.
+data/raw/
+**/data/raw/
+*.sav
+*.dta
+*.por
+*.sas7bdat
+
+# Local secrets and machine-specific environment files.
+.env
+.env.*
+.Renviron
+secrets/
+.secrets/
+*.pem
+*.key

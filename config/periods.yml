@@ -1,7 +1,7 @@
 project:
   name: "Ecuador Poverty Monitor"
   analytical_engine: "enemduR"
-  analytical_engine_reference: "yerovi84/enemduR@v0.1.0"
+  analytical_engine_reference: "yerovi84/enemduR@v0.1.1"
 
 period_strategy:
   description: "Three-speed analytical structure: monthly pulse, quarterly city view, annual structural core."
