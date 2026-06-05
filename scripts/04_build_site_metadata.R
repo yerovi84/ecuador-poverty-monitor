@@ -13,7 +13,7 @@ epm_required_site_outputs <- function(config) {
     .epm_abort("Derived layer `site` must define outputs in config/paths.yml.")
   }
 
-  required <- c("site_periods", "site_sources", "site_quality_flags")
+  required <- c("site_kpis", "site_periods", "site_sources", "site_quality_flags")
   missing <- setdiff(required, names(outputs))
 
   if (length(missing) > 0L) {
@@ -139,9 +139,144 @@ epm_build_site_quality_flags <- function(config) {
   )
 }
 
+epm_empty_site_kpis <- function() {
+  data.frame(
+    site_section = character(),
+    display_priority = integer(),
+    period = character(),
+    survey_type = character(),
+    indicator_id = character(),
+    indicator_label = character(),
+    indicator_family = character(),
+    domain = character(),
+    domain_value = character(),
+    estimate = numeric(),
+    estimate_type = character(),
+    unit = character(),
+    display_estimate = numeric(),
+    display_unit = character(),
+    benchmark_estimate = numeric(),
+    benchmark_difference_pp = numeric(),
+    benchmark_status = character(),
+    precision_flag = character(),
+    method_status = character(),
+    official_alignment = character(),
+    source_layer = character(),
+    stringsAsFactors = FALSE
+  )
+}
+
+epm_site_kpi_priority <- function(indicator_id, domain, domain_value) {
+  indicator_rank <- match(indicator_id, c("poverty_rate", "extreme_poverty_rate"))
+  domain_rank <- ifelse(
+    identical(domain, "national") & identical(domain_value, "national"),
+    1L,
+    ifelse(identical(domain, "area") & identical(domain_value, "urban"), 2L, 3L)
+  )
+
+  if (is.na(indicator_rank)) {
+    indicator_rank <- 99L
+  }
+
+  as.integer((indicator_rank - 1L) * 10L + domain_rank)
+}
+
+epm_build_site_kpis <- function(config) {
+  annual_path <- epm_output_path("annual", "annual_income_poverty", config$paths)
+
+  if (!file.exists(annual_path)) {
+    message("Annual income poverty output not found; writing empty site_kpis schema.")
+    return(epm_empty_site_kpis())
+  }
+
+  annual <- epm_read_output(annual_path, required = TRUE)
+
+  if (!is.data.frame(annual)) {
+    .epm_abort("Annual income poverty output must be a data frame before building site_kpis.")
+  }
+
+  keep <- c(
+    "period",
+    "survey_type",
+    "indicator_id",
+    "indicator_label",
+    "indicator_family",
+    "domain",
+    "domain_value",
+    "estimate",
+    "estimate_type",
+    "unit",
+    "display_estimate",
+    "display_unit",
+    "benchmark_estimate",
+    "benchmark_difference_pp",
+    "benchmark_status",
+    "precision_flag",
+    "method_status",
+    "official_alignment",
+    "source_layer"
+  )
+
+  missing <- setdiff(keep, names(annual))
+
+  if (length(missing) > 0L) {
+    .epm_abort(sprintf(
+      "Annual income poverty output is missing site KPI column(s): %s",
+      paste(missing, collapse = ", ")
+    ))
+  }
+
+  out <- annual[keep]
+  out$site_section <- "home"
+  out$display_priority <- mapply(
+    epm_site_kpi_priority,
+    out$indicator_id,
+    out$domain,
+    out$domain_value,
+    USE.NAMES = FALSE
+  )
+
+  out <- out[c("site_section", "display_priority", keep)]
+  out <- out[order(out$display_priority, out$indicator_id, out$domain, out$domain_value), , drop = FALSE]
+  row.names(out) <- NULL
+
+  forbidden <- epm_detect_forbidden_paths(out, config$paths$validation$forbidden_patterns)
+
+  if (length(forbidden) > 0L) {
+    .epm_abort("site_kpis contains private path-like values.")
+  }
+
+  identifier_columns <- intersect(
+    names(out),
+    c("p01", "id_persona", "id_hogar", "idhogar", "id_persona_hogar")
+  )
+
+  if (length(identifier_columns) > 0L) {
+    .epm_abort(sprintf(
+      "site_kpis contains identifier column(s): %s",
+      paste(identifier_columns, collapse = ", ")
+    ))
+  }
+
+  out
+}
+
 epm_save_site_metadata <- function(output_name, data, config) {
   path <- epm_output_path("site", output_name, config$paths)
   epm_make_dir(dirname(path))
+
+  if (!identical(output_name, "site_kpis") && file.exists(path)) {
+    return(normalizePath(path, winslash = "/", mustWork = TRUE))
+  }
+
+  if (file.exists(path)) {
+    existing <- readRDS(path)
+
+    if (identical(existing, data)) {
+      return(normalizePath(path, winslash = "/", mustWork = TRUE))
+    }
+  }
+
   saveRDS(data, path)
   normalizePath(path, winslash = "/", mustWork = TRUE)
 }
@@ -150,6 +285,7 @@ required_outputs <- epm_required_site_outputs(config)
 invisible(epm_make_dir(epm_layer_derived_dir("site", config$paths)))
 
 metadata <- list(
+  site_kpis = epm_build_site_kpis(config),
   site_periods = epm_build_site_periods(config),
   site_sources = epm_build_site_sources(config),
   site_quality_flags = epm_build_site_quality_flags(config)
@@ -160,9 +296,9 @@ written_paths <- vapply(required_outputs, function(output_name) {
 }, character(1))
 
 message("Site metadata builder complete.")
-message("Operational assumption: minimal site metadata maps to existing `site_periods`, `site_sources`, and `site_quality_flags` contracts.")
-message("Written site metadata outputs:")
+message("Operational assumption: site KPI metadata is curated from aggregated annual outputs only.")
+message("Available site metadata outputs:")
 for (output_name in names(written_paths)) {
   message(sprintf("- %s: %s", output_name, written_paths[[output_name]]))
 }
-message("No microdata were read and no analytical indicators were calculated.")
+message("No microdata were read and no analytical indicators were recalculated.")
