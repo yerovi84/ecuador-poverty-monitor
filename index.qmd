@@ -105,6 +105,16 @@ This is the narrative foundation of the monitor.
 :::
 :::
 
+::: {.monitor-card}
+## 2025 annual income poverty snapshot
+
+In 2025, Ecuador's annual income poverty rate reached **21.95%**. The annual reading shows a strong territorial contrast: **16.51%** in urban areas and **33.63%** in rural areas. Extreme poverty reached **6.99%** nationally, with **3.69%** in urban areas and **14.07%** in rural areas.
+
+::: {.monitor-note}
+These estimates are computed from public ENEMDU microdata and compared against public annual INEC tabulations for analytical reproducibility. This is not an official institutional validation.
+:::
+:::
+
 ::: {.story-panel}
 ::: {.section-kicker}
 Editorial purpose

@@ -86,6 +86,16 @@ El Ecuador Poverty Monitor no reemplaza estadísticas oficiales ni crea una auto
 Ayuda a responder qué se está midiendo, qué comparaciones son válidas y qué límites tiene cada estimación.
 :::
 
+::: {.monitor-card}
+## Cápsula anual 2025
+
+En 2025, la pobreza por ingresos alcanzó **21,95%** a nivel nacional. La brecha territorial es marcada: **16,51%** en el área urbana y **33,63%** en el área rural. La pobreza extrema fue de **6,99%** a nivel nacional, **3,69%** en el área urbana y **14,07%** en el área rural.
+
+::: {.monitor-note}
+Estos resultados se calculan a partir de microdatos públicos de ENEMDU y se comparan con tabulados públicos anuales del INEC con fines de reproducibilidad analítica. No constituyen validación institucional oficial.
+:::
+:::
+
 ::: {.infographic-frame}
 ::: {.section-kicker}
 Arquitectura analítica
