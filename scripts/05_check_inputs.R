@@ -18,32 +18,6 @@ epm_append_input_check <- function(diagnostic, check_id, check_label, status, de
   )
 }
 
-epm_expand_glob_braces <- function(pattern) {
-  match <- regexec("^(.*)\\{([^}]+)\\}(.*)$", pattern)
-  pieces <- regmatches(pattern, match)[[1]]
-
-  if (length(pieces) == 0L) {
-    return(pattern)
-  }
-
-  options <- strsplit(pieces[[3]], ",", fixed = TRUE)[[1]]
-  paste0(pieces[[2]], options, pieces[[4]])
-}
-
-epm_glob_pattern_to_regex <- function(pattern) {
-  expanded <- epm_expand_glob_braces(pattern)
-  paste(vapply(expanded, glob2rx, character(1)), collapse = "|")
-}
-
-epm_count_expected_files <- function(directory, pattern) {
-  if (!dir.exists(directory)) {
-    return(NA_integer_)
-  }
-
-  regex <- epm_glob_pattern_to_regex(pattern)
-  length(list.files(directory, pattern = regex, recursive = FALSE, ignore.case = TRUE))
-}
-
 epm_check_annual_raw_layout <- function(config, raw_root) {
   diagnostic <- data.frame(
     check_id = character(),
@@ -110,30 +84,34 @@ epm_check_annual_raw_layout <- function(config, raw_root) {
 
   for (input_name in names(expected_files)) {
     input_contract <- expected_files[[input_name]]
-    pattern <- input_contract$pattern
     required <- isTRUE(input_contract$required)
 
-    if (!.epm_is_scalar_character(pattern)) {
+    filename <- tryCatch(
+      epm_expected_input_filename("annual", input_name, config$paths),
+      error = function(error) NA_character_
+    )
+
+    if (!.epm_is_scalar_character(filename)) {
       diagnostic <- epm_append_input_check(
         diagnostic,
-        sprintf("annual_%s_pattern", input_name),
-        sprintf("Annual `%s` input pattern", input_name),
+        sprintf("annual_%s_filename", input_name),
+        sprintf("Annual `%s` exact filename", input_name),
         "missing",
-        sprintf("Expected input `%s` must define a non-empty pattern.", input_name),
+        sprintf("Expected input `%s` must define an exact non-ambiguous filename.", input_name),
         blocking = required
       )
       next
     }
 
-    file_count <- epm_count_expected_files(annual_dir, pattern)
-    found <- !is.na(file_count) && file_count > 0L
+    file_path <- file.path(annual_dir, filename)
+    found <- annual_dir_exists && file.exists(file_path)
     status <- if (found) "ok" else if (required) "missing" else "not_found_optional"
     detail <- if (found) {
-      sprintf("Found %d file(s) matching `%s` in annual folder `%s`.", file_count, pattern, folder)
+      sprintf("Resolved exact `%s` input file: `%s`.", input_name, basename(file_path))
     } else if (required) {
-      sprintf("No file matching required pattern `%s` was found in annual folder `%s`.", pattern, folder)
+      sprintf("Required exact `%s` input file was not found: `%s`.", input_name, filename)
     } else {
-      sprintf("No optional file matching `%s` was found in annual folder `%s`.", pattern, folder)
+      sprintf("Optional exact `%s` input file was not found: `%s`.", input_name, filename)
     }
 
     diagnostic <- epm_append_input_check(
