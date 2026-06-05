@@ -84,6 +84,13 @@
     "text": "Para qué sirve\nEl Ecuador Poverty Monitor no reemplaza estadísticas oficiales ni crea una autoridad paralela. Su función es convertir información pública compleja en una lectura ordenada, visual y reproducible.\nAyuda a responder qué se está midiendo, qué comparaciones son válidas y qué límites tiene cada estimación."
   },
   {
+    "objectID": "es/index.html#cápsula-anual-2025",
+    "href": "es/index.html#cápsula-anual-2025",
+    "title": "Entender la pobreza más allá de una sola cifra.",
+    "section": "Cápsula anual 2025",
+    "text": "Cápsula anual 2025\nEn 2025, la pobreza por ingresos alcanzó 21,95% a nivel nacional. La brecha territorial es marcada: 16,51% en el área urbana y 33,63% en el área rural. La pobreza extrema fue de 6,99% a nivel nacional, 3,69% en el área urbana y 14,07% en el área rural.\n\nEstos resultados se calculan a partir de microdatos públicos de ENEMDU y se comparan con tabulados públicos anuales del INEC con fines de reproducibilidad analítica. No constituyen validación institucional oficial."
+  },
+  {
     "objectID": "es/index.html#tres-capas",
     "href": "es/index.html#tres-capas",
     "title": "Entender la pobreza más allá de una sola cifra.",
@@ -124,6 +131,13 @@
     "title": "Poverty is not a single number.",
     "section": "Annual core",
     "text": "Annual core\nFull structure\nIncome poverty, quintiles, NBI, multidimensional poverty, provinces, cities, and territorial analysis.\nThis is the narrative foundation of the monitor."
+  },
+  {
+    "objectID": "index.html#annual-income-poverty-snapshot",
+    "href": "index.html#annual-income-poverty-snapshot",
+    "title": "Poverty is not a single number.",
+    "section": "2025 annual income poverty snapshot",
+    "text": "2025 annual income poverty snapshot\nIn 2025, Ecuador’s annual income poverty rate reached 21.95%. The annual reading shows a strong territorial contrast: 16.51% in urban areas and 33.63% in rural areas. Extreme poverty reached 6.99% nationally, with 3.69% in urban areas and 14.07% in rural areas.\n\nThese estimates are computed from public ENEMDU microdata and compared against public annual INEC tabulations for analytical reproducibility. This is not an official institutional validation."
   },
   {
     "objectID": "index.html#why-this-monitor-exists",
