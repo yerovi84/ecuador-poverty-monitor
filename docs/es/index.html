@@ -21,7 +21,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */
   vertical-align: middle;
 }
 </style>
@@ -100,46 +100,42 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../pages/01_why-monitor.html"> 
+    <a class="nav-link" href="../pages/01_why-monitor.html">
 <span class="menu-text">Why it matters</span></a>
-  </li>  
+  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-analytical-roadmap" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Analytical roadmap</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-analytical-roadmap">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-analytical-roadmap">
         <li>
     <a class="dropdown-item" href="../index.html#analytical-roadmap">
  <span class="dropdown-text">Income poverty</span></a>
-  </li>  
+  </li>
         <li>
     <a class="dropdown-item" href="../index.html#analytical-roadmap">
  <span class="dropdown-text">Deprivation and multidimensional poverty</span></a>
-  </li>  
+  </li>
         <li>
     <a class="dropdown-item" href="../index.html#analytical-roadmap">
  <span class="dropdown-text">Territory and labor</span></a>
-  </li>  
+  </li>
         <li>
     <a class="dropdown-item" href="../index.html#statistical-quality">
  <span class="dropdown-text">Statistical quality</span></a>
-  </li>  
+  </li>
     </ul>
   </li>
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../index.html">
 <span class="menu-text">EN</span></a>
-  </li>  
+  </li>
   <li class="nav-item">
-    <a class="nav-link active" href="../es/index.html" aria-current="page"> 
+    <a class="nav-link active" href="../es/index.html" aria-current="page">
 <span class="menu-text">ES</span></a>
-  </li>  
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -151,7 +147,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+
 <!-- main -->
 <main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
@@ -219,6 +215,13 @@ ul.task-list li input[type="checkbox"] {
 <p>Ayuda a responder qué se está midiendo, qué comparaciones son válidas y qué límites tiene cada estimación.</p>
 </section>
 </div>
+<section id="cápsula-anual-2025" class="level2 monitor-card">
+<h2 class="anchored" data-anchor-id="cápsula-anual-2025">Cápsula anual 2025</h2>
+<p>En 2025, la pobreza por ingresos alcanzó <strong>21,95%</strong> a nivel nacional. La brecha territorial es marcada: <strong>16,51%</strong> en el área urbana y <strong>33,63%</strong> en el área rural. La pobreza extrema fue de <strong>6,99%</strong> a nivel nacional, <strong>3,69%</strong> en el área urbana y <strong>14,07%</strong> en el área rural.</p>
+<div class="monitor-note">
+<p>Estos resultados se calculan a partir de microdatos públicos de ENEMDU y se comparan con tabulados públicos anuales del INEC con fines de reproducibilidad analítica. No constituyen validación institucional oficial.</p>
+</div>
+</section>
 <div class="infographic-frame">
 <div class="section-kicker">
 <p>Arquitectura analítica</p>
@@ -263,7 +266,7 @@ ul.task-list li input[type="checkbox"] {
     anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
+        if (clz.startsWith('code-annotation-')) {
           return true;
         }
       }
@@ -283,11 +286,11 @@ ul.task-list li input[type="checkbox"] {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
         button.setAttribute("data-bs-title", "Copiado");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
+        tooltip = new bootstrap.Tooltip(button,
+          { trigger: "manual",
             customClass: "code-copy-button-tooltip",
             offset: [0, -8]});
-        tooltip.show();    
+        tooltip.show();
       }
       setTimeout(function() {
         if (tooltip) {
@@ -369,7 +372,7 @@ ul.task-list li input[type="checkbox"] {
       if (onUntriggerFn) {
         config.onUntrigger = onUntriggerFn;
       }
-      window.tippy(el, config); 
+      window.tippy(el, config);
     }
     const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
     for (var i=0; i<noterefs.length; i++) {
@@ -444,7 +447,7 @@ ul.task-list li input[type="checkbox"] {
       tippyHover(xref, undefined, function(instance) {
         instance.disable();
         let url = xref.getAttribute('href');
-        let hash = undefined; 
+        let hash = undefined;
         if (url.startsWith('#')) {
           hash = url;
         } else {
@@ -472,7 +475,7 @@ ul.task-list li input[type="checkbox"] {
               if (note !== null) {
                 const html = processXRef(id, note);
                 instance.setContent(html);
-              } 
+              }
             }).finally(() => {
               instance.enable();
               instance.show();
@@ -496,7 +499,7 @@ ul.task-list li input[type="checkbox"] {
               }
               const html = processXRef(null, note);
               instance.setContent(html);
-            } 
+            }
           }).finally(() => {
             instance.enable();
             instance.show();
@@ -536,7 +539,7 @@ ul.task-list li input[type="checkbox"] {
               height = bottom - top;
             }
             if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
+              // cook up a div (if necessary) and position it
               let div = window.document.getElementById("code-annotation-line-highlight");
               if (div === null) {
                 div = window.document.createElement("div");
@@ -662,7 +665,7 @@ ul.task-list li input[type="checkbox"] {
   <div class="nav-footer">
     <div class="nav-footer-left">
 <p>Built by Alejandro Yerovi using enemduR.</p>
-</div>   
+</div>
     <div class="nav-footer-center">
       &nbsp;
     <div class="toc-actions"><ul><li><a href="https://github.com/yerovi84/ecuador-poverty-monitor/blob/main/es/index.qmd" class="toc-action"><i class="bi bi-github"></i>Ver el código</a></li><li><a href="https://github.com/yerovi84/ecuador-poverty-monitor/issues/new" class="toc-action"><i class="bi empty"></i>Informar sobre problema</a></li></ul></div></div>
@@ -672,12 +675,12 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="https://github.com/yerovi84/ecuador-poverty-monitor">
 <p>GitHub</p>
 </a>
-  </li>  
+  </li>
     <li class="nav-item">
     <a class="nav-link" href="https://github.com/yerovi84/enemduR">
 <p>enemduR</p>
 </a>
-  </li>  
+  </li>
 </ul>
     </div>
   </div>
