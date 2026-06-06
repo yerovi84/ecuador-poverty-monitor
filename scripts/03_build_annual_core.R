@@ -430,6 +430,316 @@ epm_build_income_poverty_estimates <- function(data, reference) {
   out
 }
 
+epm_as_numeric_profile_code <- function(x) {
+  if (is.factor(x)) {
+    x <- as.character(x)
+  }
+
+  suppressWarnings(as.numeric(x))
+}
+
+epm_profile_age_group <- function(age) {
+  age <- epm_as_numeric_profile_code(age)
+  out <- rep(NA_character_, length(age))
+
+  out[!is.na(age) & age >= 0 & age <= 14] <- "age_0_14"
+  out[!is.na(age) & age >= 15 & age <= 24] <- "age_15_24"
+  out[!is.na(age) & age >= 25 & age <= 44] <- "age_25_44"
+  out[!is.na(age) & age >= 45 & age <= 64] <- "age_45_64"
+  out[!is.na(age) & age >= 65] <- "age_65_plus"
+
+  out
+}
+
+epm_profile_sex <- function(sex) {
+  sex <- epm_as_numeric_profile_code(sex)
+  out <- rep(NA_character_, length(sex))
+
+  out[sex == 1] <- "male"
+  out[sex == 2] <- "female"
+
+  out
+}
+
+epm_profile_education_adult <- function(age, education_level) {
+  age <- epm_as_numeric_profile_code(age)
+  education_level <- epm_as_numeric_profile_code(education_level)
+  out <- rep(NA_character_, length(age))
+  adults <- !is.na(age) & age >= 25
+
+  out[adults & education_level %in% c(1, 2)] <- "no_formal_or_literacy"
+  out[adults & education_level %in% c(3, 4)] <- "primary_or_basic"
+  out[adults & education_level %in% c(5, 6)] <- "secondary_or_bachillerato"
+  out[adults & education_level %in% c(7, 8, 9)] <- "higher"
+
+  out
+}
+
+epm_prepare_income_poverty_profile_data <- function(data) {
+  required <- c("p02", "p03", "p10a")
+  missing <- setdiff(required, names(data))
+
+  if (length(missing) > 0L) {
+    .epm_abort(sprintf(
+      "Annual profile build requires ENEMDU variable(s): %s",
+      paste(missing, collapse = ", ")
+    ))
+  }
+
+  data[[".epm_profile_sex"]] <- epm_profile_sex(data[["p02"]])
+  data[[".epm_profile_age_group"]] <- epm_profile_age_group(data[["p03"]])
+  data[[".epm_profile_education_adult"]] <- epm_profile_education_adult(
+    age = data[["p03"]],
+    education_level = data[["p10a"]]
+  )
+
+  data
+}
+
+epm_income_poverty_profile_definitions <- function() {
+  list(
+    sex = list(
+      variable = ".epm_profile_sex",
+      label = "Sex",
+      universe = "All persons with valid sex code",
+      values = c(
+        female = "Female",
+        male = "Male"
+      )
+    ),
+    age_group = list(
+      variable = ".epm_profile_age_group",
+      label = "Age group",
+      universe = "All persons with valid age",
+      values = c(
+        age_0_14 = "0-14",
+        age_15_24 = "15-24",
+        age_25_44 = "25-44",
+        age_45_64 = "45-64",
+        age_65_plus = "65+"
+      )
+    ),
+    education_level_adult = list(
+      variable = ".epm_profile_education_adult",
+      label = "Adult education level",
+      universe = "Adults 25+ with valid education level",
+      values = c(
+        no_formal_or_literacy = "No formal education or literacy center",
+        primary_or_basic = "Primary or basic education",
+        secondary_or_bachillerato = "Secondary or bachillerato",
+        higher = "Higher education"
+      )
+    )
+  )
+}
+
+epm_profile_label <- function(value, definition) {
+  labels <- definition$values
+
+  if (!is.null(labels) && value %in% names(labels)) {
+    return(unname(labels[[value]]))
+  }
+
+  as.character(value)
+}
+
+epm_estimate_income_poverty_profile <- function(data,
+                                                profile_dimension,
+                                                definition,
+                                                reference) {
+  profile_var <- definition$variable
+
+  if (!profile_var %in% names(data)) {
+    .epm_abort(sprintf("Profile variable `%s` is missing.", profile_var))
+  }
+
+  profile_values <- as.character(data[[profile_var]])
+  keep <- !is.na(profile_values) & nzchar(profile_values)
+  work <- data[keep, , drop = FALSE]
+
+  if (nrow(work) == 0L) {
+    .epm_abort(sprintf("Profile `%s` has no valid observations.", profile_dimension))
+  }
+
+  estimates <- enemduR::enemdu_kpi_income_poverty(
+    data = work,
+    group_vars = profile_var,
+    period = reference$period,
+    mode = "manual",
+    poverty_line = reference$poverty_line,
+    extreme_poverty_line = reference$extreme_poverty_line,
+    line_source = reference$line_source,
+    survey_type = "anual",
+    ids = "upm",
+    strata = "estrato",
+    weight = "fexp",
+    domain_level = "subpoblacion_sociodemografica",
+    domain_var = profile_var,
+    official_validation_status = "not_officially_validated",
+    official_validation_note = "Analytical profile; benchmarked headline estimates are separate from non-benchmarked profile estimates."
+  )
+
+  estimates[["profile_dimension"]] <- profile_dimension
+  estimates[["profile_dimension_label"]] <- definition$label
+  estimates[["profile_value"]] <- as.character(estimates[[profile_var]])
+  estimates[["profile_label"]] <- vapply(
+    estimates[["profile_value"]],
+    epm_profile_label,
+    character(1),
+    definition = definition
+  )
+  estimates[["profile_universe"]] <- definition$universe
+  estimates[setdiff(names(estimates), profile_var)]
+}
+
+epm_build_income_poverty_profile_estimates <- function(data, reference) {
+  data <- epm_prepare_income_poverty_profile_data(data)
+  definitions <- epm_income_poverty_profile_definitions()
+
+  pieces <- lapply(names(definitions), function(profile_dimension) {
+    epm_estimate_income_poverty_profile(
+      data = data,
+      profile_dimension = profile_dimension,
+      definition = definitions[[profile_dimension]],
+      reference = reference
+    )
+  })
+
+  out <- do.call(rbind, pieces)
+  row.names(out) <- NULL
+  out
+}
+
+epm_to_monitor_income_poverty_profile_output <- function(estimates,
+                                                         annual_period,
+                                                         reference,
+                                                         source_file) {
+  id_map <- c(
+    pobreza_ingresos = "poverty_rate",
+    pobreza_extrema_ingresos = "extreme_poverty_rate"
+  )
+
+  label_map <- c(
+    poverty_rate = "Income poverty",
+    extreme_poverty_rate = "Extreme income poverty"
+  )
+
+  estimates[["monitor_indicator_id"]] <- unname(id_map[as.character(estimates$indicator_id)])
+  estimates <- estimates[!is.na(estimates$monitor_indicator_id), , drop = FALSE]
+
+  out <- data.frame(
+    indicator_id = estimates$monitor_indicator_id,
+    indicator_label = unname(label_map[estimates$monitor_indicator_id]),
+    indicator_family = "income_poverty",
+    period = annual_period,
+    survey_type = "anual",
+    domain = as.character(estimates$profile_dimension),
+    domain_value = as.character(estimates$profile_value),
+    profile_dimension = as.character(estimates$profile_dimension),
+    profile_dimension_label = as.character(estimates$profile_dimension_label),
+    profile_value = as.character(estimates$profile_value),
+    profile_label = as.character(estimates$profile_label),
+    estimate = as.numeric(estimates$estimate),
+    estimate_type = "proportion",
+    unit = "proportion",
+    display_estimate = as.numeric(estimates$estimate) * 100,
+    display_unit = "percent",
+    source_layer = "annual",
+    build_timestamp = NA_character_,
+    se = as.numeric(estimates$standard_error),
+    cv = as.numeric(estimates$cv),
+    n = as.integer(estimates$unweighted_n),
+    df = as.numeric(estimates$degrees_freedom),
+    weighted_n = as.numeric(estimates$weighted_n),
+    precision_flag = as.character(estimates$representativity_flag),
+    universe = as.character(estimates$profile_universe),
+    weight = as.character(estimates$estimation_weight),
+    method_status = as.character(estimates$decision),
+    profile_status = "survey_weighted_profile",
+    benchmark_check = "not_directly_benchmarked",
+    official_alignment = "official-source alignment documentation; no official institutional validation",
+    benchmark_estimate = NA_real_,
+    benchmark_unit = "percent",
+    benchmark_difference_pp = NA_real_,
+    benchmark_reference = NA_character_,
+    benchmark_source_file = NA_character_,
+    benchmark_status = "not_directly_benchmarked",
+    source_note = reference$line_source,
+    method_note = paste(
+      "Survey-design-aware analytical income-poverty profile from ENEMDU annual microdata via enemduR v0.1.1.",
+      "Profiles are weighted analytical subpopulation estimates and are not directly benchmarked against public annual tabulations.",
+      "This is not INEC validation, certification, approval, or endorsement."
+    ),
+    source_file = source_file,
+    source_reference = "ENEMDU annual 2025 analytical poverty profile build contract",
+    stringsAsFactors = FALSE
+  )
+
+  out <- out[order(
+    out$profile_dimension,
+    out$indicator_id,
+    out$profile_value
+  ), , drop = FALSE]
+  row.names(out) <- NULL
+  out
+}
+
+epm_validate_annual_income_poverty_profile_output <- function(output) {
+  epm_validate_output_schema(output, config$indicators, strict = FALSE)
+
+  required_profiles <- c("sex", "age_group", "education_level_adult")
+  missing_profiles <- setdiff(required_profiles, unique(output$profile_dimension))
+
+  if (length(missing_profiles) > 0L) {
+    .epm_abort(sprintf(
+      "Annual income poverty profile output is missing profile dimension(s): %s",
+      paste(missing_profiles, collapse = ", ")
+    ))
+  }
+
+  required_indicators <- c("poverty_rate", "extreme_poverty_rate")
+  missing_indicators <- setdiff(required_indicators, unique(output$indicator_id))
+
+  if (length(missing_indicators) > 0L) {
+    .epm_abort(sprintf(
+      "Annual income poverty profile output is missing indicator(s): %s",
+      paste(missing_indicators, collapse = ", ")
+    ))
+  }
+
+  forbidden <- epm_detect_forbidden_paths(output, config$paths$validation$forbidden_patterns)
+
+  if (length(forbidden) > 0L) {
+    .epm_abort("Annual income poverty profile output contains private path-like values.")
+  }
+
+  identifier_columns <- intersect(
+    names(output),
+    c("p01", "id_persona", "id_hogar", "idhogar", "id_persona_hogar")
+  )
+
+  if (length(identifier_columns) > 0L) {
+    .epm_abort(sprintf(
+      "Annual income poverty profile output contains microdata identifier column(s): %s",
+      paste(identifier_columns, collapse = ", ")
+    ))
+  }
+
+  if (!identical(unique(output$unit), "proportion")) {
+    .epm_abort("Annual income poverty profile output `unit` must be `proportion`.")
+  }
+
+  if (!identical(unique(output$display_unit), "percent")) {
+    .epm_abort("Annual income poverty profile output `display_unit` must be `percent`.")
+  }
+
+  if ("build_timestamp" %in% names(output) && any(!is.na(output$build_timestamp))) {
+    .epm_abort("Annual income poverty profile output must not contain dynamic build timestamps.")
+  }
+
+  invisible(TRUE)
+}
+
 epm_compare_income_poverty_benchmarks <- function(estimates, reference) {
   if (!isTRUE(reference$available) || !is.data.frame(reference$benchmarks) || nrow(reference$benchmarks) == 0L) {
     return(data.frame(
@@ -726,6 +1036,7 @@ epm_validate_annual_income_poverty_output <- function(output) {
 epm_require_enemduR()
 
 output_path <- epm_output_path("annual", "annual_income_poverty", config$paths)
+profile_output_path <- epm_output_path("annual", "annual_income_poverty_profiles", config$paths)
 annual_inputs <- epm_resolve_annual_input_files(config$paths, required = FALSE)
 annual_inputs_ready <- all(vapply(annual_inputs, function(input) isTRUE(input$exists), logical(1)))
 
@@ -768,17 +1079,36 @@ if (isTRUE(annual_inputs_ready)) {
     reference = line_reference,
     source_file = annual_inputs$persona$basename
   )
+
+  profile_estimates <- epm_build_income_poverty_profile_estimates(persona, line_reference)
+  profile_output <- epm_to_monitor_income_poverty_profile_output(
+    estimates = profile_estimates,
+    annual_period = annual_period,
+    reference = line_reference,
+    source_file = annual_inputs$persona$basename
+  )
 } else {
   comparisons <- epm_compare_monitor_output_benchmarks(existing_output, benchmark_reference)
   output <- epm_refresh_monitor_income_poverty_output(existing_output, comparisons, line_reference)
+  profile_output <- NULL
 }
 
 epm_validate_annual_income_poverty_output(output)
 
 epm_save_output(output, output_path)
 
+if (is.data.frame(profile_output)) {
+  epm_validate_annual_income_poverty_profile_output(profile_output)
+  epm_save_output(profile_output, profile_output_path)
+}
+
 message("Annual income poverty output complete.")
 message(sprintf("Resolved annual inputs: %s", paste(annual_basenames, collapse = ", ")))
 message(sprintf("Annual benchmark reference: %s", benchmark_reference$status))
 message("Wrote data/derived/annual/annual_income_poverty.rds")
+if (is.data.frame(profile_output)) {
+  message("Wrote data/derived/annual/annual_income_poverty_profiles.rds")
+} else {
+  message("Annual profile output skipped because raw annual inputs were unavailable.")
+}
 message("No raw microdata were written, copied, or staged.")

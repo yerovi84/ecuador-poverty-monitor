@@ -136,6 +136,7 @@ derived_data_layout:
     folder: "data/derived/annual"
     outputs:
       annual_income_poverty: "annual/annual_income_poverty.rds"
+      annual_income_poverty_profiles: "annual/annual_income_poverty_profiles.rds"
       annual_quintiles: "annual/annual_quintiles.rds"
       annual_nbi: "annual/annual_nbi.rds"
       annual_tpm: "annual/annual_tpm.rds"
@@ -148,6 +149,7 @@ derived_data_layout:
     folder: "data/derived/site"
     outputs:
       site_kpis: "site/site_kpis.rds"
+      site_income_poverty_profiles: "site/site_income_poverty_profiles.rds"
       site_periods: "site/site_periods.rds"
       site_sources: "site/site_sources.rds"
       site_update_log: "site/site_update_log.rds"
