@@ -24,7 +24,7 @@ website:
       - text: "Analytical roadmap"
         menu:
           - text: "Income poverty"
-            href: index.qmd#analytical-roadmap
+            href: pages/02_income-poverty.qmd
           - text: "Deprivation and multidimensional poverty"
             href: index.qmd#analytical-roadmap
           - text: "Territory and labor"
