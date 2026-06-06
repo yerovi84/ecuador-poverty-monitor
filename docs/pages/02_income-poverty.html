@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="A Quarto storytelling data product for communicating poverty, territory, labor, and statistical quality in Ecuador using enemduR.">
+<meta name="description" content="Annual income poverty and extreme income poverty results for Ecuador in 2025, with urban-rural contrasts and benchmark reproducibility notes.">
 
-<title>Ecuador Poverty Monitor</title>
+<title>income-poverty – Ecuador Poverty Monitor</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,25 +24,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./assets/img/brand/epm-favicon.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0e2ed5a012ede8e13c082ff6ed26c046.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../assets/img/brand/epm-favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-0e2ed5a012ede8e13c082ff6ed26c046.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/site.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -83,11 +83,11 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./assets/img/brand/epm-navbar-logo.svg" alt="Ecuador Poverty Monitor" class="navbar-logo light-content">
-    <img src="./assets/img/brand/epm-navbar-logo.svg" alt="Ecuador Poverty Monitor" class="navbar-logo dark-content">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../assets/img/brand/epm-navbar-logo.svg" alt="Ecuador Poverty Monitor" class="navbar-logo light-content">
+    <img src="../assets/img/brand/epm-navbar-logo.svg" alt="Ecuador Poverty Monitor" class="navbar-logo dark-content">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Ecuador Poverty Monitor</span>
     </a>
   </div>
@@ -98,7 +98,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./pages/01_why-monitor.html">
+    <a class="nav-link" href="../pages/01_why-monitor.html">
 <span class="menu-text">Why it matters</span></a>
   </li>
   <li class="nav-item dropdown ">
@@ -107,19 +107,19 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-analytical-roadmap">
         <li>
-    <a class="dropdown-item" href="./pages/02_income-poverty.html">
+    <a class="dropdown-item" href="../pages/02_income-poverty.html">
  <span class="dropdown-text">Income poverty</span></a>
   </li>
         <li>
-    <a class="dropdown-item" href="./index.html#analytical-roadmap">
+    <a class="dropdown-item" href="../index.html#analytical-roadmap">
  <span class="dropdown-text">Deprivation and multidimensional poverty</span></a>
   </li>
         <li>
-    <a class="dropdown-item" href="./index.html#analytical-roadmap">
+    <a class="dropdown-item" href="../index.html#analytical-roadmap">
  <span class="dropdown-text">Territory and labor</span></a>
   </li>
         <li>
-    <a class="dropdown-item" href="./index.html#statistical-quality">
+    <a class="dropdown-item" href="../index.html#statistical-quality">
  <span class="dropdown-text">Statistical quality</span></a>
   </li>
     </ul>
@@ -127,11 +127,11 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page">
+    <a class="nav-link" href="../index.html">
 <span class="menu-text">EN</span></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./es/index.html">
+    <a class="nav-link" href="../es/index.html">
 <span class="menu-text">ES</span></a>
   </li>
 </ul>
@@ -152,179 +152,133 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="hero-monitor">
-<div class="hero-layout">
-<div class="hero-copy">
+<div class="internal-hero internal-hero-wide">
+<div class="internal-hero-copy">
 <div class="section-kicker">
-<p>Poverty intelligence for Ecuador</p>
+<p>Income poverty</p>
 </div>
-<section id="poverty-is-not-a-single-number." class="level1">
-<h1>Poverty is not a single number.</h1>
-<p>Every time a poverty rate is published, the country can appear to fit inside one percentage point. Ecuador does not fit inside one number.</p>
-<p>This monitor organizes income poverty, deprivation, territory, labor conditions, and statistical quality into one reproducible editorial product.</p>
-<div class="hero-actions">
-<p><a href="./pages/01_why-monitor.html" class="btn-monitor btn-primary-monitor">Start with the purpose</a> <a href="./es/index.html" class="btn-monitor btn-secondary-monitor">Leer en español</a></p>
+<section id="ecuadors-2025-annual-poverty-profile" class="level1">
+<h1>Ecuador’s 2025 annual poverty profile</h1>
+<div class="story-lede">
+<p>The first analytical layer of the monitor turns the annual ENEMDU poverty output into a compact reading of income, territory, and reproducibility.</p>
 </div>
+<p>In 2025, Ecuador’s annual income poverty rate reached <strong>21.95%</strong>. The national figure is the starting point, but the substantive story is territorial: poverty reached <strong>16.51%</strong> in urban areas and <strong>33.63%</strong> in rural areas.</p>
 </section>
 </div>
-<section id="three-speeds-one-reading" class="level2 hero-deck">
-<h2 class="anchored" data-anchor-id="three-speeds-one-reading">Three speeds, one reading</h2>
-<p>The monitor separates short-term signals from structural poverty analysis, so comparisons stay meaningful.</p>
-<div class="kpi-strip">
-<div class="kpi-item">
-<div class="period-badge">
-<p>Monthly</p>
-</div>
-<p><strong>Pulse</strong></p>
-<div class="small-muted">
-<p>National, urban/rural, and labor-market context.</p>
-</div>
-</div>
-<div class="kpi-item">
-<div class="period-badge">
-<p>Quarterly</p>
-</div>
-<p><strong>Cities</strong></p>
-<div class="small-muted">
-<p>Quito, Guayaquil, Cuenca, Machala, and Ambato when the domain supports it.</p>
-</div>
-</div>
-<div class="kpi-item">
-<div class="period-badge">
-<p>Annual</p>
-</div>
-<p><strong>Structure</strong></p>
-<div class="small-muted">
-<p>Poverty, income distribution, NBI, multidimensional poverty, and provincial territory.</p>
-</div>
-</div>
-</div>
+<section id="first-published-analytical-layer" class="level2 internal-hero-card">
+<h2 class="anchored" data-anchor-id="first-published-analytical-layer">First published analytical layer</h2>
+<p>This page uses the curated site output <code>data/derived/site/site_kpis.rds</code>. It presents aggregated indicators only: no raw microdata, no private paths, and no individual identifiers.</p>
 </section>
 </div>
-</div>
-<div class="content-block">
-<div class="monitor-grid">
-<section id="monthly-pulse" class="level2 monitor-card">
-<h2 class="anchored" data-anchor-id="monthly-pulse">Monthly pulse</h2>
-<p><strong>Latest available month</strong></p>
-<p>Short-term context for national and urban/rural indicators, especially labor-market conditions.</p>
-<p>This layer helps read the present without confusing volatility with structure.</p>
-</section>
-<section id="quarterly-view" class="level2 monitor-card">
-<h2 class="anchored" data-anchor-id="quarterly-view">Quarterly view</h2>
-<p><strong>Five main cities</strong></p>
-<p>Intermediate monitoring for Quito, Guayaquil, Cuenca, Machala, and Ambato when the sample design supports it.</p>
-<p>This layer surfaces urban signals more frequently than the annual analysis.</p>
-</section>
-<section id="annual-core" class="level2 monitor-card">
-<h2 class="anchored" data-anchor-id="annual-core">Annual core</h2>
-<p><strong>Full structure</strong></p>
-<p>Income poverty, quintiles, NBI, multidimensional poverty, provinces, cities, and territorial analysis.</p>
-<p>This is the narrative foundation of the monitor.</p>
-</section>
-</div>
-<section id="annual-income-poverty-snapshot" class="level2 monitor-card">
-<h2 class="anchored" data-anchor-id="annual-income-poverty-snapshot">2025 annual income poverty snapshot</h2>
-<p>In 2025, Ecuador’s annual income poverty rate reached <strong>21.95%</strong>. The annual reading shows a strong territorial contrast: <strong>16.51%</strong> in urban areas and <strong>33.63%</strong> in rural areas. Extreme poverty reached <strong>6.99%</strong> nationally, with <strong>3.69%</strong> in urban areas and <strong>14.07%</strong> in rural areas.</p>
-<div class="monitor-note">
-<p>These estimates are computed from public ENEMDU microdata and compared against public annual INEC tabulations for analytical reproducibility. This is not an official institutional validation.</p>
-</div>
-</section>
+<div class="content-block editorial-flow">
+<div class="story-grid">
 <div class="story-panel">
 <div class="section-kicker">
-<p>Editorial purpose</p>
+<p>2025 annual reading</p>
 </div>
-<section id="why-this-monitor-exists" class="level2">
-<h2 class="anchored" data-anchor-id="why-this-monitor-exists">Why this monitor exists</h2>
-<p>Public poverty data in Ecuador are valuable, but the reading is often spread across bulletins, microdata, technical notes, methodological reports, and isolated tables.</p>
-<p>The problem is not the absence of data. The problem is that the story connecting the data is often fragmented.</p>
-<p>The Ecuador Poverty Monitor is designed as a reproducible communication layer. It does not replace official statistics or create a parallel statistical authority. It helps readers understand what is measured, how it is measured, what can be compared, and where each estimate has limits.</p>
+<section id="income-poverty" class="level2">
+<h2 class="anchored" data-anchor-id="income-poverty">Income poverty</h2>
+<p>The annual estimate shows that roughly one in five people lived in households whose per-capita income did not reach the income poverty line. The national rate was <strong>21.95%</strong>.</p>
+<p>The monitor treats this figure as an annual structural reading, not as a monthly pulse. That distinction matters because the annual ENEMDU file supports a broader territorial and thematic analysis than short-term releases.</p>
 </section>
+</div>
+<div class="story-panel">
+<div class="section-kicker">
+<p>Territorial contrast</p>
+</div>
+<section id="urban-rural-gap" class="level2">
+<h2 class="anchored" data-anchor-id="urban-rural-gap">Urban-rural gap</h2>
+<p>The urban-rural contrast is the strongest signal in this first layer. Urban income poverty reached <strong>16.51%</strong>, while rural income poverty reached <strong>33.63%</strong>.</p>
+<p>That gap is not only a difference in levels. It points to different policy questions: labor income and cost of living in urban areas, and a more structural combination of income generation, access, and territorial vulnerability in rural areas.</p>
+</section>
+</div>
 </div>
 <div class="infographic-frame">
 <div class="section-kicker">
-<p>Reading framework</p>
+<p>Core indicators</p>
 </div>
-<section id="the-core-idea" class="level2">
-<h2 class="anchored" data-anchor-id="the-core-idea">The core idea</h2>
-<p>A useful poverty monitor should not only ask how many people are poor.</p>
+<section id="annual-kpi-summary" class="level2">
+<h2 class="anchored" data-anchor-id="annual-kpi-summary">Annual KPI summary</h2>
 <div class="frame-grid">
 <div class="frame-cell">
-<p><strong>Condition</strong></p>
-<p>Income, deprivation, and the relative position of households.</p>
+<p><strong>Income poverty</strong></p>
+<p>National: <strong>21.95%</strong></p>
+<p>Urban: <strong>16.51%</strong></p>
+<p>Rural: <strong>33.63%</strong></p>
 </div>
 <div class="frame-cell">
-<p><strong>Place</strong></p>
-<p>Territory, cities, rurality, and valid domains of estimation.</p>
+<p><strong>Extreme income poverty</strong></p>
+<p>National: <strong>6.99%</strong></p>
+<p>Urban: <strong>3.69%</strong></p>
+<p>Rural: <strong>14.07%</strong></p>
 </div>
 <div class="frame-cell">
-<p><strong>Measurement</strong></p>
-<p>Precision, representativity, and comparability across periods.</p>
+<p><strong>Benchmark status</strong></p>
+<p>All six annual KPI rows are marked as <code>annual_published_table_close_match</code> in the curated site output.</p>
 </div>
 </div>
 </section>
 </div>
-<div id="analytical-roadmap" class="story-panel">
+<div class="story-panel">
 <div class="section-kicker">
-<p>Analytical roadmap</p>
+<p>Extreme poverty</p>
 </div>
-<section id="how-to-read-the-site" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-read-the-site">How to read the site</h2>
-</section>
-</div>
-<div class="story-steps">
-<section id="income" class="level3 story-step">
-<h3 class="anchored" data-anchor-id="income">1. Income</h3>
-<p>Income poverty asks whether household per-capita income reaches a minimum poverty line.</p>
-</section>
-<section id="deprivation" class="level3 story-step">
-<h3 class="anchored" data-anchor-id="deprivation">2. Deprivation</h3>
-<p>NBI and multidimensional poverty show structural deficits and overlapping disadvantages.</p>
-</section>
-<section id="territory" class="level3 story-step">
-<h3 class="anchored" data-anchor-id="territory">3. Territory</h3>
-<p>Poverty is not evenly distributed. Place changes the interpretation.</p>
-</section>
-<section id="labor" class="level3 story-step">
-<h3 class="anchored" data-anchor-id="labor">4. Labor</h3>
-<p>Work connects income, vulnerability, and household wellbeing.</p>
-</section>
-<section id="measurement" class="level3 story-step">
-<h3 class="anchored" data-anchor-id="measurement">5. Measurement</h3>
-<p>No figure is stronger than the instrument used to estimate it.</p>
+<section id="a-deeper-income-threshold" class="level2">
+<h2 class="anchored" data-anchor-id="a-deeper-income-threshold">A deeper income threshold</h2>
+<p>Extreme income poverty reached <strong>6.99%</strong> nationally in 2025. The territorial contrast is again sharp: <strong>3.69%</strong> in urban areas and <strong>14.07%</strong> in rural areas.</p>
+<p>This layer separates income poverty from extreme income poverty because the two indicators answer different questions. Poverty identifies households below the income poverty line; extreme poverty identifies households below a more restrictive minimum threshold.</p>
 </section>
 </div>
-<div id="statistical-quality" class="method-note">
-<p>The visual architecture is ready for charts and infographics without changing the data contract, the methodological logic, or the static Quarto structure.</p>
+<div class="method-note">
+<p>Estimates are computed from public ENEMDU microdata and compared against public annual INEC tabulations for analytical reproducibility. This is not an official institutional validation.</p>
 </div>
-<section id="product-status" class="level2">
-<h2 class="anchored" data-anchor-id="product-status">Product status</h2>
-<div class="data-warning">
-<p>This site is under construction.</p>
-<p>This version establishes the editorial, visual, and methodological foundation. Future phases will add data-building scripts, charts, final infographics, and page-specific analysis.</p>
+<div class="story-grid">
+<div class="story-panel">
+<div class="section-kicker">
+<p>Reproducibility</p>
 </div>
+<section id="benchmark-comparison" class="level2">
+<h2 class="anchored" data-anchor-id="benchmark-comparison">Benchmark comparison</h2>
+<p>The annual output was compared against public 2025 annual INEC tabulations. The published benchmark values are close to the monitor estimates after rounding: <strong>21.8%</strong> for national income poverty, <strong>16.3%</strong> for urban income poverty, <strong>33.4%</strong> for rural income poverty, <strong>6.8%</strong> for national extreme poverty, <strong>3.6%</strong> for urban extreme poverty, and <strong>13.7%</strong> for rural extreme poverty.</p>
+<p>The comparison is a reproducibility check against a public reference table. It is not an institutional endorsement or a replacement for official statistical releases.</p>
+</section>
+</div>
+<div class="story-panel">
+<div class="section-kicker">
+<p>Interpretation limits</p>
+</div>
+<section id="what-this-page-does-not-claim" class="level2">
+<h2 class="anchored" data-anchor-id="what-this-page-does-not-claim">What this page does not claim</h2>
+<p>This page does not estimate causality, explain every driver of poverty, or create a new official statistic. It presents a stable annual analytical layer built from a derived, aggregated site output.</p>
+<p>The next versions of the monitor should add uncertainty, representativity notes, and deeper territorial detail only where the survey design supports those domains.</p>
+</section>
+</div>
+</div>
+<section id="next-analytical-layers" class="level2 data-warning">
+<h2 class="anchored" data-anchor-id="next-analytical-layers">Next analytical layers</h2>
+<p>The next income-poverty layer can add poverty-line context, precision indicators, historical comparisons, and distributional readings. Deprivation, multidimensional poverty, labor, and province-level analysis should remain separate layers until their own output contracts are complete.</p>
+</section>
 <div class="proof-strip">
 <div class="proof-item">
-<p><strong>Official microdata</strong></p>
-<p>Built around public ENEMDU source files.</p>
+<p><strong>Curated site output</strong></p>
+<p>The page is based on <code>site_kpis.rds</code>, not raw survey files.</p>
 </div>
 <div class="proof-item">
-<p><strong>Methodological contracts</strong></p>
-<p>Periods and domains are explicit before analysis.</p>
+<p><strong>Annual scope</strong></p>
+<p>The indicators use the annual 2025 ENEMDU structure.</p>
 </div>
 <div class="proof-item">
-<p><strong>Statistical quality</strong></p>
-<p>Representativity and precision guide what can be shown.</p>
+<p><strong>Public benchmark</strong></p>
+<p>The comparison uses public annual INEC tabulations.</p>
 </div>
 <div class="proof-item">
-<p><strong>Reproducible output</strong></p>
-<p>Quarto consumes derived products, not raw microdata.</p>
+<p><strong>Methodological caution</strong></p>
+<p>Reproducibility is documented without claiming institutional validation.</p>
 </div>
 </div>
 <div class="page-nav">
-<p><a href="./pages/01_why-monitor.html">Why it matters -&gt;</a> <a href="./es/index.html">Español -&gt;</a></p>
+<p><a href="../pages/01_why-monitor.html">&lt;- Why it matters</a> <a href="../index.html">Home -&gt;</a></p>
 </div>
-</section>
 </div>
 
 
@@ -743,7 +697,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/yerovi84/ecuador-poverty-monitor/blob/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/yerovi84/ecuador-poverty-monitor/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/yerovi84/ecuador-poverty-monitor/blob/main/pages/02_income-poverty.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/yerovi84/ecuador-poverty-monitor/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
@@ -764,5 +718,5 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

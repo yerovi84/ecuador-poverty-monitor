@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://yerovi84.github.io/ecuador-poverty-monitor/pages/01_why-monitor.html</loc>
-    <lastmod>2026-06-03T18:21:47.726Z</lastmod>
+    <loc>https://yerovi84.github.io/ecuador-poverty-monitor/pages/02_income-poverty.html</loc>
+    <lastmod>2026-06-05T18:08:05.915Z</lastmod>
+  </url>
+  <url>
+    <loc>https://yerovi84.github.io/ecuador-poverty-monitor/index.html</loc>
+    <lastmod>2026-06-05T02:11:47.330Z</lastmod>
   </url>
   <url>
     <loc>https://yerovi84.github.io/ecuador-poverty-monitor/es/index.html</loc>
     <lastmod>2026-06-05T02:11:47.329Z</lastmod>
   </url>
   <url>
-    <loc>https://yerovi84.github.io/ecuador-poverty-monitor/index.html</loc>
-    <lastmod>2026-06-05T02:11:47.330Z</lastmod>
+    <loc>https://yerovi84.github.io/ecuador-poverty-monitor/pages/01_why-monitor.html</loc>
+    <lastmod>2026-06-03T18:21:47.726Z</lastmod>
   </url>
 </urlset>

@@ -1,101 +1,66 @@
 [
   {
-    "objectID": "pages/01_why-monitor.html",
-    "href": "pages/01_why-monitor.html",
-    "title": "Why build a poverty monitor?",
+    "objectID": "pages/02_income-poverty.html",
+    "href": "pages/02_income-poverty.html",
+    "title": "Ecuador’s 2025 annual poverty profile",
     "section": "",
-    "text": "Why it matters\n\n\n\n\nThe problem is not the lack of data. The problem is the missing reading layer.\n\nPoverty data in Ecuador already exist across official bulletins, microdata, methodological notes, poverty lines, labor reports, monthly releases, quarterly files, and annual databases. This monitor turns that scattered public information into a coherent, reproducible, and decision-oriented reading.\n\n\n\n\nThe Ecuador Poverty Monitor connects income, deprivation, territory, labor conditions, and statistical quality into one static Quarto product.\nIt does not replace official statistics. It helps explain how to read them."
+    "text": "Income poverty\n\n\n\n\nThe first analytical layer of the monitor turns the annual ENEMDU poverty output into a compact reading of income, territory, and reproducibility.\n\nIn 2025, Ecuador’s annual income poverty rate reached 21.95%. The national figure is the starting point, but the substantive story is territorial: poverty reached 16.51% in urban areas and 33.63% in rural areas.\n\n\n\n\nThis page uses the curated site output data/derived/site/site_kpis.rds. It presents aggregated indicators only: no raw microdata, no private paths, and no individual identifiers."
   },
   {
-    "objectID": "pages/01_why-monitor.html#a-reading-layer-for-public-data",
-    "href": "pages/01_why-monitor.html#a-reading-layer-for-public-data",
-    "title": "Why build a poverty monitor?",
+    "objectID": "pages/02_income-poverty.html#first-published-analytical-layer",
+    "href": "pages/02_income-poverty.html#first-published-analytical-layer",
+    "title": "Ecuador’s 2025 annual poverty profile",
     "section": "",
-    "text": "The Ecuador Poverty Monitor connects income, deprivation, territory, labor conditions, and statistical quality into one static Quarto product.\nIt does not replace official statistics. It helps explain how to read them."
+    "text": "This page uses the curated site output data/derived/site/site_kpis.rds. It presents aggregated indicators only: no raw microdata, no private paths, and no individual identifiers."
   },
   {
-    "objectID": "pages/01_why-monitor.html#what-is-fragmented",
-    "href": "pages/01_why-monitor.html#what-is-fragmented",
-    "title": "Why build a poverty monitor?",
-    "section": "What is fragmented?",
-    "text": "What is fragmented?\nThe issue is not a shortage of information. The issue is that each release answers only part of the question.\nTables can inform, but poverty analysis needs context: what was measured, what period supports the estimate, which territorial domains are valid, and how precise the result is."
+    "objectID": "pages/02_income-poverty.html#income-poverty",
+    "href": "pages/02_income-poverty.html#income-poverty",
+    "title": "Ecuador’s 2025 annual poverty profile",
+    "section": "Income poverty",
+    "text": "Income poverty\nThe annual estimate shows that roughly one in five people lived in households whose per-capita income did not reach the income poverty line. The national rate was 21.95%.\nThe monitor treats this figure as an annual structural reading, not as a monthly pulse. That distinction matters because the annual ENEMDU file supports a broader territorial and thematic analysis than short-term releases."
   },
   {
-    "objectID": "pages/01_why-monitor.html#what-the-monitor-connects",
-    "href": "pages/01_why-monitor.html#what-the-monitor-connects",
-    "title": "Why build a poverty monitor?",
-    "section": "What the monitor connects",
-    "text": "What the monitor connects\nPoverty can be read through income, basic needs, simultaneous deprivation, territory, and work. Each lens illuminates a different part of the problem.\nWhen those pieces are read separately, the picture remains incomplete. When they are connected, the country becomes easier to understand."
+    "objectID": "pages/02_income-poverty.html#urban-rural-gap",
+    "href": "pages/02_income-poverty.html#urban-rural-gap",
+    "title": "Ecuador’s 2025 annual poverty profile",
+    "section": "Urban-rural gap",
+    "text": "Urban-rural gap\nThe urban-rural contrast is the strongest signal in this first layer. Urban income poverty reached 16.51%, while rural income poverty reached 33.63%.\nThat gap is not only a difference in levels. It points to different policy questions: labor income and cost of living in urban areas, and a more structural combination of income generation, access, and territorial vulnerability in rural areas."
   },
   {
-    "objectID": "pages/01_why-monitor.html#source-engine-product",
-    "href": "pages/01_why-monitor.html#source-engine-product",
-    "title": "Why build a poverty monitor?",
-    "section": "Source, engine, product",
-    "text": "Source, engine, product\nENEMDU is Ecuador’s National Survey of Employment, Unemployment, and Underemployment. It is one of the country’s key statistical operations for analyzing work, labor conditions, income, poverty, and household characteristics.\n\n\n1. Official source\nThe base information comes from ENEMDU and its methodological documentation.\n\n\n2. Analytical engine\nenemduR organizes reading, validation, estimation, indicators, and analytical outputs.\n\n\n3. Narrative product\nThis site turns results into a visual and explanatory story."
+    "objectID": "pages/02_income-poverty.html#annual-kpi-summary",
+    "href": "pages/02_income-poverty.html#annual-kpi-summary",
+    "title": "Ecuador’s 2025 annual poverty profile",
+    "section": "Annual KPI summary",
+    "text": "Annual KPI summary\n\n\nIncome poverty\nNational: 21.95%\nUrban: 16.51%\nRural: 33.63%\n\n\nExtreme income poverty\nNational: 6.99%\nUrban: 3.69%\nRural: 14.07%\n\n\nBenchmark status\nAll six annual KPI rows are marked as annual_published_table_close_match in the curated site output."
   },
   {
-    "objectID": "pages/01_why-monitor.html#three-speeds-different-questions",
-    "href": "pages/01_why-monitor.html#three-speeds-different-questions",
-    "title": "Why build a poverty monitor?",
-    "section": "Three speeds, different questions",
-    "text": "Three speeds, different questions\nThis product does not treat all periods as if they supported the same type of reading. The monitor is organized into monthly pulse, quarterly city view, and annual structural analysis."
+    "objectID": "pages/02_income-poverty.html#a-deeper-income-threshold",
+    "href": "pages/02_income-poverty.html#a-deeper-income-threshold",
+    "title": "Ecuador’s 2025 annual poverty profile",
+    "section": "A deeper income threshold",
+    "text": "A deeper income threshold\nExtreme income poverty reached 6.99% nationally in 2025. The territorial contrast is again sharp: 3.69% in urban areas and 14.07% in rural areas.\nThis layer separates income poverty from extreme income poverty because the two indicators answer different questions. Poverty identifies households below the income poverty line; extreme poverty identifies households below a more restrictive minimum threshold."
   },
   {
-    "objectID": "pages/01_why-monitor.html#golden-rule",
-    "href": "pages/01_why-monitor.html#golden-rule",
-    "title": "Why build a poverty monitor?",
-    "section": "Golden rule",
-    "text": "Golden rule\nNever show a territorial disaggregation that does not match the representativity domain of the period being used. Methodological clarity is part of the product, not a secondary note."
+    "objectID": "pages/02_income-poverty.html#benchmark-comparison",
+    "href": "pages/02_income-poverty.html#benchmark-comparison",
+    "title": "Ecuador’s 2025 annual poverty profile",
+    "section": "Benchmark comparison",
+    "text": "Benchmark comparison\nThe annual output was compared against public 2025 annual INEC tabulations. The published benchmark values are close to the monitor estimates after rounding: 21.8% for national income poverty, 16.3% for urban income poverty, 33.4% for rural income poverty, 6.8% for national extreme poverty, 3.6% for urban extreme poverty, and 13.7% for rural extreme poverty.\nThe comparison is a reproducibility check against a public reference table. It is not an institutional endorsement or a replacement for official statistical releases."
   },
   {
-    "objectID": "pages/01_why-monitor.html#a-compact-product-contract",
-    "href": "pages/01_why-monitor.html#a-compact-product-contract",
-    "title": "Why build a poverty monitor?",
-    "section": "A compact product contract",
-    "text": "A compact product contract\nThis monitor adds an integrated reading of poverty, a reproducible architecture based on enemduR, a stronger visual communication layer, a clear distinction between pulse and structure, and a technical discussion of representativity."
+    "objectID": "pages/02_income-poverty.html#what-this-page-does-not-claim",
+    "href": "pages/02_income-poverty.html#what-this-page-does-not-claim",
+    "title": "Ecuador’s 2025 annual poverty profile",
+    "section": "What this page does not claim",
+    "text": "What this page does not claim\nThis page does not estimate causality, explain every driver of poverty, or create a new official statistic. It presents a stable annual analytical layer built from a derived, aggregated site output.\nThe next versions of the monitor should add uncertainty, representativity notes, and deeper territorial detail only where the survey design supports those domains."
   },
   {
-    "objectID": "pages/01_why-monitor.html#not-a-parallel-authority",
-    "href": "pages/01_why-monitor.html#not-a-parallel-authority",
-    "title": "Why build a poverty monitor?",
-    "section": "Not a parallel authority",
-    "text": "Not a parallel authority\nThe monitor does not replace INEC or produce official statistics. Its goal is to transform complex public information into an ordered, reproducible, visual, and useful reading of poverty in Ecuador."
-  },
-  {
-    "objectID": "es/index.html",
-    "href": "es/index.html",
-    "title": "Entender la pobreza más allá de una sola cifra.",
-    "section": "",
-    "text": "Capa ejecutiva en español\n\n\n\nEl sitio principal está escrito en inglés para funcionar como producto de portafolio internacional. Esta página resume la propuesta para lectores ecuatorianos y audiencias locales.\nEl objetivo es explicar pobreza, territorio, empleo y calidad estadística con una narrativa reproducible, sobria y útil.\n\nVer sitio principal en inglés Leer el propósito\n\n\n\n\n\nOrganiza datos públicos de ENEMDU en una lectura clara, separando coyuntura, estructura y límites de representatividad.\n\n\n\nMensual\n\nPulso\n\nContexto nacional, urbano/rural y laboral reciente.\n\n\n\n\nTrimestral\n\nCiudades\n\nSeñales urbanas cuando el dominio de estimación lo permite.\n\n\n\n\nAnual\n\nEstructura\n\nPobreza, privaciones, quintiles y territorio provincial."
-  },
-  {
-    "objectID": "es/index.html#qué-resuelve-el-monitor",
-    "href": "es/index.html#qué-resuelve-el-monitor",
-    "title": "Entender la pobreza más allá de una sola cifra.",
-    "section": "",
-    "text": "Organiza datos públicos de ENEMDU en una lectura clara, separando coyuntura, estructura y límites de representatividad.\n\n\n\nMensual\n\nPulso\n\nContexto nacional, urbano/rural y laboral reciente.\n\n\n\n\nTrimestral\n\nCiudades\n\nSeñales urbanas cuando el dominio de estimación lo permite.\n\n\n\n\nAnual\n\nEstructura\n\nPobreza, privaciones, quintiles y territorio provincial."
-  },
-  {
-    "objectID": "es/index.html#para-qué-sirve",
-    "href": "es/index.html#para-qué-sirve",
-    "title": "Entender la pobreza más allá de una sola cifra.",
-    "section": "Para qué sirve",
-    "text": "Para qué sirve\nEl Ecuador Poverty Monitor no reemplaza estadísticas oficiales ni crea una autoridad paralela. Su función es convertir información pública compleja en una lectura ordenada, visual y reproducible.\nAyuda a responder qué se está midiendo, qué comparaciones son válidas y qué límites tiene cada estimación."
-  },
-  {
-    "objectID": "es/index.html#cápsula-anual-2025",
-    "href": "es/index.html#cápsula-anual-2025",
-    "title": "Entender la pobreza más allá de una sola cifra.",
-    "section": "Cápsula anual 2025",
-    "text": "Cápsula anual 2025\nEn 2025, la pobreza por ingresos alcanzó 21,95% a nivel nacional. La brecha territorial es marcada: 16,51% en el área urbana y 33,63% en el área rural. La pobreza extrema fue de 6,99% a nivel nacional, 3,69% en el área urbana y 14,07% en el área rural.\n\nEstos resultados se calculan a partir de microdatos públicos de ENEMDU y se comparan con tabulados públicos anuales del INEC con fines de reproducibilidad analítica. No constituyen validación institucional oficial."
-  },
-  {
-    "objectID": "es/index.html#tres-capas",
-    "href": "es/index.html#tres-capas",
-    "title": "Entender la pobreza más allá de una sola cifra.",
-    "section": "Tres capas",
-    "text": "Tres capas\n\n\nFuente\nENEMDU y documentación metodológica oficial.\n\n\nMotor\nProcesamiento reproducible mediante enemduR.\n\n\nProducto\nNarrativa editorial, gráficos e infografías futuras."
+    "objectID": "pages/02_income-poverty.html#next-analytical-layers",
+    "href": "pages/02_income-poverty.html#next-analytical-layers",
+    "title": "Ecuador’s 2025 annual poverty profile",
+    "section": "Next analytical layers",
+    "text": "Next analytical layers\nThe next income-poverty layer can add poverty-line context, precision indicators, historical comparisons, and distributional readings. Deprivation, multidimensional poverty, labor, and province-level analysis should remain separate layers until their own output contracts are complete."
   },
   {
     "objectID": "index.html",
@@ -166,5 +131,103 @@
     "title": "Poverty is not a single number.",
     "section": "Product status",
     "text": "Product status\n\nThis site is under construction.\nThis version establishes the editorial, visual, and methodological foundation. Future phases will add data-building scripts, charts, final infographics, and page-specific analysis.\n\n\n\nOfficial microdata\nBuilt around public ENEMDU source files.\n\n\nMethodological contracts\nPeriods and domains are explicit before analysis.\n\n\nStatistical quality\nRepresentativity and precision guide what can be shown.\n\n\nReproducible output\nQuarto consumes derived products, not raw microdata.\n\n\n\nWhy it matters -&gt; Español -&gt;"
+  },
+  {
+    "objectID": "es/index.html",
+    "href": "es/index.html",
+    "title": "Entender la pobreza más allá de una sola cifra.",
+    "section": "",
+    "text": "Capa ejecutiva en español\n\n\n\nEl sitio principal está escrito en inglés para funcionar como producto de portafolio internacional. Esta página resume la propuesta para lectores ecuatorianos y audiencias locales.\nEl objetivo es explicar pobreza, territorio, empleo y calidad estadística con una narrativa reproducible, sobria y útil.\n\nVer sitio principal en inglés Leer el propósito\n\n\n\n\n\nOrganiza datos públicos de ENEMDU en una lectura clara, separando coyuntura, estructura y límites de representatividad.\n\n\n\nMensual\n\nPulso\n\nContexto nacional, urbano/rural y laboral reciente.\n\n\n\n\nTrimestral\n\nCiudades\n\nSeñales urbanas cuando el dominio de estimación lo permite.\n\n\n\n\nAnual\n\nEstructura\n\nPobreza, privaciones, quintiles y territorio provincial."
+  },
+  {
+    "objectID": "es/index.html#qué-resuelve-el-monitor",
+    "href": "es/index.html#qué-resuelve-el-monitor",
+    "title": "Entender la pobreza más allá de una sola cifra.",
+    "section": "",
+    "text": "Organiza datos públicos de ENEMDU en una lectura clara, separando coyuntura, estructura y límites de representatividad.\n\n\n\nMensual\n\nPulso\n\nContexto nacional, urbano/rural y laboral reciente.\n\n\n\n\nTrimestral\n\nCiudades\n\nSeñales urbanas cuando el dominio de estimación lo permite.\n\n\n\n\nAnual\n\nEstructura\n\nPobreza, privaciones, quintiles y territorio provincial."
+  },
+  {
+    "objectID": "es/index.html#para-qué-sirve",
+    "href": "es/index.html#para-qué-sirve",
+    "title": "Entender la pobreza más allá de una sola cifra.",
+    "section": "Para qué sirve",
+    "text": "Para qué sirve\nEl Ecuador Poverty Monitor no reemplaza estadísticas oficiales ni crea una autoridad paralela. Su función es convertir información pública compleja en una lectura ordenada, visual y reproducible.\nAyuda a responder qué se está midiendo, qué comparaciones son válidas y qué límites tiene cada estimación."
+  },
+  {
+    "objectID": "es/index.html#cápsula-anual-2025",
+    "href": "es/index.html#cápsula-anual-2025",
+    "title": "Entender la pobreza más allá de una sola cifra.",
+    "section": "Cápsula anual 2025",
+    "text": "Cápsula anual 2025\nEn 2025, la pobreza por ingresos alcanzó 21,95% a nivel nacional. La brecha territorial es marcada: 16,51% en el área urbana y 33,63% en el área rural. La pobreza extrema fue de 6,99% a nivel nacional, 3,69% en el área urbana y 14,07% en el área rural.\n\nEstos resultados se calculan a partir de microdatos públicos de ENEMDU y se comparan con tabulados públicos anuales del INEC con fines de reproducibilidad analítica. No constituyen validación institucional oficial."
+  },
+  {
+    "objectID": "es/index.html#tres-capas",
+    "href": "es/index.html#tres-capas",
+    "title": "Entender la pobreza más allá de una sola cifra.",
+    "section": "Tres capas",
+    "text": "Tres capas\n\n\nFuente\nENEMDU y documentación metodológica oficial.\n\n\nMotor\nProcesamiento reproducible mediante enemduR.\n\n\nProducto\nNarrativa editorial, gráficos e infografías futuras."
+  },
+  {
+    "objectID": "pages/01_why-monitor.html",
+    "href": "pages/01_why-monitor.html",
+    "title": "Why build a poverty monitor?",
+    "section": "",
+    "text": "Why it matters\n\n\n\n\nThe problem is not the lack of data. The problem is the missing reading layer.\n\nPoverty data in Ecuador already exist across official bulletins, microdata, methodological notes, poverty lines, labor reports, monthly releases, quarterly files, and annual databases. This monitor turns that scattered public information into a coherent, reproducible, and decision-oriented reading.\n\n\n\n\nThe Ecuador Poverty Monitor connects income, deprivation, territory, labor conditions, and statistical quality into one static Quarto product.\nIt does not replace official statistics. It helps explain how to read them."
+  },
+  {
+    "objectID": "pages/01_why-monitor.html#a-reading-layer-for-public-data",
+    "href": "pages/01_why-monitor.html#a-reading-layer-for-public-data",
+    "title": "Why build a poverty monitor?",
+    "section": "",
+    "text": "The Ecuador Poverty Monitor connects income, deprivation, territory, labor conditions, and statistical quality into one static Quarto product.\nIt does not replace official statistics. It helps explain how to read them."
+  },
+  {
+    "objectID": "pages/01_why-monitor.html#what-is-fragmented",
+    "href": "pages/01_why-monitor.html#what-is-fragmented",
+    "title": "Why build a poverty monitor?",
+    "section": "What is fragmented?",
+    "text": "What is fragmented?\nThe issue is not a shortage of information. The issue is that each release answers only part of the question.\nTables can inform, but poverty analysis needs context: what was measured, what period supports the estimate, which territorial domains are valid, and how precise the result is."
+  },
+  {
+    "objectID": "pages/01_why-monitor.html#what-the-monitor-connects",
+    "href": "pages/01_why-monitor.html#what-the-monitor-connects",
+    "title": "Why build a poverty monitor?",
+    "section": "What the monitor connects",
+    "text": "What the monitor connects\nPoverty can be read through income, basic needs, simultaneous deprivation, territory, and work. Each lens illuminates a different part of the problem.\nWhen those pieces are read separately, the picture remains incomplete. When they are connected, the country becomes easier to understand."
+  },
+  {
+    "objectID": "pages/01_why-monitor.html#source-engine-product",
+    "href": "pages/01_why-monitor.html#source-engine-product",
+    "title": "Why build a poverty monitor?",
+    "section": "Source, engine, product",
+    "text": "Source, engine, product\nENEMDU is Ecuador’s National Survey of Employment, Unemployment, and Underemployment. It is one of the country’s key statistical operations for analyzing work, labor conditions, income, poverty, and household characteristics.\n\n\n1. Official source\nThe base information comes from ENEMDU and its methodological documentation.\n\n\n2. Analytical engine\nenemduR organizes reading, validation, estimation, indicators, and analytical outputs.\n\n\n3. Narrative product\nThis site turns results into a visual and explanatory story."
+  },
+  {
+    "objectID": "pages/01_why-monitor.html#three-speeds-different-questions",
+    "href": "pages/01_why-monitor.html#three-speeds-different-questions",
+    "title": "Why build a poverty monitor?",
+    "section": "Three speeds, different questions",
+    "text": "Three speeds, different questions\nThis product does not treat all periods as if they supported the same type of reading. The monitor is organized into monthly pulse, quarterly city view, and annual structural analysis."
+  },
+  {
+    "objectID": "pages/01_why-monitor.html#golden-rule",
+    "href": "pages/01_why-monitor.html#golden-rule",
+    "title": "Why build a poverty monitor?",
+    "section": "Golden rule",
+    "text": "Golden rule\nNever show a territorial disaggregation that does not match the representativity domain of the period being used. Methodological clarity is part of the product, not a secondary note."
+  },
+  {
+    "objectID": "pages/01_why-monitor.html#a-compact-product-contract",
+    "href": "pages/01_why-monitor.html#a-compact-product-contract",
+    "title": "Why build a poverty monitor?",
+    "section": "A compact product contract",
+    "text": "A compact product contract\nThis monitor adds an integrated reading of poverty, a reproducible architecture based on enemduR, a stronger visual communication layer, a clear distinction between pulse and structure, and a technical discussion of representativity."
+  },
+  {
+    "objectID": "pages/01_why-monitor.html#not-a-parallel-authority",
+    "href": "pages/01_why-monitor.html#not-a-parallel-authority",
+    "title": "Why build a poverty monitor?",
+    "section": "Not a parallel authority",
+    "text": "Not a parallel authority\nThe monitor does not replace INEC or produce official statistics. Its goal is to transform complex public information into an ordered, reproducible, visual, and useful reading of poverty in Ecuador."
   }
 ]
