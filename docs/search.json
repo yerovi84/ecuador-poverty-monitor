@@ -49,11 +49,53 @@
     "text": "What the gaps add\nIncome poverty is 17.12 percentage points higher in rural areas than in urban areas. In relative terms, the rural rate is about 2.04 times the urban rate.\nExtreme poverty is 10.38 percentage points higher in rural areas. The rural extreme-poverty rate is about 3.81 times the urban rate, which means the territorial divide is even steeper at the deepest income threshold."
   },
   {
+    "objectID": "pages/02_income-poverty.html#who-is-more-exposed-to-income-poverty",
+    "href": "pages/02_income-poverty.html#who-is-more-exposed-to-income-poverty",
+    "title": "Ecuador’s 2025 annual poverty profile",
+    "section": "Who is more exposed to income poverty?",
+    "text": "Who is more exposed to income poverty?\nThe annual profile shows that income poverty is not evenly distributed across population groups. Children and adolescents have the highest poverty rate in this first profile layer, and adult education shows a clear gradient: poverty falls as educational attainment rises.\nThe sex difference is much smaller than the age and education gradients, which keeps the interpretation focused on structural exposure rather than small headline differences."
+  },
+  {
+    "objectID": "pages/02_income-poverty.html#income-poverty-by-age-group",
+    "href": "pages/02_income-poverty.html#income-poverty-by-age-group",
+    "title": "Ecuador’s 2025 annual poverty profile",
+    "section": "Income poverty by age group",
+    "text": "Income poverty by age group\nChildren and adolescents show the highest poverty exposure in this first profile layer. The gradient softens across working ages and remains close to 15% among older adults.\n\n0-1430.57%\n15-2423.84%\n25-4418.79%\n45-6414.88%\n65+15.07%\n\nThe child and adolescent rate is roughly twice the rate observed among people aged 45-64."
+  },
+  {
+    "objectID": "pages/02_income-poverty.html#income-poverty-by-adult-education-level",
+    "href": "pages/02_income-poverty.html#income-poverty-by-adult-education-level",
+    "title": "Ecuador’s 2025 annual poverty profile",
+    "section": "Income poverty by adult education level",
+    "text": "Income poverty by adult education level\nIncome poverty declines sharply as educational attainment rises. The contrast between adults with no formal education or literacy center and adults with higher education is the steepest profile shown here.\n\nNo formal education or literacy center29.80%\nPrimary or basic education23.57%\nSecondary or bachillerato15.46%\nHigher education7.71%\n\nThe adult education profile points to a clear structural gradient, not a small compositional difference."
+  },
+  {
+    "objectID": "pages/02_income-poverty.html#income-poverty-by-sex",
+    "href": "pages/02_income-poverty.html#income-poverty-by-sex",
+    "title": "Ecuador’s 2025 annual poverty profile",
+    "section": "Income poverty by sex",
+    "text": "Income poverty by sex\nThe sex gap is narrower than the age and education gradients, so it should be read as a secondary contrast in this first profile layer.\n\nFemale22.62%\nMale21.26%\n\nThe profile gap by sex is modest compared with the differences by age and adult education."
+  },
+  {
+    "objectID": "pages/02_income-poverty.html#extreme-poverty-follows-the-same-vulnerability-pattern",
+    "href": "pages/02_income-poverty.html#extreme-poverty-follows-the-same-vulnerability-pattern",
+    "title": "Ecuador’s 2025 annual poverty profile",
+    "section": "Extreme poverty follows the same vulnerability pattern",
+    "text": "Extreme poverty follows the same vulnerability pattern\nSelected profile estimates point in the same direction: extreme poverty reaches 10.36% for children and adolescents, 11.23% among adults with no formal education or literacy center, and 2.11% among adults with higher education."
+  },
+  {
+    "objectID": "pages/02_income-poverty.html#source-and-interpretation",
+    "href": "pages/02_income-poverty.html#source-and-interpretation",
+    "title": "Ecuador’s 2025 annual poverty profile",
+    "section": "Source and interpretation",
+    "text": "Source and interpretation\nThese profiles are survey-weighted analytical estimates derived from annual ENEMDU microdata. They are not directly benchmarked against public annual tabulations, so they should be read as analytical profiles rather than benchmark-validated headline estimates."
+  },
+  {
     "objectID": "pages/02_income-poverty.html#how-the-evidence-is-grounded",
     "href": "pages/02_income-poverty.html#how-the-evidence-is-grounded",
     "title": "Ecuador’s 2025 annual poverty profile",
     "section": "How the evidence is grounded",
-    "text": "How the evidence is grounded\nThe estimates are computed from public ENEMDU annual microdata and compared with public annual INEC tabulations. The repository documents the processing workflow and generated outputs for reproducibility. This comparison is not an official institutional validation.\nThe page shows aggregated results only. It does not expose survey files, household records, person records, local paths, or private data locations."
+    "text": "How the evidence is grounded\nThe headline estimates are computed from public ENEMDU annual microdata and compared with public annual INEC tabulations. The repository documents the processing workflow and generated outputs for reproducibility. This comparison is not an official institutional validation.\nThe page shows aggregated results only. It does not expose survey files, household records, person records, local paths, or private data locations."
   },
   {
     "objectID": "pages/02_income-poverty.html#technical-benchmark-table",
