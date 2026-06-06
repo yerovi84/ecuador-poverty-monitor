@@ -4,14 +4,21 @@
     "href": "pages/02_income-poverty.html",
     "title": "Ecuador’s 2025 annual poverty profile",
     "section": "",
-    "text": "Income poverty\n\n\n\n\nThe first analytical layer of the monitor turns the annual ENEMDU poverty output into a compact reading of income, territory, and reproducibility.\n\nIn 2025, Ecuador’s annual income poverty rate reached 21.95%. The national figure is the starting point, but the substantive story is territorial: poverty reached 16.51% in urban areas and 33.63% in rural areas.\n\n\n\n\nThis page uses the curated site output data/derived/site/site_kpis.rds. It presents aggregated indicators only: no raw microdata, no private paths, and no individual identifiers."
+    "text": "Income poverty\n\n\n\n\nThis page turns the annual ENEMDU poverty results into a compact reading of income, territory, and benchmark consistency.\n\nIn 2025, Ecuador’s annual income poverty rate reached 21.95%. The national figure is the starting point, but the substantive story is territorial: poverty reached 16.51% in urban areas and 33.63% in rural areas.\n\n\n\n\nThis page summarizes Ecuador’s 2025 annual income poverty profile, focusing on the national rate, the urban-rural gap, extreme poverty, and benchmark consistency."
   },
   {
-    "objectID": "pages/02_income-poverty.html#first-published-analytical-layer",
-    "href": "pages/02_income-poverty.html#first-published-analytical-layer",
+    "objectID": "pages/02_income-poverty.html#what-this-page-shows",
+    "href": "pages/02_income-poverty.html#what-this-page-shows",
     "title": "Ecuador’s 2025 annual poverty profile",
     "section": "",
-    "text": "This page uses the curated site output data/derived/site/site_kpis.rds. It presents aggregated indicators only: no raw microdata, no private paths, and no individual identifiers."
+    "text": "This page summarizes Ecuador’s 2025 annual income poverty profile, focusing on the national rate, the urban-rural gap, extreme poverty, and benchmark consistency."
+  },
+  {
+    "objectID": "pages/02_income-poverty.html#how-to-read-this-page",
+    "href": "pages/02_income-poverty.html#how-to-read-this-page",
+    "title": "Ecuador’s 2025 annual poverty profile",
+    "section": "How to read this page",
+    "text": "How to read this page\n\n\n\n\n\n\n\nField\nContract\n\n\n\n\nUnit of analysis\nPeople represented through ENEMDU survey weights\n\n\nMeasure\nShare of people in households below the income poverty or extreme income poverty line\n\n\nScale\nEstimates are shown as percentages\n\n\nSource\nPublic ENEMDU annual microdata\n\n\nBenchmark\nPublic annual INEC tabulations for 2025\n\n\nValidation type\nReproducibility comparison against a public reference, not institutional validation"
   },
   {
     "objectID": "pages/02_income-poverty.html#income-poverty",
@@ -21,20 +28,6 @@
     "text": "Income poverty\nThe annual estimate shows that roughly one in five people lived in households whose per-capita income did not reach the income poverty line. The national rate was 21.95%.\nThe monitor treats this figure as an annual structural reading, not as a monthly pulse. That distinction matters because the annual ENEMDU file supports a broader territorial and thematic analysis than short-term releases."
   },
   {
-    "objectID": "pages/02_income-poverty.html#urban-rural-gap",
-    "href": "pages/02_income-poverty.html#urban-rural-gap",
-    "title": "Ecuador’s 2025 annual poverty profile",
-    "section": "Urban-rural gap",
-    "text": "Urban-rural gap\nThe urban-rural contrast is the strongest signal in this first layer. Urban income poverty reached 16.51%, while rural income poverty reached 33.63%.\nThat gap is not only a difference in levels. It points to different policy questions: labor income and cost of living in urban areas, and a more structural combination of income generation, access, and territorial vulnerability in rural areas."
-  },
-  {
-    "objectID": "pages/02_income-poverty.html#annual-kpi-summary",
-    "href": "pages/02_income-poverty.html#annual-kpi-summary",
-    "title": "Ecuador’s 2025 annual poverty profile",
-    "section": "Annual KPI summary",
-    "text": "Annual KPI summary\n\n\nIncome poverty\nNational: 21.95%\nUrban: 16.51%\nRural: 33.63%\n\n\nExtreme income poverty\nNational: 6.99%\nUrban: 3.69%\nRural: 14.07%\n\n\nBenchmark status\nAll six annual KPI rows are marked as annual_published_table_close_match in the curated site output."
-  },
-  {
     "objectID": "pages/02_income-poverty.html#a-deeper-income-threshold",
     "href": "pages/02_income-poverty.html#a-deeper-income-threshold",
     "title": "Ecuador’s 2025 annual poverty profile",
@@ -42,25 +35,46 @@
     "text": "A deeper income threshold\nExtreme income poverty reached 6.99% nationally in 2025. The territorial contrast is again sharp: 3.69% in urban areas and 14.07% in rural areas.\nThis layer separates income poverty from extreme income poverty because the two indicators answer different questions. Poverty identifies households below the income poverty line; extreme poverty identifies households below a more restrictive minimum threshold."
   },
   {
-    "objectID": "pages/02_income-poverty.html#benchmark-comparison",
-    "href": "pages/02_income-poverty.html#benchmark-comparison",
+    "objectID": "pages/02_income-poverty.html#urban-rural-gap-at-a-glance",
+    "href": "pages/02_income-poverty.html#urban-rural-gap-at-a-glance",
     "title": "Ecuador’s 2025 annual poverty profile",
-    "section": "Benchmark comparison",
-    "text": "Benchmark comparison\nThe annual output was compared against public 2025 annual INEC tabulations. The published benchmark values are close to the monitor estimates after rounding: 21.8% for national income poverty, 16.3% for urban income poverty, 33.4% for rural income poverty, 6.8% for national extreme poverty, 3.6% for urban extreme poverty, and 13.7% for rural extreme poverty.\nThe comparison is a reproducibility check against a public reference table. It is not an institutional endorsement or a replacement for official statistical releases."
+    "section": "Urban-rural gap at a glance",
+    "text": "Urban-rural gap at a glance\n\n\nIncome poverty gap\n\n\nUrban16.51%\n\n\n\n\n\nRural33.63%\n\n\n\n\n\nRural minus urban: 17.12 percentage points.\nRural rate: 2.04x the urban rate.\n\n\nExtreme poverty gap\n\n\nUrban3.69%\n\n\n\n\n\nRural14.07%\n\n\n\n\n\nRural minus urban: 10.38 percentage points.\nRural rate: 3.81x the urban rate.\n\n\nInterpretive signal\nThe rural disadvantage is visible in both poverty thresholds, but it becomes proportionally sharper for extreme poverty.\nThis is why the monitor keeps income poverty and extreme income poverty separate instead of collapsing them into a single headline."
+  },
+  {
+    "objectID": "pages/02_income-poverty.html#what-the-gaps-add",
+    "href": "pages/02_income-poverty.html#what-the-gaps-add",
+    "title": "Ecuador’s 2025 annual poverty profile",
+    "section": "What the gaps add",
+    "text": "What the gaps add\nIncome poverty is 17.12 percentage points higher in rural areas than in urban areas. In relative terms, the rural rate is about 2.04 times the urban rate.\nExtreme poverty is 10.38 percentage points higher in rural areas. The rural extreme-poverty rate is about 3.81 times the urban rate, which means the territorial divide is even steeper at the deepest income threshold."
+  },
+  {
+    "objectID": "pages/02_income-poverty.html#how-the-evidence-is-grounded",
+    "href": "pages/02_income-poverty.html#how-the-evidence-is-grounded",
+    "title": "Ecuador’s 2025 annual poverty profile",
+    "section": "How the evidence is grounded",
+    "text": "How the evidence is grounded\nThe estimates are computed from public ENEMDU annual microdata and compared with public annual INEC tabulations. The repository documents the processing workflow and generated outputs for reproducibility. This comparison is not an official institutional validation.\nThe page shows aggregated results only. It does not expose survey files, household records, person records, local paths, or private data locations."
+  },
+  {
+    "objectID": "pages/02_income-poverty.html#technical-benchmark-table",
+    "href": "pages/02_income-poverty.html#technical-benchmark-table",
+    "title": "Ecuador’s 2025 annual poverty profile",
+    "section": "Technical benchmark table",
+    "text": "Technical benchmark table\n\n\n\n\n\n\n\n\n\n\n\nIndicator\nDomain\nMonitor estimate\nPublic benchmark\nDifference in pp\nBenchmark check\n\n\n\n\nIncome poverty\nNational\n21.95%\n21.8%\n+0.15\nClose match within 0.5 pp\n\n\nIncome poverty\nUrban\n16.51%\n16.3%\n+0.21\nClose match within 0.5 pp\n\n\nIncome poverty\nRural\n33.63%\n33.4%\n+0.23\nClose match within 0.5 pp\n\n\nExtreme income poverty\nNational\n6.99%\n6.8%\n+0.19\nClose match within 0.5 pp\n\n\nExtreme income poverty\nUrban\n3.69%\n3.6%\n+0.09\nClose match within 0.5 pp\n\n\nExtreme income poverty\nRural\n14.07%\n13.7%\n+0.37\nClose match within 0.5 pp\n\n\n\nClose match means the monitor estimate differs from the public annual benchmark by no more than 0.5 percentage points. The benchmark comparison is a reproducibility check against a public annual reference table; it is not an institutional endorsement or a replacement for official statistical releases."
   },
   {
     "objectID": "pages/02_income-poverty.html#what-this-page-does-not-claim",
     "href": "pages/02_income-poverty.html#what-this-page-does-not-claim",
     "title": "Ecuador’s 2025 annual poverty profile",
     "section": "What this page does not claim",
-    "text": "What this page does not claim\nThis page does not estimate causality, explain every driver of poverty, or create a new official statistic. It presents a stable annual analytical layer built from a derived, aggregated site output.\nThe next versions of the monitor should add uncertainty, representativity notes, and deeper territorial detail only where the survey design supports those domains."
+    "text": "What this page does not claim\nThis page does not estimate causality, explain every driver of poverty, or create a new official statistic. It presents a stable annual analytical reading based on aggregated results.\nDistributional analysis will be added once quintile or income-distribution outputs are available. The next versions of the monitor should add uncertainty, representativity notes, and deeper territorial detail only where the survey design supports those domains."
   },
   {
-    "objectID": "pages/02_income-poverty.html#next-analytical-layers",
-    "href": "pages/02_income-poverty.html#next-analytical-layers",
+    "objectID": "pages/02_income-poverty.html#what-comes-after-the-first-layer",
+    "href": "pages/02_income-poverty.html#what-comes-after-the-first-layer",
     "title": "Ecuador’s 2025 annual poverty profile",
-    "section": "Next analytical layers",
-    "text": "Next analytical layers\nThe next income-poverty layer can add poverty-line context, precision indicators, historical comparisons, and distributional readings. Deprivation, multidimensional poverty, labor, and province-level analysis should remain separate layers until their own output contracts are complete."
+    "section": "What comes after the first layer",
+    "text": "What comes after the first layer\nThe next income-poverty layer can add poverty-line context, precision indicators, historical comparisons, and distributional readings. Deprivation, multidimensional poverty, labor, and province-level analysis should remain separate layers until their own output contracts are complete."
   },
   {
     "objectID": "index.html",

@@ -19,20 +19,37 @@ Income poverty
 # Ecuador's 2025 annual poverty profile
 
 ::: {.story-lede}
-The first analytical layer of the monitor turns the annual ENEMDU poverty output into a compact reading of income, territory, and reproducibility.
+This page turns the annual ENEMDU poverty results into a compact reading of income, territory, and benchmark consistency.
 :::
 
 In 2025, Ecuador's annual income poverty rate reached **21.95%**. The national figure is the starting point, but the substantive story is territorial: poverty reached **16.51%** in urban areas and **33.63%** in rural areas.
 :::
 
 ::: {.internal-hero-card}
-## First published analytical layer
+## What this page shows
 
-This page uses the curated site output `data/derived/site/site_kpis.rds`. It presents aggregated indicators only: no raw microdata, no private paths, and no individual identifiers.
+This page summarizes Ecuador's 2025 annual income poverty profile, focusing on the national rate, the urban-rural gap, extreme poverty, and benchmark consistency.
 :::
 :::
 
 ::: {.content-block .editorial-flow}
+::: {.story-panel}
+::: {.section-kicker}
+Reading contract
+:::
+
+## How to read this page
+
+| Field | Contract |
+|---|---|
+| Unit of analysis | People represented through ENEMDU survey weights |
+| Measure | Share of people in households below the income poverty or extreme income poverty line |
+| Scale | Estimates are shown as percentages |
+| Source | Public ENEMDU annual microdata |
+| Benchmark | Public annual INEC tabulations for 2025 |
+| Validation type | Reproducibility comparison against a public reference, not institutional validation |
+:::
+
 ::: {.story-grid}
 ::: {.story-panel}
 ::: {.section-kicker}
@@ -48,55 +65,6 @@ The monitor treats this figure as an annual structural reading, not as a monthly
 
 ::: {.story-panel}
 ::: {.section-kicker}
-Territorial contrast
-:::
-
-## Urban-rural gap
-
-The urban-rural contrast is the strongest signal in this first layer. Urban income poverty reached **16.51%**, while rural income poverty reached **33.63%**.
-
-That gap is not only a difference in levels. It points to different policy questions: labor income and cost of living in urban areas, and a more structural combination of income generation, access, and territorial vulnerability in rural areas.
-:::
-:::
-
-::: {.infographic-frame}
-::: {.section-kicker}
-Core indicators
-:::
-
-## Annual KPI summary
-
-::: {.frame-grid}
-::: {.frame-cell}
-**Income poverty**
-
-National: **21.95%**
-
-Urban: **16.51%**
-
-Rural: **33.63%**
-:::
-
-::: {.frame-cell}
-**Extreme income poverty**
-
-National: **6.99%**
-
-Urban: **3.69%**
-
-Rural: **14.07%**
-:::
-
-::: {.frame-cell}
-**Benchmark status**
-
-All six annual KPI rows are marked as `annual_published_table_close_match` in the curated site output.
-:::
-:::
-:::
-
-::: {.story-panel}
-::: {.section-kicker}
 Extreme poverty
 :::
 
@@ -106,6 +74,120 @@ Extreme income poverty reached **6.99%** nationally in 2025. The territorial con
 
 This layer separates income poverty from extreme income poverty because the two indicators answer different questions. Poverty identifies households below the income poverty line; extreme poverty identifies households below a more restrictive minimum threshold.
 :::
+:::
+
+::: {.infographic-frame}
+::: {.section-kicker}
+Urban-rural gap
+:::
+
+## Urban-rural gap at a glance
+
+::: {.frame-grid}
+::: {.frame-cell}
+**Income poverty gap**
+
+```{=html}
+<div style="display: grid; gap: 0.75rem;">
+<div>
+<div style="display: flex; justify-content: space-between; gap: 1rem;"><span>Urban</span><strong>16.51%</strong></div>
+<div style="height: 0.7rem; background: #e9ecef; border-radius: 999px; overflow: hidden;">
+<div style="height: 100%; width: 47.17%; background: #52796f;"></div>
+</div>
+</div>
+<div>
+<div style="display: flex; justify-content: space-between; gap: 1rem;"><span>Rural</span><strong>33.63%</strong></div>
+<div style="height: 0.7rem; background: #e9ecef; border-radius: 999px; overflow: hidden;">
+<div style="height: 100%; width: 96.09%; background: #b45f3c;"></div>
+</div>
+</div>
+</div>
+```
+
+Rural minus urban: **17.12 percentage points**.
+
+Rural rate: **2.04x** the urban rate.
+:::
+
+::: {.frame-cell}
+**Extreme poverty gap**
+
+```{=html}
+<div style="display: grid; gap: 0.75rem;">
+<div>
+<div style="display: flex; justify-content: space-between; gap: 1rem;"><span>Urban</span><strong>3.69%</strong></div>
+<div style="height: 0.7rem; background: #e9ecef; border-radius: 999px; overflow: hidden;">
+<div style="height: 100%; width: 24.60%; background: #52796f;"></div>
+</div>
+</div>
+<div>
+<div style="display: flex; justify-content: space-between; gap: 1rem;"><span>Rural</span><strong>14.07%</strong></div>
+<div style="height: 0.7rem; background: #e9ecef; border-radius: 999px; overflow: hidden;">
+<div style="height: 100%; width: 93.80%; background: #b45f3c;"></div>
+</div>
+</div>
+</div>
+```
+
+Rural minus urban: **10.38 percentage points**.
+
+Rural rate: **3.81x** the urban rate.
+:::
+
+::: {.frame-cell}
+**Interpretive signal**
+
+The rural disadvantage is visible in both poverty thresholds, but it becomes proportionally sharper for extreme poverty.
+
+This is why the monitor keeps income poverty and extreme income poverty separate instead of collapsing them into a single headline.
+:::
+:::
+:::
+
+::: {.story-grid}
+::: {.story-panel}
+::: {.section-kicker}
+Derived insights
+:::
+
+## What the gaps add
+
+Income poverty is **17.12 percentage points** higher in rural areas than in urban areas. In relative terms, the rural rate is about **2.04** times the urban rate.
+
+Extreme poverty is **10.38 percentage points** higher in rural areas. The rural extreme-poverty rate is about **3.81** times the urban rate, which means the territorial divide is even steeper at the deepest income threshold.
+:::
+
+::: {.story-panel}
+::: {.section-kicker}
+Source and reproducibility
+:::
+
+## How the evidence is grounded
+
+The estimates are computed from public ENEMDU annual microdata and compared with public annual INEC tabulations. The repository documents the processing workflow and generated outputs for reproducibility. This comparison is not an official institutional validation.
+
+The page shows aggregated results only. It does not expose survey files, household records, person records, local paths, or private data locations.
+:::
+:::
+
+::: {.infographic-frame}
+::: {.section-kicker}
+Benchmark comparison
+:::
+
+## Technical benchmark table
+
+| Indicator | Domain | Monitor estimate | Public benchmark | Difference in pp | Benchmark check |
+|---|---:|---:|---:|---:|---|
+| Income poverty | National | 21.95% | 21.8% | +0.15 | Close match within 0.5 pp |
+| Income poverty | Urban | 16.51% | 16.3% | +0.21 | Close match within 0.5 pp |
+| Income poverty | Rural | 33.63% | 33.4% | +0.23 | Close match within 0.5 pp |
+| Extreme income poverty | National | 6.99% | 6.8% | +0.19 | Close match within 0.5 pp |
+| Extreme income poverty | Urban | 3.69% | 3.6% | +0.09 | Close match within 0.5 pp |
+| Extreme income poverty | Rural | 14.07% | 13.7% | +0.37 | Close match within 0.5 pp |
+
+Close match means the monitor estimate differs from the public annual benchmark by no more than 0.5 percentage points. The benchmark comparison is a reproducibility check against a public annual reference table; it is not an institutional endorsement or a replacement for official statistical releases.
+:::
 
 ::: {.method-note}
 Estimates are computed from public ENEMDU microdata and compared against public annual INEC tabulations for analytical reproducibility. This is not an official institutional validation.
@@ -114,58 +196,50 @@ Estimates are computed from public ENEMDU microdata and compared against public 
 ::: {.story-grid}
 ::: {.story-panel}
 ::: {.section-kicker}
-Reproducibility
-:::
-
-## Benchmark comparison
-
-The annual output was compared against public 2025 annual INEC tabulations. The published benchmark values are close to the monitor estimates after rounding: **21.8%** for national income poverty, **16.3%** for urban income poverty, **33.4%** for rural income poverty, **6.8%** for national extreme poverty, **3.6%** for urban extreme poverty, and **13.7%** for rural extreme poverty.
-
-The comparison is a reproducibility check against a public reference table. It is not an institutional endorsement or a replacement for official statistical releases.
-:::
-
-::: {.story-panel}
-::: {.section-kicker}
 Interpretation limits
 :::
 
 ## What this page does not claim
 
-This page does not estimate causality, explain every driver of poverty, or create a new official statistic. It presents a stable annual analytical layer built from a derived, aggregated site output.
+This page does not estimate causality, explain every driver of poverty, or create a new official statistic. It presents a stable annual analytical reading based on aggregated results.
 
-The next versions of the monitor should add uncertainty, representativity notes, and deeper territorial detail only where the survey design supports those domains.
-:::
+Distributional analysis will be added once quintile or income-distribution outputs are available. The next versions of the monitor should add uncertainty, representativity notes, and deeper territorial detail only where the survey design supports those domains.
 :::
 
-::: {.data-warning}
-## Next analytical layers
+::: {.story-panel}
+::: {.section-kicker}
+Next analytical layers
+:::
+
+## What comes after the first layer
 
 The next income-poverty layer can add poverty-line context, precision indicators, historical comparisons, and distributional readings. Deprivation, multidimensional poverty, labor, and province-level analysis should remain separate layers until their own output contracts are complete.
+:::
 :::
 
 ::: {.proof-strip}
 ::: {.proof-item}
-**Curated site output**
+**Public source**
 
-The page is based on `site_kpis.rds`, not raw survey files.
+Based on public ENEMDU annual microdata.
+:::
+
+::: {.proof-item}
+**Benchmark comparison**
+
+Compared with public annual INEC tabulations.
 :::
 
 ::: {.proof-item}
 **Annual scope**
 
-The indicators use the annual 2025 ENEMDU structure.
+Designed as a structural annual reading, not a monthly pulse.
 :::
 
 ::: {.proof-item}
-**Public benchmark**
+**Interpretation limits**
 
-The comparison uses public annual INEC tabulations.
-:::
-
-::: {.proof-item}
-**Methodological caution**
-
-Reproducibility is documented without claiming institutional validation.
+Useful for analytical reading, not a replacement for official statistical releases.
 :::
 :::
 
