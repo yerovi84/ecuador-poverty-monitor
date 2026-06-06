@@ -13,7 +13,13 @@ epm_required_site_outputs <- function(config) {
     .epm_abort("Derived layer `site` must define outputs in config/paths.yml.")
   }
 
-  required <- c("site_kpis", "site_periods", "site_sources", "site_quality_flags")
+  required <- c(
+    "site_kpis",
+    "site_income_poverty_profiles",
+    "site_periods",
+    "site_sources",
+    "site_quality_flags"
+  )
   missing <- setdiff(required, names(outputs))
 
   if (length(missing) > 0L) {
@@ -166,6 +172,49 @@ epm_empty_site_kpis <- function() {
   )
 }
 
+epm_empty_site_income_poverty_profiles <- function() {
+  data.frame(
+    site_section = character(),
+    display_priority = integer(),
+    period = character(),
+    survey_type = character(),
+    indicator_id = character(),
+    indicator_label = character(),
+    indicator_family = character(),
+    domain = character(),
+    domain_value = character(),
+    profile_dimension = character(),
+    profile_dimension_label = character(),
+    profile_value = character(),
+    profile_label = character(),
+    estimate = numeric(),
+    estimate_type = character(),
+    unit = character(),
+    display_estimate = numeric(),
+    display_unit = character(),
+    se = numeric(),
+    cv = numeric(),
+    n = integer(),
+    df = numeric(),
+    weighted_n = numeric(),
+    precision_flag = character(),
+    universe = character(),
+    weight = character(),
+    method_status = character(),
+    profile_status = character(),
+    benchmark_check = character(),
+    benchmark_estimate = numeric(),
+    benchmark_difference_pp = numeric(),
+    benchmark_status = character(),
+    official_alignment = character(),
+    source_layer = character(),
+    source_note = character(),
+    method_note = character(),
+    source_reference = character(),
+    stringsAsFactors = FALSE
+  )
+}
+
 epm_site_kpi_priority <- function(indicator_id, domain, domain_value) {
   indicator_rank <- match(indicator_id, c("poverty_rate", "extreme_poverty_rate"))
   domain_rank <- ifelse(
@@ -261,11 +310,145 @@ epm_build_site_kpis <- function(config) {
   out
 }
 
+epm_site_profile_priority <- function(indicator_id, profile_dimension, profile_value) {
+  dimension_rank <- match(profile_dimension, c("sex", "age_group", "education_level_adult"))
+  indicator_rank <- match(indicator_id, c("poverty_rate", "extreme_poverty_rate"))
+
+  value_order <- list(
+    sex = c("female", "male"),
+    age_group = c("age_0_14", "age_15_24", "age_25_44", "age_45_64", "age_65_plus"),
+    education_level_adult = c(
+      "no_formal_or_literacy",
+      "primary_or_basic",
+      "secondary_or_bachillerato",
+      "higher"
+    )
+  )
+
+  value_rank <- match(profile_value, value_order[[profile_dimension]])
+
+  if (is.na(dimension_rank)) {
+    dimension_rank <- 99L
+  }
+
+  if (is.na(indicator_rank)) {
+    indicator_rank <- 99L
+  }
+
+  if (is.na(value_rank)) {
+    value_rank <- 99L
+  }
+
+  as.integer((dimension_rank - 1L) * 100L + (indicator_rank - 1L) * 20L + value_rank)
+}
+
+epm_build_site_income_poverty_profiles <- function(config) {
+  annual_path <- epm_output_path("annual", "annual_income_poverty_profiles", config$paths)
+
+  if (!file.exists(annual_path)) {
+    message("Annual income poverty profile output not found; writing empty site_income_poverty_profiles schema.")
+    return(epm_empty_site_income_poverty_profiles())
+  }
+
+  annual <- epm_read_output(annual_path, required = TRUE)
+
+  if (!is.data.frame(annual)) {
+    .epm_abort("Annual income poverty profile output must be a data frame before building site profiles.")
+  }
+
+  keep <- c(
+    "period",
+    "survey_type",
+    "indicator_id",
+    "indicator_label",
+    "indicator_family",
+    "domain",
+    "domain_value",
+    "profile_dimension",
+    "profile_dimension_label",
+    "profile_value",
+    "profile_label",
+    "estimate",
+    "estimate_type",
+    "unit",
+    "display_estimate",
+    "display_unit",
+    "se",
+    "cv",
+    "n",
+    "df",
+    "weighted_n",
+    "precision_flag",
+    "universe",
+    "weight",
+    "method_status",
+    "profile_status",
+    "benchmark_check",
+    "benchmark_estimate",
+    "benchmark_difference_pp",
+    "benchmark_status",
+    "official_alignment",
+    "source_layer",
+    "source_note",
+    "method_note",
+    "source_reference"
+  )
+
+  missing <- setdiff(keep, names(annual))
+
+  if (length(missing) > 0L) {
+    .epm_abort(sprintf(
+      "Annual income poverty profile output is missing site profile column(s): %s",
+      paste(missing, collapse = ", ")
+    ))
+  }
+
+  out <- annual[keep]
+  out$site_section <- "income_poverty_profiles"
+  out$display_priority <- mapply(
+    epm_site_profile_priority,
+    out$indicator_id,
+    out$profile_dimension,
+    out$profile_value,
+    USE.NAMES = FALSE
+  )
+
+  out <- out[c("site_section", "display_priority", keep)]
+  out <- out[order(out$display_priority, out$indicator_id, out$profile_dimension, out$profile_value), , drop = FALSE]
+  row.names(out) <- NULL
+
+  forbidden <- epm_detect_forbidden_paths(out, config$paths$validation$forbidden_patterns)
+
+  if (length(forbidden) > 0L) {
+    .epm_abort("site_income_poverty_profiles contains private path-like values.")
+  }
+
+  identifier_columns <- intersect(
+    names(out),
+    c("p01", "id_persona", "id_hogar", "idhogar", "id_persona_hogar")
+  )
+
+  if (length(identifier_columns) > 0L) {
+    .epm_abort(sprintf(
+      "site_income_poverty_profiles contains identifier column(s): %s",
+      paste(identifier_columns, collapse = ", ")
+    ))
+  }
+
+  if ("build_timestamp" %in% names(out) && any(!is.na(out$build_timestamp))) {
+    .epm_abort("site_income_poverty_profiles must not contain dynamic build timestamps.")
+  }
+
+  out
+}
+
 epm_save_site_metadata <- function(output_name, data, config) {
   path <- epm_output_path("site", output_name, config$paths)
   epm_make_dir(dirname(path))
 
-  if (!identical(output_name, "site_kpis") && file.exists(path)) {
+  dynamic_outputs <- c("site_kpis", "site_income_poverty_profiles")
+
+  if (!output_name %in% dynamic_outputs && file.exists(path)) {
     return(normalizePath(path, winslash = "/", mustWork = TRUE))
   }
 
@@ -286,6 +469,7 @@ invisible(epm_make_dir(epm_layer_derived_dir("site", config$paths)))
 
 metadata <- list(
   site_kpis = epm_build_site_kpis(config),
+  site_income_poverty_profiles = epm_build_site_income_poverty_profiles(config),
   site_periods = epm_build_site_periods(config),
   site_sources = epm_build_site_sources(config),
   site_quality_flags = epm_build_site_quality_flags(config)
