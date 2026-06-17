@@ -16,6 +16,7 @@ epm_required_site_outputs <- function(config) {
   required <- c(
     "site_kpis",
     "site_income_poverty_profiles",
+    "site_deprivation_multidimensional_kpis",
     "site_periods",
     "site_sources",
     "site_quality_flags"
@@ -215,6 +216,62 @@ epm_empty_site_income_poverty_profiles <- function() {
   )
 }
 
+epm_bind_rows_fill <- function(outputs) {
+  outputs <- outputs[vapply(outputs, is.data.frame, logical(1))]
+  outputs <- outputs[vapply(outputs, nrow, integer(1)) > 0L]
+
+  if (length(outputs) == 0L) {
+    return(data.frame())
+  }
+
+  all_cols <- unique(unlist(lapply(outputs, names), use.names = FALSE))
+  normalized <- lapply(outputs, function(x) {
+    missing <- setdiff(all_cols, names(x))
+
+    for (col in missing) {
+      x[[col]] <- NA
+    }
+
+    x[all_cols]
+  })
+
+  out <- do.call(rbind, normalized)
+  row.names(out) <- NULL
+  out
+}
+
+epm_empty_site_deprivation_multidimensional_kpis <- function() {
+  data.frame(
+    site_section = character(),
+    display_priority = integer(),
+    period = character(),
+    survey_type = character(),
+    domain = character(),
+    domain_value = character(),
+    indicator_id = character(),
+    indicator_label = character(),
+    indicator_family = character(),
+    estimate = numeric(),
+    display_estimate = numeric(),
+    display_unit = character(),
+    weighted_n = numeric(),
+    unweighted_n = integer(),
+    analysis_unit = character(),
+    universe = character(),
+    source = character(),
+    method_status = character(),
+    benchmark_status = character(),
+    benchmark_estimate = numeric(),
+    benchmark_difference_pp = numeric(),
+    quality_flag = character(),
+    public_note = character(),
+    source_layer = character(),
+    official_alignment = character(),
+    method_note = character(),
+    stringsAsFactors = FALSE
+  )
+}
+
 epm_site_kpi_priority <- function(indicator_id, domain, domain_value) {
   indicator_rank <- match(indicator_id, c("poverty_rate", "extreme_poverty_rate"))
   domain_rank <- ifelse(
@@ -305,6 +362,226 @@ epm_build_site_kpis <- function(config) {
       "site_kpis contains identifier column(s): %s",
       paste(identifier_columns, collapse = ", ")
     ))
+  }
+
+  out
+}
+
+epm_site_deprivation_priority <- function(indicator_id, domain) {
+  indicator_rank <- match(
+    indicator_id,
+    c(
+      "poverty_rate",
+      "extreme_poverty_rate",
+      "nbi_rate",
+      "extreme_nbi_rate",
+      "tpm_rate",
+      "tpem_rate"
+    )
+  )
+  domain_rank <- match(domain, c("national", "urban", "rural"))
+
+  if (is.na(indicator_rank)) {
+    indicator_rank <- 99L
+  }
+
+  if (is.na(domain_rank)) {
+    domain_rank <- 99L
+  }
+
+  as.integer((indicator_rank - 1L) * 10L + domain_rank)
+}
+
+epm_site_deprivation_domain <- function(domain, domain_value) {
+  value <- as.character(domain_value)
+  fallback <- as.character(domain)
+  out <- ifelse(!is.na(value) & nzchar(value), value, fallback)
+  out[out == "area"] <- fallback[out == "area"]
+  out
+}
+
+epm_site_output_col <- function(data, col, default) {
+  if (col %in% names(data)) {
+    return(data[[col]])
+  }
+
+  rep(default, nrow(data))
+}
+
+epm_prepare_income_for_deprivation_site <- function(annual) {
+  if (!is.data.frame(annual) || nrow(annual) == 0L) {
+    return(epm_empty_site_deprivation_multidimensional_kpis())
+  }
+
+  annual <- annual[annual$indicator_id %in% c("poverty_rate", "extreme_poverty_rate"), , drop = FALSE]
+
+  if (nrow(annual) == 0L) {
+    return(epm_empty_site_deprivation_multidimensional_kpis())
+  }
+
+  domain <- epm_site_deprivation_domain(annual$domain, annual$domain_value)
+
+  data.frame(
+    period = as.character(annual$period),
+    survey_type = as.character(annual$survey_type),
+    domain = domain,
+    domain_value = domain,
+    indicator_id = as.character(annual$indicator_id),
+    indicator_label = as.character(annual$indicator_label),
+    indicator_family = as.character(annual$indicator_family),
+    estimate = as.numeric(annual$estimate),
+    display_estimate = as.numeric(annual$display_estimate),
+    display_unit = as.character(annual$display_unit),
+    weighted_n = as.numeric(annual$weighted_n),
+    unweighted_n = as.integer(annual$n),
+    analysis_unit = "people in households",
+    universe = as.character(annual$universe),
+    source = "Public ENEMDU annual 2025 microdata",
+    method_status = as.character(annual$method_status),
+    benchmark_status = as.character(annual$benchmark_status),
+    benchmark_estimate = as.numeric(annual$benchmark_estimate),
+    benchmark_difference_pp = as.numeric(annual$benchmark_difference_pp),
+    quality_flag = as.character(annual$precision_flag),
+    public_note = "Income poverty estimates are survey-weighted analytical estimates with annual public-tabulation benchmark comparison.",
+    source_layer = as.character(annual$source_layer),
+    official_alignment = as.character(annual$official_alignment),
+    method_note = as.character(annual$method_note),
+    stringsAsFactors = FALSE
+  )
+}
+
+epm_prepare_deprivation_for_site <- function(annual) {
+  if (!is.data.frame(annual) || nrow(annual) == 0L) {
+    return(epm_empty_site_deprivation_multidimensional_kpis())
+  }
+
+  annual <- annual[
+    annual$indicator_id %in% c("nbi_rate", "extreme_nbi_rate", "tpm_rate", "tpem_rate"),
+    ,
+    drop = FALSE
+  ]
+
+  if (nrow(annual) == 0L) {
+    return(epm_empty_site_deprivation_multidimensional_kpis())
+  }
+
+  domain <- epm_site_deprivation_domain(annual$domain, annual$domain_value)
+  quality_flag <- as.character(epm_site_output_col(annual, "quality_flag", NA_character_))
+  missing_quality <- is.na(quality_flag) | !nzchar(quality_flag)
+  quality_flag[missing_quality] <- as.character(
+    epm_site_output_col(annual, "precision_flag", NA_character_)
+  )[missing_quality]
+
+  data.frame(
+    period = as.character(annual$period),
+    survey_type = as.character(annual$survey_type),
+    domain = domain,
+    domain_value = domain,
+    indicator_id = as.character(annual$indicator_id),
+    indicator_label = as.character(annual$indicator_label),
+    indicator_family = as.character(annual$indicator_family),
+    estimate = as.numeric(annual$estimate),
+    display_estimate = as.numeric(annual$display_estimate),
+    display_unit = as.character(annual$display_unit),
+    weighted_n = as.numeric(annual$weighted_n),
+    unweighted_n = as.integer(annual$n),
+    analysis_unit = as.character(annual$analysis_unit),
+    universe = as.character(annual$universe),
+    source = as.character(annual$source),
+    method_status = as.character(annual$method_status),
+    benchmark_status = as.character(annual$benchmark_status),
+    benchmark_estimate = as.numeric(annual$benchmark_estimate),
+    benchmark_difference_pp = as.numeric(annual$benchmark_difference_pp),
+    quality_flag = quality_flag,
+    public_note = as.character(annual$public_note),
+    source_layer = as.character(annual$source_layer),
+    official_alignment = as.character(annual$official_alignment),
+    method_note = as.character(annual$method_note),
+    stringsAsFactors = FALSE
+  )
+}
+
+epm_build_site_deprivation_multidimensional_kpis <- function(config) {
+  income_path <- epm_output_path("annual", "annual_income_poverty", config$paths)
+  deprivation_path <- epm_output_path(
+    "annual",
+    "annual_deprivation_multidimensional_poverty",
+    config$paths
+  )
+
+  if (!file.exists(income_path) && !file.exists(deprivation_path)) {
+    message("Annual poverty/deprivation outputs not found; writing empty site_deprivation_multidimensional_kpis schema.")
+    return(epm_empty_site_deprivation_multidimensional_kpis())
+  }
+
+  income <- if (file.exists(income_path)) {
+    epm_prepare_income_for_deprivation_site(epm_read_output(income_path, required = TRUE))
+  } else {
+    epm_empty_site_deprivation_multidimensional_kpis()
+  }
+
+  deprivation <- if (file.exists(deprivation_path)) {
+    epm_prepare_deprivation_for_site(epm_read_output(deprivation_path, required = TRUE))
+  } else {
+    epm_empty_site_deprivation_multidimensional_kpis()
+  }
+
+  out <- epm_bind_rows_fill(list(income, deprivation))
+
+  if (nrow(out) == 0L) {
+    return(epm_empty_site_deprivation_multidimensional_kpis())
+  }
+
+  out$site_section <- "deprivation_multidimensional_poverty"
+  out$display_priority <- mapply(
+    epm_site_deprivation_priority,
+    out$indicator_id,
+    out$domain,
+    USE.NAMES = FALSE
+  )
+
+  keep <- names(epm_empty_site_deprivation_multidimensional_kpis())
+  out <- out[keep]
+  out <- out[order(out$display_priority, out$indicator_id, out$domain), , drop = FALSE]
+  row.names(out) <- NULL
+
+  required_indicators <- c(
+    "poverty_rate",
+    "extreme_poverty_rate",
+    "nbi_rate",
+    "extreme_nbi_rate",
+    "tpm_rate",
+    "tpem_rate"
+  )
+  missing_indicators <- setdiff(required_indicators, unique(out$indicator_id))
+
+  if (length(missing_indicators) > 0L) {
+    .epm_abort(sprintf(
+      "site_deprivation_multidimensional_kpis is missing indicator(s): %s",
+      paste(missing_indicators, collapse = ", ")
+    ))
+  }
+
+  forbidden <- epm_detect_forbidden_paths(out, config$paths$validation$forbidden_patterns)
+
+  if (length(forbidden) > 0L) {
+    .epm_abort("site_deprivation_multidimensional_kpis contains private path-like values.")
+  }
+
+  identifier_columns <- intersect(
+    names(out),
+    c("p01", "id_persona", "id_hogar", "idhogar", "id_persona_hogar")
+  )
+
+  if (length(identifier_columns) > 0L) {
+    .epm_abort(sprintf(
+      "site_deprivation_multidimensional_kpis contains identifier column(s): %s",
+      paste(identifier_columns, collapse = ", ")
+    ))
+  }
+
+  if ("build_timestamp" %in% names(out)) {
+    .epm_abort("site_deprivation_multidimensional_kpis must not expose build_timestamp.")
   }
 
   out
@@ -446,7 +723,11 @@ epm_save_site_metadata <- function(output_name, data, config) {
   path <- epm_output_path("site", output_name, config$paths)
   epm_make_dir(dirname(path))
 
-  dynamic_outputs <- c("site_kpis", "site_income_poverty_profiles")
+  dynamic_outputs <- c(
+    "site_kpis",
+    "site_income_poverty_profiles",
+    "site_deprivation_multidimensional_kpis"
+  )
 
   if (!output_name %in% dynamic_outputs && file.exists(path)) {
     return(normalizePath(path, winslash = "/", mustWork = TRUE))
@@ -470,6 +751,7 @@ invisible(epm_make_dir(epm_layer_derived_dir("site", config$paths)))
 metadata <- list(
   site_kpis = epm_build_site_kpis(config),
   site_income_poverty_profiles = epm_build_site_income_poverty_profiles(config),
+  site_deprivation_multidimensional_kpis = epm_build_site_deprivation_multidimensional_kpis(config),
   site_periods = epm_build_site_periods(config),
   site_sources = epm_build_site_sources(config),
   site_quality_flags = epm_build_site_quality_flags(config)

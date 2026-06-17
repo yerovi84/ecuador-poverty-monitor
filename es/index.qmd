@@ -26,7 +26,7 @@ El objetivo es explicar pobreza, territorio, empleo y calidad estadística con u
 
 ::: {.hero-actions}
 [Ver sitio principal en inglés](../index.qmd){.btn-monitor .btn-primary-monitor}
-[Leer el propósito](../pages/01_why-monitor.qmd){.btn-monitor .btn-secondary-monitor}
+[Ver pobreza por ingresos](../pages/02_income-poverty.qmd){.btn-monitor .btn-secondary-monitor}
 :::
 :::
 
@@ -125,11 +125,11 @@ Narrativa editorial, gráficos e infografías futuras.
 :::
 
 ::: {.method-note}
-La versión actual fija identidad visual, navegación, estructura narrativa y componentes CSS reutilizables. Las visualizaciones finales y el pipeline de datos vendrán en fases posteriores.
+La capa anual de pobreza por ingresos 2025 ya está publicada. La futura capa de privaciones y pobreza multidimensional existe por ahora como propuesta metodológica, sin cifras hasta que existan outputs reproducibles y curados para publicación.
 :::
 
 ::: {.page-nav}
 [Inglés ->](../index.qmd)
-[Propósito del monitor ->](../pages/01_why-monitor.qmd)
+[Pobreza por ingresos ->](../pages/02_income-poverty.qmd)
 :::
 :::

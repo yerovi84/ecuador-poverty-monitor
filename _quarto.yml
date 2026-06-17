@@ -25,8 +25,8 @@ website:
         menu:
           - text: "Income poverty"
             href: pages/02_income-poverty.qmd
-          - text: "Deprivation and multidimensional poverty"
-            href: index.qmd#analytical-roadmap
+          - text: "Deprivation & multidimensional poverty"
+            href: pages/03_deprivation-multidimensional-poverty.qmd
           - text: "Territory and labor"
             href: index.qmd#analytical-roadmap
           - text: "Statistical quality"

@@ -1,0 +1,482 @@
+---
+title: "Deprivation and multidimensional poverty"
+subtitle: "Annual 2025 executive profile of income poverty, basic-needs deprivation and multidimensional poverty."
+description: "Annual 2025 executive profile of income poverty, NBI and multidimensional poverty indicators for Ecuador, based on curated aggregate site outputs."
+format:
+  html:
+    page-layout: full
+    toc: false
+    code-tools: false
+    title-block-style: none
+    body-class: epm-internal
+---
+
+```{=html}
+<style>
+.deprivation-hero {
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 400px);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  overflow-x: clip;
+}
+
+.deprivation-hero .internal-hero-copy {
+  min-width: 0;
+  max-width: 760px;
+}
+
+.deprivation-hero h1 {
+  font-size: clamp(3rem, 5.8vw, 5.2rem);
+  line-height: 1;
+  max-width: 720px;
+  text-wrap: balance;
+  overflow-wrap: normal;
+}
+
+.deprivation-hero .story-lede {
+  font-size: clamp(1.18rem, 1.7vw, 1.5rem);
+  max-width: 680px;
+}
+
+.deprivation-hero .internal-hero-copy > p {
+  max-width: 690px;
+}
+
+.deprivation-scope-card {
+  align-self: center;
+  min-width: 0;
+  padding: clamp(1.15rem, 2.2vw, 1.55rem);
+}
+
+.deprivation-scope-card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.9rem;
+}
+
+.deprivation-scope-list {
+  display: grid;
+  gap: 0.72rem;
+  margin: 0;
+}
+
+.deprivation-scope-list div {
+  display: grid;
+  gap: 0.2rem;
+  grid-template-columns: minmax(5rem, 0.45fr) minmax(0, 1fr);
+  align-items: baseline;
+  border-top: 1px solid rgba(18, 48, 71, 0.1);
+  padding-top: 0.72rem;
+}
+
+.deprivation-scope-list div:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.deprivation-scope-list dt {
+  color: var(--epm-muted);
+  font-size: 0.76rem;
+  font-weight: 760;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.deprivation-scope-list dd {
+  color: var(--epm-navy);
+  font-size: 0.98rem;
+  font-weight: 720;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .deprivation-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .deprivation-hero h1 {
+    font-size: clamp(2.6rem, 14vw, 4.2rem);
+  }
+
+  .deprivation-scope-card {
+    align-self: stretch;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .deprivation-scope-list div {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+</style>
+```
+
+```{r}
+#| include: false
+site_output_path <- file.path("data", "derived", "site", "site_deprivation_multidimensional_kpis.rds")
+if (!file.exists(site_output_path)) {
+  site_output_path <- file.path("..", "data", "derived", "site", "site_deprivation_multidimensional_kpis.rds")
+}
+
+kpis <- readRDS(site_output_path)
+indicator_order <- c(
+  "poverty_rate",
+  "extreme_poverty_rate",
+  "nbi_rate",
+  "extreme_nbi_rate",
+  "tpm_rate",
+  "tpem_rate"
+)
+domain_order <- c("national", "urban", "rural")
+
+pick_kpi <- function(target_indicator, target_domain) {
+  rows <- subset(kpis, indicator_id == target_indicator & domain == target_domain)
+  if (nrow(rows) == 0L) {
+    return(NULL)
+  }
+  head(rows, 1L)
+}
+
+kpi_value <- function(indicator_id, domain) {
+  row <- pick_kpi(indicator_id, domain)
+  if (is.null(row)) {
+    return(NA_real_)
+  }
+  as.numeric(row$display_estimate)
+}
+
+fmt_pct <- function(value) {
+  if (is.na(value)) {
+    return("Not available")
+  }
+  sprintf("%.1f%%", value)
+}
+
+fmt_num <- function(value) {
+  if (is.na(value)) {
+    return("n.a.")
+  }
+  format(round(value), big.mark = ",", scientific = FALSE)
+}
+
+indicator_label <- function(indicator_id) {
+  switch(
+    indicator_id,
+    poverty_rate = "Income poverty",
+    extreme_poverty_rate = "Extreme income poverty",
+    nbi_rate = "NBI / Unsatisfied Basic Needs poverty",
+    extreme_nbi_rate = "Extreme NBI",
+    tpm_rate = "Multidimensional poverty / TPM",
+    tpem_rate = "Extreme multidimensional poverty / TPEM",
+    indicator_id
+  )
+}
+
+indicator_short <- function(indicator_id) {
+  switch(
+    indicator_id,
+    poverty_rate = "Income",
+    extreme_poverty_rate = "Extreme income",
+    nbi_rate = "NBI",
+    extreme_nbi_rate = "Extreme NBI",
+    tpm_rate = "TPM",
+    tpem_rate = "TPEM",
+    indicator_id
+  )
+}
+
+indicator_family_label <- function(indicator_id) {
+  switch(
+    indicator_id,
+    poverty_rate = "Monetary poverty",
+    extreme_poverty_rate = "Monetary poverty",
+    nbi_rate = "Basic-needs deprivation",
+    extreme_nbi_rate = "Basic-needs deprivation",
+    tpm_rate = "Multidimensional poverty",
+    tpem_rate = "Multidimensional poverty",
+    "Analytical indicator"
+  )
+}
+
+indicator_note <- function(indicator_id) {
+  switch(
+    indicator_id,
+    poverty_rate = "Household per-capita income below the poverty line.",
+    extreme_poverty_rate = "Household per-capita income below the extreme poverty line.",
+    nbi_rate = "People in households with at least one unsatisfied basic need.",
+    extreme_nbi_rate = "People in households with two or more unsatisfied basic needs.",
+    tpm_rate = "People with overlapping weighted deprivations above the TPM threshold.",
+    tpem_rate = "People with severe overlapping weighted deprivations above the TPEM threshold.",
+    "Survey-weighted analytical estimate."
+  )
+}
+
+status_label <- function(status) {
+  if (is.na(status) || !nzchar(status)) {
+    return("Method status not available")
+  }
+  switch(
+    status,
+    annual_published_table_close_match = "Benchmark close match",
+    not_directly_benchmarked_against_public_annual_tabulations = "Not directly benchmarked",
+    benchmark_comparison_outside_tolerance = "Benchmark requires review",
+    status
+  )
+}
+
+domain_label <- function(domain) {
+  switch(
+    domain,
+    national = "National",
+    urban = "Urban",
+    rural = "Rural",
+    domain
+  )
+}
+
+kpi_card <- function(indicator_id) {
+  row <- pick_kpi(indicator_id, "national")
+  if (is.null(row)) {
+    return("")
+  }
+  paste0(
+    '<div class="proof-item">',
+    "<strong>", indicator_label(indicator_id), "</strong>",
+    '<div style="font-size: 2rem; line-height: 1.05; font-weight: 800; margin: 0.35rem 0;">',
+    fmt_pct(row$display_estimate),
+    "</div>",
+    "<p>", indicator_note(indicator_id), "</p>",
+    '<p><strong>', status_label(row$benchmark_status), "</strong></p>",
+    "</div>"
+  )
+}
+
+table_cell <- function(indicator_id, domain) {
+  value <- kpi_value(indicator_id, domain)
+  paste0("<td>", fmt_pct(value), "</td>")
+}
+
+domain_table_row <- function(domain) {
+  cells <- vapply(
+    indicator_order,
+    table_cell,
+    character(1),
+    domain = domain
+  )
+  paste0("<tr><th>", domain_label(domain), "</th>", paste(cells, collapse = ""), "</tr>")
+}
+
+rural_gap <- function(indicator_id) {
+  kpi_value(indicator_id, "rural") - kpi_value(indicator_id, "urban")
+}
+
+rural_higher <- sum(vapply(
+  indicator_order,
+  function(indicator_id) kpi_value(indicator_id, "rural") > kpi_value(indicator_id, "urban"),
+  logical(1)
+), na.rm = TRUE)
+
+gap_data <- data.frame(
+  indicator_id = indicator_order,
+  gap = vapply(indicator_order, rural_gap, numeric(1)),
+  stringsAsFactors = FALSE
+)
+top_gap_row <- subset(gap_data, gap == max(gap, na.rm = TRUE))
+top_gap_indicator <- as.character(head(top_gap_row$indicator_id, 1L))
+
+income_national <- kpi_value("poverty_rate", "national")
+nbi_national <- kpi_value("nbi_rate", "national")
+tpm_national <- kpi_value("tpm_rate", "national")
+tpem_national <- kpi_value("tpem_rate", "national")
+tpm_rural_ratio <- kpi_value("tpm_rate", "rural") / kpi_value("tpm_rate", "urban")
+weighted_n_national <- fmt_num(pick_kpi("poverty_rate", "national")$weighted_n)
+ipm_benchmark_status <- status_label(pick_kpi("tpm_rate", "national")$benchmark_status)
+```
+
+::: {.internal-hero .internal-hero-wide .deprivation-hero}
+::: {.internal-hero-copy}
+::: {.section-kicker}
+Annual 2025 executive profile
+:::
+
+# Deprivation & multidimensional poverty
+
+::: {.story-lede}
+Annual 2025 executive profile of income poverty, basic-needs deprivation and multidimensional poverty.
+:::
+
+This profile reads Ecuador's 2025 annual ENEMDU evidence across monetary poverty, structural basic-needs deprivation, and multidimensional poverty. Monetary poverty, basic-needs deprivation and multidimensional poverty capture different dimensions of welfare, so they should be read together rather than collapsed into one headline.
+:::
+
+::: {.internal-hero-card .deprivation-scope-card}
+## Scope
+
+<dl class="deprivation-scope-list">
+<div>
+<dt>Period</dt>
+<dd>2025 annual ENEMDU</dd>
+</div>
+<div>
+<dt>Source</dt>
+<dd>Public ENEMDU annual 2025 microdata</dd>
+</div>
+<div>
+<dt>Coverage</dt>
+<dd>National, urban and rural</dd>
+</div>
+<div>
+<dt>Engine</dt>
+<dd>enemduR</dd>
+</div>
+<div>
+<dt>Output</dt>
+<dd>Curated aggregate RDS</dd>
+</div>
+<div>
+<dt>Method</dt>
+<dd>Survey-weighted analytical estimates</dd>
+</div>
+</dl>
+:::
+:::
+
+::: {.content-block .editorial-flow}
+::: {.story-panel}
+::: {.section-kicker}
+Executive signal
+:::
+
+## Three poverty lenses, one reading problem
+
+The national income-poverty rate is **`r fmt_pct(income_national)`**, while NBI reaches **`r fmt_pct(nbi_national)`** and TPM reaches **`r fmt_pct(tpm_national)`**. These are not competing versions of the same statistic. Income poverty identifies insufficient current resources, NBI captures accumulated structural deficits, and TPM captures overlapping weighted deprivations.
+
+The curated output represents about **`r weighted_n_national`** people nationally for the income-poverty denominator and stores only aggregate fields used by this page.
+:::
+
+::: {.proof-strip}
+```{r}
+#| echo: false
+#| results: asis
+cat(paste(vapply(indicator_order, kpi_card, character(1)), collapse = "\n"))
+```
+:::
+
+::: {.infographic-frame}
+::: {.section-kicker}
+Domain comparison
+:::
+
+## National, urban and rural profile
+
+```{r}
+#| echo: false
+#| results: asis
+header_cells <- vapply(indicator_order, indicator_short, character(1))
+header_html <- paste0("<th>", header_cells, "</th>", collapse = "")
+body_html <- paste(vapply(domain_order, domain_table_row, character(1)), collapse = "\n")
+cat(paste0(
+  '<table class="table table-sm">',
+  "<thead><tr><th>Domain</th>", header_html, "</tr></thead>",
+  "<tbody>", body_html, "</tbody>",
+  "</table>"
+))
+```
+
+Values are percentages. Urban and rural estimates are shown only for supported annual domains and are not interpolated.
+:::
+
+::: {.story-grid}
+::: {.story-panel}
+::: {.section-kicker}
+Insight 1
+:::
+
+## Rural disadvantage is systematic
+
+Rural areas show the highest burden in **`r rural_higher` of 6** indicators displayed. The largest urban-rural gap appears in **`r indicator_label(top_gap_indicator)`**, which indicates that territorial inequality is not confined to monetary poverty.
+:::
+
+::: {.story-panel}
+::: {.section-kicker}
+Insight 2
+:::
+
+## Monetary and structural poverty diverge
+
+The national NBI rate is **`r fmt_pct(nbi_national)`**, above the national income-poverty rate of **`r fmt_pct(income_national)`**. Reading both together separates insufficient current income from accumulated deficits in housing, services, schooling and household dependency conditions.
+:::
+
+::: {.story-panel}
+::: {.section-kicker}
+Insight 3
+:::
+
+## TPM captures overlapping deprivation
+
+TPM reaches **`r fmt_pct(tpm_national)`** nationally and rural TPM is about **`r sprintf("%.1f", tpm_rural_ratio)`x** the urban rate. TPEM reaches **`r fmt_pct(tpem_national)`** nationally, showing the severe tail of overlapping deprivations.
+:::
+
+::: {.story-panel}
+::: {.section-kicker}
+Insight 4
+:::
+
+## Benchmark status matters
+
+Income poverty is benchmarked against public annual tabulations and shows close-match status. NBI is not directly benchmarked against public annual tabulations in this build. TPM/TPEM are calculated with enemduR and their public IPM benchmark comparison is marked **`r ipm_benchmark_status`**, so this page treats them as analytical estimates with an explicit reproducibility flag.
+:::
+:::
+
+::: {.method-note}
+## Method note
+
+The indicators are based on public ENEMDU annual 2025 microdata and built with `enemduR`. Estimates are survey-weighted. Benchmark comparison is reported only where a public annual reference is available. The comparison documents analytical reproducibility and does not imply official institutional validation.
+:::
+
+::: {.story-panel}
+::: {.section-kicker}
+Technical footer
+:::
+
+## Output and safety contract
+
+| Item | Value |
+|---|---|
+| Curated output | `data/derived/site/site_deprivation_multidimensional_kpis.rds` |
+| Local annual output | `data/derived/annual/annual_deprivation_multidimensional_poverty.rds` |
+| Pipeline | `scripts/03_build_annual_core.R` then `scripts/04_build_site_metadata.R` |
+| Stored data | Aggregates only |
+| Build date field | Not stored in the curated output |
+| Safety validation | No private paths, no raw identifiers, no dynamic timestamps |
+:::
+
+::: {.proof-strip}
+::: {.proof-item}
+**Income poverty**
+
+Annual monetary poverty and extreme poverty.
+:::
+
+::: {.proof-item}
+**NBI**
+
+Basic-needs deprivation and extreme NBI.
+:::
+
+::: {.proof-item}
+**TPM / TPEM**
+
+Multidimensional poverty and severe multidimensional poverty.
+:::
+
+::: {.proof-item}
+**Publication layer**
+
+Static Quarto page from a curated aggregate RDS.
+:::
+:::
+
+::: {.page-nav}
+<a href="02_income-poverty.qmd">&lt;- Income poverty</a>
+<a href="../index.qmd">Home -&gt;</a>
+:::
+:::

@@ -22,3 +22,9 @@ secrets/
 .secrets/
 *.pem
 *.key
+
+# Local analytical annual outputs
+/data/derived/annual/annual_deprivation_multidimensional_poverty.rds
+
+# Quarto execution cache
+/_freeze/
