@@ -219,6 +219,6 @@ Scripts prepare derived outputs for a static Quarto site.
 
 ::: {.page-nav}
 [<- Home](../index.qmd)
-[Resumen ejecutivo en español ->](../es/index.qmd)
+[Income poverty ->](02_income-poverty.qmd)
 :::
 :::

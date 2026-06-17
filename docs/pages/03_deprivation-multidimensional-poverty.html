@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Motivation for the Ecuador Poverty Monitor and an initial explanation of ENEMDU, poverty measurement, and multidimensional reading.">
+<meta name="description" content="Annual 2025 executive profile of income poverty, NBI and multidimensional poverty indicators for Ecuador, based on curated aggregate site outputs.">
 
-<title>why-monitor – Ecuador Poverty Monitor</title>
+<title>Deprivation and multidimensional poverty – Ecuador Poverty Monitor</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -100,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../pages/01_why-monitor.html" aria-current="page"> 
+    <a class="nav-link" href="../pages/01_why-monitor.html"> 
 <span class="menu-text">Why it matters</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -149,179 +149,478 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7">Deprivation and multidimensional poverty</h1></header>
+
+<header id="title-block-header">
+
+<p class="subtitle lead">Annual 2025 executive profile of income poverty, basic-needs deprivation and multidimensional poverty.</p>
+
+</header>
 
 
+<style>
+.deprivation-hero {
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 400px);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  overflow-x: clip;
+}
 
+.deprivation-hero .internal-hero-copy {
+  min-width: 0;
+  max-width: 760px;
+}
 
-<div class="internal-hero internal-hero-wide">
+.deprivation-hero h1 {
+  font-size: clamp(3rem, 5.8vw, 5.2rem);
+  line-height: 1;
+  max-width: 720px;
+  text-wrap: balance;
+  overflow-wrap: normal;
+}
+
+.deprivation-hero .story-lede {
+  font-size: clamp(1.18rem, 1.7vw, 1.5rem);
+  max-width: 680px;
+}
+
+.deprivation-hero .internal-hero-copy > p {
+  max-width: 690px;
+}
+
+.deprivation-scope-card {
+  align-self: center;
+  min-width: 0;
+  padding: clamp(1.15rem, 2.2vw, 1.55rem);
+}
+
+.deprivation-scope-card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.9rem;
+}
+
+.deprivation-scope-list {
+  display: grid;
+  gap: 0.72rem;
+  margin: 0;
+}
+
+.deprivation-scope-list div {
+  display: grid;
+  gap: 0.2rem;
+  grid-template-columns: minmax(5rem, 0.45fr) minmax(0, 1fr);
+  align-items: baseline;
+  border-top: 1px solid rgba(18, 48, 71, 0.1);
+  padding-top: 0.72rem;
+}
+
+.deprivation-scope-list div:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.deprivation-scope-list dt {
+  color: var(--epm-muted);
+  font-size: 0.76rem;
+  font-weight: 760;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.deprivation-scope-list dd {
+  color: var(--epm-navy);
+  font-size: 0.98rem;
+  font-weight: 720;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .deprivation-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .deprivation-hero h1 {
+    font-size: clamp(2.6rem, 14vw, 4.2rem);
+  }
+
+  .deprivation-scope-card {
+    align-self: stretch;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .deprivation-scope-list div {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+</style>
+<div class="internal-hero internal-hero-wide deprivation-hero">
 <div class="internal-hero-copy">
 <div class="section-kicker">
-<p>Why it matters</p>
+<p>Annual 2025 executive profile</p>
 </div>
-<section id="why-build-a-poverty-monitor" class="level1">
-<h1>Why build a poverty monitor?</h1>
+<section id="deprivation-multidimensional-poverty" class="level1">
+<h1>Deprivation &amp; multidimensional poverty</h1>
 <div class="story-lede">
-<p>The problem is not the lack of data. The problem is the missing reading layer.</p>
+<p>Annual 2025 executive profile of income poverty, basic-needs deprivation and multidimensional poverty.</p>
 </div>
-<p>Poverty data in Ecuador already exist across official bulletins, microdata, methodological notes, poverty lines, labor reports, monthly releases, quarterly files, and annual databases. This monitor turns that scattered public information into a coherent, reproducible, and decision-oriented reading.</p>
+<p>This profile reads Ecuador’s 2025 annual ENEMDU evidence across monetary poverty, structural basic-needs deprivation, and multidimensional poverty. Monetary poverty, basic-needs deprivation and multidimensional poverty capture different dimensions of welfare, so they should be read together rather than collapsed into one headline.</p>
 </section>
 </div>
-<section id="a-reading-layer-for-public-data" class="level2 internal-hero-card">
-<h2 class="anchored" data-anchor-id="a-reading-layer-for-public-data">A reading layer for public data</h2>
-<p>The Ecuador Poverty Monitor connects income, deprivation, territory, labor conditions, and statistical quality into one static Quarto product.</p>
-<p>It does not replace official statistics. It helps explain how to read them.</p>
+<section id="scope" class="level2 internal-hero-card deprivation-scope-card">
+<h2 class="anchored" data-anchor-id="scope">Scope</h2>
+<dl class="deprivation-scope-list">
+<div>
+<dt>
+Period
+</dt>
+<dd>
+2025 annual ENEMDU
+</dd>
+</div>
+<div>
+<dt>
+Source
+</dt>
+<dd>
+Public ENEMDU annual 2025 microdata
+</dd>
+</div>
+<div>
+<dt>
+Coverage
+</dt>
+<dd>
+National, urban and rural
+</dd>
+</div>
+<div>
+<dt>
+Engine
+</dt>
+<dd>
+enemduR
+</dd>
+</div>
+<div>
+<dt>
+Output
+</dt>
+<dd>
+Curated aggregate RDS
+</dd>
+</div>
+<div>
+<dt>
+Method
+</dt>
+<dd>
+Survey-weighted analytical estimates
+</dd>
+</div>
+</dl>
 </section>
 </div>
 <div class="content-block editorial-flow">
-<div class="story-grid">
 <div class="story-panel">
 <div class="section-kicker">
-<p>Starting point</p>
+<p>Executive signal</p>
 </div>
-<section id="what-is-fragmented" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-fragmented">What is fragmented?</h2>
-<p>The issue is not a shortage of information. The issue is that each release answers only part of the question.</p>
-<p>Tables can inform, but poverty analysis needs context: what was measured, what period supports the estimate, which territorial domains are valid, and how precise the result is.</p>
+<section id="three-poverty-lenses-one-reading-problem" class="level2">
+<h2 class="anchored" data-anchor-id="three-poverty-lenses-one-reading-problem">Three poverty lenses, one reading problem</h2>
+<p>The national income-poverty rate is <strong>22.0%</strong>, while NBI reaches <strong>30.0%</strong> and TPM reaches <strong>37.0%</strong>. These are not competing versions of the same statistic. Income poverty identifies insufficient current resources, NBI captures accumulated structural deficits, and TPM captures overlapping weighted deprivations.</p>
+<p>The curated output represents about <strong>18,775,415</strong> people nationally for the income-poverty denominator and stores only aggregate fields used by this page.</p>
 </section>
-</div>
-<div class="story-panel">
-<div class="section-kicker">
-<p>Analytical purpose</p>
-</div>
-<section id="what-the-monitor-connects" class="level2">
-<h2 class="anchored" data-anchor-id="what-the-monitor-connects">What the monitor connects</h2>
-<p>Poverty can be read through income, basic needs, simultaneous deprivation, territory, and work. Each lens illuminates a different part of the problem.</p>
-<p>When those pieces are read separately, the picture remains incomplete. When they are connected, the country becomes easier to understand.</p>
-</section>
-</div>
-</div>
-<div class="method-note">
-<p>A single figure can inform. A well-built reading layer can support better decisions.</p>
-</div>
-<div class="infographic-frame">
-<div class="section-kicker">
-<p>What ENEMDU contributes</p>
-</div>
-<section id="source-engine-product" class="level2">
-<h2 class="anchored" data-anchor-id="source-engine-product">Source, engine, product</h2>
-<p>ENEMDU is Ecuador’s National Survey of Employment, Unemployment, and Underemployment. It is one of the country’s key statistical operations for analyzing work, labor conditions, income, poverty, and household characteristics.</p>
-<div class="three-layer-grid">
-<section id="official-source" class="level3 layer-card">
-<h3 class="anchored" data-anchor-id="official-source">1. Official source</h3>
-<p>The base information comes from ENEMDU and its methodological documentation.</p>
-</section>
-<section id="analytical-engine" class="level3 layer-card">
-<h3 class="anchored" data-anchor-id="analytical-engine">2. Analytical engine</h3>
-<p><code>enemduR</code> organizes reading, validation, estimation, indicators, and analytical outputs.</p>
-</section>
-<section id="narrative-product" class="level3 layer-card">
-<h3 class="anchored" data-anchor-id="narrative-product">3. Narrative product</h3>
-<p>This site turns results into a visual and explanatory story.</p>
-</section>
-</div>
-</section>
-</div>
-<div class="story-panel">
-<div class="section-kicker">
-<p>How to read the site</p>
-</div>
-<section id="three-speeds-different-questions" class="level2">
-<h2 class="anchored" data-anchor-id="three-speeds-different-questions">Three speeds, different questions</h2>
-<p>This product does not treat all periods as if they supported the same type of reading. The monitor is organized into monthly pulse, quarterly city view, and annual structural analysis.</p>
-</section>
-</div>
-<div class="period-grid">
-<div class="period-card">
-<div class="period-badge">
-<p>Monthly</p>
-</div>
-<section id="recent-pulse" class="level3">
-<h3 class="anchored" data-anchor-id="recent-pulse">Recent pulse</h3>
-<p>Used mainly for national, urban/rural, and labor-market readings.</p>
-</section>
-</div>
-<div class="period-card">
-<div class="period-badge">
-<p>Quarterly</p>
-</div>
-<section id="city-signals" class="level3">
-<h3 class="anchored" data-anchor-id="city-signals">City signals</h3>
-<p>Used for observing the five main cities when the sample domain allows it.</p>
-</section>
-</div>
-<div class="period-card">
-<div class="period-badge">
-<p>Annual</p>
-</div>
-<section id="structural-base" class="level3">
-<h3 class="anchored" data-anchor-id="structural-base">Structural base</h3>
-<p>Used as the core of the full poverty, NBI, multidimensional, quintile, and provincial analysis.</p>
-</section>
-</div>
-</div>
-<div class="insight-strip">
-<div class="insight-card">
-<p><strong>Income</strong></p>
-<p>Whether household per-capita income reaches a poverty line.</p>
-</div>
-<div class="insight-card">
-<p><strong>Deprivation</strong></p>
-<p>How basic needs and multidimensional disadvantages accumulate.</p>
-</div>
-<div class="insight-card">
-<p><strong>Territory</strong></p>
-<p>Where estimates are valid, precise, and analytically meaningful.</p>
-</div>
-<div class="insight-card">
-<p><strong>Labor</strong></p>
-<p>How employment connects income, vulnerability, and wellbeing.</p>
-</div>
-</div>
-<section id="golden-rule" class="level2 data-warning">
-<h2 class="anchored" data-anchor-id="golden-rule">Golden rule</h2>
-<p>Never show a territorial disaggregation that does not match the representativity domain of the period being used. Methodological clarity is part of the product, not a secondary note.</p>
-</section>
-<div class="story-grid">
-<div class="story-panel">
-<div class="section-kicker">
-<p>What this monitor adds</p>
-</div>
-<section id="a-compact-product-contract" class="level2">
-<h2 class="anchored" data-anchor-id="a-compact-product-contract">A compact product contract</h2>
-<p>This monitor adds an integrated reading of poverty, a reproducible architecture based on <code>enemduR</code>, a stronger visual communication layer, a clear distinction between pulse and structure, and a technical discussion of representativity.</p>
-</section>
-</div>
-<div class="story-panel">
-<div class="section-kicker">
-<p>What it does not do</p>
-</div>
-<section id="not-a-parallel-authority" class="level2">
-<h2 class="anchored" data-anchor-id="not-a-parallel-authority">Not a parallel authority</h2>
-<p>The monitor does not replace INEC or produce official statistics. Its goal is to transform complex public information into an ordered, reproducible, visual, and useful reading of poverty in Ecuador.</p>
-</section>
-</div>
 </div>
 <div class="proof-strip">
 <div class="proof-item">
-<p><strong>Official microdata</strong></p>
-<p>The monitor starts from ENEMDU and its methodological documentation.</p>
+<strong>Income poverty</strong>
+<div style="font-size: 2rem; line-height: 1.05; font-weight: 800; margin: 0.35rem 0;">
+22.0%
+</div>
+<p>
+Household per-capita income below the poverty line.
+</p>
+<p>
+<strong>Benchmark close match</strong>
+</p>
 </div>
 <div class="proof-item">
-<p><strong>Methodological contracts</strong></p>
-<p>Each layer has explicit limits for period, domain, and use.</p>
+<strong>Extreme income poverty</strong>
+<div style="font-size: 2rem; line-height: 1.05; font-weight: 800; margin: 0.35rem 0;">
+7.0%
+</div>
+<p>
+Household per-capita income below the extreme poverty line.
+</p>
+<p>
+<strong>Benchmark close match</strong>
+</p>
 </div>
 <div class="proof-item">
-<p><strong>Statistical quality</strong></p>
-<p>Precision and representativity are part of the story, not footnotes.</p>
+<strong>NBI / Unsatisfied Basic Needs poverty</strong>
+<div style="font-size: 2rem; line-height: 1.05; font-weight: 800; margin: 0.35rem 0;">
+30.0%
+</div>
+<p>
+People in households with at least one unsatisfied basic need.
+</p>
+<p>
+<strong>Not directly benchmarked</strong>
+</p>
 </div>
 <div class="proof-item">
-<p><strong>Reproducible output</strong></p>
-<p>Scripts prepare derived outputs for a static Quarto site.</p>
+<strong>Extreme NBI</strong>
+<div style="font-size: 2rem; line-height: 1.05; font-weight: 800; margin: 0.35rem 0;">
+7.7%
+</div>
+<p>
+People in households with two or more unsatisfied basic needs.
+</p>
+<p>
+<strong>Not directly benchmarked</strong>
+</p>
+</div>
+<div class="proof-item">
+<strong>Multidimensional poverty / TPM</strong>
+<div style="font-size: 2rem; line-height: 1.05; font-weight: 800; margin: 0.35rem 0;">
+37.0%
+</div>
+<p>
+People with overlapping weighted deprivations above the TPM threshold.
+</p>
+<p>
+<strong>Benchmark requires review</strong>
+</p>
+</div>
+<div class="proof-item">
+<strong>Extreme multidimensional poverty / TPEM</strong>
+<div style="font-size: 2rem; line-height: 1.05; font-weight: 800; margin: 0.35rem 0;">
+14.4%
+</div>
+<p>
+People with severe overlapping weighted deprivations above the TPEM threshold.
+</p>
+<p>
+<strong>Benchmark requires review</strong>
+</p>
+</div>
+</div>
+<div class="infographic-frame">
+<div class="section-kicker">
+<p>Domain comparison</p>
+</div>
+<section id="national-urban-and-rural-profile" class="level2">
+<h2 class="anchored" data-anchor-id="national-urban-and-rural-profile">National, urban and rural profile</h2>
+<table class="table table-sm">
+<thead>
+<tr>
+<th>
+Domain
+</th>
+<th>
+Income
+</th>
+<th>
+Extreme income
+</th>
+<th>
+NBI
+</th>
+<th>
+Extreme NBI
+</th>
+<th>
+TPM
+</th>
+<th>
+TPEM
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>
+National
+</th>
+<td>
+22.0%
+</td>
+<td>
+7.0%
+</td>
+<td>
+30.0%
+</td>
+<td>
+7.7%
+</td>
+<td>
+37.0%
+</td>
+<td>
+14.4%
+</td>
+</tr>
+<tr>
+<th>
+Urban
+</th>
+<td>
+16.5%
+</td>
+<td>
+3.7%
+</td>
+<td>
+21.6%
+</td>
+<td>
+3.6%
+</td>
+<td>
+23.9%
+</td>
+<td>
+5.7%
+</td>
+</tr>
+<tr>
+<th>
+Rural
+</th>
+<td>
+33.6%
+</td>
+<td>
+14.1%
+</td>
+<td>
+48.0%
+</td>
+<td>
+16.4%
+</td>
+<td>
+65.2%
+</td>
+<td>
+33.1%
+</td>
+</tr>
+</tbody>
+</table>
+<p>Values are percentages. Urban and rural estimates are shown only for supported annual domains and are not interpolated.</p>
+</section>
+</div>
+<div class="story-grid">
+<div class="story-panel">
+<div class="section-kicker">
+<p>Insight 1</p>
+</div>
+<section id="rural-disadvantage-is-systematic" class="level2">
+<h2 class="anchored" data-anchor-id="rural-disadvantage-is-systematic">Rural disadvantage is systematic</h2>
+<p>Rural areas show the highest burden in <strong>6 of 6</strong> indicators displayed. The largest urban-rural gap appears in <strong>Multidimensional poverty / TPM</strong>, which indicates that territorial inequality is not confined to monetary poverty.</p>
+</section>
+</div>
+<div class="story-panel">
+<div class="section-kicker">
+<p>Insight 2</p>
+</div>
+<section id="monetary-and-structural-poverty-diverge" class="level2">
+<h2 class="anchored" data-anchor-id="monetary-and-structural-poverty-diverge">Monetary and structural poverty diverge</h2>
+<p>The national NBI rate is <strong>30.0%</strong>, above the national income-poverty rate of <strong>22.0%</strong>. Reading both together separates insufficient current income from accumulated deficits in housing, services, schooling and household dependency conditions.</p>
+</section>
+</div>
+<div class="story-panel">
+<div class="section-kicker">
+<p>Insight 3</p>
+</div>
+<section id="tpm-captures-overlapping-deprivation" class="level2">
+<h2 class="anchored" data-anchor-id="tpm-captures-overlapping-deprivation">TPM captures overlapping deprivation</h2>
+<p>TPM reaches <strong>37.0%</strong> nationally and rural TPM is about <strong>2.7x</strong> the urban rate. TPEM reaches <strong>14.4%</strong> nationally, showing the severe tail of overlapping deprivations.</p>
+</section>
+</div>
+<div class="story-panel">
+<div class="section-kicker">
+<p>Insight 4</p>
+</div>
+<section id="benchmark-status-matters" class="level2">
+<h2 class="anchored" data-anchor-id="benchmark-status-matters">Benchmark status matters</h2>
+<p>Income poverty is benchmarked against public annual tabulations and shows close-match status. NBI is not directly benchmarked against public annual tabulations in this build. TPM/TPEM are calculated with enemduR and their public IPM benchmark comparison is marked <strong>Benchmark requires review</strong>, so this page treats them as analytical estimates with an explicit reproducibility flag.</p>
+</section>
+</div>
+</div>
+<section id="method-note" class="level2 method-note">
+<h2 class="anchored" data-anchor-id="method-note">Method note</h2>
+<p>The indicators are based on public ENEMDU annual 2025 microdata and built with <code>enemduR</code>. Estimates are survey-weighted. Benchmark comparison is reported only where a public annual reference is available. The comparison documents analytical reproducibility and does not imply official institutional validation.</p>
+</section>
+<div class="story-panel">
+<div class="section-kicker">
+<p>Technical footer</p>
+</div>
+<section id="output-and-safety-contract" class="level2">
+<h2 class="anchored" data-anchor-id="output-and-safety-contract">Output and safety contract</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Curated output</td>
+<td><code>data/derived/site/site_deprivation_multidimensional_kpis.rds</code></td>
+</tr>
+<tr class="even">
+<td>Local annual output</td>
+<td><code>data/derived/annual/annual_deprivation_multidimensional_poverty.rds</code></td>
+</tr>
+<tr class="odd">
+<td>Pipeline</td>
+<td><code>scripts/03_build_annual_core.R</code> then <code>scripts/04_build_site_metadata.R</code></td>
+</tr>
+<tr class="even">
+<td>Stored data</td>
+<td>Aggregates only</td>
+</tr>
+<tr class="odd">
+<td>Build date field</td>
+<td>Not stored in the curated output</td>
+</tr>
+<tr class="even">
+<td>Safety validation</td>
+<td>No private paths, no raw identifiers, no dynamic timestamps</td>
+</tr>
+</tbody>
+</table>
+</section>
+</div>
+<div class="proof-strip">
+<div class="proof-item">
+<p><strong>Income poverty</strong></p>
+<p>Annual monetary poverty and extreme poverty.</p>
+</div>
+<div class="proof-item">
+<p><strong>NBI</strong></p>
+<p>Basic-needs deprivation and extreme NBI.</p>
+</div>
+<div class="proof-item">
+<p><strong>TPM / TPEM</strong></p>
+<p>Multidimensional poverty and severe multidimensional poverty.</p>
+</div>
+<div class="proof-item">
+<p><strong>Publication layer</strong></p>
+<p>Static Quarto page from a curated aggregate RDS.</p>
 </div>
 </div>
 <div class="page-nav">
-<p><a href="../index.html">&lt;- Home</a> <a href="../pages/02_income-poverty.html">Income poverty -&gt;</a></p>
+<p><a href="../pages/02_income-poverty.html">&lt;- Income poverty</a> <a href="../index.html">Home -&gt;</a></p>
 </div>
 </div>
 
@@ -741,7 +1040,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/yerovi84/ecuador-poverty-monitor/blob/main/pages/01_why-monitor.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/yerovi84/ecuador-poverty-monitor/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/yerovi84/ecuador-poverty-monitor/blob/main/pages/03_deprivation-multidimensional-poverty.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/yerovi84/ecuador-poverty-monitor/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">

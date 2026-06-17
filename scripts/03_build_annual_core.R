@@ -668,7 +668,7 @@ epm_to_monitor_income_poverty_profile_output <- function(estimates,
     method_note = paste(
       "Survey-design-aware analytical income-poverty profile from ENEMDU annual microdata via enemduR v0.1.1.",
       "Profiles are weighted analytical subpopulation estimates and are not directly benchmarked against public annual tabulations.",
-      "This is not INEC validation, certification, approval, or endorsement."
+      "This is official-source alignment documentation; no official institutional validation."
     ),
     source_file = source_file,
     source_reference = "ENEMDU annual 2025 analytical poverty profile build contract",
@@ -870,7 +870,7 @@ epm_refresh_monitor_income_poverty_output <- function(output, comparisons, refer
     "Survey-design-aware income poverty estimate from ENEMDU microdata via enemduR v0.1.1.",
     "Poverty and extreme poverty use explicit auditable line values.",
     "Benchmark comparison uses the annual 2025 public tabulation when available.",
-    "This is not INEC validation, certification, approval, or endorsement."
+    "This is official-source alignment documentation; no official institutional validation."
   )
 
   if (is.data.frame(comparisons) && nrow(comparisons) > 0L) {
@@ -953,7 +953,7 @@ epm_to_monitor_income_poverty_output <- function(estimates,
     method_note = paste(
       "Survey-design-aware income poverty estimate from ENEMDU microdata via enemduR v0.1.1.",
       "Poverty and extreme poverty use explicit auditable line values.",
-      "This is not INEC validation, certification, approval, or endorsement."
+      "This is official-source alignment documentation; no official institutional validation."
     ),
     source_file = source_file,
     source_reference = reference$source_reference,
@@ -1033,10 +1033,384 @@ epm_validate_annual_income_poverty_output <- function(output) {
   invisible(TRUE)
 }
 
+epm_bind_rows_fill <- function(outputs) {
+  outputs <- outputs[vapply(outputs, is.data.frame, logical(1))]
+  outputs <- outputs[vapply(outputs, nrow, integer(1)) > 0L]
+
+  if (length(outputs) == 0L) {
+    return(data.frame())
+  }
+
+  all_cols <- unique(unlist(lapply(outputs, names), use.names = FALSE))
+  normalized <- lapply(outputs, function(x) {
+    missing <- setdiff(all_cols, names(x))
+
+    for (col in missing) {
+      x[[col]] <- NA
+    }
+
+    x[all_cols]
+  })
+
+  out <- do.call(rbind, normalized)
+  row.names(out) <- NULL
+  out
+}
+
+epm_col_or_default <- function(data, col, default) {
+  if (col %in% names(data)) {
+    return(data[[col]])
+  }
+
+  rep(default, nrow(data))
+}
+
+epm_estimate_quality_flag <- function(estimates) {
+  if ("representativity_flag" %in% names(estimates)) {
+    return(as.character(estimates$representativity_flag))
+  }
+
+  if ("quality_flag" %in% names(estimates)) {
+    return(as.character(estimates$quality_flag))
+  }
+
+  if ("decision" %in% names(estimates)) {
+    return(as.character(estimates$decision))
+  }
+
+  rep(NA_character_, nrow(estimates))
+}
+
+epm_build_nbi_estimates <- function(data, household_data) {
+  joined <- enemduR::enemdu_join_nbi_sources(
+    person_data = data,
+    household_data = household_data,
+    household_id = "id_hogar",
+    overwrite = TRUE,
+    strict = TRUE
+  )
+
+  joined <- enemduR::enemdu_build_nbi_components(
+    data = joined,
+    household_id = "id_hogar",
+    person_id = "p01",
+    overwrite = TRUE,
+    strict = TRUE
+  )
+
+  national <- enemduR::enemdu_kpi_nbi(
+    data = joined,
+    survey_type = "anual",
+    ids = "upm",
+    strata = "estrato",
+    weight = "fexp",
+    household_id = "id_hogar",
+    hsize = "hsize",
+    official_validation_status = "not_officially_validated",
+    official_validation_note = paste(
+      "Survey-weighted analytical NBI estimates built with enemduR.",
+      "They are not directly benchmarked against public annual tabulations."
+    )
+  )
+  national[["domain"]] <- "national"
+  national[["domain_value"]] <- "national"
+
+  joined[[".epm_area_domain"]] <- epm_area_domain(joined[["area"]])
+
+  if (all(is.na(joined[[".epm_area_domain"]]))) {
+    .epm_abort("Could not map annual `area` values to urban/rural domains for NBI.")
+  }
+
+  area <- enemduR::enemdu_kpi_nbi(
+    data = joined,
+    group_vars = ".epm_area_domain",
+    survey_type = "anual",
+    ids = "upm",
+    strata = "estrato",
+    weight = "fexp",
+    domain_level = "urbano_rural",
+    domain_var = "area",
+    household_id = "id_hogar",
+    hsize = "hsize",
+    official_validation_status = "not_officially_validated",
+    official_validation_note = paste(
+      "Survey-weighted analytical NBI estimates built with enemduR.",
+      "They are not directly benchmarked against public annual tabulations."
+    )
+  )
+  area[["domain"]] <- "area"
+  area[["domain_value"]] <- area[[".epm_area_domain"]]
+
+  epm_bind_rows_fill(list(
+    national,
+    area[setdiff(names(area), ".epm_area_domain")]
+  ))
+}
+
+epm_to_monitor_nbi_output <- function(estimates, annual_period) {
+  id_map <- c(
+    pobreza_nbi = "nbi_rate",
+    pobreza_extrema_nbi = "extreme_nbi_rate"
+  )
+
+  label_map <- c(
+    nbi_rate = "Unsatisfied Basic Needs poverty",
+    extreme_nbi_rate = "Extreme Unsatisfied Basic Needs poverty"
+  )
+
+  estimates[["monitor_indicator_id"]] <- unname(id_map[as.character(estimates$indicator_id)])
+  estimates <- estimates[!is.na(estimates$monitor_indicator_id), , drop = FALSE]
+
+  out <- data.frame(
+    indicator_id = estimates$monitor_indicator_id,
+    indicator_label = unname(label_map[estimates$monitor_indicator_id]),
+    indicator_family = "basic_needs_deprivation",
+    period = annual_period,
+    survey_type = "anual",
+    domain = as.character(estimates$domain),
+    domain_value = as.character(estimates$domain_value),
+    estimate = as.numeric(estimates$estimate),
+    estimate_type = "proportion",
+    unit = "proportion",
+    display_estimate = as.numeric(estimates$estimate) * 100,
+    display_unit = "percent",
+    source_layer = "annual",
+    build_timestamp = NA_character_,
+    se = as.numeric(epm_col_or_default(estimates, "standard_error", NA_real_)),
+    cv = as.numeric(epm_col_or_default(estimates, "cv", NA_real_)),
+    n = as.integer(epm_col_or_default(estimates, "unweighted_n", NA_integer_)),
+    df = as.numeric(epm_col_or_default(estimates, "degrees_freedom", NA_real_)),
+    weighted_n = as.numeric(epm_col_or_default(estimates, "weighted_n", NA_real_)),
+    precision_flag = epm_estimate_quality_flag(estimates),
+    quality_flag = as.character(epm_col_or_default(estimates, "quality_flag", NA_character_)),
+    analysis_unit = "people in households",
+    universe = as.character(epm_col_or_default(estimates, "universe", "personas_en_base_enemdu")),
+    weight = as.character(epm_col_or_default(estimates, "estimation_weight", "fexp")),
+    method_status = as.character(epm_col_or_default(estimates, "decision", "survey_weighted_estimate")),
+    official_alignment = "official-source alignment documentation; no official institutional validation",
+    benchmark_estimate = NA_real_,
+    benchmark_unit = "percent",
+    benchmark_difference_pp = NA_real_,
+    benchmark_reference = NA_character_,
+    benchmark_source_file = NA_character_,
+    benchmark_status = "not_directly_benchmarked_against_public_annual_tabulations",
+    source = "Public ENEMDU annual 2025 microdata",
+    source_note = "Survey-weighted analytical NBI estimates built with enemduR from person and dwelling records.",
+    method_note = paste(
+      "NBI and extreme NBI use enemduR component variables comp1-comp5 and output flags nbi/xnbi.",
+      "No public annual NBI benchmark table was available in the enemduR benchmark registry for this build.",
+      "This is official-source alignment documentation; no official institutional validation."
+    ),
+    public_note = "NBI and extreme NBI are survey-weighted analytical estimates; benchmark comparison is not directly available for this output.",
+    source_reference = "ENEMDU annual 2025 deprivation analytical build contract",
+    stringsAsFactors = FALSE
+  )
+
+  out[order(out$indicator_id, out$domain, out$domain_value), , drop = FALSE]
+}
+
+epm_build_ipm_reproducibility <- function(data, household_data, reference) {
+  enemduR::enemdu_run_ipm_reproducibility(
+    data = data,
+    period = "2025-12",
+    survey_type = "anual",
+    by = "area",
+    ids = "upm",
+    strata = "estrato",
+    weight = "fexp",
+    build_components = TRUE,
+    build_flags = TRUE,
+    strict = FALSE,
+    missing_component_policy = "complete_case",
+    sample_n_min = 60,
+    household_data = household_data,
+    household_id = "id_hogar",
+    person_id = "p01",
+    extreme_poverty_income_var = "ingtot_pc",
+    extreme_poverty_line = reference$extreme_poverty_line,
+    higher_education_economic_reason_codes = 3
+  )
+}
+
+epm_to_monitor_ipm_output <- function(ipm_result, annual_period) {
+  estimates <- ipm_result$estimates
+  estimates <- estimates[
+    estimates$indicator_id %in% c("tpm", "tpem"),
+    ,
+    drop = FALSE
+  ]
+
+  id_map <- c(
+    tpm = "tpm_rate",
+    tpem = "tpem_rate"
+  )
+
+  label_map <- c(
+    tpm_rate = "Multidimensional poverty",
+    tpem_rate = "Extreme multidimensional poverty"
+  )
+
+  estimates[["monitor_indicator_id"]] <- unname(id_map[as.character(estimates$indicator_id)])
+  estimates[["monitor_domain"]] <- ifelse(
+    as.character(estimates$domain_value) == "national",
+    "national",
+    "area"
+  )
+
+  comparison <- ipm_result$comparison
+  comparison <- comparison[comparison$indicator_id %in% c("tpm", "tpem"), , drop = FALSE]
+  comparison_key <- paste(comparison$indicator_id, comparison$domain_value, sep = "\r")
+  estimate_key <- paste(estimates$indicator_id, estimates$domain_value, sep = "\r")
+  matched <- match(estimate_key, comparison_key)
+
+  out <- data.frame(
+    indicator_id = estimates$monitor_indicator_id,
+    indicator_label = unname(label_map[estimates$monitor_indicator_id]),
+    indicator_family = "multidimensional_poverty",
+    period = annual_period,
+    survey_type = "anual",
+    domain = as.character(estimates$monitor_domain),
+    domain_value = as.character(estimates$domain_value),
+    estimate = as.numeric(estimates$estimate),
+    estimate_type = "proportion",
+    unit = "proportion",
+    display_estimate = as.numeric(estimates$estimate) * 100,
+    display_unit = "percent",
+    source_layer = "annual",
+    build_timestamp = NA_character_,
+    se = as.numeric(epm_col_or_default(estimates, "standard_error", NA_real_)),
+    cv = as.numeric(epm_col_or_default(estimates, "cv", NA_real_)),
+    n = as.integer(epm_col_or_default(estimates, "unweighted_n", NA_integer_)),
+    df = as.numeric(epm_col_or_default(estimates, "degrees_freedom", NA_real_)),
+    weighted_n = as.numeric(epm_col_or_default(estimates, "weighted_n", NA_real_)),
+    precision_flag = epm_estimate_quality_flag(estimates),
+    quality_flag = as.character(epm_col_or_default(estimates, "quality_flag", NA_character_)),
+    analysis_unit = "people with complete IPM evidence",
+    universe = "persons in complete-case IPM analytical universe",
+    weight = "fexp",
+    method_status = as.character(epm_col_or_default(estimates, "decision", "survey_weighted_estimate")),
+    official_alignment = "official-source alignment documentation; no official institutional validation",
+    benchmark_estimate = NA_real_,
+    benchmark_unit = "percent",
+    benchmark_difference_pp = NA_real_,
+    benchmark_reference = "enemduR public IPM benchmark registry for December 2025",
+    benchmark_source_file = NA_character_,
+    benchmark_status = "annual_ipm_benchmark_not_matched",
+    source = "Public ENEMDU annual 2025 microdata",
+    source_note = "Survey-weighted analytical TPM/TPEM estimates built with enemduR IPM component and flag contracts.",
+    method_note = paste(
+      "TPM uses the enemduR row-level tpm flag and TPEM uses the tpem flag.",
+      "IPM components are built from the registered 12-component contract with complete-case handling for incomplete evidence.",
+      "This is official-source alignment documentation; no official institutional validation."
+    ),
+    public_note = "TPM/TPEM estimates are survey-weighted analytical estimates; public IPM benchmark comparison is documented separately.",
+    complete_case_rows_excluded = as.integer(ipm_result$complete_case_diagnostics$rows_excluded[[1]]),
+    complete_case_weighted_share_excluded = as.numeric(ipm_result$complete_case_diagnostics$share_weighted_excluded[[1]]),
+    stringsAsFactors = FALSE
+  )
+
+  has_match <- !is.na(matched)
+  out$benchmark_estimate[has_match] <- comparison$official_estimate[matched[has_match]] * 100
+  out$benchmark_difference_pp[has_match] <- comparison$difference_pp[matched[has_match]]
+  out$benchmark_status[has_match] <- comparison$comparison_status[matched[has_match]]
+
+  out[order(out$indicator_id, out$domain, out$domain_value), , drop = FALSE]
+}
+
+epm_build_deprivation_multidimensional_output <- function(data,
+                                                          household_data,
+                                                          reference,
+                                                          annual_period) {
+  nbi_estimates <- epm_build_nbi_estimates(
+    data = data,
+    household_data = household_data
+  )
+  nbi_output <- epm_to_monitor_nbi_output(
+    estimates = nbi_estimates,
+    annual_period = annual_period
+  )
+
+  ipm_result <- epm_build_ipm_reproducibility(
+    data = data,
+    household_data = household_data,
+    reference = reference
+  )
+  ipm_output <- epm_to_monitor_ipm_output(
+    ipm_result = ipm_result,
+    annual_period = annual_period
+  )
+
+  out <- epm_bind_rows_fill(list(nbi_output, ipm_output))
+  out <- out[order(out$indicator_id, out$domain, out$domain_value), , drop = FALSE]
+  row.names(out) <- NULL
+  out
+}
+
+epm_validate_annual_deprivation_multidimensional_output <- function(output) {
+  epm_validate_output_schema(output, config$indicators, strict = FALSE)
+
+  required_indicators <- c("nbi_rate", "extreme_nbi_rate", "tpm_rate", "tpem_rate")
+  missing_indicators <- setdiff(required_indicators, unique(output$indicator_id))
+
+  if (length(missing_indicators) > 0L) {
+    .epm_abort(sprintf(
+      "Annual deprivation/multidimensional output is missing indicator(s): %s",
+      paste(missing_indicators, collapse = ", ")
+    ))
+  }
+
+  required_domains <- c("national", "area")
+  missing_domains <- setdiff(required_domains, unique(output$domain))
+
+  if (length(missing_domains) > 0L) {
+    .epm_abort(sprintf(
+      "Annual deprivation/multidimensional output is missing domain(s): %s",
+      paste(missing_domains, collapse = ", ")
+    ))
+  }
+
+  forbidden <- epm_detect_forbidden_paths(output, config$paths$validation$forbidden_patterns)
+
+  if (length(forbidden) > 0L) {
+    .epm_abort("Annual deprivation/multidimensional output contains private path-like values.")
+  }
+
+  identifier_columns <- intersect(
+    names(output),
+    c("p01", "id_persona", "id_hogar", "idhogar", "id_persona_hogar")
+  )
+
+  if (length(identifier_columns) > 0L) {
+    .epm_abort(sprintf(
+      "Annual deprivation/multidimensional output contains microdata identifier column(s): %s",
+      paste(identifier_columns, collapse = ", ")
+    ))
+  }
+
+  if (!identical(unique(output$unit), "proportion")) {
+    .epm_abort("Annual deprivation/multidimensional output `unit` must be `proportion`.")
+  }
+
+  if (!identical(unique(output$display_unit), "percent")) {
+    .epm_abort("Annual deprivation/multidimensional output `display_unit` must be `percent`.")
+  }
+
+  if ("build_timestamp" %in% names(output) && any(!is.na(output$build_timestamp))) {
+    .epm_abort("Annual deprivation/multidimensional output must not contain dynamic build timestamps.")
+  }
+
+  invisible(TRUE)
+}
+
 epm_require_enemduR()
 
 output_path <- epm_output_path("annual", "annual_income_poverty", config$paths)
 profile_output_path <- epm_output_path("annual", "annual_income_poverty_profiles", config$paths)
+deprivation_output_path <- epm_output_path(
+  "annual",
+  "annual_deprivation_multidimensional_poverty",
+  config$paths
+)
 annual_inputs <- epm_resolve_annual_input_files(config$paths, required = FALSE)
 annual_inputs_ready <- all(vapply(annual_inputs, function(input) isTRUE(input$exists), logical(1)))
 
@@ -1069,6 +1443,13 @@ if (isTRUE(annual_inputs_ready)) {
 
   persona <- enemduR::enemdu_build_variables(persona)
 
+  vivienda <- enemduR::enemdu_read_data(
+    path = annual_inputs$vivienda$path,
+    survey_type = "anual",
+    period = annual_period,
+    inform_scope = FALSE
+  )
+
   estimates <- epm_build_income_poverty_estimates(persona, line_reference)
   comparisons <- epm_compare_income_poverty_benchmarks(estimates, benchmark_reference)
 
@@ -1087,10 +1468,18 @@ if (isTRUE(annual_inputs_ready)) {
     reference = line_reference,
     source_file = annual_inputs$persona$basename
   )
+
+  deprivation_output <- epm_build_deprivation_multidimensional_output(
+    data = persona,
+    household_data = vivienda,
+    reference = line_reference,
+    annual_period = annual_period
+  )
 } else {
   comparisons <- epm_compare_monitor_output_benchmarks(existing_output, benchmark_reference)
   output <- epm_refresh_monitor_income_poverty_output(existing_output, comparisons, line_reference)
   profile_output <- NULL
+  deprivation_output <- NULL
 }
 
 epm_validate_annual_income_poverty_output(output)
@@ -1102,6 +1491,11 @@ if (is.data.frame(profile_output)) {
   epm_save_output(profile_output, profile_output_path)
 }
 
+if (is.data.frame(deprivation_output)) {
+  epm_validate_annual_deprivation_multidimensional_output(deprivation_output)
+  epm_save_output(deprivation_output, deprivation_output_path)
+}
+
 message("Annual income poverty output complete.")
 message(sprintf("Resolved annual inputs: %s", paste(annual_basenames, collapse = ", ")))
 message(sprintf("Annual benchmark reference: %s", benchmark_reference$status))
@@ -1110,5 +1504,12 @@ if (is.data.frame(profile_output)) {
   message("Wrote data/derived/annual/annual_income_poverty_profiles.rds")
 } else {
   message("Annual profile output skipped because raw annual inputs were unavailable.")
+}
+if (is.data.frame(deprivation_output)) {
+  message("Wrote data/derived/annual/annual_deprivation_multidimensional_poverty.rds")
+} else if (file.exists(deprivation_output_path)) {
+  message("Annual deprivation/multidimensional output retained from existing aggregate file.")
+} else {
+  message("Annual deprivation/multidimensional output skipped because raw annual inputs were unavailable.")
 }
 message("No raw microdata were written, copied, or staged.")

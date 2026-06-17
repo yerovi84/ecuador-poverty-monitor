@@ -272,7 +272,7 @@ Benchmark comparison
 | Extreme income poverty | Urban | 3.69% | 3.6% | +0.09 | Close match within 0.5 pp |
 | Extreme income poverty | Rural | 14.07% | 13.7% | +0.37 | Close match within 0.5 pp |
 
-Close match means the monitor estimate differs from the public annual benchmark by no more than 0.5 percentage points. The benchmark comparison is a reproducibility check against a public annual reference table; it is not an institutional endorsement or a replacement for official statistical releases.
+Close match means the monitor estimate differs from the public annual benchmark by no more than 0.5 percentage points. The benchmark comparison is a reproducibility check against a public annual reference table; it documents analytical reproducibility and does not imply official institutional validation.
 :::
 
 ::: {.method-note}
@@ -331,6 +331,6 @@ Useful for analytical reading, not a replacement for official statistical releas
 
 ::: {.page-nav}
 [<- Why it matters](01_why-monitor.qmd)
-[Home ->](../index.qmd)
+[Deprivation and multidimensional poverty ->](03_deprivation-multidimensional-poverty.qmd)
 :::
 :::

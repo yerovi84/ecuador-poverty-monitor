@@ -25,7 +25,7 @@ This monitor organizes income poverty, deprivation, territory, labor conditions,
 
 ::: {.hero-actions}
 [Start with the purpose](pages/01_why-monitor.qmd){.btn-monitor .btn-primary-monitor}
-[Leer en español](es/index.qmd){.btn-monitor .btn-secondary-monitor}
+[View income poverty](pages/02_income-poverty.qmd){.btn-monitor .btn-secondary-monitor}
 :::
 :::
 
@@ -172,12 +172,16 @@ Analytical roadmap
 ### 1. Income
 
 Income poverty asks whether household per-capita income reaches a minimum poverty line.
+
+[Read the 2025 annual income poverty profile](pages/02_income-poverty.qmd)
 :::
 
 ::: {.story-step}
 ### 2. Deprivation
 
 NBI and multidimensional poverty show structural deficits and overlapping disadvantages.
+
+[View the deprivation layer scaffold](pages/03_deprivation-multidimensional-poverty.qmd)
 :::
 
 ::: {.story-step}
@@ -206,9 +210,9 @@ The visual architecture is ready for charts and infographics without changing th
 ## Product status
 
 ::: {.data-warning}
-This site is under construction.
+This site is being built in public as a static Quarto portfolio product.
 
-This version establishes the editorial, visual, and methodological foundation. Future phases will add data-building scripts, charts, final infographics, and page-specific analysis.
+The 2025 annual income-poverty layer is published with benchmark comparison against public annual INEC tabulations. The deprivation and multidimensional poverty layer is currently a methodological scaffold and does not report estimates yet.
 :::
 
 ::: {.proof-strip}
@@ -239,6 +243,6 @@ Quarto consumes derived products, not raw microdata.
 
 ::: {.page-nav}
 [Why it matters ->](pages/01_why-monitor.qmd)
-[Español ->](es/index.qmd)
+[Income poverty ->](pages/02_income-poverty.qmd)
 :::
 :::
