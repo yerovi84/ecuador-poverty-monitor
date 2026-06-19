@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Motivation for the Ecuador Poverty Monitor and an initial explanation of ENEMDU, poverty measurement, and multidimensional reading.">
+<meta name="description" content="Methodology, data architecture, benchmark status, quality metadata, domains and interpretation limits for the Ecuador Poverty Monitor.">
 
-<title>why-monitor – Ecuador Poverty Monitor</title>
+<title>Methodology and statistical quality – Ecuador Poverty Monitor</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -100,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../pages/01_why-monitor.html" aria-current="page"> 
+    <a class="nav-link" href="../pages/01_why-monitor.html"> 
 <span class="menu-text">Why it matters</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -149,179 +149,300 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7">Methodology and statistical quality</h1></header>
 
+<header id="title-block-header">
 
+<p class="subtitle lead">How the monitor separates analytical estimates, benchmark comparison and public communication.</p>
+
+</header>
 
 
 <div class="internal-hero internal-hero-wide">
 <div class="internal-hero-copy">
 <div class="section-kicker">
-<p>Why it matters</p>
+<p>Methodology and statistical quality</p>
 </div>
-<section id="why-build-a-poverty-monitor" class="level1">
-<h1>Why build a poverty monitor?</h1>
+<section id="trust-begins-with-clear-boundaries." class="level1">
+<h1>Trust begins with clear boundaries.</h1>
 <div class="story-lede">
-<p>The problem is not the lack of data. The problem is the missing reading layer.</p>
+<p>How the monitor separates analytical estimates, benchmark comparison and public communication.</p>
 </div>
-<p>Poverty data in Ecuador already exist across official bulletins, microdata, methodological notes, poverty lines, labor reports, monthly releases, quarterly files, and annual databases. This monitor turns that scattered public information into a coherent, reproducible, and decision-oriented reading.</p>
+<p>The Ecuador Poverty Monitor makes its analytical status visible. It distinguishes the source data from local analytical products, curated publication outputs, benchmark comparisons, and the language used on the public site.</p>
 </section>
 </div>
-<section id="a-reading-layer-for-public-data" class="level2 internal-hero-card">
-<h2 class="anchored" data-anchor-id="a-reading-layer-for-public-data">A reading layer for public data</h2>
-<p>The Ecuador Poverty Monitor connects income, deprivation, territory, labor conditions, and statistical quality into one static Quarto product.</p>
-<p>It does not replace official statistics. It helps explain how to read them.</p>
+<section id="the-core-distinction" class="level2 internal-hero-card">
+<h2 class="anchored" data-anchor-id="the-core-distinction">The core distinction</h2>
+<p>A <strong>benchmark comparison for analytical reproducibility</strong> checks whether a result aligns with a public reference under a stated tolerance.</p>
+<p>It is not <strong>official institutional validation</strong>, certification, endorsement, or approval.</p>
 </section>
 </div>
 <div class="content-block editorial-flow">
 <div class="story-grid">
 <div class="story-panel">
 <div class="section-kicker">
-<p>Starting point</p>
+<p>Purpose</p>
 </div>
-<section id="what-is-fragmented" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-fragmented">What is fragmented?</h2>
-<p>The issue is not a shortage of information. The issue is that each release answers only part of the question.</p>
-<p>Tables can inform, but poverty analysis needs context: what was measured, what period supports the estimate, which territorial domains are valid, and how precise the result is.</p>
+<section id="what-this-monitor-is" class="level2">
+<h2 class="anchored" data-anchor-id="what-this-monitor-is">What this monitor is</h2>
+<p>The monitor is a downstream analytical and communication layer built from public ENEMDU source files, explicit methodological contracts, reproducible processing with <code>enemduR</code>, curated aggregate outputs, and static Quarto pages.</p>
+<p>It organizes results so readers can see what was estimated, for which period and domain, with which quality metadata, and against which public reference when a suitable benchmark is available.</p>
 </section>
 </div>
 <div class="story-panel">
 <div class="section-kicker">
-<p>Analytical purpose</p>
+<p>Boundary</p>
 </div>
-<section id="what-the-monitor-connects" class="level2">
-<h2 class="anchored" data-anchor-id="what-the-monitor-connects">What the monitor connects</h2>
-<p>Poverty can be read through income, basic needs, simultaneous deprivation, territory, and work. Each lens illuminates a different part of the problem.</p>
-<p>When those pieces are read separately, the picture remains incomplete. When they are connected, the country becomes easier to understand.</p>
+<section id="what-this-monitor-is-not" class="level2">
+<h2 class="anchored" data-anchor-id="what-this-monitor-is-not">What this monitor is not</h2>
+<p>It is not an official statistical release, a substitute for INEC publications, or an independent statistical authority. It does not claim institutional validation. It also does not treat every analytical estimate as equally benchmarked or equally suitable for territorial disaggregation.</p>
 </section>
 </div>
-</div>
-<div class="method-note">
-<p>A single figure can inform. A well-built reading layer can support better decisions.</p>
 </div>
 <div class="infographic-frame">
 <div class="section-kicker">
-<p>What ENEMDU contributes</p>
+<p>Data architecture</p>
 </div>
-<section id="source-engine-product" class="level2">
-<h2 class="anchored" data-anchor-id="source-engine-product">Source, engine, product</h2>
-<p>ENEMDU is Ecuador’s National Survey of Employment, Unemployment, and Underemployment. It is one of the country’s key statistical operations for analyzing work, labor conditions, income, poverty, and household characteristics.</p>
-<div class="three-layer-grid">
-<section id="official-source" class="level3 layer-card">
-<h3 class="anchored" data-anchor-id="official-source">1. Official source</h3>
-<p>The base information comes from ENEMDU and its methodological documentation.</p>
+<section id="four-publication-layers" class="level2">
+<h2 class="anchored" data-anchor-id="four-publication-layers">Four publication layers</h2>
+<div class="method-grid">
+<section id="source-microdata" class="level3 method-card">
+<h3 class="anchored" data-anchor-id="source-microdata">1. Source microdata</h3>
+<p>Public ENEMDU files are processed locally. Microdata remain outside the public site and are not copied into versioned publication outputs.</p>
 </section>
-<section id="analytical-engine" class="level3 layer-card">
-<h3 class="anchored" data-anchor-id="analytical-engine">2. Analytical engine</h3>
-<p><code>enemduR</code> organizes reading, validation, estimation, indicators, and analytical outputs.</p>
+<section id="annual-analytical-outputs" class="level3 method-card">
+<h3 class="anchored" data-anchor-id="annual-analytical-outputs">2. Annual analytical outputs</h3>
+<p>Local derived products hold the analytical results required by the pipeline. They are separate from the website and are not intended as direct public interfaces.</p>
 </section>
-<section id="narrative-product" class="level3 layer-card">
-<h3 class="anchored" data-anchor-id="narrative-product">3. Narrative product</h3>
-<p>This site turns results into a visual and explanatory story.</p>
+<section id="curated-site-outputs" class="level3 method-card">
+<h3 class="anchored" data-anchor-id="curated-site-outputs">3. Curated site outputs</h3>
+<p>Versionable publication files contain only the aggregate fields needed by Quarto. They exclude microdata, raw identifiers, private paths, and dynamic timestamps.</p>
+</section>
+<section id="quarto-pages" class="level3 method-card">
+<h3 class="anchored" data-anchor-id="quarto-pages">4. Quarto pages</h3>
+<p>Static pages consume curated outputs and add interpretation, benchmark labels, quality notes, and explicit limits without recalculating the underlying indicators.</p>
 </section>
 </div>
 </section>
 </div>
 <div class="story-panel">
 <div class="section-kicker">
-<p>How to read the site</p>
+<p>Period contract</p>
 </div>
-<section id="three-speeds-different-questions" class="level2">
-<h2 class="anchored" data-anchor-id="three-speeds-different-questions">Three speeds, different questions</h2>
-<p>This product does not treat all periods as if they supported the same type of reading. The monitor is organized into monthly pulse, quarterly city view, and annual structural analysis.</p>
-</section>
-</div>
+<section id="three-speed-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="three-speed-architecture">Three-speed architecture</h2>
 <div class="period-grid">
-<div class="period-card">
-<div class="period-badge">
-<p>Monthly</p>
-</div>
-<section id="recent-pulse" class="level3">
-<h3 class="anchored" data-anchor-id="recent-pulse">Recent pulse</h3>
-<p>Used mainly for national, urban/rural, and labor-market readings.</p>
+<section id="monthly" class="level3 period-card">
+<h3 class="anchored" data-anchor-id="monthly">Monthly</h3>
+<p>The monthly layer is a short-term pulse for national and urban-rural context, particularly labor-market conditions. It should not be read as a substitute for annual structural poverty analysis.</p>
+</section>
+<section id="quarterly" class="level3 period-card">
+<h3 class="anchored" data-anchor-id="quarterly">Quarterly</h3>
+<p>The quarterly layer supports intermediate urban monitoring, including the five main cities only when the survey design and configured domain contract support those estimates.</p>
+</section>
+<section id="annual" class="level3 period-card">
+<h3 class="anchored" data-anchor-id="annual">Annual</h3>
+<p>The annual layer is the structural core for income poverty, deprivation, multidimensional poverty, distribution, and broader territorial analysis. The current published poverty profiles use annual 2025 outputs.</p>
 </section>
 </div>
-<div class="period-card">
-<div class="period-badge">
-<p>Quarterly</p>
-</div>
-<section id="city-signals" class="level3">
-<h3 class="anchored" data-anchor-id="city-signals">City signals</h3>
-<p>Used for observing the five main cities when the sample domain allows it.</p>
+<p>Period and domain are linked: a territorial level is shown only when it is supported by the survey design for that period.</p>
 </section>
 </div>
-<div class="period-card">
-<div class="period-badge">
-<p>Annual</p>
+<div class="story-panel">
+<div class="section-kicker">
+<p>Reproducibility metadata</p>
 </div>
-<section id="structural-base" class="level3">
-<h3 class="anchored" data-anchor-id="structural-base">Structural base</h3>
-<p>Used as the core of the full poverty, NBI, multidimensional, quintile, and provincial analysis.</p>
+<section id="benchmark-status" class="level2">
+<h2 class="anchored" data-anchor-id="benchmark-status">Benchmark status</h2>
+<p><code>benchmark_status</code> records the result of a comparison with an identified public reference. It is a reproducibility field, not an institutional seal.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Benchmark status</th>
+<th>Meaning</th>
+<th>Public interpretation</th>
+<th>Current use in the site</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Close match</td>
+<td>The analytical estimate falls within the stated comparison tolerance for the available public reference.</td>
+<td>The monitor closely reproduces that public benchmark under the documented analytical contract.</td>
+<td>Income poverty and extreme income poverty.</td>
+</tr>
+<tr class="even">
+<td>Not directly benchmarked</td>
+<td>No equivalent public annual table is used for a direct indicator-level comparison in this build.</td>
+<td>Read the result as a survey-weighted analytical estimate, not as a benchmark-matched headline.</td>
+<td>NBI and extreme NBI.</td>
+</tr>
+<tr class="odd">
+<td>Outside tolerance / requires review</td>
+<td>A public reference is available, but the analytical comparison does not meet the current tolerance.</td>
+<td>The estimate may be published with a visible review flag, but it must not be described as a close reproduction.</td>
+<td>TPM and TPEM.</td>
+</tr>
+<tr class="even">
+<td>Reference missing or not matched</td>
+<td>The expected comparison cannot be completed for the relevant row or reference.</td>
+<td>Do not infer benchmark alignment; inspect the source and matching contract before making a claim.</td>
+<td>Reserved for pipeline transparency when applicable.</td>
+</tr>
+</tbody>
+</table>
+<div class="method-note">
+<p>For the current annual income-poverty comparison, “close match” means a difference of no more than 0.5 percentage points from the public annual reference. That tolerance belongs to this analytical reproducibility check and does not imply official institutional validation.</p>
+</div>
 </section>
 </div>
+<div class="story-panel">
+<div class="section-kicker">
+<p>Published portfolio</p>
 </div>
-<div class="insight-strip">
-<div class="insight-card">
-<p><strong>Income</strong></p>
-<p>Whether household per-capita income reaches a poverty line.</p>
-</div>
-<div class="insight-card">
-<p><strong>Deprivation</strong></p>
-<p>How basic needs and multidimensional disadvantages accumulate.</p>
-</div>
-<div class="insight-card">
-<p><strong>Territory</strong></p>
-<p>Where estimates are valid, precise, and analytically meaningful.</p>
-</div>
-<div class="insight-card">
-<p><strong>Labor</strong></p>
-<p>How employment connects income, vulnerability, and wellbeing.</p>
-</div>
-</div>
-<section id="golden-rule" class="level2 data-warning">
-<h2 class="anchored" data-anchor-id="golden-rule">Golden rule</h2>
-<p>Never show a territorial disaggregation that does not match the representativity domain of the period being used. Methodological clarity is part of the product, not a secondary note.</p>
+<section id="current-indicator-status" class="level2">
+<h2 class="anchored" data-anchor-id="current-indicator-status">Current indicator status</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Indicator</th>
+<th>What it measures</th>
+<th>Current benchmark interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Income poverty</td>
+<td>Whether household per-capita income falls below the income-poverty line.</td>
+<td>Close match against the public annual benchmark.</td>
+</tr>
+<tr class="even">
+<td>Extreme income poverty</td>
+<td>Whether household per-capita income falls below the extreme-poverty line.</td>
+<td>Close match against the public annual benchmark.</td>
+</tr>
+<tr class="odd">
+<td>NBI</td>
+<td>Structural deprivation measured through unmet basic needs.</td>
+<td>Not directly benchmarked against a public annual table in this build.</td>
+</tr>
+<tr class="even">
+<td>Extreme NBI</td>
+<td>More severe or accumulated unmet-basic-needs conditions under the implemented method.</td>
+<td>Not directly benchmarked against a public annual table in this build.</td>
+</tr>
+<tr class="odd">
+<td>TPM</td>
+<td>Multidimensional poverty based on overlapping weighted deprivations and the implemented threshold.</td>
+<td>Benchmark comparison outside tolerance; requires methodological review.</td>
+</tr>
+<tr class="even">
+<td>TPEM</td>
+<td>Severe multidimensional poverty based on the implemented extreme threshold.</td>
+<td>Benchmark comparison outside tolerance; requires methodological review.</td>
+</tr>
+</tbody>
+</table>
+<p>These indicators answer different questions. Income poverty concerns current monetary resources. NBI captures structural deficits in basic needs. TPM and TPEM summarize overlapping weighted deprivations. They should be read together, not treated as interchangeable poverty rates.</p>
 </section>
+</div>
 <div class="story-grid">
 <div class="story-panel">
 <div class="section-kicker">
-<p>What this monitor adds</p>
+<p>Estimation</p>
 </div>
-<section id="a-compact-product-contract" class="level2">
-<h2 class="anchored" data-anchor-id="a-compact-product-contract">A compact product contract</h2>
-<p>This monitor adds an integrated reading of poverty, a reproducible architecture based on <code>enemduR</code>, a stronger visual communication layer, a clear distinction between pulse and structure, and a technical discussion of representativity.</p>
+<section id="survey-weighted-analytical-estimates" class="level2">
+<h2 class="anchored" data-anchor-id="survey-weighted-analytical-estimates">Survey-weighted analytical estimates</h2>
+<p>The published indicators are survey-weighted analytical estimates. Survey weights translate sampled observations into estimates for the population represented by the valid survey domain.</p>
+<ul>
+<li><code>weighted_n</code> is the estimated population represented by the analytical denominator.</li>
+<li><code>unweighted_n</code> is the number of survey records contributing to that denominator.</li>
+<li><code>quality_flag</code> carries the available precision or representativity assessment from the analytical output.</li>
+<li><code>benchmark_status</code> describes benchmark comparison, which is separate from sample quality.</li>
+</ul>
+<p>A large <code>weighted_n</code> does not by itself guarantee precision, and a benchmark close match does not replace review of sample size, domain validity, and quality flags.</p>
 </section>
 </div>
 <div class="story-panel">
 <div class="section-kicker">
-<p>What it does not do</p>
+<p>Domains and universes</p>
 </div>
-<section id="not-a-parallel-authority" class="level2">
-<h2 class="anchored" data-anchor-id="not-a-parallel-authority">Not a parallel authority</h2>
-<p>The monitor does not replace INEC or produce official statistics. Its goal is to transform complex public information into an ordered, reproducible, visual, and useful reading of poverty in Ecuador.</p>
+<section id="read-every-estimate-inside-its-contract" class="level2">
+<h2 class="anchored" data-anchor-id="read-every-estimate-inside-its-contract">Read every estimate inside its contract</h2>
+<p>The current poverty pages publish national, urban, and rural annual domains. Each estimate also belongs to a defined universe and analysis unit. Readers should not compare or combine rows without checking that period, universe, analysis unit, and domain are compatible.</p>
+<p>More detailed geography is not automatically more informative. City, province, or other territorial estimates should appear only in the layers and periods where the survey design supports them. Unsupported disaggregation can create false precision even when the underlying calculation runs successfully.</p>
 </section>
 </div>
 </div>
+<section id="how-to-read-a-quality-flag" class="level2 data-warning">
+<h2 class="anchored" data-anchor-id="how-to-read-a-quality-flag">How to read a quality flag</h2>
+<p>A quality flag is a decision aid, not decoration. If the field is available, read its value before publishing or interpreting a subgroup estimate. A restrictive or review-oriented flag should lead to qualification, suppression, or further methodological inspection according to the producing method. If the field is unavailable, the absence of a warning must not be interpreted as evidence of high precision.</p>
+</section>
+<div class="story-panel">
+<div class="section-kicker">
+<p>Communication standard</p>
+</div>
+<section id="public-language-contract" class="level2">
+<h2 class="anchored" data-anchor-id="public-language-contract">Public language contract</h2>
+<p>The site may say that an estimate is:</p>
+<ul>
+<li>based on public ENEMDU microdata;</li>
+<li>a survey-weighted analytical estimate;</li>
+<li>compared against public annual INEC tabulations;</li>
+<li>a close benchmark match under the documented tolerance;</li>
+<li>not directly benchmarked in this build; or</li>
+<li>outside tolerance and requiring methodological review.</li>
+</ul>
+<p>The site must not imply certification, institutional approval, endorsement, or formal validation by INEC. Benchmark alignment documents analytical reproducibility only.</p>
+</section>
+</div>
+<div class="story-panel">
+<div class="section-kicker">
+<p>Honest limits</p>
+</div>
+<section id="current-limitations" class="level2">
+<h2 class="anchored" data-anchor-id="current-limitations">Current limitations</h2>
+<ul>
+<li>This monitor is not an official statistical release and does not carry institutional validation.</li>
+<li>NBI and extreme NBI do not have a direct public annual benchmark inside the current build.</li>
+<li>TPM and TPEM require methodological review before they can be described as close reproductions of the public reference.</li>
+<li>The current annual pages focus on national, urban, and rural domains; finer disaggregation requires a separate representativity contract.</li>
+<li>Future territorial and labor layers require their own curated outputs, quality checks, and publication rules.</li>
+<li>Static publication improves auditability, but it does not remove the need to review methods when source files, survey design, or official references change.</li>
+</ul>
+</section>
+</div>
 <div class="proof-strip">
 <div class="proof-item">
-<p><strong>Official microdata</strong></p>
-<p>The monitor starts from ENEMDU and its methodological documentation.</p>
+<p><strong>Separated layers</strong></p>
+<p>Microdata, local analysis, curated outputs, and public pages have distinct roles.</p>
 </div>
 <div class="proof-item">
-<p><strong>Methodological contracts</strong></p>
-<p>Each layer has explicit limits for period, domain, and use.</p>
+<p><strong>Visible status</strong></p>
+<p>Benchmark and quality metadata remain part of the public interpretation.</p>
 </div>
 <div class="proof-item">
-<p><strong>Statistical quality</strong></p>
-<p>Precision and representativity are part of the story, not footnotes.</p>
+<p><strong>Valid domains</strong></p>
+<p>Disaggregation follows the period-specific representativity contract.</p>
 </div>
 <div class="proof-item">
-<p><strong>Reproducible output</strong></p>
-<p>Scripts prepare derived outputs for a static Quarto site.</p>
+<p><strong>Bounded claims</strong></p>
+<p>Analytical reproducibility is never presented as institutional validation.</p>
 </div>
 </div>
 <div class="page-nav">
-<p><a href="../index.html">&lt;- Home</a> <a href="../pages/02_income-poverty.html">Income poverty -&gt;</a></p>
+<p><a href="../pages/02_income-poverty.html">&lt;- Income poverty</a> <a href="../pages/03_deprivation-multidimensional-poverty.html">Deprivation and multidimensional poverty</a> <a href="../index.html">Home -&gt;</a></p>
 </div>
 </div>
 
@@ -741,7 +862,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/yerovi84/ecuador-poverty-monitor/blob/main/pages/01_why-monitor.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/yerovi84/ecuador-poverty-monitor/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/yerovi84/ecuador-poverty-monitor/blob/main/pages/04_methodology-quality.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/yerovi84/ecuador-poverty-monitor/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
