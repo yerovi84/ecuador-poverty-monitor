@@ -125,11 +125,12 @@ Narrativa editorial, gráficos e infografías futuras.
 :::
 
 ::: {.method-note}
-La capa anual de pobreza por ingresos 2025 ya está publicada. La futura capa de privaciones y pobreza multidimensional existe por ahora como propuesta metodológica, sin cifras hasta que existan outputs reproducibles y curados para publicación.
+Las capas anuales 2025 de pobreza por ingresos y de privaciones y pobreza multidimensional ya están publicadas con outputs agregados y curados. La nueva página metodológica en inglés explica los estados de benchmark, las banderas de calidad, los dominios válidos y los límites de comunicación pública.
 :::
 
 ::: {.page-nav}
 [Inglés ->](../index.qmd)
 [Pobreza por ingresos ->](../pages/02_income-poverty.qmd)
+[Metodología y calidad ->](../pages/04_methodology-quality.qmd)
 :::
 :::

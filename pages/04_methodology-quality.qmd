@@ -1,0 +1,269 @@
+---
+title: "Methodology and statistical quality"
+subtitle: "How the monitor separates analytical estimates, benchmark comparison and public communication."
+description: "Methodology, data architecture, benchmark status, quality metadata, domains and interpretation limits for the Ecuador Poverty Monitor."
+format:
+  html:
+    page-layout: full
+    toc: false
+    code-tools: false
+    title-block-style: none
+    body-class: epm-internal
+---
+
+::: {.internal-hero .internal-hero-wide}
+::: {.internal-hero-copy}
+::: {.section-kicker}
+Methodology and statistical quality
+:::
+
+# Trust begins with clear boundaries.
+
+::: {.story-lede}
+How the monitor separates analytical estimates, benchmark comparison and public communication.
+:::
+
+The Ecuador Poverty Monitor makes its analytical status visible. It distinguishes the source data from local analytical products, curated publication outputs, benchmark comparisons, and the language used on the public site.
+:::
+
+::: {.internal-hero-card}
+## The core distinction
+
+A **benchmark comparison for analytical reproducibility** checks whether a result aligns with a public reference under a stated tolerance.
+
+It is not **official institutional validation**, certification, endorsement, or approval.
+:::
+:::
+
+::: {.content-block .editorial-flow}
+::: {.story-grid}
+::: {.story-panel}
+::: {.section-kicker}
+Purpose
+:::
+
+## What this monitor is
+
+The monitor is a downstream analytical and communication layer built from public ENEMDU source files, explicit methodological contracts, reproducible processing with `enemduR`, curated aggregate outputs, and static Quarto pages.
+
+It organizes results so readers can see what was estimated, for which period and domain, with which quality metadata, and against which public reference when a suitable benchmark is available.
+:::
+
+::: {.story-panel}
+::: {.section-kicker}
+Boundary
+:::
+
+## What this monitor is not
+
+It is not an official statistical release, a substitute for INEC publications, or an independent statistical authority. It does not claim institutional validation. It also does not treat every analytical estimate as equally benchmarked or equally suitable for territorial disaggregation.
+:::
+:::
+
+::: {.infographic-frame}
+::: {.section-kicker}
+Data architecture
+:::
+
+## Four publication layers
+
+::: {.method-grid}
+::: {.method-card}
+### 1. Source microdata
+
+Public ENEMDU files are processed locally. Microdata remain outside the public site and are not copied into versioned publication outputs.
+:::
+
+::: {.method-card}
+### 2. Annual analytical outputs
+
+Local derived products hold the analytical results required by the pipeline. They are separate from the website and are not intended as direct public interfaces.
+:::
+
+::: {.method-card}
+### 3. Curated site outputs
+
+Versionable publication files contain only the aggregate fields needed by Quarto. They exclude microdata, raw identifiers, private paths, and dynamic timestamps.
+:::
+
+::: {.method-card}
+### 4. Quarto pages
+
+Static pages consume curated outputs and add interpretation, benchmark labels, quality notes, and explicit limits without recalculating the underlying indicators.
+:::
+:::
+:::
+
+::: {.story-panel}
+::: {.section-kicker}
+Period contract
+:::
+
+## Three-speed architecture
+
+::: {.period-grid}
+::: {.period-card}
+### Monthly
+
+The monthly layer is a short-term pulse for national and urban-rural context, particularly labor-market conditions. It should not be read as a substitute for annual structural poverty analysis.
+:::
+
+::: {.period-card}
+### Quarterly
+
+The quarterly layer supports intermediate urban monitoring, including the five main cities only when the survey design and configured domain contract support those estimates.
+:::
+
+::: {.period-card}
+### Annual
+
+The annual layer is the structural core for income poverty, deprivation, multidimensional poverty, distribution, and broader territorial analysis. The current published poverty profiles use annual 2025 outputs.
+:::
+:::
+
+Period and domain are linked: a territorial level is shown only when it is supported by the survey design for that period.
+:::
+
+::: {.story-panel}
+::: {.section-kicker}
+Reproducibility metadata
+:::
+
+## Benchmark status
+
+`benchmark_status` records the result of a comparison with an identified public reference. It is a reproducibility field, not an institutional seal.
+
+| Benchmark status | Meaning | Public interpretation | Current use in the site |
+|---|---|---|---|
+| Close match | The analytical estimate falls within the stated comparison tolerance for the available public reference. | The monitor closely reproduces that public benchmark under the documented analytical contract. | Income poverty and extreme income poverty. |
+| Not directly benchmarked | No equivalent public annual table is used for a direct indicator-level comparison in this build. | Read the result as a survey-weighted analytical estimate, not as a benchmark-matched headline. | NBI and extreme NBI. |
+| Outside tolerance / requires review | A public reference is available, but the analytical comparison does not meet the current tolerance. | The estimate may be published with a visible review flag, but it must not be described as a close reproduction. | TPM and TPEM. |
+| Reference missing or not matched | The expected comparison cannot be completed for the relevant row or reference. | Do not infer benchmark alignment; inspect the source and matching contract before making a claim. | Reserved for pipeline transparency when applicable. |
+
+::: {.method-note}
+For the current annual income-poverty comparison, “close match” means a difference of no more than 0.5 percentage points from the public annual reference. That tolerance belongs to this analytical reproducibility check and does not imply official institutional validation.
+:::
+:::
+
+::: {.story-panel}
+::: {.section-kicker}
+Published portfolio
+:::
+
+## Current indicator status
+
+| Indicator | What it measures | Current benchmark interpretation |
+|---|---|---|
+| Income poverty | Whether household per-capita income falls below the income-poverty line. | Close match against the public annual benchmark. |
+| Extreme income poverty | Whether household per-capita income falls below the extreme-poverty line. | Close match against the public annual benchmark. |
+| NBI | Structural deprivation measured through unmet basic needs. | Not directly benchmarked against a public annual table in this build. |
+| Extreme NBI | More severe or accumulated unmet-basic-needs conditions under the implemented method. | Not directly benchmarked against a public annual table in this build. |
+| TPM | Multidimensional poverty based on overlapping weighted deprivations and the implemented threshold. | Benchmark comparison outside tolerance; requires methodological review. |
+| TPEM | Severe multidimensional poverty based on the implemented extreme threshold. | Benchmark comparison outside tolerance; requires methodological review. |
+
+These indicators answer different questions. Income poverty concerns current monetary resources. NBI captures structural deficits in basic needs. TPM and TPEM summarize overlapping weighted deprivations. They should be read together, not treated as interchangeable poverty rates.
+:::
+
+::: {.story-grid}
+::: {.story-panel}
+::: {.section-kicker}
+Estimation
+:::
+
+## Survey-weighted analytical estimates
+
+The published indicators are survey-weighted analytical estimates. Survey weights translate sampled observations into estimates for the population represented by the valid survey domain.
+
+- `weighted_n` is the estimated population represented by the analytical denominator.
+- `unweighted_n` is the number of survey records contributing to that denominator.
+- `quality_flag` carries the available precision or representativity assessment from the analytical output.
+- `benchmark_status` describes benchmark comparison, which is separate from sample quality.
+
+A large `weighted_n` does not by itself guarantee precision, and a benchmark close match does not replace review of sample size, domain validity, and quality flags.
+:::
+
+::: {.story-panel}
+::: {.section-kicker}
+Domains and universes
+:::
+
+## Read every estimate inside its contract
+
+The current poverty pages publish national, urban, and rural annual domains. Each estimate also belongs to a defined universe and analysis unit. Readers should not compare or combine rows without checking that period, universe, analysis unit, and domain are compatible.
+
+More detailed geography is not automatically more informative. City, province, or other territorial estimates should appear only in the layers and periods where the survey design supports them. Unsupported disaggregation can create false precision even when the underlying calculation runs successfully.
+:::
+:::
+
+::: {.data-warning}
+## How to read a quality flag
+
+A quality flag is a decision aid, not decoration. If the field is available, read its value before publishing or interpreting a subgroup estimate. A restrictive or review-oriented flag should lead to qualification, suppression, or further methodological inspection according to the producing method. If the field is unavailable, the absence of a warning must not be interpreted as evidence of high precision.
+:::
+
+::: {.story-panel}
+::: {.section-kicker}
+Communication standard
+:::
+
+## Public language contract
+
+The site may say that an estimate is:
+
+- based on public ENEMDU microdata;
+- a survey-weighted analytical estimate;
+- compared against public annual INEC tabulations;
+- a close benchmark match under the documented tolerance;
+- not directly benchmarked in this build; or
+- outside tolerance and requiring methodological review.
+
+The site must not imply certification, institutional approval, endorsement, or formal validation by INEC. Benchmark alignment documents analytical reproducibility only.
+:::
+
+::: {.story-panel}
+::: {.section-kicker}
+Honest limits
+:::
+
+## Current limitations
+
+- This monitor is not an official statistical release and does not carry institutional validation.
+- NBI and extreme NBI do not have a direct public annual benchmark inside the current build.
+- TPM and TPEM require methodological review before they can be described as close reproductions of the public reference.
+- The current annual pages focus on national, urban, and rural domains; finer disaggregation requires a separate representativity contract.
+- Future territorial and labor layers require their own curated outputs, quality checks, and publication rules.
+- Static publication improves auditability, but it does not remove the need to review methods when source files, survey design, or official references change.
+:::
+
+::: {.proof-strip}
+::: {.proof-item}
+**Separated layers**
+
+Microdata, local analysis, curated outputs, and public pages have distinct roles.
+:::
+
+::: {.proof-item}
+**Visible status**
+
+Benchmark and quality metadata remain part of the public interpretation.
+:::
+
+::: {.proof-item}
+**Valid domains**
+
+Disaggregation follows the period-specific representativity contract.
+:::
+
+::: {.proof-item}
+**Bounded claims**
+
+Analytical reproducibility is never presented as institutional validation.
+:::
+:::
+
+::: {.page-nav}
+[<- Income poverty](02_income-poverty.qmd)
+[Deprivation and multidimensional poverty](03_deprivation-multidimensional-poverty.qmd)
+[Home ->](../index.qmd)
+:::
+:::

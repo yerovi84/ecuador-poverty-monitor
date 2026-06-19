@@ -181,7 +181,7 @@ Income poverty asks whether household per-capita income reaches a minimum povert
 
 NBI and multidimensional poverty show structural deficits and overlapping disadvantages.
 
-[View the deprivation layer scaffold](pages/03_deprivation-multidimensional-poverty.qmd)
+[Read the 2025 deprivation and multidimensional poverty profile](pages/03_deprivation-multidimensional-poverty.qmd)
 :::
 
 ::: {.story-step}
@@ -200,11 +200,13 @@ Work connects income, vulnerability, and household wellbeing.
 ### 5. Measurement
 
 No figure is stronger than the instrument used to estimate it.
+
+[Review methodology and statistical quality](pages/04_methodology-quality.qmd)
 :::
 :::
 
 ::: {.method-note #statistical-quality}
-The visual architecture is ready for charts and infographics without changing the data contract, the methodological logic, or the static Quarto structure.
+The methodology and statistical quality page documents the monitor's data layers, benchmark statuses, quality metadata, valid domains, and public-language contract.
 :::
 
 ## Product status
@@ -212,7 +214,7 @@ The visual architecture is ready for charts and infographics without changing th
 ::: {.data-warning}
 This site is being built in public as a static Quarto portfolio product.
 
-The 2025 annual income-poverty layer is published with benchmark comparison against public annual INEC tabulations. The deprivation and multidimensional poverty layer is currently a methodological scaffold and does not report estimates yet.
+The 2025 annual income-poverty page is published with benchmark comparison against public annual INEC tabulations. The deprivation and multidimensional poverty page is published with curated income poverty, NBI, extreme NBI, TPM, and TPEM indicators. The methodology and statistical quality page documents how benchmark comparisons, quality flags, domains, and publication limits should be read.
 :::
 
 ::: {.proof-strip}
@@ -244,5 +246,6 @@ Quarto consumes derived products, not raw microdata.
 ::: {.page-nav}
 [Why it matters ->](pages/01_why-monitor.qmd)
 [Income poverty ->](pages/02_income-poverty.qmd)
+[Methodology and quality ->](pages/04_methodology-quality.qmd)
 :::
 :::

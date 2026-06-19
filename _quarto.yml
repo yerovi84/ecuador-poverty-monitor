@@ -30,7 +30,7 @@ website:
           - text: "Territory and labor"
             href: index.qmd#analytical-roadmap
           - text: "Statistical quality"
-            href: index.qmd#statistical-quality
+            href: pages/04_methodology-quality.qmd
     right:
       - text: "EN"
         href: index.qmd
