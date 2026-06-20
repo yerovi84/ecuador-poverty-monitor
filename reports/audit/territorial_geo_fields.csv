@@ -1,0 +1,12 @@
+layer_id,source_file,field_name,data_type,width,non_null_count,unique_count,duplicate_value_count,encoding_issue_count,probable_role,join_assessment,example_values
+provincial_detailed_reference,ORGANIZACION TERRITORIAL DEL ESTADO PROVINCIAL.shp,DPA_PROVIN,character,254,29,25,1,0,province or special-feature code,"Conditional reference only: duplicated 90 and nonnumeric ISLA; official province code 20 is absent","01 | 03 | 17 | 90 | ISLA"
+provincial_detailed_reference,ORGANIZACION TERRITORIAL DEL ESTADO PROVINCIAL.shp,DPA_DESPRO,character,254,29,29,0,0,territorial label,"Display and QA only; do not join on names","AZUAY | CAÑAR | PICHINCHA"
+provincial_presentation,PROVINCIA_INEC_EDIT.json,fid,numeric-like text,,24,24,0,0,source feature identifier,"Do not use as territorial key","1.0 | 28650.0 | 51005.0"
+provincial_presentation,PROVINCIA_INEC_EDIT.json,fcode,character,,24,1,1,0,constant feature-class code,"Not discriminating; do not use",AA002
+provincial_presentation,PROVINCIA_INEC_EDIT.json,provincia,character,,24,24,0,0,two-digit province DPA code,"Preferred province join key after enforcing two-character text","01 | 09 | 20 | 24"
+provincial_presentation,PROVINCIA_INEC_EDIT.json,nom_pro,character,,24,24,0,0,province display name,"Use for labels and code-name QA; not as primary key","AZUAY | GALÁPAGOS | LOS RÍOS"
+provincial_presentation,PROVINCIA_INEC_EDIT.json,anio,character,,24,1,1,0,geometry reference year,"Use for provenance/version checks, not joins",2022
+cantonal_reference,ORGANIZACION TERRITORIAL DEL ESTADO CANTONAL.shp,DPA_CANTON,character,254,224,224,0,0,four-character canton or special-feature code,"Preferred canton key; for 218 official mainland records the first two characters equal DPA_PROVIN","0101 | 0701 | 0901 | 1701 | 1801"
+cantonal_reference,ORGANIZACION TERRITORIAL DEL ESTADO CANTONAL.shp,DPA_DESCAN,character,254,224,222,2,0,canton or special-feature name,"Display and QA only; BOLIVAR and OLMEDO each occur in two provinces","CUENCA | GUAYAQUIL | DISTRITO METROPOLITANO DE QUITO"
+cantonal_reference,ORGANIZACION TERRITORIAL DEL ESTADO CANTONAL.shp,DPA_PROVIN,character,254,224,25,24,0,parent province or special-feature code,"Use with DPA_CANTON for hierarchy checks; not unique by design","01 | 09 | 17 | 90 | ISLA"
+cantonal_reference,ORGANIZACION TERRITORIAL DEL ESTADO CANTONAL.shp,DPA_DESPRO,character,254,224,29,23,0,parent province or special-feature label,"Display and QA only; not a join key","AZUAY | GUAYAS | PICHINCHA"
