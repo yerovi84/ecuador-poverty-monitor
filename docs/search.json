@@ -319,35 +319,56 @@
     "href": "es/index.html",
     "title": "Entender la pobreza más allá de una sola cifra.",
     "section": "",
-    "text": "Capa ejecutiva en español\n\n\n\nEl sitio principal está escrito en inglés para funcionar como producto de portafolio internacional. Esta página resume la propuesta para lectores ecuatorianos y audiencias locales.\nEl objetivo es explicar pobreza, territorio, empleo y calidad estadística con una narrativa reproducible, sobria y útil.\n\nVer sitio principal en inglés Ver pobreza por ingresos\n\n\n\n\n\nOrganiza datos públicos de ENEMDU en una lectura clara, separando coyuntura, estructura y límites de representatividad.\n\n\n\nMensual\n\nPulso\n\nContexto nacional, urbano/rural y laboral reciente.\n\n\n\n\nTrimestral\n\nCiudades\n\nSeñales urbanas cuando el dominio de estimación lo permite.\n\n\n\n\nAnual\n\nEstructura\n\nPobreza, privaciones, quintiles y territorio provincial."
+    "text": "Capa ejecutiva en español\n\n\n\nEl Ecuador Poverty Monitor es un producto público, narrativo y reproducible para leer pobreza, territorio, empleo y calidad estadística en Ecuador con prudencia metodológica.\nLa versión en inglés funciona como sitio canónico de portafolio internacional. Esta página resume el producto completo para lectores ecuatorianos y audiencias locales, sin duplicar todas las páginas ni reemplazar las publicaciones estadísticas oficiales.\n\nVer sitio principal en inglés Ver pobreza por ingresos\n\n\n\n\n\nOrganiza microdatos públicos de ENEMDU en una lectura clara, separando coyuntura, estructura territorial y límites de representatividad.\n\n\n\nMensual\n\nPulso\n\nContexto nacional, urbano/rural y laboral de corto plazo.\n\n\n\n\nTrimestral\n\nCiudades\n\nSeñales urbanas cuando el dominio de estimación lo permite.\n\n\n\n\nAnual\n\nEstructura\n\nPobreza, privaciones, territorio, empleo y calidad de medición."
   },
   {
     "objectID": "es/index.html#qué-resuelve-el-monitor",
     "href": "es/index.html#qué-resuelve-el-monitor",
     "title": "Entender la pobreza más allá de una sola cifra.",
     "section": "",
-    "text": "Organiza datos públicos de ENEMDU en una lectura clara, separando coyuntura, estructura y límites de representatividad.\n\n\n\nMensual\n\nPulso\n\nContexto nacional, urbano/rural y laboral reciente.\n\n\n\n\nTrimestral\n\nCiudades\n\nSeñales urbanas cuando el dominio de estimación lo permite.\n\n\n\n\nAnual\n\nEstructura\n\nPobreza, privaciones, quintiles y territorio provincial."
+    "text": "Organiza microdatos públicos de ENEMDU en una lectura clara, separando coyuntura, estructura territorial y límites de representatividad.\n\n\n\nMensual\n\nPulso\n\nContexto nacional, urbano/rural y laboral de corto plazo.\n\n\n\n\nTrimestral\n\nCiudades\n\nSeñales urbanas cuando el dominio de estimación lo permite.\n\n\n\n\nAnual\n\nEstructura\n\nPobreza, privaciones, territorio, empleo y calidad de medición."
   },
   {
-    "objectID": "es/index.html#para-qué-sirve",
-    "href": "es/index.html#para-qué-sirve",
+    "objectID": "es/index.html#un-producto-de-lectura-pública",
+    "href": "es/index.html#un-producto-de-lectura-pública",
     "title": "Entender la pobreza más allá de una sola cifra.",
-    "section": "Para qué sirve",
-    "text": "Para qué sirve\nEl Ecuador Poverty Monitor no reemplaza estadísticas oficiales ni crea una autoridad paralela. Su función es convertir información pública compleja en una lectura ordenada, visual y reproducible.\nAyuda a responder qué se está midiendo, qué comparaciones son válidas y qué límites tiene cada estimación."
+    "section": "Un producto de lectura pública",
+    "text": "Un producto de lectura pública\nEl monitor es un sitio Quarto construido sobre archivos públicos de ENEMDU, procesamiento reproducible con enemduR y outputs agregados curados para publicación. La página pública consume resultados preparados; no recalcula indicadores en la narrativa ni expone microdatos, registros de hogares, identificadores o rutas privadas.\nSu objetivo es ordenar la evidencia para que cada cifra tenga contexto: qué mide, para qué periodo sirve, en qué dominio puede interpretarse y qué límites debe conservar. No es una publicación oficial, no sustituye al INEC y no declara validación institucional. La comparación con tabulados públicos se usa como control de reproducibilidad analítica cuando existe una referencia apropiada."
   },
   {
-    "objectID": "es/index.html#cápsula-anual-2025",
-    "href": "es/index.html#cápsula-anual-2025",
+    "objectID": "es/index.html#señal-anual-2025",
+    "href": "es/index.html#señal-anual-2025",
     "title": "Entender la pobreza más allá de una sola cifra.",
-    "section": "Cápsula anual 2025",
-    "text": "Cápsula anual 2025\nEn 2025, la pobreza por ingresos alcanzó 21,95% a nivel nacional. La brecha territorial es marcada: 16,51% en el área urbana y 33,63% en el área rural. La pobreza extrema fue de 6,99% a nivel nacional, 3,69% en el área urbana y 14,07% en el área rural.\n\nEstos resultados se calculan a partir de microdatos públicos de ENEMDU y se comparan con tabulados públicos anuales del INEC con fines de reproducibilidad analítica. No constituyen validación institucional oficial."
+    "section": "Señal anual 2025",
+    "text": "Señal anual 2025\nEn 2025, la pobreza por ingresos alcanzó 21,95% a nivel nacional. La brecha territorial es marcada: 16,51% en el área urbana y 33,63% en el área rural. La pobreza extrema fue de 6,99% a nivel nacional, 3,69% en el área urbana y 14,07% en el área rural.\n\nEstos resultados se calculan a partir de microdatos públicos de ENEMDU y se comparan con tabulados públicos anuales del INEC con fines de reproducibilidad analítica. No constituyen una validación institucional."
   },
   {
-    "objectID": "es/index.html#tres-capas",
-    "href": "es/index.html#tres-capas",
+    "objectID": "es/index.html#cómo-leer-el-sitio",
+    "href": "es/index.html#cómo-leer-el-sitio",
     "title": "Entender la pobreza más allá de una sola cifra.",
-    "section": "Tres capas",
-    "text": "Tres capas\n\n\nFuente\nENEMDU y documentación metodológica oficial.\n\n\nMotor\nProcesamiento reproducible mediante enemduR.\n\n\nProducto\nNarrativa editorial, gráficos e infografías futuras."
+    "section": "Cómo leer el sitio",
+    "text": "Cómo leer el sitio\nWhy it matters explica por qué Ecuador necesita una capa de lectura: los datos existen, pero suelen estar repartidos entre boletines, microdatos, notas metodológicas y tablas. El monitor conecta esas piezas en una historia pública y reproducible.\nIncome poverty presenta el perfil anual 2025 de pobreza y pobreza extrema por ingresos. La lectura enfatiza la diferencia urbano-rural, los perfiles por edad y educación, y la comparación de reproducibilidad con tabulados públicos anuales.\nDeprivation and multidimensional poverty amplía la mirada desde el ingreso hacia NBI, NBI extremo, pobreza multidimensional y pobreza multidimensional extrema. Estas medidas no son versiones competidoras de una misma cifra: ingreso, privaciones básicas y desventajas superpuestas responden preguntas distintas.\nTerritorial view of income poverty muestra que la pobreza es territorial en dos sentidos. Un mapa permite ver dónde la incidencia es mayor; una tabla ejecutiva separa esa incidencia de la concentración poblacional de personas en pobreza.\nLabor market and poverty conecta empleo, calidad del trabajo y vulnerabilidad del hogar. La página muestra que tener empleo no garantiza estar por encima de la línea de pobreza y que el análisis laboral debe leerse de forma descriptiva, no causal.\nMeasurement and statistical quality documenta la arquitectura de datos, los estados de benchmark, las banderas de calidad, los dominios válidos y el contrato de lenguaje público. Es la capa que evita que una cifra viaje más lejos de lo que permite el diseño estadístico.\nAnnex: Sampling frame and representativity explica por qué el marco muestral, la cobertura, los dominios y el cambio poblacional son parte de la interpretación. Este anexo pertenece a Measurement; no es una sexta capa sustantiva, sino una nota técnica que fortalece la lectura de pobreza, territorio y empleo."
+  },
+  {
+    "objectID": "es/index.html#la-arquitectura-analítica",
+    "href": "es/index.html#la-arquitectura-analítica",
+    "title": "Entender la pobreza más allá de una sola cifra.",
+    "section": "La arquitectura analítica",
+    "text": "La arquitectura analítica\n\n\nIncome\nLee si el ingreso per cápita del hogar alcanza la línea de pobreza o de pobreza extrema. Es la puerta de entrada al perfil anual.\n\n\nDeprivation\nObserva carencias estructurales y privaciones superpuestas mediante NBI, NBI extremo, TPM y TPEM.\n\n\nTerritory\nUbica la pobreza en provincias y distingue incidencia territorial de concentración de población en pobreza.\n\n\nLabor\nRelaciona condición laboral, calidad del empleo e ingreso del hogar sin presentar esa relación como causalidad.\n\n\nMeasurement\nHace visibles los dominios válidos, la representatividad, los benchmarks disponibles, las alertas de calidad y los límites de publicación."
+  },
+  {
+    "objectID": "es/index.html#qué-aporta-como-producto",
+    "href": "es/index.html#qué-aporta-como-producto",
+    "title": "Entender la pobreza más allá de una sola cifra.",
+    "section": "Qué aporta como producto",
+    "text": "Qué aporta como producto\nComo portafolio, el monitor demuestra comunicación pública de datos, diseño editorial con Quarto, separación entre cálculo y presentación, uso de enemduR, publicación estática en GitHub Pages y contratos metodológicos explícitos. La lógica central es simple: los scripts producen outputs agregados; el sitio interpreta esos outputs con contexto, navegación y límites claros."
+  },
+  {
+    "objectID": "es/index.html#qué-no-afirma",
+    "href": "es/index.html#qué-no-afirma",
+    "title": "Entender la pobreza más allá de una sola cifra.",
+    "section": "Qué no afirma",
+    "text": "Qué no afirma\nEl monitor no es una publicación oficial, no reemplaza al INEC, no presenta aprobación institucional, no convierte provincias o grupos en una clasificación oficial, no afirma efectos causales y no publica microdatos. Sus páginas deben leerse como un producto analítico y comunicacional construido con información pública, controles de reproducibilidad y lenguaje prudente."
   },
   {
     "objectID": "pages/02_income-poverty.html",
