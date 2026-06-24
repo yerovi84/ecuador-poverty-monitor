@@ -196,10 +196,12 @@ Poverty is not evenly distributed. Place changes the interpretation.
 ### 4. Labor
 
 Work connects income, vulnerability, and household wellbeing.
+
+[Read the labor market and poverty profile](pages/06_labor-market-poverty.qmd)
 :::
 
 ::: {.story-step}
-### 5. Measurement
+### 5. Measurement and statistical quality
 
 No figure is stronger than the instrument used to estimate it.
 
@@ -216,7 +218,7 @@ The methodology and statistical quality page documents the monitor's data layers
 ::: {.data-warning}
 This site is being built in public as a static Quarto portfolio product.
 
-The 2025 annual income-poverty page is published with benchmark comparison against public annual INEC tabulations. The deprivation and multidimensional poverty page is published with income poverty, NBI, extreme NBI, TPM, and TPEM indicators. The provincial income-poverty page now adds a territorial map and an executive table separating poverty incidence from population concentration. The methodology and statistical quality page documents how benchmark comparisons, quality metadata, domains, and publication limits should be read.
+The 2025 annual income-poverty page is published with benchmark comparison against public annual INEC tabulations. The deprivation and multidimensional poverty page is published with income poverty, NBI, extreme NBI, TPM, and TPEM indicators. The provincial income-poverty page adds a territorial map and an executive table separating poverty incidence from population concentration. The labor-market page adds a public reading of employment conditions and poverty using curated aggregate outputs. The methodology and statistical quality page documents how benchmark comparisons, quality metadata, domains, and publication limits should be read.
 :::
 
 ::: {.proof-strip}
@@ -249,6 +251,7 @@ Quarto consumes derived products, not raw microdata.
 [Why it matters ->](pages/01_why-monitor.qmd)
 [Income poverty ->](pages/02_income-poverty.qmd)
 [Provincial income poverty ->](pages/05_territorial-province-income-poverty.qmd)
-[Methodology and quality ->](pages/04_methodology-quality.qmd)
+[Labor market and poverty ->](pages/06_labor-market-poverty.qmd)
+[Measurement and statistical quality ->](pages/04_methodology-quality.qmd)
 :::
 :::
