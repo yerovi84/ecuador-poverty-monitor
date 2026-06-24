@@ -164,8 +164,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <section id="entender-la-pobreza-más-allá-de-una-sola-cifra." class="level1">
 <h1>Entender la pobreza más allá de una sola cifra.</h1>
-<p>El sitio principal está escrito en inglés para funcionar como producto de portafolio internacional. Esta página resume la propuesta para lectores ecuatorianos y audiencias locales.</p>
-<p>El objetivo es explicar pobreza, territorio, empleo y calidad estadística con una narrativa reproducible, sobria y útil.</p>
+<p>El Ecuador Poverty Monitor es un producto público, narrativo y reproducible para leer pobreza, territorio, empleo y calidad estadística en Ecuador con prudencia metodológica.</p>
+<p>La versión en inglés funciona como sitio canónico de portafolio internacional. Esta página resume el producto completo para lectores ecuatorianos y audiencias locales, sin duplicar todas las páginas ni reemplazar las publicaciones estadísticas oficiales.</p>
 <div class="hero-actions">
 <p><a href="../index.html" class="btn-monitor btn-primary-monitor">Ver sitio principal en inglés</a> <a href="../pages/02_income-poverty.html" class="btn-monitor btn-secondary-monitor">Ver pobreza por ingresos</a></p>
 </div>
@@ -173,7 +173,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <section id="qué-resuelve-el-monitor" class="level2 hero-deck">
 <h2 class="anchored" data-anchor-id="qué-resuelve-el-monitor">Qué resuelve el monitor</h2>
-<p>Organiza datos públicos de ENEMDU en una lectura clara, separando coyuntura, estructura y límites de representatividad.</p>
+<p>Organiza microdatos públicos de ENEMDU en una lectura clara, separando coyuntura, estructura territorial y límites de representatividad.</p>
 <div class="kpi-strip">
 <div class="kpi-item">
 <div class="period-badge">
@@ -181,7 +181,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p><strong>Pulso</strong></p>
 <div class="small-muted">
-<p>Contexto nacional, urbano/rural y laboral reciente.</p>
+<p>Contexto nacional, urbano/rural y laboral de corto plazo.</p>
 </div>
 </div>
 <div class="kpi-item">
@@ -199,7 +199,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p><strong>Estructura</strong></p>
 <div class="small-muted">
-<p>Pobreza, privaciones, quintiles y territorio provincial.</p>
+<p>Pobreza, privaciones, territorio, empleo y calidad de medición.</p>
 </div>
 </div>
 </div>
@@ -209,50 +209,106 @@ ul.task-list li input[type="checkbox"] {
 <div class="content-block">
 <div class="story-panel">
 <div class="section-kicker">
-<p>Resumen ejecutivo</p>
+<p>Qué es</p>
 </div>
-<section id="para-qué-sirve" class="level2">
-<h2 class="anchored" data-anchor-id="para-qué-sirve">Para qué sirve</h2>
-<p>El Ecuador Poverty Monitor no reemplaza estadísticas oficiales ni crea una autoridad paralela. Su función es convertir información pública compleja en una lectura ordenada, visual y reproducible.</p>
-<p>Ayuda a responder qué se está midiendo, qué comparaciones son válidas y qué límites tiene cada estimación.</p>
+<section id="un-producto-de-lectura-pública" class="level2">
+<h2 class="anchored" data-anchor-id="un-producto-de-lectura-pública">Un producto de lectura pública</h2>
+<p>El monitor es un sitio Quarto construido sobre archivos públicos de ENEMDU, procesamiento reproducible con <code>enemduR</code> y outputs agregados curados para publicación. La página pública consume resultados preparados; no recalcula indicadores en la narrativa ni expone microdatos, registros de hogares, identificadores o rutas privadas.</p>
+<p>Su objetivo es ordenar la evidencia para que cada cifra tenga contexto: qué mide, para qué periodo sirve, en qué dominio puede interpretarse y qué límites debe conservar. No es una publicación oficial, no sustituye al INEC y no declara validación institucional. La comparación con tabulados públicos se usa como control de reproducibilidad analítica cuando existe una referencia apropiada.</p>
 </section>
 </div>
-<section id="cápsula-anual-2025" class="level2 monitor-card">
-<h2 class="anchored" data-anchor-id="cápsula-anual-2025">Cápsula anual 2025</h2>
+<section id="señal-anual-2025" class="level2 monitor-card">
+<h2 class="anchored" data-anchor-id="señal-anual-2025">Señal anual 2025</h2>
 <p>En 2025, la pobreza por ingresos alcanzó <strong>21,95%</strong> a nivel nacional. La brecha territorial es marcada: <strong>16,51%</strong> en el área urbana y <strong>33,63%</strong> en el área rural. La pobreza extrema fue de <strong>6,99%</strong> a nivel nacional, <strong>3,69%</strong> en el área urbana y <strong>14,07%</strong> en el área rural.</p>
 <div class="monitor-note">
-<p>Estos resultados se calculan a partir de microdatos públicos de ENEMDU y se comparan con tabulados públicos anuales del INEC con fines de reproducibilidad analítica. No constituyen validación institucional oficial.</p>
+<p>Estos resultados se calculan a partir de microdatos públicos de ENEMDU y se comparan con tabulados públicos anuales del INEC con fines de reproducibilidad analítica. No constituyen una validación institucional.</p>
 </div>
 </section>
+<div class="story-panel">
+<div class="section-kicker">
+<p>Resumen ejecutivo</p>
+</div>
+<section id="cómo-leer-el-sitio" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-leer-el-sitio">Cómo leer el sitio</h2>
+<p><strong>Why it matters</strong> explica por qué Ecuador necesita una capa de lectura: los datos existen, pero suelen estar repartidos entre boletines, microdatos, notas metodológicas y tablas. El monitor conecta esas piezas en una historia pública y reproducible.</p>
+<p><strong>Income poverty</strong> presenta el perfil anual 2025 de pobreza y pobreza extrema por ingresos. La lectura enfatiza la diferencia urbano-rural, los perfiles por edad y educación, y la comparación de reproducibilidad con tabulados públicos anuales.</p>
+<p><strong>Deprivation and multidimensional poverty</strong> amplía la mirada desde el ingreso hacia NBI, NBI extremo, pobreza multidimensional y pobreza multidimensional extrema. Estas medidas no son versiones competidoras de una misma cifra: ingreso, privaciones básicas y desventajas superpuestas responden preguntas distintas.</p>
+<p><strong>Territorial view of income poverty</strong> muestra que la pobreza es territorial en dos sentidos. Un mapa permite ver dónde la incidencia es mayor; una tabla ejecutiva separa esa incidencia de la concentración poblacional de personas en pobreza.</p>
+<p><strong>Labor market and poverty</strong> conecta empleo, calidad del trabajo y vulnerabilidad del hogar. La página muestra que tener empleo no garantiza estar por encima de la línea de pobreza y que el análisis laboral debe leerse de forma descriptiva, no causal.</p>
+<p><strong>Measurement and statistical quality</strong> documenta la arquitectura de datos, los estados de benchmark, las banderas de calidad, los dominios válidos y el contrato de lenguaje público. Es la capa que evita que una cifra viaje más lejos de lo que permite el diseño estadístico.</p>
+<p><strong>Annex: Sampling frame and representativity</strong> explica por qué el marco muestral, la cobertura, los dominios y el cambio poblacional son parte de la interpretación. Este anexo pertenece a Measurement; no es una sexta capa sustantiva, sino una nota técnica que fortalece la lectura de pobreza, territorio y empleo.</p>
+</section>
+</div>
 <div class="infographic-frame">
 <div class="section-kicker">
-<p>Arquitectura analítica</p>
+<p>Cinco capas sustantivas</p>
 </div>
-<section id="tres-capas" class="level2">
-<h2 class="anchored" data-anchor-id="tres-capas">Tres capas</h2>
+<section id="la-arquitectura-analítica" class="level2">
+<h2 class="anchored" data-anchor-id="la-arquitectura-analítica">La arquitectura analítica</h2>
 <div class="frame-grid">
 <div class="frame-cell">
-<p><strong>Fuente</strong></p>
-<p>ENEMDU y documentación metodológica oficial.</p>
+<p><strong>Income</strong></p>
+<p>Lee si el ingreso per cápita del hogar alcanza la línea de pobreza o de pobreza extrema. Es la puerta de entrada al perfil anual.</p>
 </div>
 <div class="frame-cell">
-<p><strong>Motor</strong></p>
-<p>Procesamiento reproducible mediante <code>enemduR</code>.</p>
+<p><strong>Deprivation</strong></p>
+<p>Observa carencias estructurales y privaciones superpuestas mediante NBI, NBI extremo, TPM y TPEM.</p>
 </div>
 <div class="frame-cell">
-<p><strong>Producto</strong></p>
-<p>Narrativa editorial, gráficos e infografías futuras.</p>
+<p><strong>Territory</strong></p>
+<p>Ubica la pobreza en provincias y distingue incidencia territorial de concentración de población en pobreza.</p>
+</div>
+<div class="frame-cell">
+<p><strong>Labor</strong></p>
+<p>Relaciona condición laboral, calidad del empleo e ingreso del hogar sin presentar esa relación como causalidad.</p>
+</div>
+<div class="frame-cell">
+<p><strong>Measurement</strong></p>
+<p>Hace visibles los dominios válidos, la representatividad, los benchmarks disponibles, las alertas de calidad y los límites de publicación.</p>
 </div>
 </div>
 </section>
 </div>
-<div class="method-note">
-<p>Las capas anuales 2025 de pobreza por ingresos y de privaciones y pobreza multidimensional ya están publicadas con outputs agregados y curados. La nueva página metodológica en inglés explica los estados de benchmark, las banderas de calidad, los dominios válidos y los límites de comunicación pública.</p>
-<p>La capa provincial de pobreza por ingresos también está publicada como lectura territorial con mapa y tabla ejecutiva, separando incidencia provincial de concentración poblacional.</p>
+<div class="story-grid">
+<div class="story-panel">
+<div class="section-kicker">
+<p>Valor de portafolio</p>
 </div>
-<p>La capa laboral ya suma una lectura publica sobre empleo, calidad del trabajo y pobreza a partir de outputs agregados.</p>
+<section id="qué-aporta-como-producto" class="level2">
+<h2 class="anchored" data-anchor-id="qué-aporta-como-producto">Qué aporta como producto</h2>
+<p>Como portafolio, el monitor demuestra comunicación pública de datos, diseño editorial con Quarto, separación entre cálculo y presentación, uso de <code>enemduR</code>, publicación estática en GitHub Pages y contratos metodológicos explícitos. La lógica central es simple: los scripts producen outputs agregados; el sitio interpreta esos outputs con contexto, navegación y límites claros.</p>
+</section>
+</div>
+<div class="story-panel">
+<div class="section-kicker">
+<p>Límites</p>
+</div>
+<section id="qué-no-afirma" class="level2">
+<h2 class="anchored" data-anchor-id="qué-no-afirma">Qué no afirma</h2>
+<p>El monitor no es una publicación oficial, no reemplaza al INEC, no presenta aprobación institucional, no convierte provincias o grupos en una clasificación oficial, no afirma efectos causales y no publica microdatos. Sus páginas deben leerse como un producto analítico y comunicacional construido con información pública, controles de reproducibilidad y lenguaje prudente.</p>
+</section>
+</div>
+</div>
+<div class="proof-strip">
+<div class="proof-item">
+<p><strong>Fuente pública</strong></p>
+<p>ENEMDU y documentación metodológica pública.</p>
+</div>
+<div class="proof-item">
+<p><strong>Procesamiento reproducible</strong></p>
+<p><code>enemduR</code> y outputs agregados curados.</p>
+</div>
+<div class="proof-item">
+<p><strong>Sitio estático</strong></p>
+<p>Quarto y GitHub Pages como capa de publicación.</p>
+</div>
+<div class="proof-item">
+<p><strong>Claims acotados</strong></p>
+<p>Reproducibilidad analítica, no validación institucional.</p>
+</div>
+</div>
 <div class="page-nav">
-<p><a href="../index.html">Inglés -&gt;</a> <a href="../pages/02_income-poverty.html">Pobreza por ingresos -&gt;</a> <a href="../pages/05_territorial-province-income-poverty.html">Pobreza provincial -&gt;</a> <a href="../pages/06_labor-market-poverty.html">Mercado laboral y pobreza -&gt;</a> <a href="../pages/04_methodology-quality.html">Metodología y calidad -&gt;</a></p>
+<p><a href="../index.html">Sitio principal en inglés</a> <a href="../pages/01_why-monitor.html">Why it matters</a> <a href="../pages/02_income-poverty.html">Income poverty</a> <a href="../pages/03_deprivation-multidimensional-poverty.html">Deprivation and multidimensional poverty</a> <a href="../pages/05_territorial-province-income-poverty.html">Territorial view of income poverty</a> <a href="../pages/06_labor-market-poverty.html">Labor market and poverty</a> <a href="../pages/04_methodology-quality.html">Measurement and statistical quality</a> <a href="../pages/a01_sampling-frame-representativity.html">Sampling frame and representativity</a></p>
 </div>
 </div>
 
