@@ -30,9 +30,9 @@ website:
         menu:
           - text: "Income poverty"
             href: pages/02_income-poverty.qmd
-          - text: "Deprivation & multidimensional poverty"
+          - text: "Deprivation and multidimensional poverty"
             href: pages/03_deprivation-multidimensional-poverty.qmd
-          - text: "Provincial income poverty"
+          - text: "Territorial view of income poverty"
             href: pages/05_territorial-province-income-poverty.qmd
           - text: "Labor market and poverty"
             href: pages/06_labor-market-poverty.qmd
