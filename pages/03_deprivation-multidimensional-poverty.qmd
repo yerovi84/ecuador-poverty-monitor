@@ -432,23 +432,6 @@ Income poverty is benchmarked against public annual tabulations and shows close-
 The indicators are based on public ENEMDU annual 2025 microdata and built with `enemduR`. Estimates are survey-weighted. Benchmark comparison is reported only where a public annual reference is available. The comparison documents analytical reproducibility and does not imply official institutional validation.
 :::
 
-::: {.story-panel}
-::: {.section-kicker}
-Technical footer
-:::
-
-## Output and safety contract
-
-| Item | Value |
-|---|---|
-| Curated output | `data/derived/site/site_deprivation_multidimensional_kpis.rds` |
-| Local annual output | `data/derived/annual/annual_deprivation_multidimensional_poverty.rds` |
-| Pipeline | `scripts/03_build_annual_core.R` then `scripts/04_build_site_metadata.R` |
-| Stored data | Aggregates only |
-| Build date field | Not stored in the curated output |
-| Safety validation | No private paths, no raw identifiers, no dynamic timestamps |
-:::
-
 ::: {.proof-strip}
 ::: {.proof-item}
 **Income poverty**
@@ -477,6 +460,6 @@ Static Quarto page from a curated aggregate RDS.
 
 ::: {.page-nav}
 <a href="02_income-poverty.qmd">&lt;- Income poverty</a>
-<a href="../index.qmd">Home -&gt;</a>
+<a href="05_territorial-province-income-poverty.qmd">Provincial income poverty -&gt;</a>
 :::
 :::

@@ -264,6 +264,7 @@ Analytical reproducibility is never presented as institutional validation.
 ::: {.page-nav}
 [<- Income poverty](02_income-poverty.qmd)
 [Deprivation and multidimensional poverty](03_deprivation-multidimensional-poverty.qmd)
+[Provincial income poverty](05_territorial-province-income-poverty.qmd)
 [Home ->](../index.qmd)
 :::
 :::

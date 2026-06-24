@@ -1,8 +1,13 @@
 project:
   type: website
   output-dir: docs
+  render:
+    - index.qmd
+    - es/index.qmd
+    - pages/*.qmd
   resources:
     - assets/img/brand/*
+    - assets/img/territorial/*
 
 website:
   title: "Ecuador Poverty Monitor"
@@ -27,8 +32,8 @@ website:
             href: pages/02_income-poverty.qmd
           - text: "Deprivation & multidimensional poverty"
             href: pages/03_deprivation-multidimensional-poverty.qmd
-          - text: "Territory and labor"
-            href: index.qmd#analytical-roadmap
+          - text: "Provincial income poverty"
+            href: pages/05_territorial-province-income-poverty.qmd
           - text: "Statistical quality"
             href: pages/04_methodology-quality.qmd
     right:

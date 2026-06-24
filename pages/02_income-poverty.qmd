@@ -299,7 +299,7 @@ Next analytical layers
 
 ## What comes after the first layer
 
-The next income-poverty layer can add poverty-line context, precision indicators, historical comparisons, and distributional readings. Deprivation, multidimensional poverty, labor, and province-level analysis should remain separate layers until their own output contracts are complete.
+The next income-poverty layer can add poverty-line context, precision indicators, historical comparisons, and distributional readings. Deprivation, multidimensional poverty, labor, and province-level analysis should remain separate layers until their own publication rules are complete.
 :::
 :::
 

@@ -126,11 +126,14 @@ Narrativa editorial, gráficos e infografías futuras.
 
 ::: {.method-note}
 Las capas anuales 2025 de pobreza por ingresos y de privaciones y pobreza multidimensional ya están publicadas con outputs agregados y curados. La nueva página metodológica en inglés explica los estados de benchmark, las banderas de calidad, los dominios válidos y los límites de comunicación pública.
+
+La capa provincial de pobreza por ingresos también está publicada como lectura territorial con mapa y tabla ejecutiva, separando incidencia provincial de concentración poblacional.
 :::
 
 ::: {.page-nav}
 [Inglés ->](../index.qmd)
 [Pobreza por ingresos ->](../pages/02_income-poverty.qmd)
+[Pobreza provincial ->](../pages/05_territorial-province-income-poverty.qmd)
 [Metodología y calidad ->](../pages/04_methodology-quality.qmd)
 :::
 :::
