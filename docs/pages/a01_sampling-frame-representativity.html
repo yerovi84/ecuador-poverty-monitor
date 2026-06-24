@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Methodology, data architecture, benchmark status, quality metadata, domains and interpretation limits for the Ecuador Poverty Monitor.">
+<meta name="description" content="Technical annex on sampling frames, representativity, survey coverage and why survey design matters for poverty, labor and territorial interpretation.">
 
-<title>Methodology and statistical quality – Ecuador Poverty Monitor</title>
+<title>Sampling frame and representativity – Ecuador Poverty Monitor</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -151,301 +151,262 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
 
 <!-- main -->
-<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7">Methodology and statistical quality</h1></header>
+<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="title display-7">Sampling frame and representativity</h1></header>
 
 <header id="title-block-header">
 
-<p class="subtitle lead">How the monitor separates analytical estimates, benchmark comparison and public communication.</p>
+<p class="subtitle lead">Why household survey frames must evolve with population change.</p>
 
 </header>
 
 
-<div class="internal-hero internal-hero-wide">
+<style>
+.frame-annex-hero {
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 390px);
+  gap: clamp(2rem, 5vw, 4.5rem);
+}
+
+.frame-annex-card {
+  align-self: center;
+}
+
+.annex-list {
+  display: grid;
+  gap: 0.72rem;
+  margin: 0;
+}
+
+.annex-list div {
+  border-top: 1px solid rgba(18, 48, 71, 0.1);
+  display: grid;
+  gap: 0.2rem;
+  grid-template-columns: minmax(5.5rem, 0.42fr) minmax(0, 1fr);
+  padding-top: 0.72rem;
+}
+
+.annex-list div:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.annex-list dt {
+  color: var(--epm-muted);
+  font-size: 0.76rem;
+  font-weight: 760;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.annex-list dd {
+  color: var(--epm-navy);
+  font-size: 0.98rem;
+  font-weight: 720;
+  margin: 0;
+}
+
+.annex-source-list {
+  display: grid;
+  gap: 0.85rem;
+  margin: 1rem 0 0;
+}
+
+.annex-source-list li {
+  color: var(--epm-ink-soft);
+}
+
+@media (max-width: 1100px) {
+  .frame-annex-hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .annex-list div {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+</style>
+<div class="internal-hero internal-hero-wide frame-annex-hero">
 <div class="internal-hero-copy">
 <div class="section-kicker">
-<p>Methodology and statistical quality</p>
+<p>Technical annex</p>
 </div>
-<section id="trust-begins-with-clear-boundaries." class="level1">
-<h1>Trust begins with clear boundaries.</h1>
+<section id="sampling-frame-and-representativity" class="level1">
+<h1>Sampling frame and representativity</h1>
 <div class="story-lede">
-<p>How the monitor separates analytical estimates, benchmark comparison and public communication.</p>
+<p>Why household survey frames must evolve with population change.</p>
 </div>
-<p>The Ecuador Poverty Monitor makes its analytical status visible. It distinguishes the source data from local analytical products, curated publication outputs, benchmark comparisons, and the language used on the public site.</p>
+<p>A modern poverty and labor monitor depends not only on formulas, weights and indicators, but also on the sampling frame that defines who can enter the sample.</p>
 </section>
 </div>
-<section id="the-core-distinction" class="level2 internal-hero-card">
-<h2 class="anchored" data-anchor-id="the-core-distinction">The core distinction</h2>
-<p>A <strong>benchmark comparison for analytical reproducibility</strong> checks whether a result aligns with a public reference under a stated tolerance.</p>
-<p>It is not <strong>official institutional validation</strong>, certification, endorsement, or approval.</p>
+<section id="how-to-read-this-annex" class="level2 internal-hero-card frame-annex-card">
+<h2 class="anchored" data-anchor-id="how-to-read-this-annex">How to read this annex</h2>
+<dl class="annex-list">
+<div>
+<dt>
+Focus
+</dt>
+<dd>
+Survey coverage and representativity
+</dd>
+</div>
+<div>
+<dt>
+Scope
+</dt>
+<dd>
+Methodological interpretation, not new estimates
+</dd>
+</div>
+<div>
+<dt>
+Use
+</dt>
+<dd>
+Read with Measurement and statistical quality
+</dd>
+</div>
+<div>
+<dt>
+Boundary
+</dt>
+<dd>
+Does not audit or replace official statistics
+</dd>
+</div>
+</dl>
 </section>
 </div>
 <div class="content-block editorial-flow">
-<div class="story-grid">
 <div class="story-panel">
 <div class="section-kicker">
-<p>Purpose</p>
+<p>Core idea</p>
 </div>
-<section id="what-this-monitor-is" class="level2">
-<h2 class="anchored" data-anchor-id="what-this-monitor-is">What this monitor is</h2>
-<p>The monitor is a downstream analytical and communication layer built from public ENEMDU source files, explicit methodological contracts, reproducible processing with <code>enemduR</code>, curated aggregate outputs, and static Quarto pages.</p>
-<p>It organizes results so readers can see what was estimated, for which period and domain, with which quality metadata, and against which public reference when a suitable benchmark is available.</p>
+<section id="why-the-frame-matters" class="level2">
+<h2 class="anchored" data-anchor-id="why-the-frame-matters">Why the frame matters</h2>
+<p>A sampling frame is the operational map from which a household survey draws its sample. In plain language, it defines the population coverage, organizes the units that can be selected, supports known probabilities of selection, and shapes what domains can be estimated with useful precision.</p>
+<p>This is why the sampling frame is not a backstage detail. It affects the relationship between the survey sample and the population it is meant to represent. Good formulas and careful weighting still need a frame that reflects where households are and how the population is distributed.</p>
 </section>
-</div>
-<div class="story-panel">
-<div class="section-kicker">
-<p>Boundary</p>
-</div>
-<section id="what-this-monitor-is-not" class="level2">
-<h2 class="anchored" data-anchor-id="what-this-monitor-is-not">What this monitor is not</h2>
-<p>It is not an official statistical release, a substitute for INEC publications, or an independent statistical authority. It does not claim institutional validation. It also does not treat every analytical estimate as equally benchmarked or equally suitable for territorial disaggregation.</p>
-</section>
-</div>
 </div>
 <div class="infographic-frame">
 <div class="section-kicker">
-<p>Data architecture</p>
+<p>Frame functions</p>
 </div>
-<section id="four-publication-layers" class="level2">
-<h2 class="anchored" data-anchor-id="four-publication-layers">Four publication layers</h2>
-<div class="method-grid">
-<section id="source-microdata" class="level3 method-card">
-<h3 class="anchored" data-anchor-id="source-microdata">1. Source microdata</h3>
-<p>Public ENEMDU files are processed locally. Microdata remain outside the public site and are not copied into versioned publication outputs.</p>
-</section>
-<section id="annual-analytical-outputs" class="level3 method-card">
-<h3 class="anchored" data-anchor-id="annual-analytical-outputs">2. Annual analytical outputs</h3>
-<p>Local derived products hold the analytical results required by the pipeline. They are separate from the website and are not intended as direct public interfaces.</p>
-</section>
-<section id="curated-site-outputs" class="level3 method-card">
-<h3 class="anchored" data-anchor-id="curated-site-outputs">3. Curated site outputs</h3>
-<p>Versionable publication files contain only the aggregate fields needed by Quarto. They exclude microdata, raw identifiers, private paths, and dynamic timestamps.</p>
-</section>
-<section id="quarto-pages" class="level3 method-card">
-<h3 class="anchored" data-anchor-id="quarto-pages">4. Quarto pages</h3>
-<p>Static pages consume curated outputs and add interpretation, benchmark labels, quality notes, and explicit limits without recalculating the underlying indicators.</p>
-</section>
+<section id="four-things-a-frame-does" class="level2">
+<h2 class="anchored" data-anchor-id="four-things-a-frame-does">Four things a frame does</h2>
+<div class="frame-grid">
+<div class="frame-cell">
+<p><strong>Coverage</strong></p>
+<p>Defines who can enter the survey operation and which households are reachable through the design.</p>
 </div>
-</section>
+<div class="frame-cell">
+<p><strong>Selection</strong></p>
+<p>Organizes the stages and units used to select households under a probability sample.</p>
 </div>
-<div class="story-panel">
-<div class="section-kicker">
-<p>Period contract</p>
+<div class="frame-cell">
+<p><strong>Domains</strong></p>
+<p>Conditions which national, urban, rural, territorial or labor domains can be interpreted responsibly.</p>
 </div>
-<section id="three-speed-architecture" class="level2">
-<h2 class="anchored" data-anchor-id="three-speed-architecture">Three-speed architecture</h2>
-<div class="period-grid">
-<section id="monthly" class="level3 period-card">
-<h3 class="anchored" data-anchor-id="monthly">Monthly</h3>
-<p>The monthly layer is a short-term pulse for national and urban-rural context, particularly labor-market conditions. It should not be read as a substitute for annual structural poverty analysis.</p>
-</section>
-<section id="quarterly" class="level3 period-card">
-<h3 class="anchored" data-anchor-id="quarterly">Quarterly</h3>
-<p>The quarterly layer supports intermediate urban monitoring, including the five main cities only when the survey design and configured domain contract support those estimates.</p>
-</section>
-<section id="annual" class="level3 period-card">
-<h3 class="anchored" data-anchor-id="annual">Annual</h3>
-<p>The annual layer is the structural core for income poverty, deprivation, multidimensional poverty, distribution, and broader territorial analysis. The current published poverty profiles use annual 2025 outputs.</p>
-</section>
 </div>
-<p>Period and domain are linked: a territorial level is shown only when it is supported by the survey design for that period.</p>
-</section>
-</div>
-<div class="story-panel">
-<div class="section-kicker">
-<p>Reproducibility metadata</p>
-</div>
-<section id="benchmark-status" class="level2">
-<h2 class="anchored" data-anchor-id="benchmark-status">Benchmark status</h2>
-<p><code>benchmark_status</code> records the result of a comparison with an identified public reference. It is a reproducibility field, not an institutional seal.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Benchmark status</th>
-<th>Meaning</th>
-<th>Public interpretation</th>
-<th>Current use in the site</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Close match</td>
-<td>The analytical estimate falls within the stated comparison tolerance for the available public reference.</td>
-<td>The monitor closely reproduces that public benchmark under the documented analytical contract.</td>
-<td>Income poverty and extreme income poverty.</td>
-</tr>
-<tr class="even">
-<td>Not directly benchmarked</td>
-<td>No equivalent public annual table is used for a direct indicator-level comparison in this build.</td>
-<td>Read the result as a survey-weighted analytical estimate, not as a benchmark-matched headline.</td>
-<td>NBI and extreme NBI.</td>
-</tr>
-<tr class="odd">
-<td>Outside tolerance / requires review</td>
-<td>A public reference is available, but the analytical comparison does not meet the current tolerance.</td>
-<td>The estimate may be published with a visible review flag, but it must not be described as a close reproduction.</td>
-<td>TPM and TPEM.</td>
-</tr>
-<tr class="even">
-<td>Reference missing or not matched</td>
-<td>The expected comparison cannot be completed for the relevant row or reference.</td>
-<td>Do not infer benchmark alignment; inspect the source and matching contract before making a claim.</td>
-<td>Reserved for pipeline transparency when applicable.</td>
-</tr>
-</tbody>
-</table>
-<div class="method-note">
-<p>For the current annual income-poverty comparison, “close match” means a difference of no more than 0.5 percentage points from the public annual reference. That tolerance belongs to this analytical reproducibility check and does not imply official institutional validation.</p>
-</div>
-</section>
-</div>
-<div class="story-panel">
-<div class="section-kicker">
-<p>Published portfolio</p>
-</div>
-<section id="current-indicator-status" class="level2">
-<h2 class="anchored" data-anchor-id="current-indicator-status">Current indicator status</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Indicator</th>
-<th>What it measures</th>
-<th>Current benchmark interpretation</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Income poverty</td>
-<td>Whether household per-capita income falls below the income-poverty line.</td>
-<td>Close match against the public annual benchmark.</td>
-</tr>
-<tr class="even">
-<td>Extreme income poverty</td>
-<td>Whether household per-capita income falls below the extreme-poverty line.</td>
-<td>Close match against the public annual benchmark.</td>
-</tr>
-<tr class="odd">
-<td>NBI</td>
-<td>Structural deprivation measured through unmet basic needs.</td>
-<td>Not directly benchmarked against a public annual table in this build.</td>
-</tr>
-<tr class="even">
-<td>Extreme NBI</td>
-<td>More severe or accumulated unmet-basic-needs conditions under the implemented method.</td>
-<td>Not directly benchmarked against a public annual table in this build.</td>
-</tr>
-<tr class="odd">
-<td>TPM</td>
-<td>Multidimensional poverty based on overlapping weighted deprivations and the implemented threshold.</td>
-<td>Benchmark comparison outside tolerance; requires methodological review.</td>
-</tr>
-<tr class="even">
-<td>TPEM</td>
-<td>Severe multidimensional poverty based on the implemented extreme threshold.</td>
-<td>Benchmark comparison outside tolerance; requires methodological review.</td>
-</tr>
-</tbody>
-</table>
-<p>These indicators answer different questions. Income poverty concerns current monetary resources. NBI captures structural deficits in basic needs. TPM and TPEM summarize overlapping weighted deprivations. They should be read together, not treated as interchangeable poverty rates.</p>
 </section>
 </div>
 <div class="story-grid">
 <div class="story-panel">
 <div class="section-kicker">
-<p>Estimation</p>
+<p>ENEMDU over time</p>
 </div>
-<section id="survey-weighted-analytical-estimates" class="level2">
-<h2 class="anchored" data-anchor-id="survey-weighted-analytical-estimates">Survey-weighted analytical estimates</h2>
-<p>The published indicators are survey-weighted analytical estimates. Survey weights translate sampled observations into estimates for the population represented by the valid survey domain.</p>
-<ul>
-<li><code>weighted_n</code> is the estimated population represented by the analytical denominator.</li>
-<li><code>unweighted_n</code> is the number of survey records contributing to that denominator.</li>
-<li><code>quality_flag</code> carries the available precision or representativity assessment from the analytical output.</li>
-<li><code>benchmark_status</code> describes benchmark comparison, which is separate from sample quality.</li>
-</ul>
-<p>A large <code>weighted_n</code> does not by itself guarantee precision, and a benchmark close match does not replace review of sample size, domain validity, and quality flags.</p>
+<section id="enemdu-and-the-challenge-of-time" class="level2">
+<h2 class="anchored" data-anchor-id="enemdu-and-the-challenge-of-time">ENEMDU and the challenge of time</h2>
+<p>INEC’s sampling-design documentation explains that the ENEMDU sample frame is based on the final results and cartography of Ecuador’s 2010 Population and Housing Census, with partial cartographic updates and later adjustments to improve the construction of primary sampling units. The same documentation notes that population growth, decline and housing changes can alter how balanced those units are over time.</p>
+<p>That statement should be read carefully. It does not mean that ENEMDU estimates are invalid. It means that a household survey frame is a living statistical infrastructure. Demographic change, migration, urban expansion and territorial change make documentation and modernization important for interpreting poverty, employment and territorial evidence.</p>
 </section>
 </div>
 <div class="story-panel">
 <div class="section-kicker">
-<p>Domains and universes</p>
+<p>International guidance</p>
 </div>
-<section id="read-every-estimate-inside-its-contract" class="level2">
-<h2 class="anchored" data-anchor-id="read-every-estimate-inside-its-contract">Read every estimate inside its contract</h2>
-<p>The current poverty pages publish national, urban, and rural annual domains. Each estimate also belongs to a defined universe and analysis unit. Readers should not compare or combine rows without checking that period, universe, analysis unit, and domain are compatible.</p>
-<p>More detailed geography is not automatically more informative. City, province, or other territorial estimates should appear only in the layers and periods where the survey design supports them. Unsupported disaggregation can create false precision even when the underlying calculation runs successfully.</p>
-<p>For a deeper public note on survey coverage, sampling frames and population change, read the <a href="../pages/a01_sampling-frame-representativity.html">Sampling frame and representativity annex</a>.</p>
+<section id="the-frame-is-part-of-survey-quality" class="level2">
+<h2 class="anchored" data-anchor-id="the-frame-is-part-of-survey-quality">The frame is part of survey quality</h2>
+<p>The United Nations guide on household survey samples treats sampling frames and master samples as central pieces of household survey design. It links frame quality with probability sampling, domains, sample design documentation, weights and sampling errors.</p>
+<p>The practical lesson is simple: household surveys are strongest when the frame, sample design, weighting, fieldwork and public documentation are read together. A static result table cannot carry that full context by itself.</p>
 </section>
 </div>
-</div>
-<section id="how-to-read-a-quality-flag" class="level2 data-warning">
-<h2 class="anchored" data-anchor-id="how-to-read-a-quality-flag">How to read a quality flag</h2>
-<p>A quality flag is a decision aid, not decoration. If the field is available, read its value before publishing or interpreting a subgroup estimate. A restrictive or review-oriented flag should lead to qualification, suppression, or further methodological inspection according to the producing method. If the field is unavailable, the absence of a warning must not be interpreted as evidence of high precision.</p>
-</section>
-<div class="story-panel">
-<div class="section-kicker">
-<p>Communication standard</p>
-</div>
-<section id="public-language-contract" class="level2">
-<h2 class="anchored" data-anchor-id="public-language-contract">Public language contract</h2>
-<p>The site may say that an estimate is:</p>
-<ul>
-<li>based on public ENEMDU microdata;</li>
-<li>a survey-weighted analytical estimate;</li>
-<li>compared against public annual INEC tabulations;</li>
-<li>a close benchmark match under the documented tolerance;</li>
-<li>not directly benchmarked in this build; or</li>
-<li>outside tolerance and requiring methodological review.</li>
-</ul>
-<p>The site must not imply certification, institutional approval, endorsement, or formal validation by INEC. Benchmark alignment documents analytical reproducibility only.</p>
-</section>
 </div>
 <div class="story-panel">
 <div class="section-kicker">
-<p>Honest limits</p>
+<p>Poverty and labor</p>
 </div>
-<section id="current-limitations" class="level2">
-<h2 class="anchored" data-anchor-id="current-limitations">Current limitations</h2>
+<section id="why-this-matters-for-poverty-and-labor" class="level2">
+<h2 class="anchored" data-anchor-id="why-this-matters-for-poverty-and-labor">Why this matters for poverty and labor</h2>
+<p>Income poverty, deprivation, territorial poverty and labor-market indicators all depend on who is represented by the survey design. If population change concentrates in areas or groups that are harder to reach, the frame and its updates become part of the interpretation.</p>
+<p>For poverty, the concern is not only the national rate. It is also whether urban, rural, provincial or subgroup readings are supported by the design. For labor, the concern extends to employment quality, subemployment, informality and people outside the labor force, because these groups can be unevenly distributed across geography and household types.</p>
+<p>This monitor therefore treats domain reliability as part of the public story. More detailed disaggregation is useful only when the sampling frame, sample size and survey design support that level of reading.</p>
+</section>
+</div>
+<div class="story-grid">
+<div class="story-panel">
+<div class="section-kicker">
+<p>Claim boundary</p>
+</div>
+<section id="what-this-monitor-can-and-cannot-claim" class="level2">
+<h2 class="anchored" data-anchor-id="what-this-monitor-can-and-cannot-claim">What this monitor can and cannot claim</h2>
+<p>This monitor does not audit INEC, does not replace official statistics, and does not correct the official sampling frame. It is a downstream analytical communication layer built from public information.</p>
+<p>What it can do is make the role of survey design visible. Public microdata analysis should be read together with coverage, domain and representativity limits, especially when moving from national indicators to territorial or labor subgroup profiles.</p>
+</section>
+</div>
+<div class="story-panel">
+<div class="section-kicker">
+<p>Modernization</p>
+</div>
+<section id="a-sober-modernization-agenda" class="level2">
+<h2 class="anchored" data-anchor-id="a-sober-modernization-agenda">A sober modernization agenda</h2>
+<p>Modernization is best framed as statistical maintenance, not as accusation. A prudent agenda would update household survey frames with more recent census and cartographic information, document the timing and scope of updates, evaluate territorial and labor domains, preserve comparable time series where possible, and publish clear metadata about changes.</p>
+<p>That kind of transparency helps both official producers and downstream users. It lets readers distinguish real social change from design changes, sampling uncertainty or domain limits.</p>
+</section>
+</div>
+</div>
+<section id="reading-note" class="level2 method-note">
+<h2 class="anchored" data-anchor-id="reading-note">Reading note</h2>
+<p>This annex is methodological. It does not calculate new indicators, open microdata, assess field operations, or certify any estimate. It explains why poverty and labor interpretation should include the frame, the survey design and the domain of estimation.</p>
+</section>
+<div class="story-panel">
+<div class="section-kicker">
+<p>Sources</p>
+</div>
+<section id="sources-consulted" class="level2">
+<h2 class="anchored" data-anchor-id="sources-consulted">Sources consulted</h2>
+<p>The page uses public methodological sources and cites them as context for interpretation:</p>
+<div class="annex-source-list">
 <ul>
-<li>This monitor is not an official statistical release and does not carry institutional validation.</li>
-<li>NBI and extreme NBI do not have a direct public annual benchmark inside the current build.</li>
-<li>TPM and TPEM require methodological review before they can be described as close reproductions of the public reference.</li>
-<li>The current annual pages focus on national, urban, and rural domains; finer disaggregation requires a separate representativity contract.</li>
-<li>Future territorial and labor layers require their own curated outputs, quality checks, and publication rules.</li>
-<li>Static publication improves auditability, but it does not remove the need to review methods when source files, survey design, or official references change.</li>
+<li>INEC, <a href="https://www.ecuadorencifras.gob.ec/diseno-muestral-2/">Diseño Muestral ENEMDU</a>, public sampling-design documentation used here as the December 2024 frame reference, including the note that the frame is based on the 2010 census cartography and has partial updates.</li>
+<li>INEC, <a href="https://www.ecuadorencifras.gob.ec/enemdu-anual/">ENEMDU Anual documentation page</a>, current public documentation hub for annual ENEMDU releases.</li>
+<li>INEC, <a href="https://www.ecuadorencifras.gob.ec/documentos/web-inec/EMPLEO/2018/Septiembre-2018/ENEMDU_Metodologia%20Encuesta%20Nacional%20de%20Empleo%20Desempleo%20y%20Subempleo.pdf">Metodología ENEMDU</a>, official methodological documentation for the survey operation.</li>
+<li>United Nations Statistics Division, <a href="https://unstats.un.org/unsd/demographic/sources/surveys/Handbook23June05.pdf">Designing Household Survey Samples: Practical Guidelines</a>, Studies in Methods Series F No.&nbsp;98.</li>
+<li>World Bank, <a href="https://www.worldbank.org/en/programs/lsms">Living Standards Measurement Study</a>, household survey program focused on strengthening survey quality, relevance and timeliness.</li>
 </ul>
+</div>
 </section>
 </div>
 <div class="proof-strip">
 <div class="proof-item">
-<p><strong>Separated layers</strong></p>
-<p>Microdata, local analysis, curated outputs, and public pages have distinct roles.</p>
+<p><strong>Frame</strong></p>
+<p>The frame defines the operational population from which households can be selected.</p>
 </div>
 <div class="proof-item">
-<p><strong>Visible status</strong></p>
-<p>Benchmark and quality metadata remain part of the public interpretation.</p>
+<p><strong>Design</strong></p>
+<p>Probability selection, domains and weights connect the sample to the target population.</p>
 </div>
 <div class="proof-item">
-<p><strong>Valid domains</strong></p>
-<p>Disaggregation follows the period-specific representativity contract.</p>
+<p><strong>Change</strong></p>
+<p>Population and housing dynamics make documentation and updates important.</p>
 </div>
 <div class="proof-item">
-<p><strong>Bounded claims</strong></p>
-<p>Analytical reproducibility is never presented as institutional validation.</p>
+<p><strong>Use</strong></p>
+<p>More detail is useful only when the design supports the domain.</p>
 </div>
 </div>
 <div class="page-nav">
-<p><a href="../pages/02_income-poverty.html">&lt;- Income poverty</a> <a href="../pages/03_deprivation-multidimensional-poverty.html">Deprivation and multidimensional poverty</a> <a href="../pages/05_territorial-province-income-poverty.html">Provincial income poverty</a> <a href="../pages/a01_sampling-frame-representativity.html">Sampling frame annex</a> <a href="../index.html">Home -&gt;</a></p>
+<p><a href="../pages/04_methodology-quality.html">Measurement and statistical quality</a> <a href="../pages/06_labor-market-poverty.html">Labor market and poverty</a> <a href="../pages/05_territorial-province-income-poverty.html">Territorial view of income poverty</a> <a href="../pages/02_income-poverty.html">Income poverty</a></p>
 </div>
 </div>
 
@@ -865,7 +826,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/yerovi84/ecuador-poverty-monitor/blob/main/pages/04_methodology-quality.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/yerovi84/ecuador-poverty-monitor/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/yerovi84/ecuador-poverty-monitor/blob/main/pages/a01_sampling-frame-representativity.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/yerovi84/ecuador-poverty-monitor/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">

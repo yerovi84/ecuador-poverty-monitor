@@ -192,6 +192,8 @@ Domains and universes
 The current poverty pages publish national, urban, and rural annual domains. Each estimate also belongs to a defined universe and analysis unit. Readers should not compare or combine rows without checking that period, universe, analysis unit, and domain are compatible.
 
 More detailed geography is not automatically more informative. City, province, or other territorial estimates should appear only in the layers and periods where the survey design supports them. Unsupported disaggregation can create false precision even when the underlying calculation runs successfully.
+
+For a deeper public note on survey coverage, sampling frames and population change, read the [Sampling frame and representativity annex](a01_sampling-frame-representativity.qmd).
 :::
 :::
 
@@ -265,6 +267,7 @@ Analytical reproducibility is never presented as institutional validation.
 [<- Income poverty](02_income-poverty.qmd)
 [Deprivation and multidimensional poverty](03_deprivation-multidimensional-poverty.qmd)
 [Provincial income poverty](05_territorial-province-income-poverty.qmd)
+[Sampling frame annex](a01_sampling-frame-representativity.qmd)
 [Home ->](../index.qmd)
 :::
 :::

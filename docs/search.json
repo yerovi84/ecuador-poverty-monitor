@@ -1,157 +1,353 @@
 [
   {
-    "objectID": "pages/06_labor-market-poverty.html",
-    "href": "pages/06_labor-market-poverty.html",
-    "title": "Labor market and poverty",
+    "objectID": "pages/a01_sampling-frame-representativity.html",
+    "href": "pages/a01_sampling-frame-representativity.html",
+    "title": "Sampling frame and representativity",
     "section": "",
-    "text": "Employment conditions and household vulnerability in annual ENEMDU 2025"
+    "text": "Why household survey frames must evolve with population change."
   },
   {
-    "objectID": "pages/06_labor-market-poverty.html#what-this-view-covers",
-    "href": "pages/06_labor-market-poverty.html#what-this-view-covers",
-    "title": "Labor market and poverty",
+    "objectID": "pages/a01_sampling-frame-representativity.html#how-to-read-this-annex",
+    "href": "pages/a01_sampling-frame-representativity.html#how-to-read-this-annex",
+    "title": "Sampling frame and representativity",
+    "section": "How to read this annex",
+    "text": "How to read this annex\n\n\n\nFocus\n\n\nSurvey coverage and representativity\n\n\n\n\nScope\n\n\nMethodological interpretation, not new estimates\n\n\n\n\nUse\n\n\nRead with Measurement and statistical quality\n\n\n\n\nBoundary\n\n\nDoes not audit or replace official statistics"
+  },
+  {
+    "objectID": "pages/a01_sampling-frame-representativity.html#why-the-frame-matters",
+    "href": "pages/a01_sampling-frame-representativity.html#why-the-frame-matters",
+    "title": "Sampling frame and representativity",
+    "section": "Why the frame matters",
+    "text": "Why the frame matters\nA sampling frame is the operational map from which a household survey draws its sample. In plain language, it defines the population coverage, organizes the units that can be selected, supports known probabilities of selection, and shapes what domains can be estimated with useful precision.\nThis is why the sampling frame is not a backstage detail. It affects the relationship between the survey sample and the population it is meant to represent. Good formulas and careful weighting still need a frame that reflects where households are and how the population is distributed."
+  },
+  {
+    "objectID": "pages/a01_sampling-frame-representativity.html#four-things-a-frame-does",
+    "href": "pages/a01_sampling-frame-representativity.html#four-things-a-frame-does",
+    "title": "Sampling frame and representativity",
+    "section": "Four things a frame does",
+    "text": "Four things a frame does\n\n\nCoverage\nDefines who can enter the survey operation and which households are reachable through the design.\n\n\nSelection\nOrganizes the stages and units used to select households under a probability sample.\n\n\nDomains\nConditions which national, urban, rural, territorial or labor domains can be interpreted responsibly."
+  },
+  {
+    "objectID": "pages/a01_sampling-frame-representativity.html#enemdu-and-the-challenge-of-time",
+    "href": "pages/a01_sampling-frame-representativity.html#enemdu-and-the-challenge-of-time",
+    "title": "Sampling frame and representativity",
+    "section": "ENEMDU and the challenge of time",
+    "text": "ENEMDU and the challenge of time\nINEC’s sampling-design documentation explains that the ENEMDU sample frame is based on the final results and cartography of Ecuador’s 2010 Population and Housing Census, with partial cartographic updates and later adjustments to improve the construction of primary sampling units. The same documentation notes that population growth, decline and housing changes can alter how balanced those units are over time.\nThat statement should be read carefully. It does not mean that ENEMDU estimates are invalid. It means that a household survey frame is a living statistical infrastructure. Demographic change, migration, urban expansion and territorial change make documentation and modernization important for interpreting poverty, employment and territorial evidence."
+  },
+  {
+    "objectID": "pages/a01_sampling-frame-representativity.html#the-frame-is-part-of-survey-quality",
+    "href": "pages/a01_sampling-frame-representativity.html#the-frame-is-part-of-survey-quality",
+    "title": "Sampling frame and representativity",
+    "section": "The frame is part of survey quality",
+    "text": "The frame is part of survey quality\nThe United Nations guide on household survey samples treats sampling frames and master samples as central pieces of household survey design. It links frame quality with probability sampling, domains, sample design documentation, weights and sampling errors.\nThe practical lesson is simple: household surveys are strongest when the frame, sample design, weighting, fieldwork and public documentation are read together. A static result table cannot carry that full context by itself."
+  },
+  {
+    "objectID": "pages/a01_sampling-frame-representativity.html#why-this-matters-for-poverty-and-labor",
+    "href": "pages/a01_sampling-frame-representativity.html#why-this-matters-for-poverty-and-labor",
+    "title": "Sampling frame and representativity",
+    "section": "Why this matters for poverty and labor",
+    "text": "Why this matters for poverty and labor\nIncome poverty, deprivation, territorial poverty and labor-market indicators all depend on who is represented by the survey design. If population change concentrates in areas or groups that are harder to reach, the frame and its updates become part of the interpretation.\nFor poverty, the concern is not only the national rate. It is also whether urban, rural, provincial or subgroup readings are supported by the design. For labor, the concern extends to employment quality, subemployment, informality and people outside the labor force, because these groups can be unevenly distributed across geography and household types.\nThis monitor therefore treats domain reliability as part of the public story. More detailed disaggregation is useful only when the sampling frame, sample size and survey design support that level of reading."
+  },
+  {
+    "objectID": "pages/a01_sampling-frame-representativity.html#what-this-monitor-can-and-cannot-claim",
+    "href": "pages/a01_sampling-frame-representativity.html#what-this-monitor-can-and-cannot-claim",
+    "title": "Sampling frame and representativity",
+    "section": "What this monitor can and cannot claim",
+    "text": "What this monitor can and cannot claim\nThis monitor does not audit INEC, does not replace official statistics, and does not correct the official sampling frame. It is a downstream analytical communication layer built from public information.\nWhat it can do is make the role of survey design visible. Public microdata analysis should be read together with coverage, domain and representativity limits, especially when moving from national indicators to territorial or labor subgroup profiles."
+  },
+  {
+    "objectID": "pages/a01_sampling-frame-representativity.html#a-sober-modernization-agenda",
+    "href": "pages/a01_sampling-frame-representativity.html#a-sober-modernization-agenda",
+    "title": "Sampling frame and representativity",
+    "section": "A sober modernization agenda",
+    "text": "A sober modernization agenda\nModernization is best framed as statistical maintenance, not as accusation. A prudent agenda would update household survey frames with more recent census and cartographic information, document the timing and scope of updates, evaluate territorial and labor domains, preserve comparable time series where possible, and publish clear metadata about changes.\nThat kind of transparency helps both official producers and downstream users. It lets readers distinguish real social change from design changes, sampling uncertainty or domain limits."
+  },
+  {
+    "objectID": "pages/a01_sampling-frame-representativity.html#reading-note",
+    "href": "pages/a01_sampling-frame-representativity.html#reading-note",
+    "title": "Sampling frame and representativity",
+    "section": "Reading note",
+    "text": "Reading note\nThis annex is methodological. It does not calculate new indicators, open microdata, assess field operations, or certify any estimate. It explains why poverty and labor interpretation should include the frame, the survey design and the domain of estimation."
+  },
+  {
+    "objectID": "pages/a01_sampling-frame-representativity.html#sources-consulted",
+    "href": "pages/a01_sampling-frame-representativity.html#sources-consulted",
+    "title": "Sampling frame and representativity",
+    "section": "Sources consulted",
+    "text": "Sources consulted\nThe page uses public methodological sources and cites them as context for interpretation:\n\n\nINEC, Diseño Muestral ENEMDU, public sampling-design documentation used here as the December 2024 frame reference, including the note that the frame is based on the 2010 census cartography and has partial updates.\nINEC, ENEMDU Anual documentation page, current public documentation hub for annual ENEMDU releases.\nINEC, Metodología ENEMDU, official methodological documentation for the survey operation.\nUnited Nations Statistics Division, Designing Household Survey Samples: Practical Guidelines, Studies in Methods Series F No. 98.\nWorld Bank, Living Standards Measurement Study, household survey program focused on strengthening survey quality, relevance and timeliness."
+  },
+  {
+    "objectID": "pages/05_territorial-province-income-poverty.html",
+    "href": "pages/05_territorial-province-income-poverty.html",
+    "title": "Territorial view of income poverty",
+    "section": "",
+    "text": "Provincial patterns from annual ENEMDU 2025"
+  },
+  {
+    "objectID": "pages/05_territorial-province-income-poverty.html#what-this-view-covers",
+    "href": "pages/05_territorial-province-income-poverty.html#what-this-view-covers",
+    "title": "Territorial view of income poverty",
     "section": "What this view covers",
-    "text": "What this view covers\n\n\n\nPeriod\n\n\nAnnual ENEMDU 2025\n\n\n\n\nSource\n\n\nCurated aggregate site output\n\n\n\n\nCoverage\n\n\nNational, urban and rural\n\n\n\n\nReading\n\n\nEmployment, job quality and poverty profiles"
+    "text": "What this view covers\n\n\n\nPeriod\n\n\nAnnual ENEMDU 2025\n\n\n\n\nMeasure\n\n\nIncome poverty\n\n\n\n\nGeography\n\n\n24 provinces\n\n\n\n\nReading\n\n\nIncidence and concentration"
   },
   {
-    "objectID": "pages/06_labor-market-poverty.html#why-having-work-does-not-always-mean-being-out-of-poverty",
-    "href": "pages/06_labor-market-poverty.html#why-having-work-does-not-always-mean-being-out-of-poverty",
-    "title": "Labor market and poverty",
-    "section": "Why having work does not always mean being out of poverty",
-    "text": "Why having work does not always mean being out of poverty\nPoverty is measured through household per-capita income, not only through whether a person has a job. That distinction is crucial: a person can be employed and still live in a household whose total income is below the income-poverty line.\nThe national profile shows that poverty among employed people is 15.9%, while poverty among unemployed people is 25.8% and poverty among people outside the labor force is 21.9%. The estimated number of people in poverty is largest among employed people, at about 1,317,829."
+    "objectID": "pages/05_territorial-province-income-poverty.html#one-map-two-readings",
+    "href": "pages/05_territorial-province-income-poverty.html#one-map-two-readings",
+    "title": "Territorial view of income poverty",
+    "section": "One map, two readings",
+    "text": "One map, two readings\nThe provincial map shows where poverty rates are highest. The executive table answers a different question: where the estimated number of people in poverty is largest.\nThat distinction matters. Esmeraldas has the highest poverty rate among the provinces highlighted in the incidence comparison, while Guayas has the largest estimated number of people in poverty: about 932,505 people, with a poverty rate of 20.0%."
   },
   {
-    "objectID": "pages/06_labor-market-poverty.html#who-is-attached-to-the-labor-market",
-    "href": "pages/06_labor-market-poverty.html#who-is-attached-to-the-labor-market",
-    "title": "Labor market and poverty",
-    "section": "Who is attached to the labor market?",
-    "text": "Who is attached to the labor market?\n\n\nLabor force participation\n\n\n\n64.3%\n\n\nEmployment among people 15+\n\n\n\n62.0%\n\n\nOutside the labor force\n\n\n\n35.7%\n\n\nUnemployment\n\n\n\n3.6%\n\n\nThe first reading separates labor-force attachment from unemployment. Many people are outside the labor force, while unemployment is measured only among people in the labor force."
+    "objectID": "pages/05_territorial-province-income-poverty.html#where-rates-are-highest",
+    "href": "pages/05_territorial-province-income-poverty.html#where-rates-are-highest",
+    "title": "Territorial view of income poverty",
+    "section": "Where rates are highest",
+    "text": "Where rates are highest\n\nEsmeraldas\n\n\n\n44.2%\n\n\nPastaza\n\n\n\n37.0%\n\n\nSanta Elena\n\n\n\n30.4%\n\n\nBolívar\n\n\n\n28.2%\n\n\nManabí\n\n\n\n24.6%\n\nThese rates compare the intensity of income poverty across provinces. They should be read as analytical estimates, especially for smaller domains where sampling uncertainty can matter."
   },
   {
-    "objectID": "pages/06_labor-market-poverty.html#work-status-is-not-enough",
-    "href": "pages/06_labor-market-poverty.html#work-status-is-not-enough",
-    "title": "Labor market and poverty",
-    "section": "Work status is not enough",
-    "text": "Work status is not enough\n\n\nAdequate/full employment\n\n\n\n38.5%\n\n\nSubemployment\n\n\n\n20.1%\n\n\nAmong employed people, adequate/full employment reaches 38.5% and subemployment reaches 20.1%. This is why the labor layer looks beyond the employed/unemployed split: job quality changes how employment should be read alongside household income poverty."
+    "objectID": "pages/05_territorial-province-income-poverty.html#where-the-burden-is-largest",
+    "href": "pages/05_territorial-province-income-poverty.html#where-the-burden-is-largest",
+    "title": "Territorial view of income poverty",
+    "section": "Where the burden is largest",
+    "text": "Where the burden is largest\nThe five provinces in the executive table account for about 2,257,759 estimated people in poverty. This ranking is based on the estimated number of people in poverty, not only on the poverty rate.\nThis helps separate territorial incidence from population concentration: a province can have a lower rate and still contain many more people in poverty because its population is much larger."
   },
   {
-    "objectID": "pages/06_labor-market-poverty.html#executive-table",
-    "href": "pages/06_labor-market-poverty.html#executive-table",
-    "title": "Labor market and poverty",
-    "section": "Executive table",
-    "text": "Executive table\n\n\n\n\n\nLabor condition\n\n\nPoverty rate\n\n\nExtreme poverty rate\n\n\nEstimated people in poverty\n\n\n\n\n\n\nEmployed\n\n\n15.9%\n\n\n5.0%\n\n\n1,317,829\n\n\n\n\nUnemployed\n\n\n25.8%\n\n\n11.1%\n\n\n77,779\n\n\n\n\nOutside the labor force\n\n\n21.9%\n\n\n5.9%\n\n\n1,039,215\n\n\n\n\n\nThe table compares broad labor conditions, not provinces or cities. The count column shows where the largest number of people in poverty is concentrated, while the poverty-rate columns show exposure within each labor condition."
+    "objectID": "pages/05_territorial-province-income-poverty.html#provinces-with-the-largest-estimated-number-of-people-in-poverty",
+    "href": "pages/05_territorial-province-income-poverty.html#provinces-with-the-largest-estimated-number-of-people-in-poverty",
+    "title": "Territorial view of income poverty",
+    "section": "Provinces with the largest estimated number of people in poverty",
+    "text": "Provinces with the largest estimated number of people in poverty\n\n\n\n\n\nRank\n\n\nProvince\n\n\nEstimated people in poverty\n\n\nPoverty rate\n\n\nExtreme poverty rate\n\n\n\n\n\n\n1\n\n\nGuayas\n\n\n932,505\n\n\n20.0%\n\n\n3.4%\n\n\n\n\n2\n\n\nManabí\n\n\n421,236\n\n\n24.6%\n\n\n4.0%\n\n\n\n\n3\n\n\nPichincha\n\n\n380,909\n\n\n11.3%\n\n\n3.7%\n\n\n\n\n4\n\n\nEsmeraldas\n\n\n304,332\n\n\n44.2%\n\n\n20.9%\n\n\n\n\n5\n\n\nLos Ríos\n\n\n218,776\n\n\n22.0%\n\n\n3.8%\n\n\n\n\n\nThe ranking is based on the estimated number of people in poverty. The poverty and extreme-poverty rates are included to keep incidence visible without turning the table into a rate ranking."
   },
   {
-    "objectID": "pages/06_labor-market-poverty.html#poverty-is-not-only-a-story-about-unemployment",
-    "href": "pages/06_labor-market-poverty.html#poverty-is-not-only-a-story-about-unemployment",
-    "title": "Labor market and poverty",
-    "section": "Poverty is not only a story about unemployment",
-    "text": "Poverty is not only a story about unemployment\n\n\nEmployed\n\n\n\n15.9%\n\n\nUnemployed\n\n\n\n25.8%\n\n\nOutside the labor force\n\n\n\n21.9%\n\n\nUnemployment is associated with a high poverty rate, but it accounts for a smaller estimated number of people in poverty than employment. The national estimate shows about 1,039,215 people in poverty outside the labor force, another reminder that household vulnerability extends beyond the labor-force headline."
-  },
-  {
-    "objectID": "pages/06_labor-market-poverty.html#labor-and-poverty-differ-by-domain",
-    "href": "pages/06_labor-market-poverty.html#labor-and-poverty-differ-by-domain",
-    "title": "Labor market and poverty",
-    "section": "Labor and poverty differ by domain",
-    "text": "Labor and poverty differ by domain\n\n\n\n\n\nDomain\n\n\nLabor participation\n\n\nEmployment among people 15+\n\n\nUnemployment\n\n\nPoverty among employed people\n\n\n\n\n\n\nNational\n\n\n64.3%\n\n\n62.0%\n\n\n3.6%\n\n\n15.9%\n\n\n\n\nUrban\n\n\n61.2%\n\n\n58.4%\n\n\n4.5%\n\n\n9.7%\n\n\n\n\nRural\n\n\n71.0%\n\n\n69.6%\n\n\n1.9%\n\n\n27.1%\n\n\n\n\n\nUrban and rural rows are included only for the supported annual domains in the curated output. They help compare labor attachment and poverty exposure without turning this page into a territorial ranking."
-  },
-  {
-    "objectID": "pages/06_labor-market-poverty.html#reading-notes",
-    "href": "pages/06_labor-market-poverty.html#reading-notes",
-    "title": "Labor market and poverty",
-    "section": "Reading notes",
-    "text": "Reading notes\nThese estimates are analytical and descriptive. They are based on public ENEMDU annual 2025 microdata and are published here only through a curated aggregate output. They are not an official INEC validation, do not make causal claims, and should be read together with Measurement and statistical quality."
-  },
-  {
-    "objectID": "pages/04_methodology-quality.html",
-    "href": "pages/04_methodology-quality.html",
-    "title": "Methodology and statistical quality",
+    "objectID": "pages/03_deprivation-multidimensional-poverty.html",
+    "href": "pages/03_deprivation-multidimensional-poverty.html",
+    "title": "Deprivation and multidimensional poverty",
     "section": "",
-    "text": "How the monitor separates analytical estimates, benchmark comparison and public communication."
+    "text": "Annual 2025 executive profile of income poverty, basic-needs deprivation and multidimensional poverty."
   },
   {
-    "objectID": "pages/04_methodology-quality.html#the-core-distinction",
-    "href": "pages/04_methodology-quality.html#the-core-distinction",
-    "title": "Methodology and statistical quality",
-    "section": "The core distinction",
-    "text": "The core distinction\nA benchmark comparison for analytical reproducibility checks whether a result aligns with a public reference under a stated tolerance.\nIt is not official institutional validation, certification, endorsement, or approval."
+    "objectID": "pages/03_deprivation-multidimensional-poverty.html#scope",
+    "href": "pages/03_deprivation-multidimensional-poverty.html#scope",
+    "title": "Deprivation and multidimensional poverty",
+    "section": "Scope",
+    "text": "Scope\n\n\n\nPeriod\n\n\n2025 annual ENEMDU\n\n\n\n\nSource\n\n\nPublic ENEMDU annual 2025 microdata\n\n\n\n\nCoverage\n\n\nNational, urban and rural\n\n\n\n\nEngine\n\n\nenemduR\n\n\n\n\nOutput\n\n\nCurated aggregate RDS\n\n\n\n\nMethod\n\n\nSurvey-weighted analytical estimates"
   },
   {
-    "objectID": "pages/04_methodology-quality.html#what-this-monitor-is",
-    "href": "pages/04_methodology-quality.html#what-this-monitor-is",
-    "title": "Methodology and statistical quality",
-    "section": "What this monitor is",
-    "text": "What this monitor is\nThe monitor is a downstream analytical and communication layer built from public ENEMDU source files, explicit methodological contracts, reproducible processing with enemduR, curated aggregate outputs, and static Quarto pages.\nIt organizes results so readers can see what was estimated, for which period and domain, with which quality metadata, and against which public reference when a suitable benchmark is available."
+    "objectID": "pages/03_deprivation-multidimensional-poverty.html#three-poverty-lenses-one-reading-problem",
+    "href": "pages/03_deprivation-multidimensional-poverty.html#three-poverty-lenses-one-reading-problem",
+    "title": "Deprivation and multidimensional poverty",
+    "section": "Three poverty lenses, one reading problem",
+    "text": "Three poverty lenses, one reading problem\nThe national income-poverty rate is 22.0%, while NBI reaches 30.0% and TPM reaches 37.0%. These are not competing versions of the same statistic. Income poverty identifies insufficient current resources, NBI captures accumulated structural deficits, and TPM captures overlapping weighted deprivations.\nThe curated output represents about 18,775,415 people nationally for the income-poverty denominator and stores only aggregate fields used by this page."
   },
   {
-    "objectID": "pages/04_methodology-quality.html#what-this-monitor-is-not",
-    "href": "pages/04_methodology-quality.html#what-this-monitor-is-not",
-    "title": "Methodology and statistical quality",
-    "section": "What this monitor is not",
-    "text": "What this monitor is not\nIt is not an official statistical release, a substitute for INEC publications, or an independent statistical authority. It does not claim institutional validation. It also does not treat every analytical estimate as equally benchmarked or equally suitable for territorial disaggregation."
+    "objectID": "pages/03_deprivation-multidimensional-poverty.html#national-urban-and-rural-profile",
+    "href": "pages/03_deprivation-multidimensional-poverty.html#national-urban-and-rural-profile",
+    "title": "Deprivation and multidimensional poverty",
+    "section": "National, urban and rural profile",
+    "text": "National, urban and rural profile\n\n\n\n\nDomain\n\n\nIncome\n\n\nExtreme income\n\n\nNBI\n\n\nExtreme NBI\n\n\nTPM\n\n\nTPEM\n\n\n\n\n\n\nNational\n\n\n22.0%\n\n\n7.0%\n\n\n30.0%\n\n\n7.7%\n\n\n37.0%\n\n\n14.4%\n\n\n\n\nUrban\n\n\n16.5%\n\n\n3.7%\n\n\n21.6%\n\n\n3.6%\n\n\n23.9%\n\n\n5.7%\n\n\n\n\nRural\n\n\n33.6%\n\n\n14.1%\n\n\n48.0%\n\n\n16.4%\n\n\n65.2%\n\n\n33.1%\n\n\n\n\nValues are percentages. Urban and rural estimates are shown only for supported annual domains and are not interpolated."
   },
   {
-    "objectID": "pages/04_methodology-quality.html#four-publication-layers",
-    "href": "pages/04_methodology-quality.html#four-publication-layers",
-    "title": "Methodology and statistical quality",
-    "section": "Four publication layers",
-    "text": "Four publication layers\n\n\n1. Source microdata\nPublic ENEMDU files are processed locally. Microdata remain outside the public site and are not copied into versioned publication outputs.\n\n\n2. Annual analytical outputs\nLocal derived products hold the analytical results required by the pipeline. They are separate from the website and are not intended as direct public interfaces.\n\n\n3. Curated site outputs\nVersionable publication files contain only the aggregate fields needed by Quarto. They exclude microdata, raw identifiers, private paths, and dynamic timestamps.\n\n\n4. Quarto pages\nStatic pages consume curated outputs and add interpretation, benchmark labels, quality notes, and explicit limits without recalculating the underlying indicators."
+    "objectID": "pages/03_deprivation-multidimensional-poverty.html#rural-disadvantage-is-systematic",
+    "href": "pages/03_deprivation-multidimensional-poverty.html#rural-disadvantage-is-systematic",
+    "title": "Deprivation and multidimensional poverty",
+    "section": "Rural disadvantage is systematic",
+    "text": "Rural disadvantage is systematic\nRural areas show the highest burden in 6 of 6 indicators displayed. The largest urban-rural gap appears in Multidimensional poverty / TPM, which indicates that territorial inequality is not confined to monetary poverty."
   },
   {
-    "objectID": "pages/04_methodology-quality.html#three-speed-architecture",
-    "href": "pages/04_methodology-quality.html#three-speed-architecture",
-    "title": "Methodology and statistical quality",
-    "section": "Three-speed architecture",
-    "text": "Three-speed architecture\n\n\nMonthly\nThe monthly layer is a short-term pulse for national and urban-rural context, particularly labor-market conditions. It should not be read as a substitute for annual structural poverty analysis.\n\n\nQuarterly\nThe quarterly layer supports intermediate urban monitoring, including the five main cities only when the survey design and configured domain contract support those estimates.\n\n\nAnnual\nThe annual layer is the structural core for income poverty, deprivation, multidimensional poverty, distribution, and broader territorial analysis. The current published poverty profiles use annual 2025 outputs.\n\n\nPeriod and domain are linked: a territorial level is shown only when it is supported by the survey design for that period."
+    "objectID": "pages/03_deprivation-multidimensional-poverty.html#monetary-and-structural-poverty-diverge",
+    "href": "pages/03_deprivation-multidimensional-poverty.html#monetary-and-structural-poverty-diverge",
+    "title": "Deprivation and multidimensional poverty",
+    "section": "Monetary and structural poverty diverge",
+    "text": "Monetary and structural poverty diverge\nThe national NBI rate is 30.0%, above the national income-poverty rate of 22.0%. Reading both together separates insufficient current income from accumulated deficits in housing, services, schooling and household dependency conditions."
   },
   {
-    "objectID": "pages/04_methodology-quality.html#benchmark-status",
-    "href": "pages/04_methodology-quality.html#benchmark-status",
-    "title": "Methodology and statistical quality",
-    "section": "Benchmark status",
-    "text": "Benchmark status\nbenchmark_status records the result of a comparison with an identified public reference. It is a reproducibility field, not an institutional seal.\n\n\n\n\n\n\n\n\n\nBenchmark status\nMeaning\nPublic interpretation\nCurrent use in the site\n\n\n\n\nClose match\nThe analytical estimate falls within the stated comparison tolerance for the available public reference.\nThe monitor closely reproduces that public benchmark under the documented analytical contract.\nIncome poverty and extreme income poverty.\n\n\nNot directly benchmarked\nNo equivalent public annual table is used for a direct indicator-level comparison in this build.\nRead the result as a survey-weighted analytical estimate, not as a benchmark-matched headline.\nNBI and extreme NBI.\n\n\nOutside tolerance / requires review\nA public reference is available, but the analytical comparison does not meet the current tolerance.\nThe estimate may be published with a visible review flag, but it must not be described as a close reproduction.\nTPM and TPEM.\n\n\nReference missing or not matched\nThe expected comparison cannot be completed for the relevant row or reference.\nDo not infer benchmark alignment; inspect the source and matching contract before making a claim.\nReserved for pipeline transparency when applicable.\n\n\n\n\nFor the current annual income-poverty comparison, “close match” means a difference of no more than 0.5 percentage points from the public annual reference. That tolerance belongs to this analytical reproducibility check and does not imply official institutional validation."
+    "objectID": "pages/03_deprivation-multidimensional-poverty.html#tpm-captures-overlapping-deprivation",
+    "href": "pages/03_deprivation-multidimensional-poverty.html#tpm-captures-overlapping-deprivation",
+    "title": "Deprivation and multidimensional poverty",
+    "section": "TPM captures overlapping deprivation",
+    "text": "TPM captures overlapping deprivation\nTPM reaches 37.0% nationally and rural TPM is about 2.7x the urban rate. TPEM reaches 14.4% nationally, showing the severe tail of overlapping deprivations."
   },
   {
-    "objectID": "pages/04_methodology-quality.html#current-indicator-status",
-    "href": "pages/04_methodology-quality.html#current-indicator-status",
-    "title": "Methodology and statistical quality",
-    "section": "Current indicator status",
-    "text": "Current indicator status\n\n\n\n\n\n\n\n\nIndicator\nWhat it measures\nCurrent benchmark interpretation\n\n\n\n\nIncome poverty\nWhether household per-capita income falls below the income-poverty line.\nClose match against the public annual benchmark.\n\n\nExtreme income poverty\nWhether household per-capita income falls below the extreme-poverty line.\nClose match against the public annual benchmark.\n\n\nNBI\nStructural deprivation measured through unmet basic needs.\nNot directly benchmarked against a public annual table in this build.\n\n\nExtreme NBI\nMore severe or accumulated unmet-basic-needs conditions under the implemented method.\nNot directly benchmarked against a public annual table in this build.\n\n\nTPM\nMultidimensional poverty based on overlapping weighted deprivations and the implemented threshold.\nBenchmark comparison outside tolerance; requires methodological review.\n\n\nTPEM\nSevere multidimensional poverty based on the implemented extreme threshold.\nBenchmark comparison outside tolerance; requires methodological review.\n\n\n\nThese indicators answer different questions. Income poverty concerns current monetary resources. NBI captures structural deficits in basic needs. TPM and TPEM summarize overlapping weighted deprivations. They should be read together, not treated as interchangeable poverty rates."
+    "objectID": "pages/03_deprivation-multidimensional-poverty.html#benchmark-status-matters",
+    "href": "pages/03_deprivation-multidimensional-poverty.html#benchmark-status-matters",
+    "title": "Deprivation and multidimensional poverty",
+    "section": "Benchmark status matters",
+    "text": "Benchmark status matters\nIncome poverty is benchmarked against public annual tabulations and shows close-match status. NBI is not directly benchmarked against public annual tabulations in this build. TPM/TPEM are calculated with enemduR and their public IPM benchmark comparison is marked Benchmark requires review, so this page treats them as analytical estimates with an explicit reproducibility flag."
   },
   {
-    "objectID": "pages/04_methodology-quality.html#survey-weighted-analytical-estimates",
-    "href": "pages/04_methodology-quality.html#survey-weighted-analytical-estimates",
-    "title": "Methodology and statistical quality",
-    "section": "Survey-weighted analytical estimates",
-    "text": "Survey-weighted analytical estimates\nThe published indicators are survey-weighted analytical estimates. Survey weights translate sampled observations into estimates for the population represented by the valid survey domain.\n\nweighted_n is the estimated population represented by the analytical denominator.\nunweighted_n is the number of survey records contributing to that denominator.\nquality_flag carries the available precision or representativity assessment from the analytical output.\nbenchmark_status describes benchmark comparison, which is separate from sample quality.\n\nA large weighted_n does not by itself guarantee precision, and a benchmark close match does not replace review of sample size, domain validity, and quality flags."
+    "objectID": "pages/03_deprivation-multidimensional-poverty.html#method-note",
+    "href": "pages/03_deprivation-multidimensional-poverty.html#method-note",
+    "title": "Deprivation and multidimensional poverty",
+    "section": "Method note",
+    "text": "Method note\nThe indicators are based on public ENEMDU annual 2025 microdata and built with enemduR. Estimates are survey-weighted. Benchmark comparison is reported only where a public annual reference is available. The comparison documents analytical reproducibility and does not imply official institutional validation."
   },
   {
-    "objectID": "pages/04_methodology-quality.html#read-every-estimate-inside-its-contract",
-    "href": "pages/04_methodology-quality.html#read-every-estimate-inside-its-contract",
-    "title": "Methodology and statistical quality",
-    "section": "Read every estimate inside its contract",
-    "text": "Read every estimate inside its contract\nThe current poverty pages publish national, urban, and rural annual domains. Each estimate also belongs to a defined universe and analysis unit. Readers should not compare or combine rows without checking that period, universe, analysis unit, and domain are compatible.\nMore detailed geography is not automatically more informative. City, province, or other territorial estimates should appear only in the layers and periods where the survey design supports them. Unsupported disaggregation can create false precision even when the underlying calculation runs successfully."
+    "objectID": "pages/01_why-monitor.html",
+    "href": "pages/01_why-monitor.html",
+    "title": "Why build a poverty monitor?",
+    "section": "",
+    "text": "Why it matters\n\n\n\n\nThe problem is not the lack of data. The problem is the missing reading layer.\n\nPoverty data in Ecuador already exist across official bulletins, microdata, methodological notes, poverty lines, labor reports, monthly releases, quarterly files, and annual databases. This monitor turns that scattered public information into a coherent, reproducible, and decision-oriented reading.\n\n\n\n\nThe Ecuador Poverty Monitor connects income, deprivation, territory, labor conditions, and statistical quality into one static Quarto product.\nIt does not replace official statistics. It helps explain how to read them."
   },
   {
-    "objectID": "pages/04_methodology-quality.html#how-to-read-a-quality-flag",
-    "href": "pages/04_methodology-quality.html#how-to-read-a-quality-flag",
-    "title": "Methodology and statistical quality",
-    "section": "How to read a quality flag",
-    "text": "How to read a quality flag\nA quality flag is a decision aid, not decoration. If the field is available, read its value before publishing or interpreting a subgroup estimate. A restrictive or review-oriented flag should lead to qualification, suppression, or further methodological inspection according to the producing method. If the field is unavailable, the absence of a warning must not be interpreted as evidence of high precision."
+    "objectID": "pages/01_why-monitor.html#a-reading-layer-for-public-data",
+    "href": "pages/01_why-monitor.html#a-reading-layer-for-public-data",
+    "title": "Why build a poverty monitor?",
+    "section": "",
+    "text": "The Ecuador Poverty Monitor connects income, deprivation, territory, labor conditions, and statistical quality into one static Quarto product.\nIt does not replace official statistics. It helps explain how to read them."
   },
   {
-    "objectID": "pages/04_methodology-quality.html#public-language-contract",
-    "href": "pages/04_methodology-quality.html#public-language-contract",
-    "title": "Methodology and statistical quality",
-    "section": "Public language contract",
-    "text": "Public language contract\nThe site may say that an estimate is:\n\nbased on public ENEMDU microdata;\na survey-weighted analytical estimate;\ncompared against public annual INEC tabulations;\na close benchmark match under the documented tolerance;\nnot directly benchmarked in this build; or\noutside tolerance and requiring methodological review.\n\nThe site must not imply certification, institutional approval, endorsement, or formal validation by INEC. Benchmark alignment documents analytical reproducibility only."
+    "objectID": "pages/01_why-monitor.html#what-is-fragmented",
+    "href": "pages/01_why-monitor.html#what-is-fragmented",
+    "title": "Why build a poverty monitor?",
+    "section": "What is fragmented?",
+    "text": "What is fragmented?\nThe issue is not a shortage of information. The issue is that each release answers only part of the question.\nTables can inform, but poverty analysis needs context: what was measured, what period supports the estimate, which territorial domains are valid, and how precise the result is."
   },
   {
-    "objectID": "pages/04_methodology-quality.html#current-limitations",
-    "href": "pages/04_methodology-quality.html#current-limitations",
-    "title": "Methodology and statistical quality",
-    "section": "Current limitations",
-    "text": "Current limitations\n\nThis monitor is not an official statistical release and does not carry institutional validation.\nNBI and extreme NBI do not have a direct public annual benchmark inside the current build.\nTPM and TPEM require methodological review before they can be described as close reproductions of the public reference.\nThe current annual pages focus on national, urban, and rural domains; finer disaggregation requires a separate representativity contract.\nFuture territorial and labor layers require their own curated outputs, quality checks, and publication rules.\nStatic publication improves auditability, but it does not remove the need to review methods when source files, survey design, or official references change."
+    "objectID": "pages/01_why-monitor.html#what-the-monitor-connects",
+    "href": "pages/01_why-monitor.html#what-the-monitor-connects",
+    "title": "Why build a poverty monitor?",
+    "section": "What the monitor connects",
+    "text": "What the monitor connects\nPoverty can be read through income, basic needs, simultaneous deprivation, territory, and work. Each lens illuminates a different part of the problem.\nWhen those pieces are read separately, the picture remains incomplete. When they are connected, the country becomes easier to understand."
+  },
+  {
+    "objectID": "pages/01_why-monitor.html#source-engine-product",
+    "href": "pages/01_why-monitor.html#source-engine-product",
+    "title": "Why build a poverty monitor?",
+    "section": "Source, engine, product",
+    "text": "Source, engine, product\nENEMDU is Ecuador’s National Survey of Employment, Unemployment, and Underemployment. It is one of the country’s key statistical operations for analyzing work, labor conditions, income, poverty, and household characteristics.\n\n\n1. Official source\nThe base information comes from ENEMDU and its methodological documentation.\n\n\n2. Analytical engine\nenemduR organizes reading, validation, estimation, indicators, and analytical outputs.\n\n\n3. Narrative product\nThis site turns results into a visual and explanatory story."
+  },
+  {
+    "objectID": "pages/01_why-monitor.html#three-speeds-different-questions",
+    "href": "pages/01_why-monitor.html#three-speeds-different-questions",
+    "title": "Why build a poverty monitor?",
+    "section": "Three speeds, different questions",
+    "text": "Three speeds, different questions\nThis product does not treat all periods as if they supported the same type of reading. The monitor is organized into monthly pulse, quarterly city view, and annual structural analysis."
+  },
+  {
+    "objectID": "pages/01_why-monitor.html#golden-rule",
+    "href": "pages/01_why-monitor.html#golden-rule",
+    "title": "Why build a poverty monitor?",
+    "section": "Golden rule",
+    "text": "Golden rule\nNever show a territorial disaggregation that does not match the representativity domain of the period being used. Methodological clarity is part of the product, not a secondary note."
+  },
+  {
+    "objectID": "pages/01_why-monitor.html#a-compact-product-contract",
+    "href": "pages/01_why-monitor.html#a-compact-product-contract",
+    "title": "Why build a poverty monitor?",
+    "section": "A compact product contract",
+    "text": "A compact product contract\nThis monitor adds an integrated reading of poverty, a reproducible architecture based on enemduR, a stronger visual communication layer, a clear distinction between pulse and structure, and a technical discussion of representativity."
+  },
+  {
+    "objectID": "pages/01_why-monitor.html#not-a-parallel-authority",
+    "href": "pages/01_why-monitor.html#not-a-parallel-authority",
+    "title": "Why build a poverty monitor?",
+    "section": "Not a parallel authority",
+    "text": "Not a parallel authority\nThe monitor does not replace INEC or produce official statistics. Its goal is to transform complex public information into an ordered, reproducible, visual, and useful reading of poverty in Ecuador."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Poverty is not a single number.",
+    "section": "",
+    "text": "Poverty intelligence for Ecuador\n\n\n\nEvery time a poverty rate is published, the country can appear to fit inside one percentage point. Ecuador does not fit inside one number.\nThis monitor organizes income poverty, deprivation, territory, labor conditions, and statistical quality into one reproducible editorial product.\n\nStart with the purpose View income poverty\n\n\n\n\n\nThe monitor separates short-term signals from structural poverty analysis, so comparisons stay meaningful.\n\n\n\nMonthly\n\nPulse\n\nNational, urban/rural, and labor-market context.\n\n\n\n\nQuarterly\n\nCities\n\nQuito, Guayaquil, Cuenca, Machala, and Ambato when the domain supports it.\n\n\n\n\nAnnual\n\nStructure\n\nPoverty, income distribution, NBI, multidimensional poverty, and provincial territory."
+  },
+  {
+    "objectID": "index.html#three-speeds-one-reading",
+    "href": "index.html#three-speeds-one-reading",
+    "title": "Poverty is not a single number.",
+    "section": "",
+    "text": "The monitor separates short-term signals from structural poverty analysis, so comparisons stay meaningful.\n\n\n\nMonthly\n\nPulse\n\nNational, urban/rural, and labor-market context.\n\n\n\n\nQuarterly\n\nCities\n\nQuito, Guayaquil, Cuenca, Machala, and Ambato when the domain supports it.\n\n\n\n\nAnnual\n\nStructure\n\nPoverty, income distribution, NBI, multidimensional poverty, and provincial territory."
+  },
+  {
+    "objectID": "index.html#monthly-pulse",
+    "href": "index.html#monthly-pulse",
+    "title": "Poverty is not a single number.",
+    "section": "Monthly pulse",
+    "text": "Monthly pulse\nLatest available month\nShort-term context for national and urban/rural indicators, especially labor-market conditions.\nThis layer helps read the present without confusing volatility with structure."
+  },
+  {
+    "objectID": "index.html#quarterly-view",
+    "href": "index.html#quarterly-view",
+    "title": "Poverty is not a single number.",
+    "section": "Quarterly view",
+    "text": "Quarterly view\nFive main cities\nIntermediate monitoring for Quito, Guayaquil, Cuenca, Machala, and Ambato when the sample design supports it.\nThis layer surfaces urban signals more frequently than the annual analysis."
+  },
+  {
+    "objectID": "index.html#annual-core",
+    "href": "index.html#annual-core",
+    "title": "Poverty is not a single number.",
+    "section": "Annual core",
+    "text": "Annual core\nFull structure\nIncome poverty, quintiles, NBI, multidimensional poverty, provinces, cities, and territorial analysis.\nThis is the narrative foundation of the monitor."
+  },
+  {
+    "objectID": "index.html#annual-income-poverty-snapshot",
+    "href": "index.html#annual-income-poverty-snapshot",
+    "title": "Poverty is not a single number.",
+    "section": "2025 annual income poverty snapshot",
+    "text": "2025 annual income poverty snapshot\nIn 2025, Ecuador’s annual income poverty rate reached 21.95%. The annual reading shows a strong territorial contrast: 16.51% in urban areas and 33.63% in rural areas. Extreme poverty reached 6.99% nationally, with 3.69% in urban areas and 14.07% in rural areas.\n\nThese estimates are computed from public ENEMDU microdata and compared against public annual INEC tabulations for analytical reproducibility. This is not an official institutional validation."
+  },
+  {
+    "objectID": "index.html#why-this-monitor-exists",
+    "href": "index.html#why-this-monitor-exists",
+    "title": "Poverty is not a single number.",
+    "section": "Why this monitor exists",
+    "text": "Why this monitor exists\nPublic poverty data in Ecuador are valuable, but the reading is often spread across bulletins, microdata, technical notes, methodological reports, and isolated tables.\nThe problem is not the absence of data. The problem is that the story connecting the data is often fragmented.\nThe Ecuador Poverty Monitor is designed as a reproducible communication layer. It does not replace official statistics or create a parallel statistical authority. It helps readers understand what is measured, how it is measured, what can be compared, and where each estimate has limits."
+  },
+  {
+    "objectID": "index.html#the-core-idea",
+    "href": "index.html#the-core-idea",
+    "title": "Poverty is not a single number.",
+    "section": "The core idea",
+    "text": "The core idea\nA useful poverty monitor should not only ask how many people are poor.\n\n\nCondition\nIncome, deprivation, and the relative position of households.\n\n\nPlace\nTerritory, cities, rurality, and valid domains of estimation.\n\n\nMeasurement\nPrecision, representativity, and comparability across periods."
+  },
+  {
+    "objectID": "index.html#how-to-read-the-site",
+    "href": "index.html#how-to-read-the-site",
+    "title": "Poverty is not a single number.",
+    "section": "How to read the site",
+    "text": "How to read the site"
+  },
+  {
+    "objectID": "index.html#product-status",
+    "href": "index.html#product-status",
+    "title": "Poverty is not a single number.",
+    "section": "Product status",
+    "text": "Product status\n\nThis site is being built in public as a static Quarto portfolio product.\nThe 2025 annual income-poverty page is published with benchmark comparison against public annual INEC tabulations. The deprivation and multidimensional poverty page is published with income poverty, NBI, extreme NBI, TPM, and TPEM indicators. The provincial income-poverty page adds a territorial map and an executive table separating poverty incidence from population concentration. The labor-market page adds a public reading of employment conditions and poverty using curated aggregate outputs. The methodology and statistical quality page documents how benchmark comparisons, quality metadata, domains, and publication limits should be read.\n\n\n\nOfficial microdata\nBuilt around public ENEMDU source files.\n\n\nMethodological contracts\nPeriods and domains are explicit before analysis.\n\n\nStatistical quality\nRepresentativity and precision guide what can be shown.\n\n\nReproducible output\nQuarto consumes derived products, not raw microdata.\n\n\n\nWhy it matters -&gt; Income poverty -&gt; Provincial income poverty -&gt; Labor market and poverty -&gt; Measurement and statistical quality -&gt;"
+  },
+  {
+    "objectID": "es/index.html",
+    "href": "es/index.html",
+    "title": "Entender la pobreza más allá de una sola cifra.",
+    "section": "",
+    "text": "Capa ejecutiva en español\n\n\n\nEl sitio principal está escrito en inglés para funcionar como producto de portafolio internacional. Esta página resume la propuesta para lectores ecuatorianos y audiencias locales.\nEl objetivo es explicar pobreza, territorio, empleo y calidad estadística con una narrativa reproducible, sobria y útil.\n\nVer sitio principal en inglés Ver pobreza por ingresos\n\n\n\n\n\nOrganiza datos públicos de ENEMDU en una lectura clara, separando coyuntura, estructura y límites de representatividad.\n\n\n\nMensual\n\nPulso\n\nContexto nacional, urbano/rural y laboral reciente.\n\n\n\n\nTrimestral\n\nCiudades\n\nSeñales urbanas cuando el dominio de estimación lo permite.\n\n\n\n\nAnual\n\nEstructura\n\nPobreza, privaciones, quintiles y territorio provincial."
+  },
+  {
+    "objectID": "es/index.html#qué-resuelve-el-monitor",
+    "href": "es/index.html#qué-resuelve-el-monitor",
+    "title": "Entender la pobreza más allá de una sola cifra.",
+    "section": "",
+    "text": "Organiza datos públicos de ENEMDU en una lectura clara, separando coyuntura, estructura y límites de representatividad.\n\n\n\nMensual\n\nPulso\n\nContexto nacional, urbano/rural y laboral reciente.\n\n\n\n\nTrimestral\n\nCiudades\n\nSeñales urbanas cuando el dominio de estimación lo permite.\n\n\n\n\nAnual\n\nEstructura\n\nPobreza, privaciones, quintiles y territorio provincial."
+  },
+  {
+    "objectID": "es/index.html#para-qué-sirve",
+    "href": "es/index.html#para-qué-sirve",
+    "title": "Entender la pobreza más allá de una sola cifra.",
+    "section": "Para qué sirve",
+    "text": "Para qué sirve\nEl Ecuador Poverty Monitor no reemplaza estadísticas oficiales ni crea una autoridad paralela. Su función es convertir información pública compleja en una lectura ordenada, visual y reproducible.\nAyuda a responder qué se está midiendo, qué comparaciones son válidas y qué límites tiene cada estimación."
+  },
+  {
+    "objectID": "es/index.html#cápsula-anual-2025",
+    "href": "es/index.html#cápsula-anual-2025",
+    "title": "Entender la pobreza más allá de una sola cifra.",
+    "section": "Cápsula anual 2025",
+    "text": "Cápsula anual 2025\nEn 2025, la pobreza por ingresos alcanzó 21,95% a nivel nacional. La brecha territorial es marcada: 16,51% en el área urbana y 33,63% en el área rural. La pobreza extrema fue de 6,99% a nivel nacional, 3,69% en el área urbana y 14,07% en el área rural.\n\nEstos resultados se calculan a partir de microdatos públicos de ENEMDU y se comparan con tabulados públicos anuales del INEC con fines de reproducibilidad analítica. No constituyen validación institucional oficial."
+  },
+  {
+    "objectID": "es/index.html#tres-capas",
+    "href": "es/index.html#tres-capas",
+    "title": "Entender la pobreza más allá de una sola cifra.",
+    "section": "Tres capas",
+    "text": "Tres capas\n\n\nFuente\nENEMDU y documentación metodológica oficial.\n\n\nMotor\nProcesamiento reproducible mediante enemduR.\n\n\nProducto\nNarrativa editorial, gráficos e infografías futuras."
   },
   {
     "objectID": "pages/02_income-poverty.html",
@@ -273,276 +469,157 @@
     "text": "What comes after the first layer\nThe next income-poverty layer can add poverty-line context, precision indicators, historical comparisons, and distributional readings. Deprivation, multidimensional poverty, labor, and province-level analysis should remain separate layers until their own publication rules are complete."
   },
   {
-    "objectID": "es/index.html",
-    "href": "es/index.html",
-    "title": "Entender la pobreza más allá de una sola cifra.",
+    "objectID": "pages/04_methodology-quality.html",
+    "href": "pages/04_methodology-quality.html",
+    "title": "Methodology and statistical quality",
     "section": "",
-    "text": "Capa ejecutiva en español\n\n\n\nEl sitio principal está escrito en inglés para funcionar como producto de portafolio internacional. Esta página resume la propuesta para lectores ecuatorianos y audiencias locales.\nEl objetivo es explicar pobreza, territorio, empleo y calidad estadística con una narrativa reproducible, sobria y útil.\n\nVer sitio principal en inglés Ver pobreza por ingresos\n\n\n\n\n\nOrganiza datos públicos de ENEMDU en una lectura clara, separando coyuntura, estructura y límites de representatividad.\n\n\n\nMensual\n\nPulso\n\nContexto nacional, urbano/rural y laboral reciente.\n\n\n\n\nTrimestral\n\nCiudades\n\nSeñales urbanas cuando el dominio de estimación lo permite.\n\n\n\n\nAnual\n\nEstructura\n\nPobreza, privaciones, quintiles y territorio provincial."
+    "text": "How the monitor separates analytical estimates, benchmark comparison and public communication."
   },
   {
-    "objectID": "es/index.html#qué-resuelve-el-monitor",
-    "href": "es/index.html#qué-resuelve-el-monitor",
-    "title": "Entender la pobreza más allá de una sola cifra.",
+    "objectID": "pages/04_methodology-quality.html#the-core-distinction",
+    "href": "pages/04_methodology-quality.html#the-core-distinction",
+    "title": "Methodology and statistical quality",
+    "section": "The core distinction",
+    "text": "The core distinction\nA benchmark comparison for analytical reproducibility checks whether a result aligns with a public reference under a stated tolerance.\nIt is not official institutional validation, certification, endorsement, or approval."
+  },
+  {
+    "objectID": "pages/04_methodology-quality.html#what-this-monitor-is",
+    "href": "pages/04_methodology-quality.html#what-this-monitor-is",
+    "title": "Methodology and statistical quality",
+    "section": "What this monitor is",
+    "text": "What this monitor is\nThe monitor is a downstream analytical and communication layer built from public ENEMDU source files, explicit methodological contracts, reproducible processing with enemduR, curated aggregate outputs, and static Quarto pages.\nIt organizes results so readers can see what was estimated, for which period and domain, with which quality metadata, and against which public reference when a suitable benchmark is available."
+  },
+  {
+    "objectID": "pages/04_methodology-quality.html#what-this-monitor-is-not",
+    "href": "pages/04_methodology-quality.html#what-this-monitor-is-not",
+    "title": "Methodology and statistical quality",
+    "section": "What this monitor is not",
+    "text": "What this monitor is not\nIt is not an official statistical release, a substitute for INEC publications, or an independent statistical authority. It does not claim institutional validation. It also does not treat every analytical estimate as equally benchmarked or equally suitable for territorial disaggregation."
+  },
+  {
+    "objectID": "pages/04_methodology-quality.html#four-publication-layers",
+    "href": "pages/04_methodology-quality.html#four-publication-layers",
+    "title": "Methodology and statistical quality",
+    "section": "Four publication layers",
+    "text": "Four publication layers\n\n\n1. Source microdata\nPublic ENEMDU files are processed locally. Microdata remain outside the public site and are not copied into versioned publication outputs.\n\n\n2. Annual analytical outputs\nLocal derived products hold the analytical results required by the pipeline. They are separate from the website and are not intended as direct public interfaces.\n\n\n3. Curated site outputs\nVersionable publication files contain only the aggregate fields needed by Quarto. They exclude microdata, raw identifiers, private paths, and dynamic timestamps.\n\n\n4. Quarto pages\nStatic pages consume curated outputs and add interpretation, benchmark labels, quality notes, and explicit limits without recalculating the underlying indicators."
+  },
+  {
+    "objectID": "pages/04_methodology-quality.html#three-speed-architecture",
+    "href": "pages/04_methodology-quality.html#three-speed-architecture",
+    "title": "Methodology and statistical quality",
+    "section": "Three-speed architecture",
+    "text": "Three-speed architecture\n\n\nMonthly\nThe monthly layer is a short-term pulse for national and urban-rural context, particularly labor-market conditions. It should not be read as a substitute for annual structural poverty analysis.\n\n\nQuarterly\nThe quarterly layer supports intermediate urban monitoring, including the five main cities only when the survey design and configured domain contract support those estimates.\n\n\nAnnual\nThe annual layer is the structural core for income poverty, deprivation, multidimensional poverty, distribution, and broader territorial analysis. The current published poverty profiles use annual 2025 outputs.\n\n\nPeriod and domain are linked: a territorial level is shown only when it is supported by the survey design for that period."
+  },
+  {
+    "objectID": "pages/04_methodology-quality.html#benchmark-status",
+    "href": "pages/04_methodology-quality.html#benchmark-status",
+    "title": "Methodology and statistical quality",
+    "section": "Benchmark status",
+    "text": "Benchmark status\nbenchmark_status records the result of a comparison with an identified public reference. It is a reproducibility field, not an institutional seal.\n\n\n\n\n\n\n\n\n\nBenchmark status\nMeaning\nPublic interpretation\nCurrent use in the site\n\n\n\n\nClose match\nThe analytical estimate falls within the stated comparison tolerance for the available public reference.\nThe monitor closely reproduces that public benchmark under the documented analytical contract.\nIncome poverty and extreme income poverty.\n\n\nNot directly benchmarked\nNo equivalent public annual table is used for a direct indicator-level comparison in this build.\nRead the result as a survey-weighted analytical estimate, not as a benchmark-matched headline.\nNBI and extreme NBI.\n\n\nOutside tolerance / requires review\nA public reference is available, but the analytical comparison does not meet the current tolerance.\nThe estimate may be published with a visible review flag, but it must not be described as a close reproduction.\nTPM and TPEM.\n\n\nReference missing or not matched\nThe expected comparison cannot be completed for the relevant row or reference.\nDo not infer benchmark alignment; inspect the source and matching contract before making a claim.\nReserved for pipeline transparency when applicable.\n\n\n\n\nFor the current annual income-poverty comparison, “close match” means a difference of no more than 0.5 percentage points from the public annual reference. That tolerance belongs to this analytical reproducibility check and does not imply official institutional validation."
+  },
+  {
+    "objectID": "pages/04_methodology-quality.html#current-indicator-status",
+    "href": "pages/04_methodology-quality.html#current-indicator-status",
+    "title": "Methodology and statistical quality",
+    "section": "Current indicator status",
+    "text": "Current indicator status\n\n\n\n\n\n\n\n\nIndicator\nWhat it measures\nCurrent benchmark interpretation\n\n\n\n\nIncome poverty\nWhether household per-capita income falls below the income-poverty line.\nClose match against the public annual benchmark.\n\n\nExtreme income poverty\nWhether household per-capita income falls below the extreme-poverty line.\nClose match against the public annual benchmark.\n\n\nNBI\nStructural deprivation measured through unmet basic needs.\nNot directly benchmarked against a public annual table in this build.\n\n\nExtreme NBI\nMore severe or accumulated unmet-basic-needs conditions under the implemented method.\nNot directly benchmarked against a public annual table in this build.\n\n\nTPM\nMultidimensional poverty based on overlapping weighted deprivations and the implemented threshold.\nBenchmark comparison outside tolerance; requires methodological review.\n\n\nTPEM\nSevere multidimensional poverty based on the implemented extreme threshold.\nBenchmark comparison outside tolerance; requires methodological review.\n\n\n\nThese indicators answer different questions. Income poverty concerns current monetary resources. NBI captures structural deficits in basic needs. TPM and TPEM summarize overlapping weighted deprivations. They should be read together, not treated as interchangeable poverty rates."
+  },
+  {
+    "objectID": "pages/04_methodology-quality.html#survey-weighted-analytical-estimates",
+    "href": "pages/04_methodology-quality.html#survey-weighted-analytical-estimates",
+    "title": "Methodology and statistical quality",
+    "section": "Survey-weighted analytical estimates",
+    "text": "Survey-weighted analytical estimates\nThe published indicators are survey-weighted analytical estimates. Survey weights translate sampled observations into estimates for the population represented by the valid survey domain.\n\nweighted_n is the estimated population represented by the analytical denominator.\nunweighted_n is the number of survey records contributing to that denominator.\nquality_flag carries the available precision or representativity assessment from the analytical output.\nbenchmark_status describes benchmark comparison, which is separate from sample quality.\n\nA large weighted_n does not by itself guarantee precision, and a benchmark close match does not replace review of sample size, domain validity, and quality flags."
+  },
+  {
+    "objectID": "pages/04_methodology-quality.html#read-every-estimate-inside-its-contract",
+    "href": "pages/04_methodology-quality.html#read-every-estimate-inside-its-contract",
+    "title": "Methodology and statistical quality",
+    "section": "Read every estimate inside its contract",
+    "text": "Read every estimate inside its contract\nThe current poverty pages publish national, urban, and rural annual domains. Each estimate also belongs to a defined universe and analysis unit. Readers should not compare or combine rows without checking that period, universe, analysis unit, and domain are compatible.\nMore detailed geography is not automatically more informative. City, province, or other territorial estimates should appear only in the layers and periods where the survey design supports them. Unsupported disaggregation can create false precision even when the underlying calculation runs successfully.\nFor a deeper public note on survey coverage, sampling frames and population change, read the Sampling frame and representativity annex."
+  },
+  {
+    "objectID": "pages/04_methodology-quality.html#how-to-read-a-quality-flag",
+    "href": "pages/04_methodology-quality.html#how-to-read-a-quality-flag",
+    "title": "Methodology and statistical quality",
+    "section": "How to read a quality flag",
+    "text": "How to read a quality flag\nA quality flag is a decision aid, not decoration. If the field is available, read its value before publishing or interpreting a subgroup estimate. A restrictive or review-oriented flag should lead to qualification, suppression, or further methodological inspection according to the producing method. If the field is unavailable, the absence of a warning must not be interpreted as evidence of high precision."
+  },
+  {
+    "objectID": "pages/04_methodology-quality.html#public-language-contract",
+    "href": "pages/04_methodology-quality.html#public-language-contract",
+    "title": "Methodology and statistical quality",
+    "section": "Public language contract",
+    "text": "Public language contract\nThe site may say that an estimate is:\n\nbased on public ENEMDU microdata;\na survey-weighted analytical estimate;\ncompared against public annual INEC tabulations;\na close benchmark match under the documented tolerance;\nnot directly benchmarked in this build; or\noutside tolerance and requiring methodological review.\n\nThe site must not imply certification, institutional approval, endorsement, or formal validation by INEC. Benchmark alignment documents analytical reproducibility only."
+  },
+  {
+    "objectID": "pages/04_methodology-quality.html#current-limitations",
+    "href": "pages/04_methodology-quality.html#current-limitations",
+    "title": "Methodology and statistical quality",
+    "section": "Current limitations",
+    "text": "Current limitations\n\nThis monitor is not an official statistical release and does not carry institutional validation.\nNBI and extreme NBI do not have a direct public annual benchmark inside the current build.\nTPM and TPEM require methodological review before they can be described as close reproductions of the public reference.\nThe current annual pages focus on national, urban, and rural domains; finer disaggregation requires a separate representativity contract.\nFuture territorial and labor layers require their own curated outputs, quality checks, and publication rules.\nStatic publication improves auditability, but it does not remove the need to review methods when source files, survey design, or official references change."
+  },
+  {
+    "objectID": "pages/06_labor-market-poverty.html",
+    "href": "pages/06_labor-market-poverty.html",
+    "title": "Labor market and poverty",
     "section": "",
-    "text": "Organiza datos públicos de ENEMDU en una lectura clara, separando coyuntura, estructura y límites de representatividad.\n\n\n\nMensual\n\nPulso\n\nContexto nacional, urbano/rural y laboral reciente.\n\n\n\n\nTrimestral\n\nCiudades\n\nSeñales urbanas cuando el dominio de estimación lo permite.\n\n\n\n\nAnual\n\nEstructura\n\nPobreza, privaciones, quintiles y territorio provincial."
+    "text": "Employment conditions and household vulnerability in annual ENEMDU 2025"
   },
   {
-    "objectID": "es/index.html#para-qué-sirve",
-    "href": "es/index.html#para-qué-sirve",
-    "title": "Entender la pobreza más allá de una sola cifra.",
-    "section": "Para qué sirve",
-    "text": "Para qué sirve\nEl Ecuador Poverty Monitor no reemplaza estadísticas oficiales ni crea una autoridad paralela. Su función es convertir información pública compleja en una lectura ordenada, visual y reproducible.\nAyuda a responder qué se está midiendo, qué comparaciones son válidas y qué límites tiene cada estimación."
-  },
-  {
-    "objectID": "es/index.html#cápsula-anual-2025",
-    "href": "es/index.html#cápsula-anual-2025",
-    "title": "Entender la pobreza más allá de una sola cifra.",
-    "section": "Cápsula anual 2025",
-    "text": "Cápsula anual 2025\nEn 2025, la pobreza por ingresos alcanzó 21,95% a nivel nacional. La brecha territorial es marcada: 16,51% en el área urbana y 33,63% en el área rural. La pobreza extrema fue de 6,99% a nivel nacional, 3,69% en el área urbana y 14,07% en el área rural.\n\nEstos resultados se calculan a partir de microdatos públicos de ENEMDU y se comparan con tabulados públicos anuales del INEC con fines de reproducibilidad analítica. No constituyen validación institucional oficial."
-  },
-  {
-    "objectID": "es/index.html#tres-capas",
-    "href": "es/index.html#tres-capas",
-    "title": "Entender la pobreza más allá de una sola cifra.",
-    "section": "Tres capas",
-    "text": "Tres capas\n\n\nFuente\nENEMDU y documentación metodológica oficial.\n\n\nMotor\nProcesamiento reproducible mediante enemduR.\n\n\nProducto\nNarrativa editorial, gráficos e infografías futuras."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Poverty is not a single number.",
-    "section": "",
-    "text": "Poverty intelligence for Ecuador\n\n\n\nEvery time a poverty rate is published, the country can appear to fit inside one percentage point. Ecuador does not fit inside one number.\nThis monitor organizes income poverty, deprivation, territory, labor conditions, and statistical quality into one reproducible editorial product.\n\nStart with the purpose View income poverty\n\n\n\n\n\nThe monitor separates short-term signals from structural poverty analysis, so comparisons stay meaningful.\n\n\n\nMonthly\n\nPulse\n\nNational, urban/rural, and labor-market context.\n\n\n\n\nQuarterly\n\nCities\n\nQuito, Guayaquil, Cuenca, Machala, and Ambato when the domain supports it.\n\n\n\n\nAnnual\n\nStructure\n\nPoverty, income distribution, NBI, multidimensional poverty, and provincial territory."
-  },
-  {
-    "objectID": "index.html#three-speeds-one-reading",
-    "href": "index.html#three-speeds-one-reading",
-    "title": "Poverty is not a single number.",
-    "section": "",
-    "text": "The monitor separates short-term signals from structural poverty analysis, so comparisons stay meaningful.\n\n\n\nMonthly\n\nPulse\n\nNational, urban/rural, and labor-market context.\n\n\n\n\nQuarterly\n\nCities\n\nQuito, Guayaquil, Cuenca, Machala, and Ambato when the domain supports it.\n\n\n\n\nAnnual\n\nStructure\n\nPoverty, income distribution, NBI, multidimensional poverty, and provincial territory."
-  },
-  {
-    "objectID": "index.html#monthly-pulse",
-    "href": "index.html#monthly-pulse",
-    "title": "Poverty is not a single number.",
-    "section": "Monthly pulse",
-    "text": "Monthly pulse\nLatest available month\nShort-term context for national and urban/rural indicators, especially labor-market conditions.\nThis layer helps read the present without confusing volatility with structure."
-  },
-  {
-    "objectID": "index.html#quarterly-view",
-    "href": "index.html#quarterly-view",
-    "title": "Poverty is not a single number.",
-    "section": "Quarterly view",
-    "text": "Quarterly view\nFive main cities\nIntermediate monitoring for Quito, Guayaquil, Cuenca, Machala, and Ambato when the sample design supports it.\nThis layer surfaces urban signals more frequently than the annual analysis."
-  },
-  {
-    "objectID": "index.html#annual-core",
-    "href": "index.html#annual-core",
-    "title": "Poverty is not a single number.",
-    "section": "Annual core",
-    "text": "Annual core\nFull structure\nIncome poverty, quintiles, NBI, multidimensional poverty, provinces, cities, and territorial analysis.\nThis is the narrative foundation of the monitor."
-  },
-  {
-    "objectID": "index.html#annual-income-poverty-snapshot",
-    "href": "index.html#annual-income-poverty-snapshot",
-    "title": "Poverty is not a single number.",
-    "section": "2025 annual income poverty snapshot",
-    "text": "2025 annual income poverty snapshot\nIn 2025, Ecuador’s annual income poverty rate reached 21.95%. The annual reading shows a strong territorial contrast: 16.51% in urban areas and 33.63% in rural areas. Extreme poverty reached 6.99% nationally, with 3.69% in urban areas and 14.07% in rural areas.\n\nThese estimates are computed from public ENEMDU microdata and compared against public annual INEC tabulations for analytical reproducibility. This is not an official institutional validation."
-  },
-  {
-    "objectID": "index.html#why-this-monitor-exists",
-    "href": "index.html#why-this-monitor-exists",
-    "title": "Poverty is not a single number.",
-    "section": "Why this monitor exists",
-    "text": "Why this monitor exists\nPublic poverty data in Ecuador are valuable, but the reading is often spread across bulletins, microdata, technical notes, methodological reports, and isolated tables.\nThe problem is not the absence of data. The problem is that the story connecting the data is often fragmented.\nThe Ecuador Poverty Monitor is designed as a reproducible communication layer. It does not replace official statistics or create a parallel statistical authority. It helps readers understand what is measured, how it is measured, what can be compared, and where each estimate has limits."
-  },
-  {
-    "objectID": "index.html#the-core-idea",
-    "href": "index.html#the-core-idea",
-    "title": "Poverty is not a single number.",
-    "section": "The core idea",
-    "text": "The core idea\nA useful poverty monitor should not only ask how many people are poor.\n\n\nCondition\nIncome, deprivation, and the relative position of households.\n\n\nPlace\nTerritory, cities, rurality, and valid domains of estimation.\n\n\nMeasurement\nPrecision, representativity, and comparability across periods."
-  },
-  {
-    "objectID": "index.html#how-to-read-the-site",
-    "href": "index.html#how-to-read-the-site",
-    "title": "Poverty is not a single number.",
-    "section": "How to read the site",
-    "text": "How to read the site"
-  },
-  {
-    "objectID": "index.html#product-status",
-    "href": "index.html#product-status",
-    "title": "Poverty is not a single number.",
-    "section": "Product status",
-    "text": "Product status\n\nThis site is being built in public as a static Quarto portfolio product.\nThe 2025 annual income-poverty page is published with benchmark comparison against public annual INEC tabulations. The deprivation and multidimensional poverty page is published with income poverty, NBI, extreme NBI, TPM, and TPEM indicators. The provincial income-poverty page adds a territorial map and an executive table separating poverty incidence from population concentration. The labor-market page adds a public reading of employment conditions and poverty using curated aggregate outputs. The methodology and statistical quality page documents how benchmark comparisons, quality metadata, domains, and publication limits should be read.\n\n\n\nOfficial microdata\nBuilt around public ENEMDU source files.\n\n\nMethodological contracts\nPeriods and domains are explicit before analysis.\n\n\nStatistical quality\nRepresentativity and precision guide what can be shown.\n\n\nReproducible output\nQuarto consumes derived products, not raw microdata.\n\n\n\nWhy it matters -&gt; Income poverty -&gt; Provincial income poverty -&gt; Labor market and poverty -&gt; Measurement and statistical quality -&gt;"
-  },
-  {
-    "objectID": "pages/01_why-monitor.html",
-    "href": "pages/01_why-monitor.html",
-    "title": "Why build a poverty monitor?",
-    "section": "",
-    "text": "Why it matters\n\n\n\n\nThe problem is not the lack of data. The problem is the missing reading layer.\n\nPoverty data in Ecuador already exist across official bulletins, microdata, methodological notes, poverty lines, labor reports, monthly releases, quarterly files, and annual databases. This monitor turns that scattered public information into a coherent, reproducible, and decision-oriented reading.\n\n\n\n\nThe Ecuador Poverty Monitor connects income, deprivation, territory, labor conditions, and statistical quality into one static Quarto product.\nIt does not replace official statistics. It helps explain how to read them."
-  },
-  {
-    "objectID": "pages/01_why-monitor.html#a-reading-layer-for-public-data",
-    "href": "pages/01_why-monitor.html#a-reading-layer-for-public-data",
-    "title": "Why build a poverty monitor?",
-    "section": "",
-    "text": "The Ecuador Poverty Monitor connects income, deprivation, territory, labor conditions, and statistical quality into one static Quarto product.\nIt does not replace official statistics. It helps explain how to read them."
-  },
-  {
-    "objectID": "pages/01_why-monitor.html#what-is-fragmented",
-    "href": "pages/01_why-monitor.html#what-is-fragmented",
-    "title": "Why build a poverty monitor?",
-    "section": "What is fragmented?",
-    "text": "What is fragmented?\nThe issue is not a shortage of information. The issue is that each release answers only part of the question.\nTables can inform, but poverty analysis needs context: what was measured, what period supports the estimate, which territorial domains are valid, and how precise the result is."
-  },
-  {
-    "objectID": "pages/01_why-monitor.html#what-the-monitor-connects",
-    "href": "pages/01_why-monitor.html#what-the-monitor-connects",
-    "title": "Why build a poverty monitor?",
-    "section": "What the monitor connects",
-    "text": "What the monitor connects\nPoverty can be read through income, basic needs, simultaneous deprivation, territory, and work. Each lens illuminates a different part of the problem.\nWhen those pieces are read separately, the picture remains incomplete. When they are connected, the country becomes easier to understand."
-  },
-  {
-    "objectID": "pages/01_why-monitor.html#source-engine-product",
-    "href": "pages/01_why-monitor.html#source-engine-product",
-    "title": "Why build a poverty monitor?",
-    "section": "Source, engine, product",
-    "text": "Source, engine, product\nENEMDU is Ecuador’s National Survey of Employment, Unemployment, and Underemployment. It is one of the country’s key statistical operations for analyzing work, labor conditions, income, poverty, and household characteristics.\n\n\n1. Official source\nThe base information comes from ENEMDU and its methodological documentation.\n\n\n2. Analytical engine\nenemduR organizes reading, validation, estimation, indicators, and analytical outputs.\n\n\n3. Narrative product\nThis site turns results into a visual and explanatory story."
-  },
-  {
-    "objectID": "pages/01_why-monitor.html#three-speeds-different-questions",
-    "href": "pages/01_why-monitor.html#three-speeds-different-questions",
-    "title": "Why build a poverty monitor?",
-    "section": "Three speeds, different questions",
-    "text": "Three speeds, different questions\nThis product does not treat all periods as if they supported the same type of reading. The monitor is organized into monthly pulse, quarterly city view, and annual structural analysis."
-  },
-  {
-    "objectID": "pages/01_why-monitor.html#golden-rule",
-    "href": "pages/01_why-monitor.html#golden-rule",
-    "title": "Why build a poverty monitor?",
-    "section": "Golden rule",
-    "text": "Golden rule\nNever show a territorial disaggregation that does not match the representativity domain of the period being used. Methodological clarity is part of the product, not a secondary note."
-  },
-  {
-    "objectID": "pages/01_why-monitor.html#a-compact-product-contract",
-    "href": "pages/01_why-monitor.html#a-compact-product-contract",
-    "title": "Why build a poverty monitor?",
-    "section": "A compact product contract",
-    "text": "A compact product contract\nThis monitor adds an integrated reading of poverty, a reproducible architecture based on enemduR, a stronger visual communication layer, a clear distinction between pulse and structure, and a technical discussion of representativity."
-  },
-  {
-    "objectID": "pages/01_why-monitor.html#not-a-parallel-authority",
-    "href": "pages/01_why-monitor.html#not-a-parallel-authority",
-    "title": "Why build a poverty monitor?",
-    "section": "Not a parallel authority",
-    "text": "Not a parallel authority\nThe monitor does not replace INEC or produce official statistics. Its goal is to transform complex public information into an ordered, reproducible, visual, and useful reading of poverty in Ecuador."
-  },
-  {
-    "objectID": "pages/03_deprivation-multidimensional-poverty.html",
-    "href": "pages/03_deprivation-multidimensional-poverty.html",
-    "title": "Deprivation and multidimensional poverty",
-    "section": "",
-    "text": "Annual 2025 executive profile of income poverty, basic-needs deprivation and multidimensional poverty."
-  },
-  {
-    "objectID": "pages/03_deprivation-multidimensional-poverty.html#scope",
-    "href": "pages/03_deprivation-multidimensional-poverty.html#scope",
-    "title": "Deprivation and multidimensional poverty",
-    "section": "Scope",
-    "text": "Scope\n\n\n\nPeriod\n\n\n2025 annual ENEMDU\n\n\n\n\nSource\n\n\nPublic ENEMDU annual 2025 microdata\n\n\n\n\nCoverage\n\n\nNational, urban and rural\n\n\n\n\nEngine\n\n\nenemduR\n\n\n\n\nOutput\n\n\nCurated aggregate RDS\n\n\n\n\nMethod\n\n\nSurvey-weighted analytical estimates"
-  },
-  {
-    "objectID": "pages/03_deprivation-multidimensional-poverty.html#three-poverty-lenses-one-reading-problem",
-    "href": "pages/03_deprivation-multidimensional-poverty.html#three-poverty-lenses-one-reading-problem",
-    "title": "Deprivation and multidimensional poverty",
-    "section": "Three poverty lenses, one reading problem",
-    "text": "Three poverty lenses, one reading problem\nThe national income-poverty rate is 22.0%, while NBI reaches 30.0% and TPM reaches 37.0%. These are not competing versions of the same statistic. Income poverty identifies insufficient current resources, NBI captures accumulated structural deficits, and TPM captures overlapping weighted deprivations.\nThe curated output represents about 18,775,415 people nationally for the income-poverty denominator and stores only aggregate fields used by this page."
-  },
-  {
-    "objectID": "pages/03_deprivation-multidimensional-poverty.html#national-urban-and-rural-profile",
-    "href": "pages/03_deprivation-multidimensional-poverty.html#national-urban-and-rural-profile",
-    "title": "Deprivation and multidimensional poverty",
-    "section": "National, urban and rural profile",
-    "text": "National, urban and rural profile\n\n\n\n\nDomain\n\n\nIncome\n\n\nExtreme income\n\n\nNBI\n\n\nExtreme NBI\n\n\nTPM\n\n\nTPEM\n\n\n\n\n\n\nNational\n\n\n22.0%\n\n\n7.0%\n\n\n30.0%\n\n\n7.7%\n\n\n37.0%\n\n\n14.4%\n\n\n\n\nUrban\n\n\n16.5%\n\n\n3.7%\n\n\n21.6%\n\n\n3.6%\n\n\n23.9%\n\n\n5.7%\n\n\n\n\nRural\n\n\n33.6%\n\n\n14.1%\n\n\n48.0%\n\n\n16.4%\n\n\n65.2%\n\n\n33.1%\n\n\n\n\nValues are percentages. Urban and rural estimates are shown only for supported annual domains and are not interpolated."
-  },
-  {
-    "objectID": "pages/03_deprivation-multidimensional-poverty.html#rural-disadvantage-is-systematic",
-    "href": "pages/03_deprivation-multidimensional-poverty.html#rural-disadvantage-is-systematic",
-    "title": "Deprivation and multidimensional poverty",
-    "section": "Rural disadvantage is systematic",
-    "text": "Rural disadvantage is systematic\nRural areas show the highest burden in 6 of 6 indicators displayed. The largest urban-rural gap appears in Multidimensional poverty / TPM, which indicates that territorial inequality is not confined to monetary poverty."
-  },
-  {
-    "objectID": "pages/03_deprivation-multidimensional-poverty.html#monetary-and-structural-poverty-diverge",
-    "href": "pages/03_deprivation-multidimensional-poverty.html#monetary-and-structural-poverty-diverge",
-    "title": "Deprivation and multidimensional poverty",
-    "section": "Monetary and structural poverty diverge",
-    "text": "Monetary and structural poverty diverge\nThe national NBI rate is 30.0%, above the national income-poverty rate of 22.0%. Reading both together separates insufficient current income from accumulated deficits in housing, services, schooling and household dependency conditions."
-  },
-  {
-    "objectID": "pages/03_deprivation-multidimensional-poverty.html#tpm-captures-overlapping-deprivation",
-    "href": "pages/03_deprivation-multidimensional-poverty.html#tpm-captures-overlapping-deprivation",
-    "title": "Deprivation and multidimensional poverty",
-    "section": "TPM captures overlapping deprivation",
-    "text": "TPM captures overlapping deprivation\nTPM reaches 37.0% nationally and rural TPM is about 2.7x the urban rate. TPEM reaches 14.4% nationally, showing the severe tail of overlapping deprivations."
-  },
-  {
-    "objectID": "pages/03_deprivation-multidimensional-poverty.html#benchmark-status-matters",
-    "href": "pages/03_deprivation-multidimensional-poverty.html#benchmark-status-matters",
-    "title": "Deprivation and multidimensional poverty",
-    "section": "Benchmark status matters",
-    "text": "Benchmark status matters\nIncome poverty is benchmarked against public annual tabulations and shows close-match status. NBI is not directly benchmarked against public annual tabulations in this build. TPM/TPEM are calculated with enemduR and their public IPM benchmark comparison is marked Benchmark requires review, so this page treats them as analytical estimates with an explicit reproducibility flag."
-  },
-  {
-    "objectID": "pages/03_deprivation-multidimensional-poverty.html#method-note",
-    "href": "pages/03_deprivation-multidimensional-poverty.html#method-note",
-    "title": "Deprivation and multidimensional poverty",
-    "section": "Method note",
-    "text": "Method note\nThe indicators are based on public ENEMDU annual 2025 microdata and built with enemduR. Estimates are survey-weighted. Benchmark comparison is reported only where a public annual reference is available. The comparison documents analytical reproducibility and does not imply official institutional validation."
-  },
-  {
-    "objectID": "pages/05_territorial-province-income-poverty.html",
-    "href": "pages/05_territorial-province-income-poverty.html",
-    "title": "Territorial view of income poverty",
-    "section": "",
-    "text": "Provincial patterns from annual ENEMDU 2025"
-  },
-  {
-    "objectID": "pages/05_territorial-province-income-poverty.html#what-this-view-covers",
-    "href": "pages/05_territorial-province-income-poverty.html#what-this-view-covers",
-    "title": "Territorial view of income poverty",
+    "objectID": "pages/06_labor-market-poverty.html#what-this-view-covers",
+    "href": "pages/06_labor-market-poverty.html#what-this-view-covers",
+    "title": "Labor market and poverty",
     "section": "What this view covers",
-    "text": "What this view covers\n\n\n\nPeriod\n\n\nAnnual ENEMDU 2025\n\n\n\n\nMeasure\n\n\nIncome poverty\n\n\n\n\nGeography\n\n\n24 provinces\n\n\n\n\nReading\n\n\nIncidence and concentration"
+    "text": "What this view covers\n\n\n\nPeriod\n\n\nAnnual ENEMDU 2025\n\n\n\n\nSource\n\n\nCurated aggregate site output\n\n\n\n\nCoverage\n\n\nNational, urban and rural\n\n\n\n\nReading\n\n\nEmployment, job quality and poverty profiles"
   },
   {
-    "objectID": "pages/05_territorial-province-income-poverty.html#one-map-two-readings",
-    "href": "pages/05_territorial-province-income-poverty.html#one-map-two-readings",
-    "title": "Territorial view of income poverty",
-    "section": "One map, two readings",
-    "text": "One map, two readings\nThe provincial map shows where poverty rates are highest. The executive table answers a different question: where the estimated number of people in poverty is largest.\nThat distinction matters. Esmeraldas has the highest poverty rate among the provinces highlighted in the incidence comparison, while Guayas has the largest estimated number of people in poverty: about 932,505 people, with a poverty rate of 20.0%."
+    "objectID": "pages/06_labor-market-poverty.html#why-having-work-does-not-always-mean-being-out-of-poverty",
+    "href": "pages/06_labor-market-poverty.html#why-having-work-does-not-always-mean-being-out-of-poverty",
+    "title": "Labor market and poverty",
+    "section": "Why having work does not always mean being out of poverty",
+    "text": "Why having work does not always mean being out of poverty\nPoverty is measured through household per-capita income, not only through whether a person has a job. That distinction is crucial: a person can be employed and still live in a household whose total income is below the income-poverty line.\nThe national profile shows that poverty among employed people is 15.9%, while poverty among unemployed people is 25.8% and poverty among people outside the labor force is 21.9%. The estimated number of people in poverty is largest among employed people, at about 1,317,829."
   },
   {
-    "objectID": "pages/05_territorial-province-income-poverty.html#where-rates-are-highest",
-    "href": "pages/05_territorial-province-income-poverty.html#where-rates-are-highest",
-    "title": "Territorial view of income poverty",
-    "section": "Where rates are highest",
-    "text": "Where rates are highest\n\nEsmeraldas\n\n\n\n44.2%\n\n\nPastaza\n\n\n\n37.0%\n\n\nSanta Elena\n\n\n\n30.4%\n\n\nBolívar\n\n\n\n28.2%\n\n\nManabí\n\n\n\n24.6%\n\nThese rates compare the intensity of income poverty across provinces. They should be read as analytical estimates, especially for smaller domains where sampling uncertainty can matter."
+    "objectID": "pages/06_labor-market-poverty.html#who-is-attached-to-the-labor-market",
+    "href": "pages/06_labor-market-poverty.html#who-is-attached-to-the-labor-market",
+    "title": "Labor market and poverty",
+    "section": "Who is attached to the labor market?",
+    "text": "Who is attached to the labor market?\n\n\nLabor force participation\n\n\n\n64.3%\n\n\nEmployment among people 15+\n\n\n\n62.0%\n\n\nOutside the labor force\n\n\n\n35.7%\n\n\nUnemployment\n\n\n\n3.6%\n\n\nThe first reading separates labor-force attachment from unemployment. Many people are outside the labor force, while unemployment is measured only among people in the labor force."
   },
   {
-    "objectID": "pages/05_territorial-province-income-poverty.html#where-the-burden-is-largest",
-    "href": "pages/05_territorial-province-income-poverty.html#where-the-burden-is-largest",
-    "title": "Territorial view of income poverty",
-    "section": "Where the burden is largest",
-    "text": "Where the burden is largest\nThe five provinces in the executive table account for about 2,257,759 estimated people in poverty. This ranking is based on the estimated number of people in poverty, not only on the poverty rate.\nThis helps separate territorial incidence from population concentration: a province can have a lower rate and still contain many more people in poverty because its population is much larger."
+    "objectID": "pages/06_labor-market-poverty.html#work-status-is-not-enough",
+    "href": "pages/06_labor-market-poverty.html#work-status-is-not-enough",
+    "title": "Labor market and poverty",
+    "section": "Work status is not enough",
+    "text": "Work status is not enough\n\n\nAdequate/full employment\n\n\n\n38.5%\n\n\nSubemployment\n\n\n\n20.1%\n\n\nAmong employed people, adequate/full employment reaches 38.5% and subemployment reaches 20.1%. This is why the labor layer looks beyond the employed/unemployed split: job quality changes how employment should be read alongside household income poverty."
   },
   {
-    "objectID": "pages/05_territorial-province-income-poverty.html#provinces-with-the-largest-estimated-number-of-people-in-poverty",
-    "href": "pages/05_territorial-province-income-poverty.html#provinces-with-the-largest-estimated-number-of-people-in-poverty",
-    "title": "Territorial view of income poverty",
-    "section": "Provinces with the largest estimated number of people in poverty",
-    "text": "Provinces with the largest estimated number of people in poverty\n\n\n\n\n\nRank\n\n\nProvince\n\n\nEstimated people in poverty\n\n\nPoverty rate\n\n\nExtreme poverty rate\n\n\n\n\n\n\n1\n\n\nGuayas\n\n\n932,505\n\n\n20.0%\n\n\n3.4%\n\n\n\n\n2\n\n\nManabí\n\n\n421,236\n\n\n24.6%\n\n\n4.0%\n\n\n\n\n3\n\n\nPichincha\n\n\n380,909\n\n\n11.3%\n\n\n3.7%\n\n\n\n\n4\n\n\nEsmeraldas\n\n\n304,332\n\n\n44.2%\n\n\n20.9%\n\n\n\n\n5\n\n\nLos Ríos\n\n\n218,776\n\n\n22.0%\n\n\n3.8%\n\n\n\n\n\nThe ranking is based on the estimated number of people in poverty. The poverty and extreme-poverty rates are included to keep incidence visible without turning the table into a rate ranking."
+    "objectID": "pages/06_labor-market-poverty.html#executive-table",
+    "href": "pages/06_labor-market-poverty.html#executive-table",
+    "title": "Labor market and poverty",
+    "section": "Executive table",
+    "text": "Executive table\n\n\n\n\n\nLabor condition\n\n\nPoverty rate\n\n\nExtreme poverty rate\n\n\nEstimated people in poverty\n\n\n\n\n\n\nEmployed\n\n\n15.9%\n\n\n5.0%\n\n\n1,317,829\n\n\n\n\nUnemployed\n\n\n25.8%\n\n\n11.1%\n\n\n77,779\n\n\n\n\nOutside the labor force\n\n\n21.9%\n\n\n5.9%\n\n\n1,039,215\n\n\n\n\n\nThe table compares broad labor conditions, not provinces or cities. The count column shows where the largest number of people in poverty is concentrated, while the poverty-rate columns show exposure within each labor condition."
+  },
+  {
+    "objectID": "pages/06_labor-market-poverty.html#poverty-is-not-only-a-story-about-unemployment",
+    "href": "pages/06_labor-market-poverty.html#poverty-is-not-only-a-story-about-unemployment",
+    "title": "Labor market and poverty",
+    "section": "Poverty is not only a story about unemployment",
+    "text": "Poverty is not only a story about unemployment\n\n\nEmployed\n\n\n\n15.9%\n\n\nUnemployed\n\n\n\n25.8%\n\n\nOutside the labor force\n\n\n\n21.9%\n\n\nUnemployment is associated with a high poverty rate, but it accounts for a smaller estimated number of people in poverty than employment. The national estimate shows about 1,039,215 people in poverty outside the labor force, another reminder that household vulnerability extends beyond the labor-force headline."
+  },
+  {
+    "objectID": "pages/06_labor-market-poverty.html#labor-and-poverty-differ-by-domain",
+    "href": "pages/06_labor-market-poverty.html#labor-and-poverty-differ-by-domain",
+    "title": "Labor market and poverty",
+    "section": "Labor and poverty differ by domain",
+    "text": "Labor and poverty differ by domain\n\n\n\n\n\nDomain\n\n\nLabor participation\n\n\nEmployment among people 15+\n\n\nUnemployment\n\n\nPoverty among employed people\n\n\n\n\n\n\nNational\n\n\n64.3%\n\n\n62.0%\n\n\n3.6%\n\n\n15.9%\n\n\n\n\nUrban\n\n\n61.2%\n\n\n58.4%\n\n\n4.5%\n\n\n9.7%\n\n\n\n\nRural\n\n\n71.0%\n\n\n69.6%\n\n\n1.9%\n\n\n27.1%\n\n\n\n\n\nUrban and rural rows are included only for the supported annual domains in the curated output. They help compare labor attachment and poverty exposure without turning this page into a territorial ranking."
+  },
+  {
+    "objectID": "pages/06_labor-market-poverty.html#reading-notes",
+    "href": "pages/06_labor-market-poverty.html#reading-notes",
+    "title": "Labor market and poverty",
+    "section": "Reading notes",
+    "text": "Reading notes\nThese estimates are analytical and descriptive. They are based on public ENEMDU annual 2025 microdata and are published here only through a curated aggregate output. They are not an official INEC validation, do not make causal claims, and should be read together with Measurement and statistical quality."
   }
 ]
