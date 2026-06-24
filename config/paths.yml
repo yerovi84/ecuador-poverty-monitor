@@ -137,6 +137,7 @@ derived_data_layout:
     outputs:
       annual_income_poverty: "annual/annual_income_poverty.rds"
       annual_income_poverty_profiles: "annual/annual_income_poverty_profiles.rds"
+      annual_income_poverty_province: "annual/annual_income_poverty_province.rds"
       annual_deprivation_multidimensional_poverty: "annual/annual_deprivation_multidimensional_poverty.rds"
       annual_quintiles: "annual/annual_quintiles.rds"
       annual_nbi: "annual/annual_nbi.rds"
@@ -151,6 +152,7 @@ derived_data_layout:
     outputs:
       site_kpis: "site/site_kpis.rds"
       site_income_poverty_profiles: "site/site_income_poverty_profiles.rds"
+      site_territorial_province_income_poverty: "site/site_territorial_province_income_poverty.rds"
       site_deprivation_multidimensional_kpis: "site/site_deprivation_multidimensional_kpis.rds"
       site_periods: "site/site_periods.rds"
       site_sources: "site/site_sources.rds"
