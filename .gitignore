@@ -29,3 +29,7 @@ secrets/
 
 # Quarto execution cache
 /_freeze/
+
+# Local annual labor outputs
+/data/derived/annual/annual_labor_poverty.rds
+/data/derived/annual/annual_labor_quintiles.rds

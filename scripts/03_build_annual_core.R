@@ -1651,6 +1651,677 @@ epm_validate_annual_deprivation_multidimensional_output <- function(output) {
   invisible(TRUE)
 }
 
+epm_require_survey <- function() {
+  if (!requireNamespace("survey", quietly = TRUE)) {
+    .epm_abort("Package `survey` is required before building annual labor poverty outputs.")
+  }
+
+  invisible(TRUE)
+}
+
+epm_labor_status_from_condact <- function(values) {
+  code <- suppressWarnings(as.integer(as.character(values)))
+  out <- rep(NA_character_, length(code))
+
+  out[code %in% 1:6] <- "employed"
+  out[code %in% 7:8] <- "unemployed"
+  out[code == 9] <- "outside_labor_force"
+  out[code == 0] <- "under_15"
+
+  out
+}
+
+epm_labor_quality_from_condact <- function(values) {
+  code <- suppressWarnings(as.integer(as.character(values)))
+  out <- rep(NA_character_, length(code))
+
+  out[code == 1] <- "adequate_full_employment"
+  out[code %in% 2:3] <- "subemployment"
+  out[code == 4] <- "other_non_full_employment"
+  out[code == 5] <- "unpaid_employment"
+  out[code == 6] <- "unclassified_employment"
+
+  out
+}
+
+epm_labor_status_label <- function(value) {
+  labels <- c(
+    employed = "Employed",
+    unemployed = "Unemployed",
+    outside_labor_force = "Outside the labor force",
+    under_15 = "Under age 15",
+    all_working_age = "People age 15 and older",
+    labor_force = "Labor force",
+    employed_people = "Employed people"
+  )
+
+  out <- unname(labels[as.character(value)])
+  out[is.na(out)] <- as.character(value)[is.na(out)]
+  out
+}
+
+epm_labor_prepare_data <- function(data) {
+  required <- c("fexp", "upm", "estrato", "area", "p03", "condact", "pobreza", "epobreza")
+  missing <- setdiff(required, names(data))
+
+  if (length(missing) > 0L) {
+    .epm_abort(sprintf(
+      "Annual labor poverty build requires variable(s): %s",
+      paste(missing, collapse = ", ")
+    ))
+  }
+
+  condact_codes <- sort(unique(suppressWarnings(as.integer(as.character(data$condact[!is.na(data$condact)])))))
+  missing_codes <- setdiff(0:9, condact_codes)
+
+  if (length(missing_codes) > 0L) {
+    .epm_abort(sprintf(
+      "Annual `condact` is present but does not expose expected activity-condition code(s): %s",
+      paste(missing_codes, collapse = ", ")
+    ))
+  }
+
+  data[[".epm_area_domain"]] <- epm_area_domain(data[["area"]])
+  data[[".epm_age"]] <- suppressWarnings(as.numeric(as.character(data[["p03"]])))
+  data[[".epm_working_age"]] <- !is.na(data[[".epm_age"]]) & data[[".epm_age"]] >= 15
+  data[[".epm_labor_status"]] <- epm_labor_status_from_condact(data[["condact"]])
+  data[[".epm_labor_quality"]] <- epm_labor_quality_from_condact(data[["condact"]])
+  data[[".epm_poverty"]] <- suppressWarnings(as.integer(as.character(data[["pobreza"]]))) == 1L
+  data[[".epm_extreme_poverty"]] <- suppressWarnings(as.integer(as.character(data[["epobreza"]]))) == 1L
+
+  if (all(is.na(data[[".epm_area_domain"]]))) {
+    .epm_abort("Could not map annual `area` values to urban/rural domains for labor output.")
+  }
+
+  if (all(is.na(data[[".epm_labor_status"]]))) {
+    .epm_abort("Could not map annual `condact` values to labor status categories.")
+  }
+
+  data
+}
+
+epm_labor_design <- function(data) {
+  keep <- complete.cases(data[, c("fexp", "upm", "estrato"), drop = FALSE])
+
+  if (!all(keep)) {
+    data <- data[keep, , drop = FALSE]
+  }
+
+  if (nrow(data) == 0L) {
+    .epm_abort("Annual labor poverty build has no records with complete survey design variables.")
+  }
+
+  survey::svydesign(
+    ids = stats::as.formula("~upm"),
+    strata = stats::as.formula("~estrato"),
+    weights = stats::as.formula("~fexp"),
+    data = data,
+    nest = TRUE
+  )
+}
+
+epm_labor_quality_flag <- function(unweighted_n, cv) {
+  if (is.na(unweighted_n) || unweighted_n < 50L) {
+    return("sample_size_review")
+  }
+
+  if (!is.na(cv) && cv > 0.3) {
+    return("precision_review")
+  }
+
+  "design_domain_reliable"
+}
+
+epm_labor_suppression_flag <- function(quality_flag) {
+  ifelse(
+    !is.na(quality_flag) & quality_flag == "design_domain_reliable",
+    "not_suppressed",
+    "review_required"
+  )
+}
+
+epm_labor_weighted_n <- function(design, keep) {
+  sum(as.numeric(design$variables$fexp[keep]), na.rm = TRUE)
+}
+
+epm_labor_degrees_freedom <- function(design, keep) {
+  if (sum(keep, na.rm = TRUE) == 0L) {
+    return(NA_real_)
+  }
+
+  sub_design <- subset(design, keep)
+  as.numeric(survey::degf(sub_design))
+}
+
+epm_labor_proportion_stats <- function(design, denominator, numerator) {
+  denominator <- denominator %in% TRUE
+  valid_numerator <- !is.na(numerator)
+  keep <- denominator & valid_numerator
+  unweighted_n <- as.integer(sum(keep, na.rm = TRUE))
+
+  if (unweighted_n == 0L) {
+    return(list(
+      estimate = NA_real_,
+      se = NA_real_,
+      cv = NA_real_,
+      df = NA_real_,
+      weighted_n = NA_real_,
+      unweighted_n = 0L,
+      estimated_count = NA_real_
+    ))
+  }
+
+  design_work <- design
+  design_work$variables[[".epm_metric"]] <- as.numeric(numerator %in% TRUE)
+  design_work$variables[[".epm_keep"]] <- keep
+  sub_design <- subset(design_work, .epm_keep)
+  estimate <- survey::svymean(stats::as.formula("~.epm_metric"), sub_design, na.rm = TRUE)
+  value <- as.numeric(stats::coef(estimate)[[1]])
+  se <- as.numeric(survey::SE(estimate)[[1]])
+  cv <- if (!is.na(value) && value != 0) se / abs(value) else NA_real_
+  weighted_n <- epm_labor_weighted_n(design, keep)
+
+  list(
+    estimate = value,
+    se = se,
+    cv = cv,
+    df = epm_labor_degrees_freedom(design, keep),
+    weighted_n = weighted_n,
+    unweighted_n = unweighted_n,
+    estimated_count = value * weighted_n
+  )
+}
+
+epm_labor_count_stats <- function(design, denominator, count_flag) {
+  denominator <- denominator %in% TRUE
+  valid_count <- !is.na(count_flag)
+  keep <- denominator & valid_count
+  unweighted_n <- as.integer(sum(keep, na.rm = TRUE))
+
+  if (unweighted_n == 0L) {
+    return(list(
+      estimate = NA_real_,
+      se = NA_real_,
+      cv = NA_real_,
+      df = NA_real_,
+      weighted_n = NA_real_,
+      unweighted_n = 0L,
+      estimated_count = NA_real_
+    ))
+  }
+
+  design_work <- design
+  design_work$variables[[".epm_metric"]] <- as.numeric(count_flag %in% TRUE)
+  design_work$variables[[".epm_keep"]] <- keep
+  sub_design <- subset(design_work, .epm_keep)
+  estimate <- survey::svytotal(stats::as.formula("~.epm_metric"), sub_design, na.rm = TRUE)
+  value <- as.numeric(stats::coef(estimate)[[1]])
+  se <- as.numeric(survey::SE(estimate)[[1]])
+  cv <- if (!is.na(value) && value != 0) se / abs(value) else NA_real_
+
+  list(
+    estimate = value,
+    se = se,
+    cv = cv,
+    df = epm_labor_degrees_freedom(design, keep),
+    weighted_n = epm_labor_weighted_n(design, keep),
+    unweighted_n = unweighted_n,
+    estimated_count = value
+  )
+}
+
+epm_labor_output_row <- function(stats,
+                                 annual_period,
+                                 domain,
+                                 domain_value,
+                                 indicator_id,
+                                 indicator_label,
+                                 labor_dimension,
+                                 labor_dimension_label,
+                                 labor_value,
+                                 labor_label,
+                                 estimate_type,
+                                 unit,
+                                 display_unit,
+                                 analysis_unit,
+                                 universe,
+                                 public_note,
+                                 method_note) {
+  quality_flag <- epm_labor_quality_flag(stats$unweighted_n, stats$cv)
+  display_estimate <- if (identical(display_unit, "percent")) {
+    stats$estimate * 100
+  } else {
+    stats$estimate
+  }
+
+  data.frame(
+    period = annual_period,
+    survey_type = "anual",
+    domain = domain,
+    domain_value = domain_value,
+    indicator_id = indicator_id,
+    indicator_label = indicator_label,
+    indicator_family = "labor",
+    labor_dimension = labor_dimension,
+    labor_dimension_label = labor_dimension_label,
+    labor_value = labor_value,
+    labor_label = labor_label,
+    estimate = as.numeric(stats$estimate),
+    estimate_type = estimate_type,
+    unit = unit,
+    display_estimate = as.numeric(display_estimate),
+    display_unit = display_unit,
+    weighted_n = as.numeric(stats$weighted_n),
+    unweighted_n = as.integer(stats$unweighted_n),
+    estimated_count = as.numeric(stats$estimated_count),
+    se = as.numeric(stats$se),
+    cv = as.numeric(stats$cv),
+    df = as.numeric(stats$df),
+    analysis_unit = analysis_unit,
+    universe = universe,
+    source = "Public ENEMDU annual 2025 microdata",
+    method_status = "survey_weighted_analytical",
+    benchmark_status = "not_directly_benchmarked",
+    quality_flag = quality_flag,
+    suppression_flag = epm_labor_suppression_flag(quality_flag),
+    public_note = public_note,
+    source_layer = "annual",
+    official_alignment = "official-source alignment documentation; no official institutional validation",
+    method_note = method_note,
+    build_timestamp = NA_character_,
+    stringsAsFactors = FALSE
+  )
+}
+
+epm_labor_domain_specs <- function(data) {
+  list(
+    list(
+      domain = "national",
+      domain_value = "national",
+      keep = rep(TRUE, nrow(data))
+    ),
+    list(
+      domain = "area",
+      domain_value = "urban",
+      keep = data[[".epm_area_domain"]] == "urban"
+    ),
+    list(
+      domain = "area",
+      domain_value = "rural",
+      keep = data[[".epm_area_domain"]] == "rural"
+    )
+  )
+}
+
+epm_build_labor_poverty_output <- function(data, annual_period) {
+  epm_require_survey()
+  old_options <- options(survey.lonely.psu = "adjust")
+  on.exit(options(old_options), add = TRUE)
+
+  data <- epm_labor_prepare_data(data)
+  design <- epm_labor_design(data)
+  data <- design$variables
+
+  working_age <- data[[".epm_working_age"]] &
+    data[[".epm_labor_status"]] %in% c("employed", "unemployed", "outside_labor_force")
+  labor_force <- working_age & data[[".epm_labor_status"]] %in% c("employed", "unemployed")
+  employed <- working_age & data[[".epm_labor_status"]] == "employed"
+  valid_poverty <- !is.na(data[[".epm_poverty"]])
+  valid_extreme_poverty <- !is.na(data[[".epm_extreme_poverty"]])
+
+  rate_method_note <- paste(
+    "Labor rates use ENEMDU annual person records and the survey design variables registered in the project contract.",
+    "The activity-condition mapping uses confirmed `condact` codes from annual 2025 metadata.",
+    "Employment-quality shares use employed people age 15 and older as the denominator."
+  )
+  poverty_method_note <- paste(
+    "Poverty-by-labor-status profiles cross-tabulate confirmed `condact` categories with annual income poverty flags.",
+    "The estimates are survey-weighted analytical aggregates and are not directly benchmarked against public labor tabulations.",
+    "No person, household, PSU, stratum, or weight identifiers are stored in the output."
+  )
+
+  rows <- list()
+  add_row <- function(row) {
+    rows[[length(rows) + 1L]] <<- row
+  }
+
+  for (domain_spec in epm_labor_domain_specs(data)) {
+    domain_keep <- domain_spec$keep %in% TRUE
+
+    add_row(epm_labor_output_row(
+      stats = epm_labor_proportion_stats(
+        design,
+        denominator = domain_keep & working_age,
+        numerator = labor_force
+      ),
+      annual_period = annual_period,
+      domain = domain_spec$domain,
+      domain_value = domain_spec$domain_value,
+      indicator_id = "labor_force_participation_rate",
+      indicator_label = "Labor force participation",
+      labor_dimension = "overall_labor_position",
+      labor_dimension_label = "Overall labor position",
+      labor_value = "all_working_age",
+      labor_label = epm_labor_status_label("all_working_age"),
+      estimate_type = "proportion",
+      unit = "proportion",
+      display_unit = "percent",
+      analysis_unit = "people",
+      universe = "People age 15 and older",
+      public_note = "Survey-weighted analytical labor indicator; not directly benchmarked against public labor tabulations.",
+      method_note = rate_method_note
+    ))
+
+    add_row(epm_labor_output_row(
+      stats = epm_labor_proportion_stats(
+        design,
+        denominator = domain_keep & working_age,
+        numerator = employed
+      ),
+      annual_period = annual_period,
+      domain = domain_spec$domain,
+      domain_value = domain_spec$domain_value,
+      indicator_id = "employment_rate_working_age",
+      indicator_label = "Employment among working-age people",
+      labor_dimension = "overall_labor_position",
+      labor_dimension_label = "Overall labor position",
+      labor_value = "all_working_age",
+      labor_label = epm_labor_status_label("all_working_age"),
+      estimate_type = "proportion",
+      unit = "proportion",
+      display_unit = "percent",
+      analysis_unit = "people",
+      universe = "People age 15 and older",
+      public_note = "Survey-weighted analytical labor indicator; not directly benchmarked against public labor tabulations.",
+      method_note = rate_method_note
+    ))
+
+    add_row(epm_labor_output_row(
+      stats = epm_labor_proportion_stats(
+        design,
+        denominator = domain_keep & working_age,
+        numerator = data[[".epm_labor_status"]] == "outside_labor_force"
+      ),
+      annual_period = annual_period,
+      domain = domain_spec$domain,
+      domain_value = domain_spec$domain_value,
+      indicator_id = "outside_labor_force_share",
+      indicator_label = "Outside the labor force",
+      labor_dimension = "overall_labor_position",
+      labor_dimension_label = "Overall labor position",
+      labor_value = "all_working_age",
+      labor_label = epm_labor_status_label("all_working_age"),
+      estimate_type = "proportion",
+      unit = "proportion",
+      display_unit = "percent",
+      analysis_unit = "people",
+      universe = "People age 15 and older",
+      public_note = "Survey-weighted analytical labor indicator; not directly benchmarked against public labor tabulations.",
+      method_note = rate_method_note
+    ))
+
+    add_row(epm_labor_output_row(
+      stats = epm_labor_proportion_stats(
+        design,
+        denominator = domain_keep & labor_force,
+        numerator = data[[".epm_labor_status"]] == "unemployed"
+      ),
+      annual_period = annual_period,
+      domain = domain_spec$domain,
+      domain_value = domain_spec$domain_value,
+      indicator_id = "unemployment_rate",
+      indicator_label = "Unemployment",
+      labor_dimension = "overall_labor_position",
+      labor_dimension_label = "Overall labor position",
+      labor_value = "labor_force",
+      labor_label = epm_labor_status_label("labor_force"),
+      estimate_type = "proportion",
+      unit = "proportion",
+      display_unit = "percent",
+      analysis_unit = "people",
+      universe = "Labor force age 15 and older",
+      public_note = "Survey-weighted analytical labor indicator; unemployment uses the labor force denominator.",
+      method_note = rate_method_note
+    ))
+
+    add_row(epm_labor_output_row(
+      stats = epm_labor_proportion_stats(
+        design,
+        denominator = domain_keep & employed,
+        numerator = data[[".epm_labor_quality"]] == "adequate_full_employment"
+      ),
+      annual_period = annual_period,
+      domain = domain_spec$domain,
+      domain_value = domain_spec$domain_value,
+      indicator_id = "adequate_employment_rate",
+      indicator_label = "Adequate/full employment among employed people",
+      labor_dimension = "employment_quality",
+      labor_dimension_label = "Employment quality",
+      labor_value = "employed_people",
+      labor_label = epm_labor_status_label("employed_people"),
+      estimate_type = "proportion",
+      unit = "proportion",
+      display_unit = "percent",
+      analysis_unit = "people",
+      universe = "Employed people age 15 and older",
+      public_note = "Survey-weighted analytical employment-quality share; denominator is employed people age 15 and older.",
+      method_note = rate_method_note
+    ))
+
+    add_row(epm_labor_output_row(
+      stats = epm_labor_proportion_stats(
+        design,
+        denominator = domain_keep & employed,
+        numerator = data[[".epm_labor_quality"]] == "subemployment"
+      ),
+      annual_period = annual_period,
+      domain = domain_spec$domain,
+      domain_value = domain_spec$domain_value,
+      indicator_id = "subemployment_rate",
+      indicator_label = "Subemployment among employed people",
+      labor_dimension = "employment_quality",
+      labor_dimension_label = "Employment quality",
+      labor_value = "employed_people",
+      labor_label = epm_labor_status_label("employed_people"),
+      estimate_type = "proportion",
+      unit = "proportion",
+      display_unit = "percent",
+      analysis_unit = "people",
+      universe = "Employed people age 15 and older",
+      public_note = "Survey-weighted analytical employment-quality share; denominator is employed people age 15 and older.",
+      method_note = rate_method_note
+    ))
+
+    for (labor_value in c("employed", "unemployed", "outside_labor_force")) {
+      status_keep <- working_age & data[[".epm_labor_status"]] == labor_value
+      labor_label <- epm_labor_status_label(labor_value)
+
+      add_row(epm_labor_output_row(
+        stats = epm_labor_proportion_stats(
+          design,
+          denominator = domain_keep & status_keep & valid_poverty,
+          numerator = data[[".epm_poverty"]]
+        ),
+        annual_period = annual_period,
+        domain = domain_spec$domain,
+        domain_value = domain_spec$domain_value,
+        indicator_id = "poverty_rate_by_labor_status",
+        indicator_label = "Income poverty by labor status",
+        labor_dimension = "labor_market_status",
+        labor_dimension_label = "Labor market status",
+        labor_value = labor_value,
+        labor_label = labor_label,
+        estimate_type = "proportion",
+        unit = "proportion",
+        display_unit = "percent",
+        analysis_unit = "people in households",
+        universe = paste(labor_label, "age 15 and older with valid income poverty status"),
+        public_note = "Survey-weighted analytical poverty profile by labor status; not directly benchmarked.",
+        method_note = poverty_method_note
+      ))
+
+      add_row(epm_labor_output_row(
+        stats = epm_labor_proportion_stats(
+          design,
+          denominator = domain_keep & status_keep & valid_extreme_poverty,
+          numerator = data[[".epm_extreme_poverty"]]
+        ),
+        annual_period = annual_period,
+        domain = domain_spec$domain,
+        domain_value = domain_spec$domain_value,
+        indicator_id = "extreme_poverty_rate_by_labor_status",
+        indicator_label = "Extreme income poverty by labor status",
+        labor_dimension = "labor_market_status",
+        labor_dimension_label = "Labor market status",
+        labor_value = labor_value,
+        labor_label = labor_label,
+        estimate_type = "proportion",
+        unit = "proportion",
+        display_unit = "percent",
+        analysis_unit = "people in households",
+        universe = paste(labor_label, "age 15 and older with valid extreme income poverty status"),
+        public_note = "Survey-weighted analytical extreme-poverty profile by labor status; not directly benchmarked.",
+        method_note = poverty_method_note
+      ))
+
+      add_row(epm_labor_output_row(
+        stats = epm_labor_count_stats(
+          design,
+          denominator = domain_keep & status_keep & valid_poverty,
+          count_flag = data[[".epm_poverty"]]
+        ),
+        annual_period = annual_period,
+        domain = domain_spec$domain,
+        domain_value = domain_spec$domain_value,
+        indicator_id = "estimated_poor_by_labor_status",
+        indicator_label = "Estimated poor people by labor status",
+        labor_dimension = "labor_market_status",
+        labor_dimension_label = "Labor market status",
+        labor_value = labor_value,
+        labor_label = labor_label,
+        estimate_type = "count",
+        unit = "people",
+        display_unit = "people",
+        analysis_unit = "people in households",
+        universe = paste(labor_label, "age 15 and older with valid income poverty status"),
+        public_note = "Survey-weighted analytical count of people in income poverty by labor status; not directly benchmarked.",
+        method_note = poverty_method_note
+      ))
+    }
+  }
+
+  out <- do.call(rbind, rows)
+  out <- out[order(out$domain, out$domain_value, out$indicator_id, out$labor_value), , drop = FALSE]
+  row.names(out) <- NULL
+  out
+}
+
+epm_validate_annual_labor_poverty_output <- function(output) {
+  epm_validate_output_schema(output, config$indicators, strict = FALSE)
+
+  required_columns <- c(
+    "labor_dimension",
+    "labor_dimension_label",
+    "labor_value",
+    "labor_label",
+    "weighted_n",
+    "unweighted_n",
+    "estimated_count",
+    "quality_flag",
+    "suppression_flag",
+    "public_note"
+  )
+  missing_columns <- setdiff(required_columns, names(output))
+
+  if (length(missing_columns) > 0L) {
+    .epm_abort(sprintf(
+      "Annual labor poverty output is missing column(s): %s",
+      paste(missing_columns, collapse = ", ")
+    ))
+  }
+
+  required_indicators <- c(
+    "labor_force_participation_rate",
+    "employment_rate_working_age",
+    "outside_labor_force_share",
+    "unemployment_rate",
+    "adequate_employment_rate",
+    "subemployment_rate",
+    "poverty_rate_by_labor_status",
+    "extreme_poverty_rate_by_labor_status",
+    "estimated_poor_by_labor_status"
+  )
+  missing_indicators <- setdiff(required_indicators, unique(output$indicator_id))
+
+  if (length(missing_indicators) > 0L) {
+    .epm_abort(sprintf(
+      "Annual labor poverty output is missing indicator(s): %s",
+      paste(missing_indicators, collapse = ", ")
+    ))
+  }
+
+  required_domain_values <- data.frame(
+    domain = c("national", "area", "area"),
+    domain_value = c("national", "urban", "rural"),
+    stringsAsFactors = FALSE
+  )
+  output_domain_values <- unique(output[c("domain", "domain_value")])
+  missing_domain_values <- required_domain_values[
+    !paste(required_domain_values$domain, required_domain_values$domain_value) %in%
+      paste(output_domain_values$domain, output_domain_values$domain_value),
+    ,
+    drop = FALSE
+  ]
+
+  if (nrow(missing_domain_values) > 0L) {
+    .epm_abort("Annual labor poverty output is missing national, urban, or rural domain rows.")
+  }
+
+  forbidden <- epm_detect_forbidden_paths(output, config$paths$validation$forbidden_patterns)
+
+  if (length(forbidden) > 0L) {
+    .epm_abort("Annual labor poverty output contains private path-like values.")
+  }
+
+  identifier_columns <- intersect(
+    names(output),
+    c("p01", "id_persona", "id_hogar", "idhogar", "id_persona_hogar", "upm", "estrato", "fexp")
+  )
+
+  if (length(identifier_columns) > 0L) {
+    .epm_abort(sprintf(
+      "Annual labor poverty output contains microdata identifier or design column(s): %s",
+      paste(identifier_columns, collapse = ", ")
+    ))
+  }
+
+  allowed_units <- c("proportion", "people")
+  invalid_units <- setdiff(unique(output$unit), allowed_units)
+
+  if (length(invalid_units) > 0L) {
+    .epm_abort(sprintf(
+      "Annual labor poverty output contains invalid unit(s): %s",
+      paste(invalid_units, collapse = ", ")
+    ))
+  }
+
+  allowed_display_units <- c("percent", "people")
+  invalid_display_units <- setdiff(unique(output$display_unit), allowed_display_units)
+
+  if (length(invalid_display_units) > 0L) {
+    .epm_abort(sprintf(
+      "Annual labor poverty output contains invalid display_unit(s): %s",
+      paste(invalid_display_units, collapse = ", ")
+    ))
+  }
+
+  if ("build_timestamp" %in% names(output) && any(!is.na(output$build_timestamp))) {
+    .epm_abort("Annual labor poverty output must not contain dynamic build timestamps.")
+  }
+
+  invisible(TRUE)
+}
+
 epm_require_enemduR()
 
 output_path <- epm_output_path("annual", "annual_income_poverty", config$paths)
@@ -1661,6 +2332,7 @@ deprivation_output_path <- epm_output_path(
   "annual_deprivation_multidimensional_poverty",
   config$paths
 )
+labor_poverty_output_path <- epm_output_path("annual", "annual_labor_poverty", config$paths)
 annual_inputs <- epm_resolve_annual_input_files(config$paths, required = FALSE)
 annual_inputs_ready <- all(vapply(annual_inputs, function(input) isTRUE(input$exists), logical(1)))
 
@@ -1733,12 +2405,18 @@ if (isTRUE(annual_inputs_ready)) {
     reference = line_reference,
     annual_period = annual_period
   )
+
+  labor_poverty_output <- epm_build_labor_poverty_output(
+    data = persona,
+    annual_period = annual_period
+  )
 } else {
   comparisons <- epm_compare_monitor_output_benchmarks(existing_output, benchmark_reference)
   output <- epm_refresh_monitor_income_poverty_output(existing_output, comparisons, line_reference)
   province_output <- NULL
   profile_output <- NULL
   deprivation_output <- NULL
+  labor_poverty_output <- NULL
 }
 
 epm_validate_annual_income_poverty_output(output)
@@ -1758,6 +2436,11 @@ if (is.data.frame(profile_output)) {
 if (is.data.frame(deprivation_output)) {
   epm_validate_annual_deprivation_multidimensional_output(deprivation_output)
   epm_save_output(deprivation_output, deprivation_output_path)
+}
+
+if (is.data.frame(labor_poverty_output)) {
+  epm_validate_annual_labor_poverty_output(labor_poverty_output)
+  epm_save_output(labor_poverty_output, labor_poverty_output_path)
 }
 
 message("Annual income poverty output complete.")
@@ -1780,5 +2463,12 @@ if (is.data.frame(deprivation_output)) {
   message("Annual deprivation/multidimensional output retained from existing aggregate file.")
 } else {
   message("Annual deprivation/multidimensional output skipped because raw annual inputs were unavailable.")
+}
+if (is.data.frame(labor_poverty_output)) {
+  message("Wrote data/derived/annual/annual_labor_poverty.rds")
+} else if (file.exists(labor_poverty_output_path)) {
+  message("Annual labor poverty output retained from existing aggregate file.")
+} else {
+  message("Annual labor poverty output skipped because raw annual inputs were unavailable.")
 }
 message("No raw microdata were written, copied, or staged.")
