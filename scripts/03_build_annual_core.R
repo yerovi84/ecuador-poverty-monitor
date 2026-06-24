@@ -430,6 +430,79 @@ epm_build_income_poverty_estimates <- function(data, reference) {
   out
 }
 
+epm_province_lookup <- function() {
+  c(
+    "01" = "Azuay",
+    "02" = "Bolivar",
+    "03" = "Canar",
+    "04" = "Carchi",
+    "05" = "Cotopaxi",
+    "06" = "Chimborazo",
+    "07" = "El Oro",
+    "08" = "Esmeraldas",
+    "09" = "Guayas",
+    "10" = "Imbabura",
+    "11" = "Loja",
+    "12" = "Los Rios",
+    "13" = "Manabi",
+    "14" = "Morona Santiago",
+    "15" = "Napo",
+    "16" = "Pastaza",
+    "17" = "Pichincha",
+    "18" = "Tungurahua",
+    "19" = "Zamora Chinchipe",
+    "20" = "Galapagos",
+    "21" = "Sucumbios",
+    "22" = "Orellana",
+    "23" = "Santo Domingo de los Tsachilas",
+    "24" = "Santa Elena"
+  )
+}
+
+epm_province_code <- function(values) {
+  values_num <- suppressWarnings(as.integer(as.numeric(as.character(values))))
+  out <- ifelse(!is.na(values_num), sprintf("%02d", values_num), NA_character_)
+  out[!out %in% names(epm_province_lookup())] <- NA_character_
+  out
+}
+
+epm_build_income_poverty_province_estimates <- function(data, reference) {
+  if (!"prov" %in% names(data)) {
+    .epm_abort("Annual person data must contain ENEMDU province variable `prov`.")
+  }
+
+  data[[".epm_province_code"]] <- epm_province_code(data[["prov"]])
+
+  if (all(is.na(data[[".epm_province_code"]]))) {
+    .epm_abort("Could not map annual `prov` values to two-digit province codes.")
+  }
+
+  estimates <- enemduR::enemdu_kpi_income_poverty(
+    data = data,
+    group_vars = ".epm_province_code",
+    period = reference$period,
+    mode = "manual",
+    poverty_line = reference$poverty_line,
+    extreme_poverty_line = reference$extreme_poverty_line,
+    line_source = reference$line_source,
+    survey_type = "anual",
+    ids = "upm",
+    strata = "estrato",
+    weight = "fexp",
+    domain_level = "provincia_24",
+    domain_var = "prov",
+    official_validation_status = "not_officially_validated",
+    official_validation_note = paste(
+      "Survey-weighted analytical provincial output;",
+      "not directly benchmarked against public annual tabulations."
+    )
+  )
+
+  estimates[["domain"]] <- "province"
+  estimates[["domain_value"]] <- estimates[[".epm_province_code"]]
+  estimates
+}
+
 epm_as_numeric_profile_code <- function(x) {
   if (is.factor(x)) {
     x <- as.character(x)
@@ -981,6 +1054,115 @@ epm_to_monitor_income_poverty_output <- function(estimates,
   out[order(out$indicator_id, out$domain, out$domain_value), , drop = FALSE]
 }
 
+epm_province_suppression_flag <- function(quality_flag) {
+  quality_flag <- as.character(quality_flag)
+  ifelse(
+    !is.na(quality_flag) & quality_flag == "design_domain_reliable",
+    "not_suppressed",
+    "review_required"
+  )
+}
+
+epm_rank_desc <- function(values) {
+  out <- rep(NA_integer_, length(values))
+  keep <- !is.na(values)
+
+  if (any(keep)) {
+    out[keep] <- as.integer(rank(-values[keep], ties.method = "min"))
+  }
+
+  out
+}
+
+epm_to_monitor_income_poverty_province_output <- function(estimates,
+                                                          annual_period,
+                                                          reference,
+                                                          source_file) {
+  id_map <- c(
+    pobreza_ingresos = "poverty_rate",
+    pobreza_extrema_ingresos = "extreme_poverty_rate"
+  )
+
+  label_map <- c(
+    poverty_rate = "Income poverty",
+    extreme_poverty_rate = "Extreme income poverty"
+  )
+
+  estimates[["monitor_indicator_id"]] <- unname(id_map[as.character(estimates$indicator_id)])
+  estimates <- estimates[!is.na(estimates$monitor_indicator_id), , drop = FALSE]
+
+  province_code <- as.character(estimates[[".epm_province_code"]])
+  province_lookup <- epm_province_lookup()
+  province_name <- unname(province_lookup[province_code])
+  quality_flag <- epm_estimate_quality_flag(estimates)
+  suppression_flag <- epm_province_suppression_flag(quality_flag)
+  estimated_poor_count <- ifelse(
+    estimates$monitor_indicator_id == "poverty_rate",
+    as.numeric(estimates$estimate) * as.numeric(estimates$weighted_n),
+    NA_real_
+  )
+
+  out <- data.frame(
+    period = annual_period,
+    survey_type = "anual",
+    domain = "province",
+    domain_value = province_code,
+    province_code = province_code,
+    province_name = province_name,
+    indicator_id = estimates$monitor_indicator_id,
+    indicator_label = unname(label_map[estimates$monitor_indicator_id]),
+    indicator_family = "income_poverty",
+    estimate = as.numeric(estimates$estimate),
+    estimate_type = "proportion",
+    unit = "proportion",
+    display_estimate = as.numeric(estimates$estimate) * 100,
+    display_unit = "percent",
+    build_timestamp = NA_character_,
+    weighted_n = as.numeric(estimates$weighted_n),
+    unweighted_n = as.integer(estimates$unweighted_n),
+    estimated_poor_count = estimated_poor_count,
+    se = as.numeric(estimates$standard_error),
+    cv = as.numeric(estimates$cv),
+    df = as.numeric(estimates$degrees_freedom),
+    analysis_unit = "people in households",
+    universe = as.character(estimates$universe),
+    source = "Public ENEMDU annual 2025 microdata",
+    method_status = as.character(estimates$decision),
+    benchmark_status = "not_directly_benchmarked_against_public_annual_tabulations",
+    quality_flag = quality_flag,
+    suppression_flag = suppression_flag,
+    ranking_metric = ifelse(
+      estimates$monitor_indicator_id == "poverty_rate",
+      "estimated_poor_count_preferred_for_executive_table",
+      "not_ranked_for_executive_top_5"
+    ),
+    rank_by_estimated_poor_count = NA_integer_,
+    rank_by_poverty_rate = NA_integer_,
+    public_note = paste(
+      "Survey-weighted analytical provincial estimates;",
+      "subject to precision and representativeness review before publication as rankings."
+    ),
+    source_layer = "annual",
+    official_alignment = "official-source alignment documentation; no official institutional validation",
+    method_note = paste(
+      "Income poverty and extreme income poverty are estimated by province from ENEMDU annual person records.",
+      "The calculation uses the same survey design contract as national and area outputs: ids upm, strata estrato, and weight fexp.",
+      "Provincial estimates are not directly benchmarked against public annual tabulations."
+    ),
+    source_reference = reference$source_reference,
+    source_file = source_file,
+    stringsAsFactors = FALSE
+  )
+
+  rank_rows <- out$indicator_id == "poverty_rate" & out$suppression_flag == "not_suppressed"
+  out$rank_by_estimated_poor_count[rank_rows] <- epm_rank_desc(out$estimated_poor_count[rank_rows])
+  out$rank_by_poverty_rate[rank_rows] <- epm_rank_desc(out$estimate[rank_rows])
+
+  out <- out[order(out$indicator_id, out$province_code), , drop = FALSE]
+  row.names(out) <- NULL
+  out
+}
+
 epm_validate_annual_income_poverty_output <- function(output) {
   epm_validate_output_schema(output, config$indicators, strict = FALSE)
 
@@ -1028,6 +1210,73 @@ epm_validate_annual_income_poverty_output <- function(output) {
 
   if (!identical(unique(output$display_unit), "percent")) {
     .epm_abort("Annual income poverty output `display_unit` must be `percent`.")
+  }
+
+  invisible(TRUE)
+}
+
+epm_validate_annual_income_poverty_province_output <- function(output) {
+  epm_validate_output_schema(output, config$indicators, strict = FALSE)
+
+  required_indicators <- c("poverty_rate", "extreme_poverty_rate")
+  missing_indicators <- setdiff(required_indicators, unique(output$indicator_id))
+
+  if (length(missing_indicators) > 0L) {
+    .epm_abort(sprintf(
+      "Annual provincial income poverty output is missing indicator(s): %s",
+      paste(missing_indicators, collapse = ", ")
+    ))
+  }
+
+  if (!identical(unique(output$domain), "province")) {
+    .epm_abort("Annual provincial income poverty output `domain` must be `province`.")
+  }
+
+  province_lookup <- epm_province_lookup()
+
+  for (indicator_id in required_indicators) {
+    indicator_codes <- output$province_code[output$indicator_id == indicator_id]
+
+    if (!setequal(indicator_codes, names(province_lookup))) {
+      .epm_abort(sprintf(
+        "Annual provincial income poverty output must contain 24 province codes for `%s`.",
+        indicator_id
+      ))
+    }
+  }
+
+  if (any(is.na(output$province_name) | !nzchar(output$province_name))) {
+    .epm_abort("Annual provincial income poverty output contains missing province names.")
+  }
+
+  forbidden <- epm_detect_forbidden_paths(output, config$paths$validation$forbidden_patterns)
+
+  if (length(forbidden) > 0L) {
+    .epm_abort("Annual provincial income poverty output contains private path-like values.")
+  }
+
+  identifier_columns <- intersect(
+    names(output),
+    c("p01", "id_persona", "id_hogar", "idhogar", "id_persona_hogar", "upm", "estrato", "fexp")
+  )
+
+  if (length(identifier_columns) > 0L) {
+    .epm_abort(sprintf(
+      "Annual provincial income poverty output contains microdata identifier or design column(s): %s",
+      paste(identifier_columns, collapse = ", ")
+    ))
+  }
+
+  if (!identical(unique(output$unit), "proportion")) {
+    .epm_abort("Annual provincial income poverty output `unit` must be `proportion`.")
+  }
+
+  if (!identical(unique(output$display_unit), "percent")) {
+    .epm_abort("Annual provincial income poverty output `display_unit` must be `percent`.")
+  }
+
+  if ("build_timestamp" %in% names(output) && any(!is.na(output$build_timestamp))) {
+    .epm_abort("Annual provincial income poverty output must not contain dynamic build timestamps.")
   }
 
   invisible(TRUE)
@@ -1406,6 +1655,7 @@ epm_require_enemduR()
 
 output_path <- epm_output_path("annual", "annual_income_poverty", config$paths)
 profile_output_path <- epm_output_path("annual", "annual_income_poverty_profiles", config$paths)
+province_output_path <- epm_output_path("annual", "annual_income_poverty_province", config$paths)
 deprivation_output_path <- epm_output_path(
   "annual",
   "annual_deprivation_multidimensional_poverty",
@@ -1461,6 +1711,14 @@ if (isTRUE(annual_inputs_ready)) {
     source_file = annual_inputs$persona$basename
   )
 
+  province_estimates <- epm_build_income_poverty_province_estimates(persona, line_reference)
+  province_output <- epm_to_monitor_income_poverty_province_output(
+    estimates = province_estimates,
+    annual_period = annual_period,
+    reference = line_reference,
+    source_file = annual_inputs$persona$basename
+  )
+
   profile_estimates <- epm_build_income_poverty_profile_estimates(persona, line_reference)
   profile_output <- epm_to_monitor_income_poverty_profile_output(
     estimates = profile_estimates,
@@ -1478,6 +1736,7 @@ if (isTRUE(annual_inputs_ready)) {
 } else {
   comparisons <- epm_compare_monitor_output_benchmarks(existing_output, benchmark_reference)
   output <- epm_refresh_monitor_income_poverty_output(existing_output, comparisons, line_reference)
+  province_output <- NULL
   profile_output <- NULL
   deprivation_output <- NULL
 }
@@ -1485,6 +1744,11 @@ if (isTRUE(annual_inputs_ready)) {
 epm_validate_annual_income_poverty_output(output)
 
 epm_save_output(output, output_path)
+
+if (is.data.frame(province_output)) {
+  epm_validate_annual_income_poverty_province_output(province_output)
+  epm_save_output(province_output, province_output_path)
+}
 
 if (is.data.frame(profile_output)) {
   epm_validate_annual_income_poverty_profile_output(profile_output)
@@ -1504,6 +1768,11 @@ if (is.data.frame(profile_output)) {
   message("Wrote data/derived/annual/annual_income_poverty_profiles.rds")
 } else {
   message("Annual profile output skipped because raw annual inputs were unavailable.")
+}
+if (is.data.frame(province_output)) {
+  message("Wrote data/derived/annual/annual_income_poverty_province.rds")
+} else {
+  message("Annual provincial income poverty output skipped because raw annual inputs were unavailable.")
 }
 if (is.data.frame(deprivation_output)) {
   message("Wrote data/derived/annual/annual_deprivation_multidimensional_poverty.rds")

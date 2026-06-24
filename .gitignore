@@ -25,6 +25,7 @@ secrets/
 
 # Local analytical annual outputs
 /data/derived/annual/annual_deprivation_multidimensional_poverty.rds
+/data/derived/annual/annual_income_poverty_province.rds
 
 # Quarto execution cache
 /_freeze/
