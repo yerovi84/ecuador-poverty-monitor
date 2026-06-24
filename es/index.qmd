@@ -130,10 +130,13 @@ Las capas anuales 2025 de pobreza por ingresos y de privaciones y pobreza multid
 La capa provincial de pobreza por ingresos también está publicada como lectura territorial con mapa y tabla ejecutiva, separando incidencia provincial de concentración poblacional.
 :::
 
+La capa laboral ya suma una lectura publica sobre empleo, calidad del trabajo y pobreza a partir de outputs agregados.
+
 ::: {.page-nav}
 [Inglés ->](../index.qmd)
 [Pobreza por ingresos ->](../pages/02_income-poverty.qmd)
 [Pobreza provincial ->](../pages/05_territorial-province-income-poverty.qmd)
+[Mercado laboral y pobreza ->](../pages/06_labor-market-poverty.qmd)
 [Metodología y calidad ->](../pages/04_methodology-quality.qmd)
 :::
 :::

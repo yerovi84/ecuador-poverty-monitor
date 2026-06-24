@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,9 +10,6 @@
 
 <title>income-poverty – Ecuador Poverty Monitor</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -21,7 +18,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */
   vertical-align: middle;
 }
 </style>
@@ -37,14 +34,15 @@ ul.task-list li input[type="checkbox"] {
 <link href="../assets/img/brand/epm-favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f1567f6532da11e0b3c9d7d9c23d1e21.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-0e2ed5a012ede8e13c082ff6ed26c046.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -100,42 +98,46 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../pages/01_why-monitor.html"> 
+    <a class="nav-link" href="../pages/01_why-monitor.html">
 <span class="menu-text">Why it matters</span></a>
-  </li>  
+  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-analytical-roadmap" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Analytical roadmap</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-analytical-roadmap">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-analytical-roadmap">
         <li>
     <a class="dropdown-item" href="../pages/02_income-poverty.html">
  <span class="dropdown-text">Income poverty</span></a>
-  </li>  
+  </li>
         <li>
     <a class="dropdown-item" href="../pages/03_deprivation-multidimensional-poverty.html">
  <span class="dropdown-text">Deprivation &amp; multidimensional poverty</span></a>
-  </li>  
+  </li>
         <li>
     <a class="dropdown-item" href="../pages/05_territorial-province-income-poverty.html">
  <span class="dropdown-text">Provincial income poverty</span></a>
-  </li>  
+  </li>
+        <li>
+    <a class="dropdown-item" href="../pages/06_labor-market-poverty.html">
+ <span class="dropdown-text">Labor market and poverty</span></a>
+  </li>
         <li>
     <a class="dropdown-item" href="../pages/04_methodology-quality.html">
- <span class="dropdown-text">Statistical quality</span></a>
-  </li>  
+ <span class="dropdown-text">Measurement and statistical quality</span></a>
+  </li>
     </ul>
   </li>
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../index.html">
 <span class="menu-text">EN</span></a>
-  </li>  
+  </li>
   <li class="nav-item">
-    <a class="nav-link" href="../es/index.html"> 
+    <a class="nav-link" href="../es/index.html">
 <span class="menu-text">ES</span></a>
-  </li>  
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -147,7 +149,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+
 <!-- main -->
 <main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
@@ -521,7 +523,7 @@ ul.task-list li input[type="checkbox"] {
     anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
+        if (clz.startsWith('code-annotation-')) {
           return true;
         }
       }
@@ -541,11 +543,11 @@ ul.task-list li input[type="checkbox"] {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
         button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
+        tooltip = new bootstrap.Tooltip(button,
+          { trigger: "manual",
             customClass: "code-copy-button-tooltip",
             offset: [0, -8]});
-        tooltip.show();    
+        tooltip.show();
       }
       setTimeout(function() {
         if (tooltip) {
@@ -627,7 +629,7 @@ ul.task-list li input[type="checkbox"] {
       if (onUntriggerFn) {
         config.onUntrigger = onUntriggerFn;
       }
-      window.tippy(el, config); 
+      window.tippy(el, config);
     }
     const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
     for (var i=0; i<noterefs.length; i++) {
@@ -702,7 +704,7 @@ ul.task-list li input[type="checkbox"] {
       tippyHover(xref, undefined, function(instance) {
         instance.disable();
         let url = xref.getAttribute('href');
-        let hash = undefined; 
+        let hash = undefined;
         if (url.startsWith('#')) {
           hash = url;
         } else {
@@ -730,7 +732,7 @@ ul.task-list li input[type="checkbox"] {
               if (note !== null) {
                 const html = processXRef(id, note);
                 instance.setContent(html);
-              } 
+              }
             }).finally(() => {
               instance.enable();
               instance.show();
@@ -754,7 +756,7 @@ ul.task-list li input[type="checkbox"] {
               }
               const html = processXRef(null, note);
               instance.setContent(html);
-            } 
+            }
           }).finally(() => {
             instance.enable();
             instance.show();
@@ -794,7 +796,7 @@ ul.task-list li input[type="checkbox"] {
               height = bottom - top;
             }
             if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
+              // cook up a div (if necessary) and position it
               let div = window.document.getElementById("code-annotation-line-highlight");
               if (div === null) {
                 div = window.document.createElement("div");
@@ -920,7 +922,7 @@ ul.task-list li input[type="checkbox"] {
   <div class="nav-footer">
     <div class="nav-footer-left">
 <p>Built by Alejandro Yerovi using enemduR.</p>
-</div>   
+</div>
     <div class="nav-footer-center">
       &nbsp;
     <div class="toc-actions"><ul><li><a href="https://github.com/yerovi84/ecuador-poverty-monitor/blob/main/pages/02_income-poverty.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/yerovi84/ecuador-poverty-monitor/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
@@ -930,12 +932,12 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="https://github.com/yerovi84/ecuador-poverty-monitor">
 <p>GitHub</p>
 </a>
-  </li>  
+  </li>
     <li class="nav-item">
     <a class="nav-link" href="https://github.com/yerovi84/enemduR">
 <p>enemduR</p>
 </a>
-  </li>  
+  </li>
 </ul>
     </div>
   </div>

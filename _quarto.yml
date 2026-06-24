@@ -34,7 +34,9 @@ website:
             href: pages/03_deprivation-multidimensional-poverty.qmd
           - text: "Provincial income poverty"
             href: pages/05_territorial-province-income-poverty.qmd
-          - text: "Statistical quality"
+          - text: "Labor market and poverty"
+            href: pages/06_labor-market-poverty.qmd
+          - text: "Measurement and statistical quality"
             href: pages/04_methodology-quality.qmd
     right:
       - text: "EN"

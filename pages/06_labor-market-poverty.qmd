@@ -1,0 +1,650 @@
+---
+title: "Labor market and poverty"
+subtitle: "Employment conditions and household vulnerability in annual ENEMDU 2025"
+description: "A public labor-market and poverty reading for Ecuador in 2025, based on curated aggregate site outputs."
+format:
+  html:
+    page-layout: full
+    toc: false
+    code-tools: false
+    title-block-style: none
+    body-class: epm-internal
+---
+
+```{=html}
+<style>
+.labor-hero {
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 390px);
+  gap: clamp(2rem, 5vw, 4.5rem);
+}
+
+.labor-scope-card {
+  align-self: center;
+  min-width: 0;
+}
+
+.labor-scope-list {
+  display: grid;
+  gap: 0.72rem;
+  margin: 0;
+}
+
+.labor-scope-list div {
+  border-top: 1px solid rgba(18, 48, 71, 0.1);
+  display: grid;
+  gap: 0.2rem;
+  grid-template-columns: minmax(5.4rem, 0.42fr) minmax(0, 1fr);
+  padding-top: 0.72rem;
+}
+
+.labor-scope-list div:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.labor-scope-list dt {
+  color: var(--epm-muted);
+  font-size: 0.76rem;
+  font-weight: 760;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.labor-scope-list dd {
+  color: var(--epm-navy);
+  font-size: 0.98rem;
+  font-weight: 720;
+  margin: 0;
+}
+
+.labor-kpi-strip {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 1.4rem 0 2rem;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: var(--epm-shadow);
+}
+
+.labor-kpi {
+  background: var(--epm-navy);
+  border-top: 4px solid var(--epm-gold);
+  color: #ffffff;
+  min-height: 170px;
+  padding: 1.2rem;
+}
+
+.labor-kpi:nth-child(2) {
+  border-top-color: var(--epm-blue);
+}
+
+.labor-kpi:nth-child(3) {
+  border-top-color: var(--epm-red);
+}
+
+.labor-kpi:nth-child(4) {
+  border-top-color: #ffffff;
+}
+
+.labor-kpi strong {
+  display: block;
+  font-size: 1.08rem;
+  line-height: 1.25;
+}
+
+.labor-kpi .labor-value {
+  display: block;
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  font-weight: 820;
+  letter-spacing: 0;
+  line-height: 1;
+  margin: 0.55rem 0;
+}
+
+.labor-kpi p {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.labor-bars {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.labor-bar-row {
+  display: grid;
+  grid-template-columns: minmax(10rem, 14rem) 1fr 5rem;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.labor-bar-row span {
+  color: var(--epm-ink-soft);
+  font-weight: 650;
+}
+
+.labor-meter {
+  background: #e9ecef;
+  border-radius: 999px;
+  height: 0.78rem;
+  overflow: hidden;
+}
+
+.labor-meter span {
+  background: var(--epm-blue);
+  display: block;
+  height: 100%;
+}
+
+.labor-bars .labor-bar-row:nth-child(2) .labor-meter span {
+  background: var(--epm-gold);
+}
+
+.labor-bars .labor-bar-row:nth-child(3) .labor-meter span {
+  background: var(--epm-red);
+}
+
+.labor-table-wrap {
+  overflow-x: auto;
+}
+
+.labor-table-wrap table {
+  margin-bottom: 0.35rem;
+  min-width: 720px;
+}
+
+.labor-table-wrap th {
+  color: var(--epm-navy);
+  font-size: 0.86rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.labor-table-wrap td,
+.labor-table-wrap th {
+  vertical-align: middle;
+}
+
+@media (max-width: 1100px) {
+  .labor-hero,
+  .labor-kpi-strip {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .labor-scope-list div,
+  .labor-bar-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .labor-bar-row strong {
+    text-align: left;
+  }
+}
+</style>
+```
+
+```{r}
+#| include: false
+site_output_path <- file.path("data", "derived", "site", "site_labor_poverty_profiles.rds")
+if (!file.exists(site_output_path)) {
+  site_output_path <- file.path("..", "data", "derived", "site", "site_labor_poverty_profiles.rds")
+}
+
+if (!file.exists(site_output_path)) {
+  stop("Labor-market poverty data are not available.", call. = FALSE)
+}
+
+labor <- readRDS(site_output_path)
+
+required_columns <- c(
+  "period",
+  "domain",
+  "domain_value",
+  "indicator_id",
+  "labor_value",
+  "labor_label",
+  "display_estimate",
+  "display_unit",
+  "estimated_count"
+)
+
+missing_columns <- setdiff(required_columns, names(labor))
+if (length(missing_columns) > 0L) {
+  stop("Labor-market poverty data are missing expected public fields.", call. = FALSE)
+}
+
+pick_row <- function(target_indicator, target_domain = "national", target_value = NULL) {
+  rows <- labor[
+    labor$indicator_id == target_indicator &
+      labor$domain_value == target_domain,
+    ,
+    drop = FALSE
+  ]
+
+  if (!is.null(target_value)) {
+    rows <- rows[rows$labor_value == target_value, , drop = FALSE]
+  }
+
+  if (nrow(rows) == 0L) {
+    return(NULL)
+  }
+
+  rows[1L, , drop = FALSE]
+}
+
+fmt_pct <- function(value, digits = 1L) {
+  if (is.na(value)) {
+    return("n.a.")
+  }
+  sprintf(paste0("%.", digits, "f%%"), as.numeric(value))
+}
+
+fmt_count <- function(value) {
+  if (is.na(value)) {
+    return("n.a.")
+  }
+  format(round(as.numeric(value)), big.mark = ",", scientific = FALSE)
+}
+
+html_escape <- function(value) {
+  value <- as.character(value)
+  value <- gsub("&", "&amp;", value, fixed = TRUE)
+  value <- gsub("<", "&lt;", value, fixed = TRUE)
+  value <- gsub(">", "&gt;", value, fixed = TRUE)
+  value <- gsub('"', "&quot;", value, fixed = TRUE)
+  value
+}
+
+public_label <- function(value) {
+  switch(
+    as.character(value),
+    employed = "Employed",
+    unemployed = "Unemployed",
+    outside_labor_force = "Outside the labor force",
+    all_working_age = "People 15 and older",
+    labor_force = "Labor force",
+    employed_people = "Employed people",
+    as.character(value)
+  )
+}
+
+domain_label <- function(value) {
+  switch(
+    as.character(value),
+    national = "National",
+    urban = "Urban",
+    rural = "Rural",
+    as.character(value)
+  )
+}
+
+metric_value <- function(target_indicator, target_domain = "national", target_value = NULL) {
+  row <- pick_row(target_indicator, target_domain, target_value)
+  if (is.null(row)) {
+    return(NA_real_)
+  }
+  as.numeric(row$display_estimate)
+}
+
+metric_count <- function(target_indicator, target_domain = "national", target_value = NULL) {
+  row <- pick_row(target_indicator, target_domain, target_value)
+  if (is.null(row)) {
+    return(NA_real_)
+  }
+  as.numeric(row$display_estimate)
+}
+
+kpi_card <- function(label, value, note) {
+  paste0(
+    '<div class="labor-kpi">',
+    "<strong>", html_escape(label), "</strong>",
+    '<span class="labor-value">', html_escape(value), "</span>",
+    "<p>", html_escape(note), "</p>",
+    "</div>"
+  )
+}
+
+bar_row <- function(label, value, max_value = 75) {
+  width <- if (is.na(value)) 0 else max(0, min(100, as.numeric(value) / max_value * 100))
+  paste0(
+    '<div class="labor-bar-row">',
+    "<span>", html_escape(label), "</span>",
+    '<div class="labor-meter"><span style="width: ', sprintf("%.1f", width), '%;"></span></div>',
+    '<strong style="text-align: right;">', fmt_pct(value, 1L), "</strong>",
+    "</div>"
+  )
+}
+
+condition_order <- c("employed", "unemployed", "outside_labor_force")
+
+poverty_table_rows <- vapply(
+  condition_order,
+  function(value) {
+    poverty <- metric_value("poverty_rate_by_labor_status", "national", value)
+    extreme <- metric_value("extreme_poverty_rate_by_labor_status", "national", value)
+    count <- metric_count("estimated_poor_by_labor_status", "national", value)
+    paste0(
+      "<tr>",
+      "<td><strong>", html_escape(public_label(value)), "</strong></td>",
+      "<td>", fmt_pct(poverty, 1L), "</td>",
+      "<td>", fmt_pct(extreme, 1L), "</td>",
+      "<td>", fmt_count(count), "</td>",
+      "</tr>"
+    )
+  },
+  character(1)
+)
+
+poverty_table <- paste0(
+  '<div class="labor-table-wrap">',
+  '<table class="table table-sm">',
+  "<thead>",
+  "<tr>",
+  "<th>Labor condition</th>",
+  "<th>Poverty rate</th>",
+  "<th>Extreme poverty rate</th>",
+  "<th>Estimated people in poverty</th>",
+  "</tr>",
+  "</thead>",
+  "<tbody>",
+  paste(poverty_table_rows, collapse = "\n"),
+  "</tbody>",
+  "</table>",
+  "</div>"
+)
+
+structure_bar <- function(target_indicator, label) {
+  value <- metric_value(target_indicator)
+  bar_row(label, value, max_value = 75)
+}
+
+quality_bar <- function(target_indicator, label) {
+  value <- metric_value(target_indicator)
+  bar_row(label, value, max_value = 50)
+}
+
+poverty_bar <- function(value) {
+  row <- pick_row("poverty_rate_by_labor_status", "national", value)
+  if (is.null(row)) {
+    return("")
+  }
+  bar_row(public_label(value), as.numeric(row$display_estimate), max_value = 40)
+}
+
+domain_summary_row <- function(domain_value) {
+  paste0(
+    "<tr>",
+    "<td><strong>", domain_label(domain_value), "</strong></td>",
+    "<td>", fmt_pct(metric_value("labor_force_participation_rate", domain_value), 1L), "</td>",
+    "<td>", fmt_pct(metric_value("employment_rate_working_age", domain_value), 1L), "</td>",
+    "<td>", fmt_pct(metric_value("unemployment_rate", domain_value), 1L), "</td>",
+    "<td>", fmt_pct(metric_value("poverty_rate_by_labor_status", domain_value, "employed"), 1L), "</td>",
+    "</tr>"
+  )
+}
+
+domain_summary_table <- paste0(
+  '<div class="labor-table-wrap">',
+  '<table class="table table-sm">',
+  "<thead>",
+  "<tr>",
+  "<th>Domain</th>",
+  "<th>Labor participation</th>",
+  "<th>Employment among people 15+</th>",
+  "<th>Unemployment</th>",
+  "<th>Poverty among employed people</th>",
+  "</tr>",
+  "</thead>",
+  "<tbody>",
+  paste(vapply(c("national", "urban", "rural"), domain_summary_row, character(1)), collapse = "\n"),
+  "</tbody>",
+  "</table>",
+  "</div>"
+)
+
+period_label <- unique(as.character(labor$period))
+if (length(period_label) != 1L) {
+  period_label <- "2025"
+}
+
+participation <- metric_value("labor_force_participation_rate")
+employment <- metric_value("employment_rate_working_age")
+outside <- metric_value("outside_labor_force_share")
+unemployment <- metric_value("unemployment_rate")
+adequate <- metric_value("adequate_employment_rate")
+subemployment <- metric_value("subemployment_rate")
+employed_poverty <- metric_value("poverty_rate_by_labor_status", "national", "employed")
+unemployed_poverty <- metric_value("poverty_rate_by_labor_status", "national", "unemployed")
+outside_poverty <- metric_value("poverty_rate_by_labor_status", "national", "outside_labor_force")
+employed_poor_count <- metric_count("estimated_poor_by_labor_status", "national", "employed")
+outside_poor_count <- metric_count("estimated_poor_by_labor_status", "national", "outside_labor_force")
+```
+
+::: {.internal-hero .internal-hero-wide .labor-hero}
+::: {.internal-hero-copy}
+::: {.section-kicker}
+Labor and income poverty
+:::
+
+# Labor market and poverty
+
+::: {.story-lede}
+Employment conditions and household vulnerability in annual ENEMDU 2025.
+:::
+
+Having work is central to household wellbeing, but employment alone does not guarantee that a household is above the income-poverty line. This page reads labor attachment, job quality and poverty together without treating one as a cause of the other.
+:::
+
+::: {.internal-hero-card .labor-scope-card}
+## What this view covers
+
+<dl class="labor-scope-list">
+<div>
+<dt>Period</dt>
+<dd>Annual ENEMDU `r period_label`</dd>
+</div>
+<div>
+<dt>Source</dt>
+<dd>Curated aggregate site output</dd>
+</div>
+<div>
+<dt>Coverage</dt>
+<dd>National, urban and rural</dd>
+</div>
+<div>
+<dt>Reading</dt>
+<dd>Employment, job quality and poverty profiles</dd>
+</div>
+</dl>
+:::
+:::
+
+::: {.content-block .editorial-flow}
+::: {.story-panel}
+::: {.section-kicker}
+Public question
+:::
+
+## Why having work does not always mean being out of poverty
+
+Poverty is measured through household per-capita income, not only through whether a person has a job. That distinction is crucial: a person can be employed and still live in a household whose total income is below the income-poverty line.
+
+The national profile shows that poverty among employed people is **`r fmt_pct(employed_poverty, 1L)`**, while poverty among unemployed people is **`r fmt_pct(unemployed_poverty, 1L)`** and poverty among people outside the labor force is **`r fmt_pct(outside_poverty, 1L)`**. The estimated number of people in poverty is largest among employed people, at about **`r fmt_count(employed_poor_count)`**.
+:::
+
+::: {.labor-kpi-strip}
+```{r}
+#| echo: false
+#| results: asis
+cat(paste(
+  kpi_card(
+    "Labor-force participation",
+    fmt_pct(participation, 1L),
+    "Share of people age 15 and older in the labor force."
+  ),
+  kpi_card(
+    "Employment among people 15+",
+    fmt_pct(employment, 1L),
+    "Share of people age 15 and older who are employed."
+  ),
+  kpi_card(
+    "Outside the labor force",
+    fmt_pct(outside, 1L),
+    "Share of people age 15 and older outside the labor force."
+  ),
+  kpi_card(
+    "Unemployment",
+    fmt_pct(unemployment, 1L),
+    "Share of the labor force that is unemployed."
+  ),
+  sep = "\n"
+))
+```
+:::
+
+::: {.story-grid}
+::: {.story-panel}
+::: {.section-kicker}
+Labor-market structure
+:::
+
+## Who is attached to the labor market?
+
+```{r}
+#| echo: false
+#| results: asis
+cat(paste(
+  '<div class="labor-bars">',
+  structure_bar("labor_force_participation_rate", "Labor force participation"),
+  structure_bar("employment_rate_working_age", "Employment among people 15+"),
+  structure_bar("outside_labor_force_share", "Outside the labor force"),
+  structure_bar("unemployment_rate", "Unemployment"),
+  "</div>",
+  sep = "\n"
+))
+```
+
+The first reading separates labor-force attachment from unemployment. Many people are outside the labor force, while unemployment is measured only among people in the labor force.
+:::
+
+::: {.story-panel}
+::: {.section-kicker}
+Employment quality
+:::
+
+## Work status is not enough
+
+```{r}
+#| echo: false
+#| results: asis
+cat(paste(
+  '<div class="labor-bars">',
+  quality_bar("adequate_employment_rate", "Adequate/full employment"),
+  quality_bar("subemployment_rate", "Subemployment"),
+  "</div>",
+  sep = "\n"
+))
+```
+
+Among employed people, adequate/full employment reaches **`r fmt_pct(adequate, 1L)`** and subemployment reaches **`r fmt_pct(subemployment, 1L)`**. This is why the labor layer looks beyond the employed/unemployed split: job quality changes how employment should be read alongside household income poverty.
+:::
+:::
+
+::: {.infographic-frame}
+::: {.section-kicker}
+Poverty by labor condition
+:::
+
+## Executive table
+
+```{r}
+#| echo: false
+#| results: asis
+cat(poverty_table)
+```
+
+The table compares broad labor conditions, not provinces or cities. The count column shows where the largest number of people in poverty is concentrated, while the poverty-rate columns show exposure within each labor condition.
+:::
+
+::: {.story-grid}
+::: {.story-panel}
+::: {.section-kicker}
+Poverty profile
+:::
+
+## Poverty is not only a story about unemployment
+
+```{r}
+#| echo: false
+#| results: asis
+cat(paste(
+  '<div class="labor-bars">',
+  paste(vapply(condition_order, poverty_bar, character(1)), collapse = "\n"),
+  "</div>",
+  sep = "\n"
+))
+```
+
+Unemployment is associated with a high poverty rate, but it accounts for a smaller estimated number of people in poverty than employment. The national estimate shows about **`r fmt_count(outside_poor_count)`** people in poverty outside the labor force, another reminder that household vulnerability extends beyond the labor-force headline.
+:::
+
+::: {.story-panel}
+::: {.section-kicker}
+Urban-rural reading
+:::
+
+## Labor and poverty differ by domain
+
+```{r}
+#| echo: false
+#| results: asis
+cat(domain_summary_table)
+```
+
+Urban and rural rows are included only for the supported annual domains in the curated output. They help compare labor attachment and poverty exposure without turning this page into a territorial ranking.
+:::
+:::
+
+::: {.method-note}
+## Reading notes
+
+These estimates are analytical and descriptive. They are based on public ENEMDU annual 2025 microdata and are published here only through a curated aggregate output. They are not an official INEC validation, do not make causal claims, and should be read together with [Measurement and statistical quality](04_methodology-quality.qmd).
+:::
+
+::: {.proof-strip}
+::: {.proof-item}
+**Income poverty**
+
+Read the household-income threshold behind the poverty measure.
+:::
+
+::: {.proof-item}
+**Territory**
+
+Compare incidence and concentration across provinces.
+:::
+
+::: {.proof-item}
+**Labor**
+
+Read employment, job quality and household vulnerability together.
+:::
+
+::: {.proof-item}
+**Measurement**
+
+Keep domains, uncertainty and publication limits visible.
+:::
+:::
+
+::: {.page-nav}
+<a href="02_income-poverty.qmd">Income poverty</a>
+<a href="05_territorial-province-income-poverty.qmd">Territorial poverty</a>
+<a href="04_methodology-quality.qmd">Measurement and statistical quality</a>
+:::
+:::
