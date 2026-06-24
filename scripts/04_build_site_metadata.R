@@ -18,6 +18,7 @@ epm_required_site_outputs <- function(config) {
     "site_income_poverty_profiles",
     "site_territorial_province_income_poverty",
     "site_deprivation_multidimensional_kpis",
+    "site_labor_poverty_profiles",
     "site_periods",
     "site_sources",
     "site_quality_flags"
@@ -213,6 +214,47 @@ epm_empty_site_income_poverty_profiles <- function() {
     source_note = character(),
     method_note = character(),
     source_reference = character(),
+    stringsAsFactors = FALSE
+  )
+}
+
+epm_empty_site_labor_poverty_profiles <- function() {
+  data.frame(
+    site_section = character(),
+    display_priority = integer(),
+    period = character(),
+    survey_type = character(),
+    domain = character(),
+    domain_value = character(),
+    indicator_id = character(),
+    indicator_label = character(),
+    indicator_family = character(),
+    labor_dimension = character(),
+    labor_dimension_label = character(),
+    labor_value = character(),
+    labor_label = character(),
+    estimate = numeric(),
+    estimate_type = character(),
+    unit = character(),
+    display_estimate = numeric(),
+    display_unit = character(),
+    weighted_n = numeric(),
+    unweighted_n = integer(),
+    estimated_count = numeric(),
+    se = numeric(),
+    cv = numeric(),
+    df = numeric(),
+    analysis_unit = character(),
+    universe = character(),
+    source = character(),
+    method_status = character(),
+    benchmark_status = character(),
+    quality_flag = character(),
+    suppression_flag = character(),
+    public_note = character(),
+    source_layer = character(),
+    official_alignment = character(),
+    method_note = character(),
     stringsAsFactors = FALSE
   )
 }
@@ -879,6 +921,133 @@ epm_build_site_income_poverty_profiles <- function(config) {
   out
 }
 
+epm_site_labor_priority <- function(indicator_id, labor_dimension, labor_value, domain, domain_value) {
+  indicator_rank <- match(
+    indicator_id,
+    c(
+      "labor_force_participation_rate",
+      "employment_rate_working_age",
+      "outside_labor_force_share",
+      "unemployment_rate",
+      "adequate_employment_rate",
+      "subemployment_rate",
+      "poverty_rate_by_labor_status",
+      "extreme_poverty_rate_by_labor_status",
+      "estimated_poor_by_labor_status"
+    )
+  )
+  dimension_rank <- match(labor_dimension, c("overall_labor_position", "employment_quality", "labor_market_status"))
+  labor_rank <- match(
+    labor_value,
+    c("all_working_age", "labor_force", "employed_people", "employed", "unemployed", "outside_labor_force")
+  )
+  domain_key <- ifelse(domain == "national", "national", as.character(domain_value))
+  domain_rank <- match(domain_key, c("national", "urban", "rural"))
+
+  if (is.na(indicator_rank)) {
+    indicator_rank <- 99L
+  }
+
+  if (is.na(dimension_rank)) {
+    dimension_rank <- 99L
+  }
+
+  if (is.na(labor_rank)) {
+    labor_rank <- 99L
+  }
+
+  if (is.na(domain_rank)) {
+    domain_rank <- 99L
+  }
+
+  as.integer((dimension_rank - 1L) * 1000L + (indicator_rank - 1L) * 100L + (labor_rank - 1L) * 10L + domain_rank)
+}
+
+epm_build_site_labor_poverty_profiles <- function(config) {
+  annual_path <- epm_output_path("annual", "annual_labor_poverty", config$paths)
+
+  if (!file.exists(annual_path)) {
+    message("Annual labor poverty output not found; writing empty site_labor_poverty_profiles schema.")
+    return(epm_empty_site_labor_poverty_profiles())
+  }
+
+  annual <- epm_read_output(annual_path, required = TRUE)
+
+  if (!is.data.frame(annual)) {
+    .epm_abort("Annual labor poverty output must be a data frame before building site labor profiles.")
+  }
+
+  keep <- setdiff(names(epm_empty_site_labor_poverty_profiles()), c("site_section", "display_priority"))
+  missing <- setdiff(keep, names(annual))
+
+  if (length(missing) > 0L) {
+    .epm_abort(sprintf(
+      "Annual labor poverty output is missing site column(s): %s",
+      paste(missing, collapse = ", ")
+    ))
+  }
+
+  out <- annual[keep]
+  out$site_section <- "labor_poverty_profiles"
+  out$display_priority <- mapply(
+    epm_site_labor_priority,
+    out$indicator_id,
+    out$labor_dimension,
+    out$labor_value,
+    out$domain,
+    out$domain_value,
+    USE.NAMES = FALSE
+  )
+
+  out <- out[names(epm_empty_site_labor_poverty_profiles())]
+  out <- out[order(out$display_priority, out$indicator_id, out$labor_value, out$domain, out$domain_value), , drop = FALSE]
+  row.names(out) <- NULL
+
+  required_indicators <- c(
+    "labor_force_participation_rate",
+    "employment_rate_working_age",
+    "outside_labor_force_share",
+    "unemployment_rate",
+    "adequate_employment_rate",
+    "subemployment_rate",
+    "poverty_rate_by_labor_status",
+    "extreme_poverty_rate_by_labor_status",
+    "estimated_poor_by_labor_status"
+  )
+  missing_indicators <- setdiff(required_indicators, unique(out$indicator_id))
+
+  if (length(missing_indicators) > 0L) {
+    .epm_abort(sprintf(
+      "site_labor_poverty_profiles is missing indicator(s): %s",
+      paste(missing_indicators, collapse = ", ")
+    ))
+  }
+
+  forbidden <- epm_detect_forbidden_paths(out, config$paths$validation$forbidden_patterns)
+
+  if (length(forbidden) > 0L) {
+    .epm_abort("site_labor_poverty_profiles contains private path-like values.")
+  }
+
+  identifier_columns <- intersect(
+    names(out),
+    c("p01", "id_persona", "id_hogar", "idhogar", "id_persona_hogar", "upm", "estrato", "fexp")
+  )
+
+  if (length(identifier_columns) > 0L) {
+    .epm_abort(sprintf(
+      "site_labor_poverty_profiles contains identifier or design column(s): %s",
+      paste(identifier_columns, collapse = ", ")
+    ))
+  }
+
+  if ("build_timestamp" %in% names(out)) {
+    .epm_abort("site_labor_poverty_profiles must not expose build_timestamp.")
+  }
+
+  out
+}
+
 epm_save_site_metadata <- function(output_name, data, config) {
   path <- epm_output_path("site", output_name, config$paths)
   epm_make_dir(dirname(path))
@@ -887,7 +1056,8 @@ epm_save_site_metadata <- function(output_name, data, config) {
     "site_kpis",
     "site_income_poverty_profiles",
     "site_territorial_province_income_poverty",
-    "site_deprivation_multidimensional_kpis"
+    "site_deprivation_multidimensional_kpis",
+    "site_labor_poverty_profiles"
   )
 
   if (!output_name %in% dynamic_outputs && file.exists(path)) {
@@ -914,6 +1084,7 @@ metadata <- list(
   site_income_poverty_profiles = epm_build_site_income_poverty_profiles(config),
   site_territorial_province_income_poverty = epm_build_site_territorial_province_income_poverty(config),
   site_deprivation_multidimensional_kpis = epm_build_site_deprivation_multidimensional_kpis(config),
+  site_labor_poverty_profiles = epm_build_site_labor_poverty_profiles(config),
   site_periods = epm_build_site_periods(config),
   site_sources = epm_build_site_sources(config),
   site_quality_flags = epm_build_site_quality_flags(config)
